@@ -1,14 +1,11 @@
 ﻿@orange: #ee851d;
+@darkorange: #c14825;
 @darkgrey: #494E50;
-.rotation(@deg:5deg){
+.rotation(@deg:5deg)
+{
   -webkit-transform: rotate(@deg);
   -moz-transform: rotate(@deg);
   transform: rotate(@deg);
-}
-.zoom(@ratio:1.5){
-  -webkit-transform: zoom(@ratio);
-  -moz-transform: zoom(@ratio);
-  transform: zoom(@ratio);
 }
 .transition-all(@duration: 0.3s)
 {
@@ -42,16 +39,30 @@
 	-ms-box-shadow: @params1;
 	box-shadow:@params1;
 }
-
+.double-bx
+{
+	border-top: 1px solid fade(@darkorange, 70%);
+	.box-shadow(	
+		inset 0px 10px 30px -5px fade(@darkorange, 5%), 
+		inset 0px -10px 30px -6px fade(@darkorange, 10%) 
+	);
+}
+.simple-bx
+{
+	border-top: 1px solid #eee;
+	.box-shadow(
+		inset 0px -10px 30px -6px rgba(0, 0, 0, 0.05) 
+	);
+}
 .orange
 {
 	color: white;
 	background-color: @orange;
-	.box-shadow( inset 0px 10px 5px -5px rgba(0, 0, 0, 0.2), inset 0px -10px 5px -6px rgba(0, 0, 0, 0.2) );
+	.double-bx;
 }
 .light-orange
 {
-	background-color: rgba(238, 133, 29, 0.05);
+	background-color: fade(@darkgrey, 2%);
 }
 .center{ text-align: center; }
 
@@ -110,7 +121,6 @@ header .title
 
 section
 {
-	
 	padding: 50px 0;
 		
 	h1{ text-align: center; margin-top: 0; margin-bottom: 15px; font-family: "Lucida Sans Unicode";}
@@ -136,9 +146,9 @@ section
 }
 footer
 {
-	.box-shadow( inset 0px 10px 5px -5px rgba(0, 0, 0, 0.2) );
+	.box-shadow( inset 0px 10px 50px -5px rgba(0, 0, 0, 0.4) );
 	background: @darkgrey;
-	padding: 20px 0;
+	padding: 40px 0;
 	color: white;
 	a{ color: white; &:hover{ color: white; } }
 	ul
