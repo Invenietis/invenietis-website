@@ -36,9 +36,15 @@
                     <div class="container">
                         <div class="row-fluid">
                             <div class="span12">
-                                <div class="title-bloc">
-                                    <h1 class="title">Invenietis</h1>
-                                    <img alt="Invenietis" class="full-logo" src="Content/logo.png" />
+                                <div class="full-logo" >
+                                    <div class="keywords">
+                                        <h1 class="active">Architecture</h1>
+                                        <h1>Conception</h1>
+                                        <h1>Développement</h1>
+                                        <h1>Formation</h1>
+                                        <h1>Conseil</h1>
+                                    </div>
+                                    <img alt="Invenietis" src="Content/logo.png" />
                                 </div>
                             </div>
                         </div>
@@ -184,15 +190,63 @@
 
 @section scripts {
     <script type="text/javascript">
-        $(function () {
-            setTimeout(function () {
-                $('img').addClass('fadeIn');
-            }, 200);
-            $('section').hover(function () {
-                $('img', $(this)).addClass('hover');
-            }, function () {
-                $('img', $(this)).removeClass('hover');
+        (function () {
+            var animateLogo = new function () {
+                var _me = this;
+                var _elements = $('.keywords h1');
+                var _duration = 3000;
+
+                var elementOperations = new function () {
+                    this.hide = function (el, callback) {
+                        el.animate({
+                            opacity: 0,
+                            left: '75px'
+                        }, 800, function () {
+                            el.removeClass('active');
+                            el.css({
+                                left: 0
+                            });
+                        });
+                    };
+                    this.show = function (el, callback) {
+                        el.animate({
+                            opacity: 1,
+                        }, 500, function () {
+                            el.addClass('active');
+                        });
+                    };
+                };
+
+                this.animate = function () {
+                    setInterval(showNext, _duration);
+                };
+                var showNext = function () {
+                    var nextEl = null;
+                    for (var i = 0; i < _elements.length; i++) {
+                        var current = $(_elements[i]);
+                        if (current.hasClass('active')) {
+                            elementOperations.hide(current);
+                            if (i + 1 < _elements.length) nextEl = $(_elements[i + 1]);
+                            else nextEl = $(_elements[0]);
+                            break;
+                        }
+                    }
+                    elementOperations.show(nextEl);
+                };
+            };
+
+            $(function () {
+                animateLogo.animate();
+
+                setTimeout(function () {
+                    $('img').addClass('fadeIn');
+                }, 500);
+                $('section').hover(function () {
+                    $('img', $(this)).addClass('hover');
+                }, function () {
+                    $('img', $(this)).removeClass('hover');
+                });
             });
-        });
+        })();
     </script>
 }
