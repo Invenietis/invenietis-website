@@ -4,3 +4,6 @@ obj
 
 # mstest test results
 TestResults
+MvcApplication1.v11.suo
+MvcApplication1/MvcApplication1.csproj.user
+packages/

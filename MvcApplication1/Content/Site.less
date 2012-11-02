@@ -1,0 +1,188 @@
+﻿@orange: #ee851d;
+@darkgrey: #494E50;
+.rotation(@deg:5deg){
+  -webkit-transform: rotate(@deg);
+  -moz-transform: rotate(@deg);
+  transform: rotate(@deg);
+}
+.zoom(@ratio:1.5){
+  -webkit-transform: zoom(@ratio);
+  -moz-transform: zoom(@ratio);
+  transform: zoom(@ratio);
+}
+.transition-all(@duration: 0.3s)
+{
+	-webkit-transition: all @duration ease-in-out;
+	-moz-transition: all @duration ease-in-out;
+	-o-transition: all @duration ease-in-out;
+	-ms-transition: all @duration ease-in-out;
+	transition: all @duration ease-in-out;
+}
+.transition-delay(@duration: 1s)
+{
+	-webkit-transition-delay: @duration;
+	-moz-transition-delay: @duration;
+	-o-transition-delay: @duration;
+	-ms-transition-delay: @duration;
+	transition-delay: @duration;
+}
+.box-shadow(@params1,@params2)
+{
+	-webkit-box-shadow: @params1,@params2;
+	-moz-box-shadow: @params1,@params2;
+	-o-box-shadow: @params1,@params2;
+	-ms-box-shadow: @params1,@params2;
+	box-shadow: @params1,@params2;
+}
+.box-shadow(@params1)
+{
+	-webkit-box-shadow: @params1;
+	-moz-box-shadow: @params1;
+	-o-box-shadow: @params1;
+	-ms-box-shadow: @params1;
+	box-shadow:@params1;
+}
+
+.orange
+{
+	color: white;
+	background-color: @orange;
+	.box-shadow( inset 0px 10px 5px -5px rgba(0, 0, 0, 0.2), inset 0px -10px 5px -6px rgba(0, 0, 0, 0.2) );
+}
+.light-orange
+{
+	background-color: rgba(238, 133, 29, 0.05);
+}
+.center{ text-align: center; }
+
+html{ color: @darkgrey; }
+.container-fluid
+{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.header-nav
+{
+	margin-top: 10px;
+}
+
+.header-links
+{
+	margin: 10px 0 0 0;
+	> li,
+	> li.active
+	{
+		> a,
+		> a:hover
+		{
+			background-color: #fff;
+			color: #494E50;
+		}
+	}
+}
+
+.header-logo
+{
+	width: 150px;
+}
+
+header .title
+{
+	display: none;
+}
+
+
+
+.landing-header
+{
+	.title-bloc
+	{
+		text-align: center;
+		margin: 80px 0;
+	}
+	
+	.full-logo
+	{
+		width: 600px;
+	}
+}
+
+section
+{
+	
+	padding: 50px 0;
+		
+	h1{ text-align: center; margin-top: 0; margin-bottom: 15px; font-family: "Lucida Sans Unicode";}
+	.text{ font-size: 17px; line-height: 25px; }
+	em
+	{
+		display: block;
+		width: 80%;
+		padding-top: 10px;
+		margin: 0 auto;
+		font-size: 23px;
+		line-height: 30px;
+		font-family: Palatino;
+		font-weight: bold;
+	}
+	img
+	{
+		.transition-all;
+		opacity: 0.5;
+	}
+	.fadeIn{ opacity: 1; }
+	.hover{ .rotation; }
+}
+footer
+{
+	.box-shadow( inset 0px 10px 5px -5px rgba(0, 0, 0, 0.2) );
+	background: @darkgrey;
+	padding: 20px 0;
+	color: white;
+	a{ color: white; &:hover{ color: white; } }
+	ul
+	{
+		margin: 5px 0 20px 0; padding: 0;
+	}
+	li
+	{
+		display: inline-block;
+		padding-left: 15px;
+	}
+
+	.follow{ text-align: right; }
+	.copyright{ padding: 20px 0; }
+	.center{img{width: 100px;}}
+}
+@media (max-width: 767px)
+{
+	section
+	{
+		padding-left: 45px;
+		padding-right: 45px;
+
+		img{ display: none; }
+	}
+	footer
+	{
+		text-align: center;
+		.follow{ text-align: center; }
+	}
+}
+@media (max-width: 320px)
+{
+	.header-logo{ display: none; }
+	.landing-header .title-bloc
+	{
+		margin: 30px 0;
+	}
+	section
+	{
+		padding: 25px;
+		h1
+		{
+			font-size: 30px;
+		}
+	}
+}
