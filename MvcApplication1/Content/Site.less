@@ -115,10 +115,11 @@ header .title
 		.keywords
 		{
 			position: relative;
-			top: 165px;
-			left: 3px;
+			top: 175px;
+			left: -17px;
 			padding-left: 3px;
 			color: @orange;
+
 			h1{ position: absolute; top: 0; left: 0; opacity: 0; }
 		}
 	}
@@ -166,12 +167,20 @@ footer
 		padding-left: 15px;
 	}
 
-	.follow{ text-align: right; }
+	.follow
+	{
+		a img{ margin: 10px; }
+	}
 	.copyright{ padding: 20px 0; }
 	.center{img{width: 100px;}}
 }
 @media (max-width: 767px)
 {
+	body
+	{
+		padding-left: 0;
+		padding-right: 0;
+	}
 	section
 	{
 		padding-left: 45px;
@@ -183,6 +192,12 @@ footer
 	{
 		text-align: center;
 		.follow{ text-align: center; }
+		.address
+		{
+			width: 100%;
+			float: left;
+			text-align: center;
+		}
 	}
 }
 @media (max-width: 320px)
