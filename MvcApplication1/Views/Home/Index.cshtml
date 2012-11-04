@@ -38,13 +38,13 @@
                         <div class="row-fluid">
                             <div class="span12">
                                 <div class="full-logo" >
-                                    <div class="keywords">
+                                    @*<div class="keywords">
                                         <h1 class="active" style="opacity: 1; left: 20px;">Architecture</h1>
                                         <h1>Conception</h1>
                                         <h1>Développement</h1>
                                         <h1>Formation</h1>
                                         <h1>Conseil</h1>
-                                    </div>
+                                    </div>*@
                                     <img alt="Invenietis" src="Content/logo.png" />
                                 </div>
                             </div>
@@ -244,16 +244,7 @@
             };
 
             $(function () {
-                animateLogo.animate();
-
-                setTimeout(function () {
-                    $('img').addClass('fadeIn');
-                }, 500);
-                $('section').hover(function () {
-                    $('img', $(this)).addClass('hover');
-                }, function () {
-                    $('img', $(this)).removeClass('hover');
-                });
+                //animateLogo.animate();
 
                 $('.expand-menu').click(function () {
                     $('.header-links').toggleClass('visible');

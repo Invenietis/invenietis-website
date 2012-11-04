@@ -41,17 +41,16 @@
 }
 .double-bx
 {
-	border-top: 1px solid fade(@darkorange, 70%);
 	.box-shadow(	
-		inset 0px 10px 30px -5px fade(@darkorange, 5%), 
-		inset 0px -10px 30px -6px fade(@darkorange, 10%) 
+		inset 0px 10px 10px -5px rgba(0,0,0,0.1),
+		inset 0px -10px 10px -6px rgba(0, 0, 0, 0.1) 
 	);
 }
 .simple-bx
 {
 	border-top: 1px solid #eee;
 	.box-shadow(
-		inset 0px -10px 10px -6px rgba(0, 0, 0, 0.05) 
+		inset 0px -10px 25px -6px rgba(0, 0, 0, 0.08) 
 	);
 }
 .orange
@@ -62,7 +61,7 @@
 }
 .light-orange
 {
-	background-color: fade(@darkgrey, 2%);
+	background-color: fade(@darkgrey, 4%);
 }
 .center{ text-align: center; }
 
@@ -143,10 +142,8 @@ section
 	img
 	{
 		.transition-all;
-		opacity: 0.5;
+		opacity: 1;
 	}
-	.fadeIn{ opacity: 1; }
-	.hover{ .rotation; }
 }
 footer
 {
