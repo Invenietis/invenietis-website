@@ -18,6 +18,7 @@
                             <a href="#">
                                 <img alt="Invenietis" class="header-logo pull-left" src="Content/logo.png" />
                             </a>
+                            <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/content/images/menu.png")" /></a>
                             <ul class="nav nav-pills pull-right header-links">
                                 <li class="active">
                                     <a href="#">Accueil</a>
@@ -57,7 +58,7 @@
                 <section class="container">
                     <div class="row-fluid">
                         <div class="span8">
-                            <h1>Acide Désoxyribonucléique</h1>
+                            <h1>Acide Désoxyr..</h1>
                             <div class="text">
                                 <p>Invenietis est une entreprise basée à Paris, animée par 8 passionnés, spécialistes en Ingénierie Logicielle. L’aventure a commencé en 2004 avec 2 personnes pour arriver aujourd’hui à une équipe opérationnelle, cohérente et disponible pour résoudre les problématiques complexes des projets web et bureautique actuels. Notre entreprise est avant tout un moyen d’aider nos partenaires et clients à créer rapidement de la valeur en leur permettant de se consacrer pleinement à leur cœur de métier. Nous cherchons à établir des relations de confiance, d’humain à humain, pour accompagner les projets sur le long terme.</p>
                             </div>
@@ -66,7 +67,7 @@
                                 alimentaires.
                             </em>
                         </div>
-                        <div class="span4">
+                        <div class="span4 hidden-phone">
                             <img src="@Url.Content("~/content/images/dna.png")" />
                         </div>
                     </div>
@@ -77,7 +78,7 @@
             <div class="span12 simple-bx">
                 <section class="container">
                     <div class="row-fluid">
-                        <div class="span4">
+                        <div class="span4 hidden-phone">
                             <img src="@Url.Content("~/content/images/tech.png")" />
                         </div>
                         <div class="span8">
@@ -113,7 +114,7 @@
                                 architectures logicielles durables.
                             </em>
                         </div>
-                        <div class="span4">
+                        <div class="span4 hidden-phone">
                             <img src="@Url.Content("~/content/images/touch.png")" />
                         </div>
                     </div>
@@ -124,7 +125,7 @@
             <div class="span12 simple-bx">
                 <section class="container">
                     <div class="row-fluid">
-                        <div class="span4">
+                        <div class="span4 hidden-phone">
                             <img src="@Url.Content("~/content/images/env.png")" />
                         </div>
                         <div class="span8">
@@ -252,6 +253,10 @@
                     $('img', $(this)).addClass('hover');
                 }, function () {
                     $('img', $(this)).removeClass('hover');
+                });
+
+                $('.expand-menu').click(function () {
+                    $('.header-links').toggleClass('visible');
                 });
             });
         })();
