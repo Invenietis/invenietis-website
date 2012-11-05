@@ -102,13 +102,13 @@ header .title
 	{
 		width: 600px;
 		margin: 80px auto;
+		margin-bottom: 120px;
 
 		.keywords
 		{
 			position: relative;
-			top: 175px;
-			left: -17px;
-			padding-left: 3px;
+			top: -85px;
+			width: 465px;
 			color: @orange;
 
 			h1{ position: absolute; top: 0; left: 0; opacity: 0; }
@@ -139,9 +139,21 @@ section
 		opacity: 1;
 	}
 }
+
+.backphoto
+{
+	background-image: url('edge3.png');
+	background-position: -485px 0px;
+	.box
+	{
+		background-color: rgba(255, 255, 255, 0.75);
+		.box-shadow( 0px 0px 40px 17px rgba(255, 255, 255, 0.75) );
+	}
+}
+
 footer
 {
-	.box-shadow( inset 0px 10px 50px -5px rgba(0, 0, 0, 0.4) );
+	.box-shadow( inset 0px 10px 50px -10px rgba(0, 0, 0, 0.4) );
 	background: @darkgrey;
 	padding: 40px 0;
 	color: white;
@@ -175,6 +187,18 @@ footer
 		padding-left: 45px;
 		padding-right: 45px;
 	}
+	.landing-header .full-logo
+	{
+		width: 450px;
+		margin: 30px auto;
+
+		.keywords
+		{
+			top: -80px;
+			width: 340px;
+			h1{ font-size: 26px; }
+		}
+	}
 	footer
 	{
 		text-align: center;
@@ -184,6 +208,25 @@ footer
 			width: 100%;
 			float: left;
 			text-align: center;
+		}
+	}
+}
+@media (max-width: 600px)
+{
+	.landing-header .full-logo
+	{
+		width: 300px;
+		margin: 30px auto;
+
+		.keywords
+		{
+			top: -55px;
+			width: 260px;
+			h1
+			{ 
+				font-size: 20px; 
+				line-height: 20px;
+			}
 		}
 	}
 }
@@ -211,17 +254,7 @@ footer
 		margin-bottom: 20px;
 	}
 
-	.landing-header .full-logo
-	{
-		width: 300px;
-		margin: 30px auto;
 
-		.keywords
-		{
-			top: 75px;
-			h1{ font-size: 26px; }
-		}
-	}
 
 	.header-logo{ display: none; }
 	.landing-header .title-bloc

@@ -141,6 +141,7 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\edge3.png" />
     <Content Include="Content\images\DNA.png" />
     <Content Include="Content\images\ENV.png" />
     <Content Include="Content\images\facebook.png" />
@@ -152,6 +153,7 @@
     <Content Include="Content\images\tech.png" />
     <Content Include="Content\images\touch.png" />
     <Content Include="Content\images\twitter.png" />
+    <Content Include="Content\logo-small.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -254,7 +256,7 @@
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://localhost/test</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>True</UseCustomServer>
+          <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://invenietis.local</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
