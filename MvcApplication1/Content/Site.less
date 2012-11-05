@@ -101,17 +101,14 @@ header .title
 	.full-logo
 	{
 		width: 600px;
-		margin: 80px auto;
-		margin-bottom: 120px;
+		margin: 80px auto 100px auto;
+		position: relative;
 
 		.keywords
 		{
-			position: relative;
-			top: -85px;
-			width: 465px;
+			position: absolute;
+			top: 160px;
 			color: @orange;
-
-			h1{ position: absolute; top: 0; left: 0; opacity: 0; }
 		}
 	}
 }
@@ -137,12 +134,14 @@ section
 	{
 		.transition-all;
 		opacity: 1;
+
+		&:hover{ .rotation; }
 	}
 }
 
 .backphoto
 {
-	background-image: url('edge3.png');
+	background-image: url('images/bg.jpg');
 	background-position: -485px 0px;
 	.box
 	{
@@ -190,13 +189,12 @@ footer
 	.landing-header .full-logo
 	{
 		width: 450px;
-		margin: 30px auto;
+		margin: 30px auto 50px auto;
 
 		.keywords
 		{
-			top: -80px;
-			width: 340px;
-			h1{ font-size: 26px; }
+			top: 115px;
+			h1{ font-size: 26px; line-height: 30px; }
 		}
 	}
 	footer
@@ -216,16 +214,14 @@ footer
 	.landing-header .full-logo
 	{
 		width: 300px;
-		margin: 30px auto;
 
 		.keywords
 		{
-			top: -55px;
-			width: 260px;
+			top: 75px;
 			h1
 			{ 
 				font-size: 20px; 
-				line-height: 20px;
+				line-height: 25px;
 			}
 		}
 	}
@@ -254,8 +250,6 @@ footer
 		margin-bottom: 20px;
 	}
 
-
-
 	.header-logo{ display: none; }
 	.landing-header .title-bloc
 	{
@@ -272,5 +266,9 @@ footer
 		{
 			width: 100%;
 		}
+	}
+	.backphoto
+	{
+		background: fade(@darkgrey, 3%);
 	}
 }
