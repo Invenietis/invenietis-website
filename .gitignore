@@ -9,3 +9,4 @@ MvcApplication1/MvcApplication1.csproj.user
 packages/
 *.suo
 *.csproj.user
+*.pubxml.user
