@@ -19,5 +19,9 @@ namespace MvcApplication1.Controllers
         {
             return View();
         }
+        public ActionResult Legal()
+        {
+            return View();
+        }
     }
 }

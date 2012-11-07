@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    ViewBag.Title = "Acceuil";
+}
         <div class="row-fluid">
             <div class="span12">
                 <header class="landing-header top-bx backphoto">
@@ -108,66 +110,3 @@
                 </section>
             </div>
         </div>
-
-@* {
-    <script type="text/javascript">
-        (function () {
-            var animateLogo = new function () {
-                var _me = this;
-                var _elements = $('.keywords h1');
-                var _duration = 3000;
-
-                var elementOperations = new function () {
-                    this.hide = function (el, callback) {
-                        el.animate({
-                            opacity: 0,
-                            left: '40px'
-                        }, 1000, function () {
-                            el.removeClass('active');
-                            el.css({
-                                left: 0
-                            });
-                            if (callback) callback();
-                        });
-                    };
-                    this.show = function (el, callback) {
-                        el.animate({
-                            opacity: 1,
-                            left: '20px'
-                        }, 1000, function () {
-                            el.addClass('active');
-                            if (callback) callback();
-                        });
-                    };
-                };
-
-                this.animate = function () {
-                    setTimeout(showNext, _duration);
-                };
-                var showNext = function () {
-                    var nextEl = null;
-                    for (var i = 0; i < _elements.length; i++) {
-                        var current = $(_elements[i]);
-                        if (current.hasClass('active')) {
-                            elementOperations.hide(current);
-                            if (i + 1 < _elements.length) nextEl = $(_elements[i + 1]);
-                            else nextEl = $(_elements[0]);
-                            break;
-                        }
-                    }
-                    elementOperations.show(nextEl, function () {
-                        setTimeout(showNext, _duration);
-                    });
-                };
-            };
-
-            $(function () {
-                //animateLogo.animate();
-
-                $('.expand-menu').click(function () {
-                    $('.header-links').toggleClass('visible');
-                });
-            });
-        })();
-    </script>
-}*@

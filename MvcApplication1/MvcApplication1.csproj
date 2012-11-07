@@ -153,8 +153,11 @@
     <Content Include="Content\images\map-bw.png" />
     <Content Include="Content\images\map-mini-bw.png" />
     <Content Include="Content\images\map.png" />
+    <Content Include="Content\images\marcker-b.png" />
+    <Content Include="Content\images\marcker.png" />
     <Content Include="Content\images\menu.png" />
     <Content Include="Content\images\microsoft_black-tw.png" />
+    <Content Include="Content\images\shadow.png" />
     <Content Include="Content\images\tech.png" />
     <Content Include="Content\images\touch.png" />
     <Content Include="Content\images\twitter.png" />
@@ -234,6 +237,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Legal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
