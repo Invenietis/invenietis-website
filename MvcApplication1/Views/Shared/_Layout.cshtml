@@ -96,5 +96,12 @@
         </footer>
     </div>
     @RenderSection( "js", required: false )
+    <script type="text/javascript">
+            $(function () {
+               $('.expand-menu').click(function () {
+                   $('.header-links').toggleClass('visible');
+               });
+            });
+    </script>
 </body>
 </html>
