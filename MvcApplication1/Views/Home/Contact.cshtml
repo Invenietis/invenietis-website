@@ -1,69 +1,104 @@
 ﻿@section header
 {
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBknlrEwPyY3YZOZeHOszmVyu2iD1dHq-U&sensor=true"></script>
+    <style type="text/css">
+        #header-container
+        {
+            position: relative;
+            z-index: 1000;
+            -webkit-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -moz-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -o-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -ms-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 }
-        <div class="row-fluid">
-            <div class="span12 top-bx approche">
-                <section class="container">
-                    <div class="row-fluid">
-                        <div class="contact">
-                            <h1 class="center">Contactez-nous</h1>
-                            <div class="row-fluid">
-                                <div class="span12 center well">
-                                    <h3>Par téléphone, email</h3>
-                                    <p class="center lead"><a href="mailto:contact@invenietis.com">contact@invenietis.com</a></p>
-                                    <p class="center lead">(+33) 1 43 67 88 75</p>
-                                </div>
-
-                            </div>
-                            <div class="row-fluid">
-                                <div class="span12 center well addr">
-                                    <h3>Ou passez nous voir</h3>
-                                    <div class="row-fluid">
-                                        <div class="span12 map">
-                                            <div id="map_canvas" style="width: 100%; height: 300px" onload="onload"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row-fluid">
-                                        <div class="span6">
-                                            <strong class="lead">Centre technique :</strong><br /><br />
-                                            <address>
-                                                <strong>Société Invenietis</strong><br />
-                                                10 rue Mercoeur<br>
-                                                Batiment A - 3e étage<br>
-                                                75011 - Paris<br>
-                                                France
-                                            </address>
-                                        </div>
-                                        <div class="span6">
-                                            <strong class="lead">Siège Social :</strong><br /><br />
-                                            <address>
-                                                <strong>Société Invenietis</strong><br />
-                                                23 rue Pelleport <br />
-                                                75020 - Paris<br>
-                                                France
-                                            </address>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <div id="map_canvas" style="width: 100%; height: 100%; min-height: 400px" onload="onload"></div>
+    <div class="row-fluid top-bx">
+        <div class="span12 ">
+            <section class="container">
+                <div class="row-fluid">
+                    <div class="span4 center">
+                        <strong class="lead">Téléphone, email :</strong><br /><br />
+                        <p class="center"><a href="mailto:contact@invenietis.com">contact@invenietis.com</a></p>
+                        <p class="center">(+33) 1 43 67 88 75</p>
                     </div>
-                </section>
-            </div>
+                    <div class="span4 center">
+                        <strong class="lead">Centre technique :</strong><br /><br />
+                        <address>
+                            <strong>Société Invenietis</strong><br />
+                            10 rue Mercoeur<br>
+                            Batiment A - 3e étage<br>
+                            75011 - Paris<br>
+                            France
+                        </address>
+                    </div>
+                    <div class="span4 center">
+                        <strong class="lead">Siège social :</strong><br /><br />
+                        <address>
+                            <strong>Société Invenietis</strong><br />
+                            23 rue Pelleport <br />
+                            75020 - Paris<br>
+                            France
+                        </address>
+                    </div>
+                </div>
+            </section>
         </div>
+    </div>
 
 @section js {
     <script type="text/javascript">
         $(function () {
+            var styles = [
+                {
+                    featureType: "road.local",
+                    stylers: [
+                        { "hue": "#EE9A1D" },
+                        { "saturation": 100 },
+                        { "lightness": -20 }
+                    ]
+                }, {
+                    featureType: "road.arterial",
+                    stylers: [
+                        { "hue": "#EE9A1D" },
+                        { "saturation": 100 },
+                        { "lightness": -17 }
+                    ]
+                }, {
+                    elementType: "labels.text.stroke",
+                    stylers: [
+                      { visibility: "off" }
+                    ]
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [
+                        { visibility: "simplified" }
+                    ]
+                }
+            ];
+
             var mapOptions = {
-                //Ya: 48.86060033606661
-                //Za: 2.394239496108961
                 center: new google.maps.LatLng(48.86060033606661, 2.394239496108961),
                 zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: styles
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            var image = new google.maps.MarkerImage("Content/images/marcker.png",
+                new google.maps.Size(42.0, 70.0),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(21.0, 70.0)
+            );
+            var shadow = new google.maps.MarkerImage("Content/images/shadow.png",
+                new google.maps.Size(78.0, 70.0),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(21.0, 70.0)
+            );
 
             var bounds = new google.maps.LatLngBounds();
 
@@ -71,14 +106,20 @@
                 position: new google.maps.LatLng(48.857311, 2.383972),
                 title: 'Invenietis - Centre technique',
                 zoomControl: true,
-                map: map
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image,
+                shadow: shadow
             });
             bounds.extend(markerTech.position);
             var markerHQ = new google.maps.Marker({
                 position: new google.maps.LatLng(48.863282, 2.404191),
                 title: 'Invenietis - Siège Social',
                 zoomControl: true,
-                map: map
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image,
+                shadow: shadow
             });
             bounds.extend(markerHQ.position);
 
