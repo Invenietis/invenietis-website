@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication1", "MvcApplication1\MvcApplication1.csproj", "{4116ED1D-A237-4ACB-8C4F-FE34D52F021C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvenietisPortal", "InvenietisPortal\InvenietisPortal.csproj", "{4116ED1D-A237-4ACB-8C4F-FE34D52F021C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8553404A-7085-4A31-83FD-555A389913A2}"
 	ProjectSection(SolutionItems) = preProject
