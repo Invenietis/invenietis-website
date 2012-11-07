@@ -50,6 +50,31 @@
             </section>
         </div>
     </div>
+<div id="infomapTech">
+    <div class="infomap">
+        <address>
+            <img src="/Content/images/marcker.png" alt="logo" />
+            <strong>Société Invenietis - Centre technique</strong><br />
+            10 rue Mercoeur<br>
+            Batiment A - 3e étage<br>
+            75011 - Paris<br>
+            France
+        </address>
+        <a target="_blank" href="https://maps.google.fr/maps?q=10+Rue+Merc%C5%93ur,+Paris&hl=fr&ie=UTF8&sll=48.863091,2.404289&sspn=0.006882,0.016512&oq=10&t=h&gl=fr&hnear=10+Rue+Merc%C5%93ur,+75011+Paris,+%C3%8Ele-de-France&z=17">Voir sur Google Map</a>
+    </div>
+</div>
+<div id="infomapHQ">
+    <div class="infomap">
+        <address>
+            <img src="/Content/images/marcker.png" alt="logo" />
+            <strong>Société Invenietis - Siège social</strong><br />
+            23 rue Pelleport<br>
+            75020 - Paris<br>
+            France
+        </address>
+        <a target="_blank" href="https://maps.google.fr/maps?q=23+Rue+Pelleport,+Paris&hl=fr&ie=UTF8&sll=48.85472,2.384012&sspn=0.013766,0.033023&oq=23&t=h&gl=fr&hnear=23+Rue+Pelleport,+75020+Paris,+%C3%8Ele-de-France&z=17">Voir sur Google Map</a>
+    </div>
+</div>
 
 @section js {
     <script type="text/javascript">
@@ -103,6 +128,7 @@
                 new google.maps.Point(21.0, 70.0)
             );
 
+
             var bounds = new google.maps.LatLngBounds();
 
             var markerTech = new google.maps.Marker({
@@ -128,6 +154,25 @@
 
             map.fitBounds(bounds);
 
+
+            var infowindowTech = new google.maps.InfoWindow({
+                content: $('#infomapTech').html(),
+                width: 192,
+                height: 100
+            });
+            var infowindowHQ = new google.maps.InfoWindow({
+                content: $('#infomapHQ').html(),
+                width: 192,
+                height: 100
+            });
+
+            google.maps.event.addListener(markerTech, 'click', function () {
+                infowindowTech.open(map, markerTech);
+            });
+
+            google.maps.event.addListener(markerHQ, 'click', function () {
+                infowindowHQ.open(map, markerHQ);
+            });
         });
     </script>
 }
