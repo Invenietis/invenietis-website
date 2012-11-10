@@ -138,6 +138,13 @@ section
 
 		&:hover{ .rotation; }
 	}
+
+}
+
+#map_canvas
+{
+	width: 100%;
+	min-height: 400px; 
 }
 
 .backphoto
@@ -179,6 +186,7 @@ footer
 	}
 	.copyright{ padding: 20px 0; }
 	.center{img{width: 100px;}}
+	img.mslogo{ width: 200px;}
 
 	address
 	{
@@ -344,7 +352,20 @@ footer
 	}
 
 }
-
+@media (max-height: 480px)
+{
+	#map_canvas
+	{
+		min-height: 260px;
+	}
+}
+@media (max-height: 320px)
+{
+	#map_canvas
+	{
+		min-height: 190px;
+	}
+}
 .infomap
 {
 	padding: 10px;
