@@ -150,12 +150,14 @@
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\map-bw-med.png" />
     <Content Include="Content\images\map-bw.png" />
     <Content Include="Content\images\map-mini-bw.png" />
     <Content Include="Content\images\map.png" />
     <Content Include="Content\images\marcker-b.png" />
     <Content Include="Content\images\marcker.png" />
     <Content Include="Content\images\menu.png" />
+    <Content Include="Content\images\microsoft_black-tw-mini.png" />
     <Content Include="Content\images\microsoft_black-tw.png" />
     <Content Include="Content\images\shadow.png" />
     <Content Include="Content\images\tech.png" />
