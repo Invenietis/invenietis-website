@@ -83,6 +83,10 @@ html{ color: @darkgrey; }
 			color: #494E50;
 		}
 	}
+	> li.active
+	{
+		font-weight: bold;
+	}
 	margin: 0;
 	padding-top: 15px;
 }
@@ -127,17 +131,14 @@ section
 		width: 80%;
 		padding-top: 10px;
 		margin: 0 auto;
-		font-size: 23px;
+		font-size: 22px;
 		line-height: 30px;
-		font-family: Palatino;
-		font-weight: bold;
+		font-family: Tahoma;
 	}
 	img
 	{
 		.transition-all;
 		opacity: 1;
-
-		&:hover{ .rotation; }
 	}
 
 }
@@ -151,7 +152,7 @@ section
 .backphoto
 {
 	background-image: url('images/bg.jpg');
-	background-position: -485px 0px;
+	background-position: center;
 	.box
 	{
 		background-color: rgba(255, 255, 255, 0.75);
@@ -183,11 +184,50 @@ footer
 
 	.follow
 	{
-		a img{ margin: 10px; }
+		width: 196px;
+		height: 52px;
+		margin: 0 auto;
+		display: block;
+
+		a
+		{
+			.transition-all(0.2s);
+			height: 52px;
+			width: 52px;
+			float: left;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+		a.twitter
+		{
+			background-image: url('images/twitter-w-32.png');
+
+			&:hover
+			{
+				background-image: url('images/twitter-c-32.png');
+			}
+		}
+		a.github
+		{
+			margin-left: 20px;
+			background-image: url('images/octocat-w-32.png');
+			&:hover
+			{
+				background-image: url('images/octocat-c-32.png');
+			}
+		}
+		a.facebook
+		{
+			margin-left: 20px;
+			background-image: url('images/f_logo-w-32.png');
+			&:hover
+			{
+				background-image: url('images/f_logo-c-32.png');
+			}
+		}
 	}
 	.copyright{ padding: 20px 0; }
-	.center{img{width: 100px;}}
-	img.mslogo{ width: 200px;}
+	img.mslogo{ display: block; margin: 20px auto 0 auto; width: 200px;}
 
 	address
 	{
@@ -198,26 +238,26 @@ footer
 		}
 		.minimap
 		{
-			img
+			display: block;
+			background-image: url('images/map-bw-med.png');
+			float: left;
+			margin-top: 20px;
+			margin: 3px 10px 0px 1px;
+			.box-shadow( 0 0 3px white );
+			width: 55px;
+			height: 55px;
+			.transition-all;
+			&:hover
 			{
-				float: left;
-				margin-top: 20px;
-				margin: 3px 10px 0px 1px;
-				.box-shadow( 0 0 3px white );
-				width: 55px;
-				height: 55px;
-				.transition-all;
-				&:hover
-				{
-					.box-shadow( 0 0 10px white );
-				}
+				.box-shadow( 0 0 10px white );
+				background-image: url('images/map-c-med.png');
 			}
 		}
 	}
 
 	.legal
 	{
-		margin: 30px;
+		margin: 30px 30px 0 30px;
 	}
 }
 

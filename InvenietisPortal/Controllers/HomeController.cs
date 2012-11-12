@@ -13,14 +13,17 @@ namespace MvcApplication1.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Page = "Index";
             return View();
         }
         public ActionResult Contact()
         {
+            ViewBag.Page = "Contact";
             return View();
         }
         public ActionResult Legal()
         {
+            ViewBag.Page = "";
             return View();
         }
     }

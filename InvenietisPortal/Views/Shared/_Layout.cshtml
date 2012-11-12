@@ -23,11 +23,9 @@
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/content/images/menu.png")" /></a>
                             <ul class="nav nav-pills pull-right header-links">
-                                <li class="active">
-                                    <a href="/">Accueil</a>
-                                </li>
+                                <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="/">Accueil</a></li>
                                 <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
-                                <li><a href="/Contact">Contactez-nous</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="/Contact">Contactez-nous</a></li>
                             </ul>
                         </div>
                     </div>
@@ -58,9 +56,9 @@
                     <div class="span6 center fellowus">
                         <strong>Suivez-nous sur</strong>
                         <div class="follow">
-                            <a href="https://twitter.com/invenietiscorp" target="_blank"><img src="@Url.Content("~/content/images/twitter.png")" style="width: 32px;"/></a>
-                            <a href="https://github.com/Invenietis" target="_blank"><img src="@Url.Content("~/content/images/gh.png")" style="width: 32px;"/></a>
-                            <a href="https://www.facebook.com/Invenietis" target="_blank"><img src="@Url.Content("~/content/images/facebook.png")" style="width: 32px;"/></a>
+                            <a class="twitter" href="https://twitter.com/invenietiscorp" target="_blank"></a>
+                            <a class="github" href="https://github.com/Invenietis" target="_blank"></a>
+                            <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
                         <img class="mslogo" src="Content/images/microsoft_black-tw-mini.png" />
                     </div>
@@ -68,9 +66,7 @@
                         <div class="pull-right address">
                             <address>
                                 <strong>Invenietis</strong>
-                                <a class="minimap" href="/Contact">
-                                    <img src="Content/images/map-bw-med.png" alt="Invenietis 10 rue Mercoeur 75011 Paris" > 
-                                </a>
+                                <a class="minimap" href="/Contact" ></a>
 
                                 10 rue Mercoeur<br />
                                 75010 - Paris<br />
