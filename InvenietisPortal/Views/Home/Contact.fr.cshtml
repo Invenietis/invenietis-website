@@ -1,0 +1,179 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
+    ViewBag.Title = "Nous contacter";
+}
+@section header
+{
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBknlrEwPyY3YZOZeHOszmVyu2iD1dHq-U&sensor=true"></script>
+    <style type="text/css">
+        #header-container
+        {
+            position: relative;
+            z-index: 1000;
+            -webkit-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -moz-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -o-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        -ms-box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+	        box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+}
+    <div id="map_canvas"></div>
+    <div class="row-fluid top-bx">
+        <div class="span12 ">
+            <section class="container">
+                <div class="row-fluid">
+                    <div class="span4 center">
+                        <strong class="lead">Téléphone, email :</strong><br /><br />
+                        <p class="center"><a href="mailto:contact@invenietis.com">contact@invenietis.com</a></p>
+                        <p class="center">(+33) 1 43 67 88 75</p>
+                    </div>
+                    <div class="span4 center">
+                        <strong class="lead">Centre technique :</strong><br /><br />
+                        <address>
+                            <strong>Société Invenietis</strong><br />
+                            10 rue Mercoeur<br>
+                            Batiment A - 3e étage<br>
+                            75011 - Paris<br>
+                            France
+                        </address>
+                    </div>
+                    <div class="span4 center">
+                        <strong class="lead">Siège social :</strong><br /><br />
+                        <address>
+                            <strong>Société Invenietis</strong><br />
+                            23 rue Pelleport <br />
+                            75020 - Paris<br>
+                            France
+                        </address>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+<div id="infomapTech">
+    <div class="infomap">
+        <address>
+            <img src="/Content/images/marcker.png" alt="logo" />
+            <strong>Invenietis - Centre technique</strong><br />
+            10 rue Mercoeur<br>
+            Batiment A - 3e étage<br>
+            75011 - Paris<br>
+            France
+        </address>
+        <a target="_blank" href="https://maps.google.fr/maps?q=10+Rue+Merc%C5%93ur,+Paris&hl=fr&ie=UTF8&sll=48.863091,2.404289&sspn=0.006882,0.016512&oq=10&t=h&gl=fr&hnear=10+Rue+Merc%C5%93ur,+75011+Paris,+%C3%8Ele-de-France&z=17">Voir sur Google Map</a>
+    </div>
+</div>
+<div id="infomapHQ">
+    <div class="infomap">
+        <address>
+            <img src="/Content/images/marcker.png" alt="logo" />
+            <strong>Invenietis - Siège social</strong><br />
+            23 rue Pelleport<br>
+            75020 - Paris<br>
+            France
+        </address>
+        <a target="_blank" href="https://maps.google.fr/maps?q=23+Rue+Pelleport,+Paris&hl=fr&ie=UTF8&sll=48.85472,2.384012&sspn=0.013766,0.033023&oq=23&t=h&gl=fr&hnear=23+Rue+Pelleport,+75020+Paris,+%C3%8Ele-de-France&z=17">Voir sur Google Map</a>
+    </div>
+</div>
+
+@section js {
+    <script type="text/javascript">
+        $(function () {
+            var styles = [
+                {
+                    featureType: "road.local",
+                    stylers: [
+                        { "hue": "#EE9A1D" },
+                        { "saturation": 100 },
+                        { "lightness": -20 }
+                    ]
+                }, {
+                    featureType: "road.arterial",
+                    stylers: [
+                        { "hue": "#EE9A1D" },
+                        { "saturation": 100 },
+                        { "lightness": -17 }
+                    ]
+                }, {
+                    elementType: "labels.text.stroke",
+                    stylers: [
+                      { visibility: "off" }
+                    ]
+                },
+                {
+                    featureType: "road",
+                    elementType: "geometry",
+                    stylers: [
+                        { visibility: "simplified" }
+                    ]
+                }
+            ];
+
+            var mapOptions = {
+                center: new google.maps.LatLng(48.86060033606661, 2.394239496108961),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: styles
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            var image = new google.maps.MarkerImage("/Content/images/marcker.png",
+                new google.maps.Size(42.0, 70.0),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(21.0, 70.0)
+            );
+            var shadow = new google.maps.MarkerImage("/Content/images/shadow.png",
+                new google.maps.Size(78.0, 70.0),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(21.0, 70.0)
+            );
+
+
+            var bounds = new google.maps.LatLngBounds();
+
+            var markerTech = new google.maps.Marker({
+                position: new google.maps.LatLng(48.857311, 2.383972),
+                title: 'Invenietis - Centre technique',
+                zoomControl: true,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image,
+                shadow: shadow
+            });
+            bounds.extend(markerTech.position);
+            var markerHQ = new google.maps.Marker({
+                position: new google.maps.LatLng(48.863282, 2.404191),
+                title: 'Invenietis - Siège Social',
+                zoomControl: true,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: image,
+                shadow: shadow
+            });
+            bounds.extend(markerHQ.position);
+
+            map.fitBounds(bounds);
+
+
+            var infowindowTech = new google.maps.InfoWindow({
+                content: $('#infomapTech').html(),
+                width: 192,
+                height: 100
+            });
+            var infowindowHQ = new google.maps.InfoWindow({
+                content: $('#infomapHQ').html(),
+                width: 192,
+                height: 100
+            });
+
+            google.maps.event.addListener(markerTech, 'click', function () {
+                infowindowTech.open(map, markerTech);
+            });
+
+            google.maps.event.addListener(markerHQ, 'click', function () {
+                infowindowHQ.open(map, markerHQ);
+            });
+        });
+    </script>
+}

@@ -14,14 +14,21 @@ namespace MvcApplication1.Controllers
         public ActionResult Index()
         {
             ViewBag.Page = "Index";
-            return View();
+            return View( "Index." + RouteData.Values["culture"] );
         }
         public ActionResult Contact()
         {
             ViewBag.Page = "Contact";
-            return View();
+            //return View();
+            return View( "Contact." + RouteData.Values["culture"] );
         }
         public ActionResult Legal()
+        {
+            ViewBag.Page = "";
+            //return View();
+            return View( "Legal." + RouteData.Values["culture"] );
+        }
+        public ActionResult Cuke()
         {
             ViewBag.Page = "";
             return View();

@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
     ViewBag.Title = "Acceuil";
 }
         <div class="row-fluid">
@@ -8,7 +9,7 @@
                         <div class="row-fluid">
                             <div class="span12">
                                 <div class="full-logo box" >
-                                    <img alt="Invenietis" src="Content/logo.png" />
+                                    <img alt="Invenietis" src="@Url.Content("~/content/logo.png")" />
                                     <div class="keywords">
                                         <h1 class="active">Accompagne et réalise<br />vos projets IT</h1>
                                     </div>
@@ -34,7 +35,7 @@
                             </em>
                         </div>
                         <div class="span4 hidden-phone">
-                            <img src="@Url.Content("~/content/images/dna.png")" />
+                            <img src="@Url.Content("~/content/images/dna.png")" alt="DNA" />
                         </div>
                     </div>
                 </section>
@@ -45,7 +46,7 @@
                 <section class="container">
                     <div class="row-fluid">
                         <div class="span4 hidden-phone">
-                            <img src="@Url.Content("~/content/images/tech.png")" />
+                            <img src="@Url.Content("~/content/images/tech.png")" alt="tech" />
                         </div>
                         <div class="span8">
                             <h1>Technique</h1>
@@ -81,7 +82,7 @@
                             </em>
                         </div>
                         <div class="span4 hidden-phone">
-                            <img src="@Url.Content("~/content/images/touch.png")" />
+                            <img src="@Url.Content("~/content/images/touch.png")" alt="touch" />
                         </div>
                     </div>
                 </section>
@@ -92,7 +93,7 @@
                 <section class="container">
                     <div class="row-fluid">
                         <div class="span4 hidden-phone">
-                            <img src="@Url.Content("~/content/images/env.png")" />
+                            <img src="@Url.Content("~/content/images/env.png")" alt="env" />
                         </div>
                         <div class="span8">
                             <h1>Environnement</h1>
