@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using RouteMagic;
+using MvcApplication1.App_Start;
+using System.Globalization;
 
 namespace MvcApplication1
 {
@@ -12,6 +15,7 @@ namespace MvcApplication1
     {
         public static void RegisterRoutes( RouteCollection routes )
         {
+            routes.IgnoreRoute( "favicon.ico" );
             routes.IgnoreRoute( "{resource}.axd/{*pathInfo}" );
 
             //routes.MapHttpRoute(
@@ -20,17 +24,60 @@ namespace MvcApplication1
             //    defaults: new { id = RouteParameter.Optional }
             //);
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{action}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+
+            //routes.MapRoute(
+            //    name: "Default",
+            //    url: "{action}",
+            //    defaults: new { lang = "fr", controller = "Home", action = "Index" }
+            //);
 
             //routes.MapRoute(
             //    name: "Default",
             //    url: "{controller}/{action}/{id}",
             //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             //);
+
+
+            const string defautlRouteUrl = "{action}";
+            RouteValueDictionary defaultRouteValueDictionary = new RouteValueDictionary( new { controller = "Home", action = "Index" } );
+            
+            //Route defaultRoute = new Route( defautlRouteUrl, defaultRouteValueDictionary, new MvcRouteHandler() );
+
+
+            //routes.Add( "HomeLocalized", new LocalizedRoute( "", defaultRouteValueDictionary ) );
+            routes.Add( "DefaultLocalized", new LocalizedRoute( defautlRouteUrl, defaultRouteValueDictionary ) );
+            routes.MapDelegate( "Default", defautlRouteUrl, ( rq ) =>
+                {
+                    var userLanguages = rq.HttpContext.Request.UserLanguages;
+                    if( userLanguages.Length > 0 )
+                    {
+                        try
+                        {
+                            var ci = new CultureInfo( userLanguages[0] );
+                            if( ci != null )
+                            {
+                                rq.RouteData.Values[LocalizedRoute.CultureKey] = ci.TwoLetterISOLanguageName;
+                            }
+                            else
+                            {
+                                rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                            }
+                        }
+                        catch( CultureNotFoundException )
+                        {
+                            rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                        }
+                    }
+                    else
+                    {
+                        rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                    }
+                    rq.HttpContext.Response.Redirect( RouteTable.Routes.GetVirtualPath( rq, null ).VirtualPath, true );
+                } ).Defaults = defaultRouteValueDictionary;
+
+
+            //routes.Add( "Default", new Route( defautlRouteUrl, defaultRouteValueDictionary, new MvcRouteHandler() ) );
+
         }
     }
 }

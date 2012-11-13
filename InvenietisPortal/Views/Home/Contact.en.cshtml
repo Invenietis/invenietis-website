@@ -1,5 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Nous contacter";
+    Layout = "~/Views/Shared/_Layout.en.cshtml";
+    ViewBag.Title = "Invenietis - Contact us";
+    ViewBag.Keywords = "";
+    ViewBag.Description = "";
 }
 @section header
 {
@@ -23,14 +26,14 @@
             <section class="container">
                 <div class="row-fluid">
                     <div class="span4 center">
-                        <strong class="lead">Téléphone, email :</strong><br /><br />
+                        <strong class="lead">Phone, mail :</strong><br /><br />
                         <p class="center"><a href="mailto:contact@invenietis.com">contact@invenietis.com</a></p>
                         <p class="center">(+33) 1 43 67 88 75</p>
                     </div>
                     <div class="span4 center">
-                        <strong class="lead">Centre technique :</strong><br /><br />
+                        <strong class="lead">Technical Center :</strong><br /><br />
                         <address>
-                            <strong>Société Invenietis</strong><br />
+                            <strong>Invenietis</strong><br />
                             10 rue Mercoeur<br>
                             Batiment A - 3e étage<br>
                             75011 - Paris<br>
@@ -38,9 +41,9 @@
                         </address>
                     </div>
                     <div class="span4 center">
-                        <strong class="lead">Siège social :</strong><br /><br />
+                        <strong class="lead">Headquarters :</strong><br /><br />
                         <address>
-                            <strong>Société Invenietis</strong><br />
+                            <strong>Invenietis</strong><br />
                             23 rue Pelleport <br />
                             75020 - Paris<br>
                             France
@@ -54,7 +57,7 @@
     <div class="infomap">
         <address>
             <img src="/Content/images/marcker.png" alt="logo" />
-            <strong>Invenietis - Centre technique</strong><br />
+            <strong>Invenietis - Technical Center</strong><br />
             10 rue Mercoeur<br>
             Batiment A - 3e étage<br>
             75011 - Paris<br>
@@ -67,7 +70,7 @@
     <div class="infomap">
         <address>
             <img src="/Content/images/marcker.png" alt="logo" />
-            <strong>Invenietis - Siège social</strong><br />
+            <strong>Invenietis - Headquarters</strong><br />
             23 rue Pelleport<br>
             75020 - Paris<br>
             France
@@ -117,15 +120,15 @@
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-            var image = new google.maps.MarkerImage("Content/images/marcker.png",
-                new google.maps.Size(42.0, 70.0),
+            var image = new google.maps.MarkerImage("/Content/images/marcker-o.png",
+                new google.maps.Size(38.0, 69.0),
                 new google.maps.Point(0, 0),
-                new google.maps.Point(21.0, 70.0)
+                new google.maps.Point(19.0, 69.0)
             );
-            var shadow = new google.maps.MarkerImage("Content/images/shadow.png",
-                new google.maps.Size(78.0, 70.0),
+            var shadow = new google.maps.MarkerImage("/Content/images/shadow-o.png",
+                new google.maps.Size(73.0, 69.0),
                 new google.maps.Point(0, 0),
-                new google.maps.Point(21.0, 70.0)
+                new google.maps.Point(19.0, 69.0)
             );
 
 
@@ -133,7 +136,7 @@
 
             var markerTech = new google.maps.Marker({
                 position: new google.maps.LatLng(48.857311, 2.383972),
-                title: 'Invenietis - Centre technique',
+                title: 'Invenietis - Technical Center',
                 zoomControl: true,
                 map: map,
                 animation: google.maps.Animation.DROP,
@@ -143,7 +146,7 @@
             bounds.extend(markerTech.position);
             var markerHQ = new google.maps.Marker({
                 position: new google.maps.LatLng(48.863282, 2.404191),
-                title: 'Invenietis - Siège Social',
+                title: 'Invenietis - Headquarters',
                 zoomControl: true,
                 map: map,
                 animation: google.maps.Animation.DROP,

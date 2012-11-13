@@ -45,6 +45,9 @@
       <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RouteMagic">
+      <HintPath>..\packages\RouteMagic.1.2\lib\net40\RouteMagic.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -128,6 +131,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RemoveDuplicateContentAttribute.cs" />
+    <Compile Include="App_Start\GlobalisedRoute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -159,12 +164,14 @@
     <Content Include="Content\images\map-mini-bw.png" />
     <Content Include="Content\images\map.png" />
     <Content Include="Content\images\marcker-b.png" />
+    <Content Include="Content\images\marcker-o.png" />
     <Content Include="Content\images\marcker.png" />
     <Content Include="Content\images\menu.png" />
     <Content Include="Content\images\microsoft_black-tw-mini.png" />
     <Content Include="Content\images\microsoft_black-tw.png" />
     <Content Include="Content\images\octocat-c-32.png" />
     <Content Include="Content\images\octocat-w-32.png" />
+    <Content Include="Content\images\shadow-o.png" />
     <Content Include="Content\images\shadow.png" />
     <Content Include="Content\images\tech.png" />
     <Content Include="Content\images\touch.png" />
@@ -246,9 +253,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Legal.cshtml" />
+    <Content Include="Views\Home\Index.fr.cshtml" />
+    <Content Include="Views\Home\Contact.fr.cshtml" />
+    <Content Include="Views\Home\Legal.fr.cshtml" />
+    <Content Include="Views\Home\Cuke.cshtml" />
+    <Content Include="Views\Home\Index.en.cshtml" />
+    <Content Include="Views\Shared\_Layout.fr.cshtml" />
+    <Content Include="Views\Shared\_Layout.en.cshtml" />
+    <Content Include="Views\Home\Contact.en.cshtml" />
+    <Content Include="Views\Home\Legal.en.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

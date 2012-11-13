@@ -2,7 +2,7 @@
 <html lang="@System.Threading.Thread.CurrentThread.CurrentUICulture.Name">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0">
     <meta name="keywords" content="@ViewBag.Keywords" />
     <meta name="description" content="@ViewBag.Description" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
@@ -25,9 +25,9 @@
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
-                                <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="@Url.Action( "Index" )">Accueil</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="@Url.Action( "Index" )">Home</a></li>
                                 <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
-                                <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="@Url.Action( "Contact" )">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -43,13 +43,13 @@
             <div class="container">
                 <div class="row-fluid">
                     <div class="span3">
-                        <strong>Nous connaitre</strong>
+                        <strong>More about us</strong>
                         <ul>
-                            <li><a href="@Url.Action( "Index" )">Accueil</a></li>
+                            <li><a href="@Url.Action( "Index" )">Home</a></li>
                             <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
-                            <li><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
+                            <li><a href="@Url.Action( "Contact" )">Contact us</a></li>
                         </ul>
-                        <strong>Nos produits</strong>
+                        <strong>Our products</strong>
                         <ul>
                             <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
                             <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
@@ -58,14 +58,14 @@
                                 <li><a href="@Url.Action( "Cuke" )">Cuke</a></li>
                             }
                         </ul>
-                        <strong>Langues</strong>
+                        <strong>Languages</strong>
                         <ul>
                             <li><a href="@Url.RouteUrl(new { action= ViewContext.RouteData.Values["action"], culture="fr"})">Français</a></li>
                             <li><a href="@Url.RouteUrl(new {action= ViewContext.RouteData.Values["action"], culture="en"})">English</a></li>
                         </ul>
                     </div>
                     <div class="span6 center fellowus">
-                        <strong>Suivez-nous sur</strong>
+                        <strong>Follow us on</strong>
                         <div class="follow">
                             <a class="twitter" href="https://twitter.com/invenietiscorp" target="_blank"></a>
                             <a class="github" href="https://github.com/Invenietis" target="_blank"></a>
@@ -82,8 +82,8 @@
                                 10 rue Mercoeur<br />
                                 75010 - Paris<br />
                                 France<br /><br />
-                                Email: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
-                                <abbr title="Téléphone">Tel:</abbr> (+33) 1 43 67 88 75
+                                Mail: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
+                                <abbr title="Phone number">P:</abbr> (+33) 1 43 67 88 75
                             </address>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
                         <div class="legal">
                             <img src="@Url.Content("~/Content/images/logo.png")" />
                             <span>
-                                Copyright © 2012 Invenietis. Tous Droits Réservés. 
-                                <a href="@Url.Action( "Legal" )"> Mentions légales</a>
+                                Copyright © 2012 Invenietis. All rights reserved. 
+                                <a href="@Url.Action( "Legal" )">Legal Terms</a>.
                             </span>
                         </div>
                     </div>
