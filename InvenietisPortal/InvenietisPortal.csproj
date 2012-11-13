@@ -164,12 +164,14 @@
     <Content Include="Content\images\map-mini-bw.png" />
     <Content Include="Content\images\map.png" />
     <Content Include="Content\images\marcker-b.png" />
+    <Content Include="Content\images\marcker-o.png" />
     <Content Include="Content\images\marcker.png" />
     <Content Include="Content\images\menu.png" />
     <Content Include="Content\images\microsoft_black-tw-mini.png" />
     <Content Include="Content\images\microsoft_black-tw.png" />
     <Content Include="Content\images\octocat-c-32.png" />
     <Content Include="Content\images\octocat-w-32.png" />
+    <Content Include="Content\images\shadow-o.png" />
     <Content Include="Content\images\shadow.png" />
     <Content Include="Content\images\tech.png" />
     <Content Include="Content\images\touch.png" />

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.en.cshtml";
-    ViewBag.Title = "Contact us";
+    ViewBag.Title = "Invenietis - Contact us";
+    ViewBag.Keywords = "";
 }
 @section header
 {
@@ -118,15 +119,15 @@
             };
             var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
-            var image = new google.maps.MarkerImage("/Content/images/marcker.png",
-                new google.maps.Size(42.0, 70.0),
+            var image = new google.maps.MarkerImage("/Content/images/marcker-o.png",
+                new google.maps.Size(38.0, 69.0),
                 new google.maps.Point(0, 0),
-                new google.maps.Point(21.0, 70.0)
+                new google.maps.Point(19.0, 69.0)
             );
-            var shadow = new google.maps.MarkerImage("/Content/images/shadow.png",
-                new google.maps.Size(78.0, 70.0),
+            var shadow = new google.maps.MarkerImage("/Content/images/shadow-o.png",
+                new google.maps.Size(73.0, 69.0),
                 new google.maps.Point(0, 0),
-                new google.maps.Point(21.0, 70.0)
+                new google.maps.Point(19.0, 69.0)
             );
 
 
