@@ -34,12 +34,12 @@ namespace MvcApplication1.App_Start
 
             fr.Add( "Contact", "contactez-nous" );
             fr.Add( "Index", "acceuil" );
-            fr.Add( "Legal", "mention-legal" );
+            fr.Add( "Legal", "mentions-legales" );
             fr.Add( "Cuke", "cuke" );
 
             en.Add( "Contact", "contact-us" );
             en.Add( "Index", "home" );
-            en.Add( "Legal", "legal" );
+            en.Add( "Legal", "legal-terms" );
             en.Add( "Cuke", "" );
         }
 
