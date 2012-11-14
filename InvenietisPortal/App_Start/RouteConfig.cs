@@ -49,7 +49,7 @@ namespace MvcApplication1
             routes.MapDelegate( "Default", defautlRouteUrl, ( rq ) =>
                 {
                     var userLanguages = rq.HttpContext.Request.UserLanguages;
-                    if( userLanguages.Length > 0 )
+                    if( userLanguages != null && userLanguages.Length > 0 )
                     {
                         try
                         {
@@ -60,19 +60,19 @@ namespace MvcApplication1
                             }
                             else
                             {
-                                rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                                rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
                             }
                         }
                         catch( CultureNotFoundException )
                         {
-                            rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                            rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
                         }
                     }
                     else
                     {
-                        rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture;
+                        rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
                     }
-                    rq.HttpContext.Response.Redirect( RouteTable.Routes.GetVirtualPath( rq, null ).VirtualPath, true );
+                    rq.HttpContext.Response.Redirect( RouteTable.Routes.GetVirtualPath( rq, null ).VirtualPath, false );
                 } ).Defaults = defaultRouteValueDictionary;
 
 

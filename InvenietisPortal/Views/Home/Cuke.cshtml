@@ -4,85 +4,108 @@
     ViewBag.Description = "";
 }
 
-    <div class="row-fluid top-bx">
-        <div class="span12 ">
+@section header
+{
+    <style type="text/css">
+        section.container h2
+        {
+            text-align: left;
+        }
+    </style>
+}
+
+    <div class="row-fluid ">
+        <div class="span12 top-bx">
             <section class="container">
                 <div class="row-fluid">
                     <div class="span12">
-                        <h2>Une plateforme nommée Cuke</h2>
-                        <h3>Qu'est-ce que c’est ?</h3>
+                        <h1>Une plateforme nommée Cuke</h1>
+                        <h2>Qu'est-ce que c’est ?</h2>
                         <p>Cuke est un système de gestion de contenu open source (ou CMS, Content Management System) ainsi qu’une plateforme de portails web dynamiques permettant de gérer plusieurs portails derrière la même infrastructure logicielle. Cuke est aussi une plateforme de développement qui intègre un Framework permettant d’étendre rapidement les possibilités de l’outil et ainsi d’ajouter des éléments spécifiques à chaque projet.</p>
                         
                         <p>Pour la partie gestion de contenu, Cuke sait gérer le contenu d’un site web. Il est basé sur une architecture basée sur la notion de « Page ». Il permet de créer rapidement et simplement une arborescence de pages web, facile à ordonner et à modifier.</p>
                         
                         <p>Le contenu de chaque page est un assemblage de modules qui permet une grande flexibilité dans le contenu éditorial. Ce principe permet aussi bien d’ajouter des modules spécifiques (commandés auprès d’Invenietis pour un projet) que des modules génériques (ensemble des modules formés de CukeStd ainsi que des packages complémentaires qui ont été achetés). Chaque page peut ainsi être personnalisée, même celle contenant des modules complexes.</p>
-
-                        
-                        <h3>Vous avez dit portails web dynamiques ?</h3>
-                        <p>Le concept de portail web dans Cuke permet dans une seule et même infrastructure logicielle de placer plusieurs « portails web ». Chaque portail est indépendant (chaque espace de travail étanche), et n’a pas forcément connaissance des autres portails qui se trouvent sur la même plateforme.  Ils peuvent avoir leurs propres noms de domaine.</p>
-
-                        <p>Un administrateur peut, suivant les choix, administrer un ou plusieurs portails. Ce système permet par exemple de partager, pour plusieurs sites web, une base de données commune pour faciliter la gestion et/ou la synchronisation d’information. En plus, les utilisateurs des portails peuvent être communs ou non à chaque portail, ce qui permet de centraliser la gestion des utilisateurs dans certains cas.</p>
-
-                        <h3>Vous avez dit Framework ?</h3>
-
-                        <p>Basé sur l’architecture ASP.NET (en version 2.0) de Microsoft, Cuke apporte des règles qui permettent un développement rapide et agile des applications métier. Il permet aussi d’étendre, à tout moment, les sites déjà installés avec des packages (ensemble de modules qui forme un tout fonctionnel comme un package de forum). La base de données est gérée par SQL Server 2005.</p>
-                        <p>Cuke est fait intégralement en .NET 2.0, il n’y a pas d’éléments extérieurs qui pourraient venir gêner la compréhension du code. Il n’y a pas de spécificité, ni d’élément requis autre qu’un serveur ASP.NET 2.0 et un serveur SQL Server 2005. Cuke est une application Microsoft.NET standard dans le monde web.</p>
-
-                        <h3>Les fonctionnalités importantes</h3>
-                        <strong>Gestion avancée de la sécurité</strong>
-                        <ul>
-                            <li>La gestion se fait par le biais d’ACL</li>
-                            <li>C’est une architecture robuste et efficace</li>
-                        </ul>
-                        <strong>Gestion des utilisateurs</strong>
-                        <ul>
-                            <li>Inscription, modification des comptes, mots de passe perdus</li>
-                            <li>Check des adresses mails par double opt in</li>
-                            <li>Possibilité de créer des sections accessibles uniquement aux utilisateurs enregistrés</li>
-                        </ul>
-                        <strong>Gestion des aspects graphiques</strong>
-                        <ul>
-                            <li>Modèles de pages servant de base graphique pour les pages l’utilisant</li>
-                            <li>Les modules sont facilement modifiables via CSS ou par retouche HTML</li>
-                            <li>La gestion graphique des sites est centralisée sous la notion de Skins et est gérée portail par portail</li>
-                        </ul>
-                        <strong>Gestion du multilinguisme</strong>
-                        <ul>
-                            <li>Ressource multilingue centralisée</li>
-                            <li>Cette gestion est intégrée dans l’outil et est facilement modifiable</li>
-                        </ul>
-                        <strong>Gestion des évolutions techniques</strong>
-                        <ul>
-                            <li>Évolution du site et des modules standard via les nouvelles versions de Cuke</li>
-                            <li>Ajout de package contenant de nouvelles fonctionnalités à tout moment</li>
-                        </ul>
-                        <strong>Gestion des évolutions éditoriales</strong>
-                        <ul>
-                            <li>Tracking des liens dans l'ensemble du système</li>
-                            <li>Recherche des fichiers et des pages à mettre en lien simplifié par un explorateur de fichiers et de pages</li>
-                        </ul>
-                        <strong>Référencement</strong>
-                        <ul>
-                            <li>Titre et entête de page modifiable facilement pour chaque page ou pour des cônes de pages</li>
-                            <li>Réécriture d’URL poussée, chaque nom de page est modifiable</li>
-                        </ul>
-                        <strong>Publication semi-statique</strong>
-                        <ul>
-                            <li>Editer, Valider, Publier : Un workflow simple intégré</li>
-                            <li>Disponible a plusieurs échelles, une page, un groupe de pages, un portail...</li>
-                        </ul>
-                        <strong>Gestion de classification et arbre de connaissance</strong>
-                        <ul>
-                            <li>Système de classification des différents éléments d’un site au travers d’arbres</li>
-                            <li>Les arbres sont transverses aux portails, mais peuvent être spécialisés par portail</li>
-                        </ul>
-                        <strong>Gestion de contenu fortement structurée (DynObj)</strong>
-                        <ul>
-                            <li>Structuration dans la base de données comme dans l’édition des informations (édition générée suivant les besoins)</li>
-                            <li>Les fiches sont affichées par le biais de templates simple</li>
-                            <li>La structure des fiches est transportail, mais les templates et les données ne le sont pas forcement</li>
-                        </ul>
                     </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 top-bx approche">
+            <section class="container">
+                <div class="row-fluid">
+                    <h2>Un portails web dynamique</h2>
+                    <p>Le concept de portail web dans Cuke permet dans une seule et même infrastructure logicielle de placer plusieurs « portails web ». Chaque portail est indépendant (chaque espace de travail étanche), et n’a pas forcément connaissance des autres portails qui se trouvent sur la même plateforme.  Ils peuvent avoir leurs propres noms de domaine.</p>
+
+                    <p>Un administrateur peut, suivant les choix, administrer un ou plusieurs portails. Ce système permet par exemple de partager, pour plusieurs sites web, une base de données commune pour faciliter la gestion et/ou la synchronisation d’information. En plus, les utilisateurs des portails peuvent être communs ou non à chaque portail, ce qui permet de centraliser la gestion des utilisateurs dans certains cas.</p>
+
+                    <h2>Un Framework</h2>
+
+                    <p>Basé sur l’architecture ASP.NET (en version 2.0) de Microsoft, Cuke apporte des règles qui permettent un développement rapide et agile des applications métier. Il permet aussi d’étendre, à tout moment, les sites déjà installés avec des packages (ensemble de modules qui forme un tout fonctionnel comme un package de forum). La base de données est gérée par SQL Server 2005.</p>
+                    <p>Cuke est fait intégralement en .NET 2.0, il n’y a pas d’éléments extérieurs qui pourraient venir gêner la compréhension du code. Il n’y a pas de spécificité, ni d’élément requis autre qu’un serveur ASP.NET 2.0 et un serveur SQL Server 2005. Cuke est une application Microsoft.NET standard dans le monde web.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12 top-bx">
+            <section class="container">
+                <div class="row-fluid">
+                    <h2>Les fonctionnalités importantes</h2>
+                    <strong>Gestion avancée de la sécurité</strong>
+                    <ul>
+                        <li>La gestion se fait par le biais d’ACL</li>
+                        <li>C’est une architecture robuste et efficace</li>
+                    </ul>
+                    <strong>Gestion des utilisateurs</strong>
+                    <ul>
+                        <li>Inscription, modification des comptes, mots de passe perdus</li>
+                        <li>Check des adresses mails par double opt in</li>
+                        <li>Possibilité de créer des sections accessibles uniquement aux utilisateurs enregistrés</li>
+                    </ul>
+                    <strong>Gestion des aspects graphiques</strong>
+                    <ul>
+                        <li>Modèles de pages servant de base graphique pour les pages l’utilisant</li>
+                        <li>Les modules sont facilement modifiables via CSS ou par retouche HTML</li>
+                        <li>La gestion graphique des sites est centralisée sous la notion de Skins et est gérée portail par portail</li>
+                    </ul>
+                    <strong>Gestion du multilinguisme</strong>
+                    <ul>
+                        <li>Ressource multilingue centralisée</li>
+                        <li>Cette gestion est intégrée dans l’outil et est facilement modifiable</li>
+                    </ul>
+                    <strong>Gestion des évolutions techniques</strong>
+                    <ul>
+                        <li>Évolution du site et des modules standard via les nouvelles versions de Cuke</li>
+                        <li>Ajout de package contenant de nouvelles fonctionnalités à tout moment</li>
+                    </ul>
+                    <strong>Gestion des évolutions éditoriales</strong>
+                    <ul>
+                        <li>Tracking des liens dans l'ensemble du système</li>
+                        <li>Recherche des fichiers et des pages à mettre en lien simplifié par un explorateur de fichiers et de pages</li>
+                    </ul>
+                    <strong>Référencement</strong>
+                    <ul>
+                        <li>Titre et entête de page modifiable facilement pour chaque page ou pour des cônes de pages</li>
+                        <li>Réécriture d’URL poussée, chaque nom de page est modifiable</li>
+                    </ul>
+                    <strong>Publication semi-statique</strong>
+                    <ul>
+                        <li>Editer, Valider, Publier : Un workflow simple intégré</li>
+                        <li>Disponible a plusieurs échelles, une page, un groupe de pages, un portail...</li>
+                    </ul>
+                    <strong>Gestion de classification et arbre de connaissance</strong>
+                    <ul>
+                        <li>Système de classification des différents éléments d’un site au travers d’arbres</li>
+                        <li>Les arbres sont transverses aux portails, mais peuvent être spécialisés par portail</li>
+                    </ul>
+                    <strong>Gestion de contenu fortement structurée (DynObj)</strong>
+                    <ul>
+                        <li>Structuration dans la base de données comme dans l’édition des informations (édition générée suivant les besoins)</li>
+                        <li>Les fiches sont affichées par le biais de templates simple</li>
+                        <li>La structure des fiches est transportail, mais les templates et les données ne le sont pas forcement</li>
+                    </ul>
                 </div>
             </section>
         </div>
