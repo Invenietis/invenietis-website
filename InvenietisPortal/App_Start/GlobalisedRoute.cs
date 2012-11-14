@@ -50,7 +50,7 @@ namespace MvcApplication1.App_Start
             RouteData rd = base.GetRouteData( httpContext );
             if( rd != null && _actionTrans.Keys.Contains( rd.Values["culture"].ToString() ) )
             {
-                var keyPair = _actionTrans[rd.Values["culture"].ToString()].Where( x => x.Value == rd.Values["action"].ToString() ).FirstOrDefault();
+                var keyPair = _actionTrans[rd.Values["culture"].ToString()].Where( x => x.Value.ToLower() == rd.Values["action"].ToString().ToLower() ).FirstOrDefault();
                 if( keyPair.Value != null )
                 {
                     rd.Values["action"] = keyPair.Key;
@@ -90,7 +90,7 @@ namespace MvcApplication1.App_Start
                 values["action"] != null &&
                 values["action"].ToString() != "Index")
             {
-                var keyPair = _actionTrans[culture].Where( x => x.Key == values["action"].ToString() ).FirstOrDefault();
+                var keyPair = _actionTrans[culture].Where( x => x.Key.ToLower() == values["action"].ToString().ToLower() ).FirstOrDefault();
                 if( keyPair.Value != null )
                 {
                     if( vals["action"] != null ) { vals["action"] = keyPair.Value; } else { vals.Add( "action", keyPair.Value ); }
