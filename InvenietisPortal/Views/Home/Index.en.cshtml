@@ -4,6 +4,23 @@
     ViewBag.Keywords = "";
     ViewBag.Description = "";
 }
+@section header
+{
+    <style type="text/css">
+        @@media (max-width: 480px)
+        {
+	        .header-nav .header-logo
+	        {
+			    padding-bottom: 0;
+                display:none;
+	        }
+            .header-links
+            {
+		        padding-top: 15px;
+            }
+        }
+    </style>
+}
         <div class="row-fluid">
             <div class="span12">
                 <header class="landing-header top-bx backphoto">
@@ -98,7 +115,7 @@
                             <h2>The environment</h2>
                             <div class="text">
                                 <p>
-                                    The Web is not our only sandbox. We also work in office automation environments such as the CiviKey project. This free open-source project is designed to make it easier for people with physical handicaps to use electronic devices and computers. We are developing this software in partnership with the Intech’INFO school of computer science, the Alcatel-Lucent group, the Garches Foundation, the Stéria Foundation, and the Garches hospital's New Technology Platform (PFNT).
+                                    The Web is not our only sandbox. We also work in office automation environments such as the <a href="http://civikey.fr" target="_blank" title="Civikey's website">CiviKey</a> project. This free open-source project is designed to make it easier for people with physical handicaps to use electronic devices and computers. We are developing this software in partnership with the Intech’INFO school of computer science, the Alcatel-Lucent group, the Garches Foundation, the Stéria Foundation, and the Garches hospital's New Technology Platform (PFNT).
                                 </p>
                             </div>
                             <em>

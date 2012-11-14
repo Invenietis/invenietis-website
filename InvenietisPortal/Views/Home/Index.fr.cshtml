@@ -4,6 +4,23 @@
     ViewBag.Keywords = "";
     ViewBag.Description = "";
 }
+@section header
+{
+    <style type="text/css">
+        @@media (max-width: 480px)
+        {
+	        .header-nav .header-logo
+	        {
+			    padding-bottom: 0;
+                display:none;
+	        }
+            .header-links
+            {
+		        padding-top: 15px;
+            }
+        }
+    </style>
+}
         <div class="row-fluid">
             <div class="span12">
                 <header class="landing-header top-bx backphoto">
@@ -102,7 +119,7 @@
                             <h2>Environnement</h2>
                             <div class="text">
                                 <p>
-                                    Le web n’est pas notre seul terrain de jeu. Nous travaillons également sur des environnements bureautiques comme pour le projet CiviKey. Ce projet open source et gratuit est destiné aux personnes en situation de handicap. Il leur permet d’utiliser l’outil informatique avec plus de facilité en les aidant au quotidien sur toutes les interactions homme-machine. Nous développons ce logiciel en partenariat avec l’école d’informatique IN’TECH INFO, Alcatel-Lucent, la Fondation Garches, la fondation Stéria et la Plateforme des Nouvelles Technologies de l’hôpital de Garches (PFNT).
+                                    Le web n’est pas notre seul terrain de jeu. Nous travaillons également sur des environnements bureautiques comme pour le projet <a href="http://civikey.fr" target="_blank" title="Site web de Civikey">CiviKey</a>. Ce projet open source et gratuit est destiné aux personnes en situation de handicap. Il leur permet d’utiliser l’outil informatique avec plus de facilité en les aidant au quotidien sur toutes les interactions homme-machine. Nous développons ce logiciel en partenariat avec l’école d’informatique IN’TECH INFO, Alcatel-Lucent, la Fondation Garches, la fondation Stéria et la Plateforme des Nouvelles Technologies de l’hôpital de Garches (PFNT).
                                 </p>
                             </div>
                             <em>

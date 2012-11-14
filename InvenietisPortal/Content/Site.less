@@ -126,7 +126,6 @@ section
 	padding: 50px 0;
 		
 	h2{ text-align: center; margin-top: 0; margin-bottom: 15px; font-family: "Lucida Sans Unicode", Helvetica, Arial, sans-serif;}
-	//h1{ text-align: center; margin-top: 0; margin-bottom: 15px; font-family: "Lucida Sans Unicode", Helvetica, Arial, sans-serif;}
 	.text{ font-size: 17px; line-height: 25px; }
 	em
 	{
@@ -142,6 +141,13 @@ section
 	{
 		.transition-all;
 		opacity: 1;
+	}
+
+	a,
+	a:hover
+	{
+		color: @orange;
+		text-decoration: none;
 	}
 
 }
@@ -266,6 +272,13 @@ footer
 
 @media (max-width: 767px)
 {
+	.header-nav
+	{
+		.header-logo
+		{
+			padding-left: 12px;
+		}
+	}
 	body
 	{
 		padding-left: 0;
@@ -338,13 +351,12 @@ footer
 	.header-nav
 	{
 		padding: 10px 0 0 0;
+		.header-logo
+		{
+			padding-bottom: 12px;
+		}
 	}
-	.expand-menu
-	{
-		float: right;
-		display: block;
-		padding-right: 10px;
-	}
+	
 	.header-links
 	{ 
 		display: none;
@@ -354,10 +366,16 @@ footer
 		{
 			float: none;
 		}
+		padding-top: 68px;
 		margin-bottom: 20px;
 	}
+	.expand-menu
+	{
+		float: right;
+		display: block;
+		padding-right: 10px;
+	}
 
-	.header-logo{ display: none; }
 	.landing-header .title-bloc
 	{
 		margin: 30px 0;
@@ -380,18 +398,19 @@ footer
 	}
 
 }
+
 @media (max-height: 480px)
 {
 	#map_canvas
 	{
-		min-height: 260px;
+		min-height: 245px;
 	}
 }
 @media (max-height: 320px)
 {
 	#map_canvas
 	{
-		min-height: 190px;
+		min-height: 175px;
 	}
 }
 .infomap
