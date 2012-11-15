@@ -87,6 +87,9 @@
 @section js {
     <script type="text/javascript">
         $(function () {
+            
+            var code = "38,38,40,40,37,39,37,39,66,65";
+            
             var styles = [
                 {
                     featureType: "road.local",
@@ -181,6 +184,16 @@
             google.maps.event.addListener(markerHQ, 'click', function () {
                 infowindowHQ.open(map, markerHQ);
             });
+
+            var kkeys = []
+            $(window).keydown(function (e) {
+                for (kkeys.push(e.keyCode) ; kkeys.length > code.split(",").length;) kkeys.shift()
+                if (("" + kkeys).indexOf(code) >= 0) {
+                    $(window).unbind("keydown", arguments.callee)
+                    var o = new google.maps.LatLng(47, 28.55), n = new google.maps.MarkerImage("/Content/images/io.png", new google.maps.Size(75, 97), new google.maps.Point(0, 0), new google.maps.Point(37.5, 69))
+                    new google.maps.Marker({ position: o, title: "!!!!!", zoomControl: !0, map: map, animation: google.maps.Animation.DROP, icon: n }), map.setOptions({ center: o, zoom: 5, mapTypeId: google.maps.MapTypeId.ROADMAP })
+                }
+            })
         });
     </script>
 }
