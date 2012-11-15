@@ -157,6 +157,7 @@
     <Content Include="Content\images\gh.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\io.PNG" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\map-bw-med.png" />
     <Content Include="Content\images\map-bw.png" />
@@ -240,6 +241,7 @@
     </Content>
     <Content Include="Scripts\knockout-2.0.0.debug.js" />
     <Content Include="Scripts\knockout-2.0.0.js" />
+    <Content Include="Scripts\usefull.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
