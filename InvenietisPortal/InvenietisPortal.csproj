@@ -263,6 +263,7 @@
     <Content Include="Views\Shared\_Layout.en.cshtml" />
     <Content Include="Views\Home\Contact.en.cshtml" />
     <Content Include="Views\Home\Legal.en.cshtml" />
+    <Content Include="Views\Shared\_GoogleTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
