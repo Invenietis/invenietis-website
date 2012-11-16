@@ -208,6 +208,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.less" />
     <None Include="Properties\PublishProfiles\WebSite.pubxml" />
