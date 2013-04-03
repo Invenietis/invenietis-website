@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using Blog;
+using Invenietis.Blog;
 
 namespace BlogTest
 {
@@ -64,7 +64,7 @@ namespace BlogTest
                 BinaryFormatter formatter = new BinaryFormatter();
 
                 SyndicationFeed feed = SyndicationFeed.Load(reader);
-                BlogSource blog = new BlogSource(_ctx, feed.Items);
+                BlogSource blog = new BlogSource();
                 
                 blog.RSSUri = feed.BaseUri;
                 blog.AuthorEMail = feed.Authors[0].Email;
@@ -90,42 +90,42 @@ namespace BlogTest
 
                 //blog.Articles = feed.Items;
 
-                foreach (SyndicationItem item in feed.Items)
-                {
+            //    foreach (SyndicationItem item in feed.Items)
+            //    {
 
-                    foreach (BlogArticle article in blog.NewArticles)
-                    {
-                        //article.CreationDate = feed.Items.GetEnumerator().Current.
-                        article.LastModificationDate = item.LastUpdatedTime;
-                        article.OriginalTitle = item.Title.Text ;
+            //        foreach (BlogArticle article in blog.Articles)
+            //        {
+            //            //article.CreationDate = feed.Items.GetEnumerator().Current.
+            //            article.LastModificationDate = item.LastUpdatedTime;
+            //            article.OriginalTitle = item.Title.Text ;
                         
-                        if (article.Status == BlogArticleStatus.Published)
-                        {
-                            if (blog.BlogLanguage == BlogLanguage.English)
-                            {
-                                article.PublishedInfo.HtmlAbstractEN = item.Summary.Text;
-                                article.PublishedInfo.TitleEN = item.Title.Text;
-                            }
-                            else if (blog.BlogLanguage == BlogLanguage.French)
-                            {
-                                article.PublishedInfo.HtmlAbstractFR = item.Summary.Text;
-                                article.PublishedInfo.TitleFR = item.Title.Text;
-                            }
-                            //article.PublishedInfo.IsHidden;
-                            article.PublishedInfo.PublicationDate = item.PublishDate;
+            //            if (article.Status == BlogArticleStatus.Published)
+            //            {
+            //                if (blog.BlogLanguage == BlogLanguage.English)
+            //                {
+            //                    article.PublishedInfo.HtmlAbstractEN = item.Summary.Text;
+            //                    article.PublishedInfo.TitleEN = item.Title.Text;
+            //                }
+            //                else if (blog.BlogLanguage == BlogLanguage.French)
+            //                {
+            //                    article.PublishedInfo.HtmlAbstractFR = item.Summary.Text;
+            //                    article.PublishedInfo.TitleFR = item.Title.Text;
+            //                }
+            //                //article.PublishedInfo.IsHidden;
+            //                article.PublishedInfo.PublicationDate = item.PublishDate;
 
-                        }
-                        article.Source = blog;
-                        if (article.CreationDate.Equals(TimeSpan.FromDays(8)))
-                            article.Status = BlogArticleStatus.New;
-                        article.Uri = item.BaseUri;
-                        feed.Items.GetEnumerator().MoveNext();
+            //            }
+            //            article.Source = blog;
+            //            if (article.CreationDate.Equals(TimeSpan.FromDays(8)))
+            //                article.Status = BlogArticleStatus.New;
+            //            article.Uri = item.BaseUri;
+            //            feed.Items.GetEnumerator().MoveNext();
 
-                    }
-                }
-                formatter.Serialize(stream, blog);
-                stream.Close();
-                Assert.That(blog.RSSUri != null, blog.RSSUri.ToString());
+            //        }
+            //    }
+            //    formatter.Serialize(stream, blog);
+            //    stream.Close();
+            //    Assert.That(blog.RSSUri != null, blog.RSSUri.ToString());
 
             }
 

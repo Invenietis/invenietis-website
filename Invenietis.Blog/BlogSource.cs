@@ -18,11 +18,18 @@ namespace Invenietis.Blog
         readonly List<BlogArticle> _articles;
         readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
 
+        string _blogHtmlDescriptionFR;
+        string _blogHtmlDescriptionEN;
         string _blogTitleFR;
         string _blogTitleEN;
+        string _authorName;
+        string _authorUri;
+        string _authorEMail;
+        BlogLanguage _bloglanguage;
         Uri _rssUri;
         bool _hidden;
         bool _isDirty;
+        private   BlogContext _ctx;
 
         internal BlogSource( BlogContext context )
         {
@@ -32,6 +39,9 @@ namespace Invenietis.Blog
             _articlesEx = new ReadOnlyListOnIList<BlogArticle>( _articles );
         }
 
+        public BlogSource()
+        { 
+        }
         public BlogContext Context { get { return _context; } }
 
         public void Destroy()
@@ -52,7 +62,17 @@ namespace Invenietis.Blog
             }
         }
 
-        public Uri RSSUri { get; set; }
+        public Uri RSSUri { 
+            get { return _rssUri; }
+            set
+            {
+                if( value != _rssUri )
+                {
+                    _rssUri = value;
+                    SetDirty();
+                }
+            }
+        }
 
         public string BlogTitleFR
         {
@@ -67,19 +87,96 @@ namespace Invenietis.Blog
             }
         }
 
-        public string BlogHtmlDescriptionFR { get; set; }
+        public string BlogHtmlDescriptionFR 
+        {
+            get { return _blogHtmlDescriptionFR; }
+            set
+            {
+                if( value != _blogHtmlDescriptionFR )
+                {
+                    _blogHtmlDescriptionFR = value;
+                    SetDirty();
+                }
+            }
+        }
 
-        public string BlogTitleEN { get; set; }
+        public string BlogTitleEN 
+        {
+            get { return _blogTitleEN; }
+            set 
+            {
+                if( value != _blogTitleEN )
+                {
+                    _blogTitleEN = value;
+                    SetDirty();
+                }
+            }           
+        }
 
-        public string BlogHtmlDescriptionEN { get; set; }
+        public string BlogHtmlDescriptionEN 
+        {
+            get { return _blogHtmlDescriptionEN; }
+            set
+            {
+                if( value != _blogHtmlDescriptionEN )
+                {
+                    _blogHtmlDescriptionEN = value;
+                    SetDirty();
+                }
+            }
+        }
 
-        public BlogLanguage BlogLanguage { get; set; }
+        public BlogLanguage BlogLanguage 
+        {
+            get { return _bloglanguage; }
+            set
+            {
+                if( value != _bloglanguage )
+                {
+                    _bloglanguage = value;
+                    SetDirty();
+                }
+            }
+        }
 
-        public string AuthorUri { get; set; }
+        public string AuthorUri 
+        {
+            get { return _authorUri; }
+            set
+            {
+                if( value != _authorUri )
+                {
+                    _authorUri = value;
+                    SetDirty();
+                }
+            }
+        }
 
-        public string AuthorName { get; set; }
+        public string AuthorEMail
+        {
+            get { return _authorEMail; }
+            set
+            {
+                if( value != _authorEMail )
+                {
+                    _authorEMail = value;
+                    SetDirty();
+                }
+            }
+        }
 
-        public string AuthorEMail { get; set; }
+        public string AuthorName
+        {
+            get { return _authorName; }
+            set
+            {
+                if( value != _authorName )
+                {
+                    _authorName = value;
+                    SetDirty();
+                }
+            }
+        }
 
         public CK.Core.IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
 

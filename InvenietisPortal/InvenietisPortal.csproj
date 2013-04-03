@@ -139,17 +139,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InvenietisBlog\BlogArticle.cs" />
-    <Compile Include="InvenietisBlog\BlogArticlePublished.cs" />
-    <Compile Include="InvenietisBlog\BlogArticleStatus.cs" />
-    <Compile Include="InvenietisBlog\BlogContext.cs" />
-    <Compile Include="InvenietisBlog\BlogLanguage.cs" />
-    <Compile Include="InvenietisBlog\BlogSource.cs" />
-    <Compile Include="InvenietisBlog\BlogTest.cs" />
-    <Compile Include="InvenietisBlog\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="InvenietisBlog\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="InvenietisBlog\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
-    <Compile Include="InvenietisBlog\Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,24 +211,11 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.less" />
-    <Content Include="InvenietisBlog\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="InvenietisBlog\packages.config" />
     <None Include="Properties\PublishProfiles\WebSite.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js">
       <DependentUpon>jquery-1.8.2.js</DependentUpon>
     </None>
-    <Content Include="InvenietisBlog\bin\Debug\CK.Core.dll" />
-    <Content Include="InvenietisBlog\bin\Debug\CK.Core.pdb" />
-    <Content Include="InvenietisBlog\bin\Debug\CK.Core.xml" />
-    <Content Include="InvenietisBlog\bin\Debug\InvenietisBlog.dll" />
-    <Content Include="InvenietisBlog\bin\Debug\InvenietisBlog.pdb" />
-    <Content Include="InvenietisBlog\bin\Debug\nunit.framework.dll" />
-    <Content Include="InvenietisBlog\bin\Debug\nunit.framework.xml" />
-    <Content Include="InvenietisBlog\InvenietisBlog.csproj" />
-    <Content Include="InvenietisBlog\obj\Debug\InvenietisBlog.csproj.FileListAbsolute.txt" />
-    <Content Include="InvenietisBlog\obj\Debug\InvenietisBlog.dll" />
-    <Content Include="InvenietisBlog\obj\Debug\InvenietisBlog.pdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">
       <DependentUpon>bootstrap.js</DependentUpon>
@@ -292,8 +268,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="InvenietisBlog\bin\Release\" />
-    <Folder Include="InvenietisBlog\obj\Debug\TempPE\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

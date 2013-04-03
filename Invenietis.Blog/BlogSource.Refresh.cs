@@ -26,7 +26,8 @@ namespace Invenietis.Blog
         /// <returns>An object that summarizes the update from the <see cref="RSSUri"/>.</returns>
         public BlogRefreshResult RefreshFromUri()
         {
-
+            return null;
+            
         }
     }
 }

@@ -9,27 +9,60 @@ namespace Invenietis.Blog
 {
     public class BlogArticle
     {
+        private DateTime _creationDate;
+        Uri _uri;
         BlogArticleStatus _status;
         BlogArticlePublished _published;
+
+        internal BlogSource _source;
 
         /// <summary>
         /// One article could be written by many authors.
         /// </summary>
         //public Collection<Author> Authors = new Collection<Author>();
 
-        public BlogSource Source { get; set; }
+        public BlogSource Source 
+        {
+            get { return _source; }
+            set
+            {
+                if( _source == null ) throw new ArgumentNullException();
+            }
+        }
 
-        public Uri Uri { get; set; }
+        public Uri Uri 
+        {
+            get { return _uri; }
+            set
+            {
+                if( value != _uri )
+                {
+                    _uri = value;
+                    _source.SetDirty();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the creation date of the original article (extracted from the feed).
         /// </summary>
-        public DateTimeOffset CreationDate { get; set; }
+        public DateTime CreationDate 
+        {
+            get { return _creationDate; }
+            set
+            {
+                if( value != _creationDate )
+                {
+                    _creationDate = value;
+                    _source.SetDirty();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the modification date of the original article (extracted from the feed).
         /// </summary>
-        public DateTimeOffset LastModificationDate { get; set; }
+        public DateTime LastModificationDate { get; set; }
 
         /// <summary>
         /// Gets the original title of the article (extracted from the feed).
