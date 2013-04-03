@@ -5,12 +5,10 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 
-namespace Blog
+namespace Invenietis.Blog
 {
-   
     public class BlogArticle
     {
-
         BlogArticleStatus _status;
         BlogArticlePublished _published;
 

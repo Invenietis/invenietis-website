@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Blog
+namespace Invenietis.Blog
 {
     public enum BlogArticleStatus
     {
@@ -11,7 +11,14 @@ namespace Blog
         New = 1,
         Published = 2,
         Rejected = 3,
-        Hidden = 4
+        
+
+        HiddenByEditor = 4,
+
+        /// <summary>
+        /// Whether the article disappeared from the <see cref="BlogSource"/>.
+        /// </summary>
+        HiddenByAuthor = 5,
     }
 
 }

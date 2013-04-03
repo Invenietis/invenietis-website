@@ -48,7 +48,9 @@
     <Compile Include="BlogArticleStatus.cs" />
     <Compile Include="BlogContext.cs" />
     <Compile Include="BlogLanguage.cs" />
+    <Compile Include="BlogRefreshResult.cs" />
     <Compile Include="BlogSource.cs" />
+    <Compile Include="BlogSource.Refresh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

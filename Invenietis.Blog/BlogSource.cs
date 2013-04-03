@@ -6,47 +6,63 @@ using System.Web;
 using CK.Core;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
-namespace Blog
+namespace Invenietis.Blog
 {
-     [Serializable]
-    public class BlogSource
+
+    public partial class BlogSource
     {
         readonly BlogContext _context;
+        readonly List<BlogArticle> _articles;
+        readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
+
         string _blogTitleFR;
+        string _blogTitleEN;
+        Uri _rssUri;
+        bool _hidden;
+        bool _isDirty;
 
-        private CK.Core.IReadOnlyList<BlogArticle> _blogArticles;
-       
-        private List<BlogArticle> _articles;
-        internal BlogSource(BlogContext context, IEnumerable<SyndicationItem> items)
+        internal BlogSource( BlogContext context )
         {
+            Debug.Assert( context != null );
             _context = context;
-            _articles = items as List<BlogArticle>;
+            _articles = new List<BlogArticle>();
+            _articlesEx = new ReadOnlyListOnIList<BlogArticle>( _articles );
         }
 
-        public List<BlogArticle> NewArticles
+        public BlogContext Context { get { return _context; } }
+
+        public void Destroy()
         {
-            get { return _articles; }
-            set { NewArticles = _articles; }
-        }
-        internal BlogSource(BlogContext context)
-        {
-            _context = context;
-         
+            _context.OnDestroyBlogSource( this );
         }
 
-            
+        public bool Hidden 
+        { 
+            get { return _hidden; }
+            set
+            {
+                if( _hidden != value )
+                {
+                    _hidden = value;
+                    SetDirty();
+                }
+            }
+        }
+
         public Uri RSSUri { get; set; }
 
-        public string BlogTitleFR 
-        { 
+        public string BlogTitleFR
+        {
             get { return _blogTitleFR; }
             set
             {
-                if (value != _blogTitleFR)
+                if( value != _blogTitleFR )
                 {
                     _blogTitleFR = value;
-                    _context.SetDirty();
+                    SetDirty();
                 }
             }
         }
@@ -65,8 +81,12 @@ namespace Blog
 
         public string AuthorEMail { get; set; }
 
-        public CK.Core.IReadOnlyList<BlogArticle> Articles { get { return null; } set { Articles = _blogArticles; } }
+        public CK.Core.IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
 
-        
+        internal void SetDirty( [CallerMemberName] string memberName = null )
+        {
+            _isDirty = true;
+            _context.SetDirty();
+        }
     }
 }
