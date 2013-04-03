@@ -16,6 +16,7 @@ namespace Blog
         string _blogTitleFR;
 
         private CK.Core.IReadOnlyList<BlogArticle> _articles;
+
         internal BlogSource( BlogContext context )
         {
             _context = context;

@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{855340
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Invenietis.Blog", "Invenietis.Blog\Invenietis.Blog.csproj", "{F25E8A01-980D-4521-AB8D-8C5FBA555F02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{14609A2E-E1A1-4606-BB6C-C1CB097D21B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +24,14 @@ Global
 		{4116ED1D-A237-4ACB-8C4F-FE34D52F021C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4116ED1D-A237-4ACB-8C4F-FE34D52F021C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4116ED1D-A237-4ACB-8C4F-FE34D52F021C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25E8A01-980D-4521-AB8D-8C5FBA555F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25E8A01-980D-4521-AB8D-8C5FBA555F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25E8A01-980D-4521-AB8D-8C5FBA555F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25E8A01-980D-4521-AB8D-8C5FBA555F02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14609A2E-E1A1-4606-BB6C-C1CB097D21B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14609A2E-E1A1-4606-BB6C-C1CB097D21B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14609A2E-E1A1-4606-BB6C-C1CB097D21B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14609A2E-E1A1-4606-BB6C-C1CB097D21B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
