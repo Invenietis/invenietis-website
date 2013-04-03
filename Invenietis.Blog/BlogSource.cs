@@ -25,7 +25,7 @@ namespace Invenietis.Blog
         string _authorName;
         string _authorUri;
         string _authorEMail;
-        BlogLanguage _bloglanguage;
+        BlogLanguage _blogLanguage;
         Uri _rssUri;
         bool _hidden;
         bool _isDirty;
@@ -39,9 +39,6 @@ namespace Invenietis.Blog
             _articlesEx = new ReadOnlyListOnIList<BlogArticle>( _articles );
         }
 
-        public BlogSource()
-        { 
-        }
         public BlogContext Context { get { return _context; } }
 
         public void Destroy()
@@ -128,14 +125,15 @@ namespace Invenietis.Blog
 
         public BlogLanguage BlogLanguage 
         {
-            get { return _bloglanguage; }
+            get { return _blogLanguage; }
             set
             {
-                if( value != _bloglanguage )
+                if( value != _blogLanguage ) 
                 {
-                    _bloglanguage = value;
+                    _blogLanguage = value;
                     SetDirty();
                 }
+               
             }
         }
 

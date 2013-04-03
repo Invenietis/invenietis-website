@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogModel.cs" />
+    <Compile Include="BlogRefresh.cs" />
     <Compile Include="BlogTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -11,21 +11,61 @@ namespace Invenietis.Blog
     /// </summary>
     public class BlogRefreshResult
     {
-        readonly DateTime _refreshTime;
-        readonly string _errorMessage;
-        readonly int _newArticleCount;
-        readonly int _disappearedArticleCount;
-
-        public DateTime RefreshTime { get { return _refreshTime; } }
+        private DateTime _refreshTime;
+        private string _errorMessage;
+        private int _newArticleCount;
+        private int _disappearedArticleCount;
+        
+        public DateTime RefreshTime 
+        { 
+            get { return _refreshTime; }
+            set
+            {
+                if( value != _refreshTime )
+                {
+                    _refreshTime = value;
+                }
+            }
+        }
 
         public bool IsSuccess { get { return _errorMessage == null; } }
 
-        public string ErrorMessage { get { return _errorMessage; } }
+        public string ErrorMessage { 
+            get { return _errorMessage; }
+            set
+            {
+                if( value != _errorMessage )
+                {
+                    _errorMessage = value;
+                }
+            }
+        }
 
-        public int NewArticleCount { get { return _newArticleCount; } }
+        public int NewArticleCount
+        { 
+            get { return _newArticleCount; }
+            set
+            {
+                if( value != _newArticleCount )
+                {
+                    _newArticleCount = value;
+                }
+            }
+        }
 
-        public int DisappearedArticleCount { get { return _disappearedArticleCount; } }
+        public int DisappearedArticleCount 
+        { 
+            get { return _disappearedArticleCount; }
+            set
+            {
+                if( value != _disappearedArticleCount )
+                {
+                    _disappearedArticleCount = value;
+                }
+            }
+        }
 
+        
 
     }
 }

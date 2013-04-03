@@ -62,7 +62,7 @@ namespace Invenietis.Blog
         /// <summary>
         /// Gets the modification date of the original article (extracted from the feed).
         /// </summary>
-        public DateTime LastModificationDate { get; set; }
+        public DateTimeOffset LastModificationDate { get; set; }
 
         /// <summary>
         /// Gets the original title of the article (extracted from the feed).

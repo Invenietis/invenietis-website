@@ -56,78 +56,78 @@ namespace BlogTest
         public void SaveAndLoad()
         {
               
-            using (XmlReader reader = XmlReader.Create("http://macdarwin.github.com/atom.xml"))
-            {
-                string _path = "/Contexte";
-                BlogContext _ctx = new BlogContext(_path);
-                Stream stream = File.Open(_path, FileMode.Create);
-                BinaryFormatter formatter = new BinaryFormatter();
+            //using (XmlReader reader = XmlReader.Create("http://macdarwin.github.com/atom.xml"))
+            //{
+            //    string _path = "/Contexte";
+            //    BlogContext _ctx = new BlogContext(_path);
+            //    Stream stream = File.Open(_path, FileMode.Create);
+            //    BinaryFormatter formatter = new BinaryFormatter();
 
-                SyndicationFeed feed = SyndicationFeed.Load(reader);
-                BlogSource blog = new BlogSource();
+            //    SyndicationFeed feed = SyndicationFeed.Load(reader);
+            //    BlogSource blog = new BlogSource();
                 
-                blog.RSSUri = feed.BaseUri;
-                blog.AuthorEMail = feed.Authors[0].Email;
-                blog.AuthorName = feed.Authors[0].Name;
-                blog.AuthorUri = feed.Authors[0].Uri;
-                if (feed.Language == "English")
-                {
-                    blog.BlogLanguage = BlogLanguage.English;
-                    blog.BlogHtmlDescriptionEN = feed.Description.Text;
-                    blog.BlogTitleEN = feed.Title.ToString();
-                }
-                else if (feed.Language == "French")
-                {
-                    blog.BlogLanguage = BlogLanguage.French;
-                    blog.BlogHtmlDescriptionFR = feed.Description.Text;
-                    blog.BlogTitleFR = feed.Title.ToString();
-                }
-                else
-                {
-                    blog.BlogLanguage = BlogLanguage.None;
-                }
-                string lang = feed.Language;
-
-                //blog.Articles = feed.Items;
-
-            //    foreach (SyndicationItem item in feed.Items)
+            //    blog.RSSUri = feed.BaseUri;
+            //    blog.AuthorEMail = feed.Authors[0].Email;
+            //    blog.AuthorName = feed.Authors[0].Name;
+            //    blog.AuthorUri = feed.Authors[0].Uri;
+            //    if (feed.Language == "English")
             //    {
-
-            //        foreach (BlogArticle article in blog.Articles)
-            //        {
-            //            //article.CreationDate = feed.Items.GetEnumerator().Current.
-            //            article.LastModificationDate = item.LastUpdatedTime;
-            //            article.OriginalTitle = item.Title.Text ;
-                        
-            //            if (article.Status == BlogArticleStatus.Published)
-            //            {
-            //                if (blog.BlogLanguage == BlogLanguage.English)
-            //                {
-            //                    article.PublishedInfo.HtmlAbstractEN = item.Summary.Text;
-            //                    article.PublishedInfo.TitleEN = item.Title.Text;
-            //                }
-            //                else if (blog.BlogLanguage == BlogLanguage.French)
-            //                {
-            //                    article.PublishedInfo.HtmlAbstractFR = item.Summary.Text;
-            //                    article.PublishedInfo.TitleFR = item.Title.Text;
-            //                }
-            //                //article.PublishedInfo.IsHidden;
-            //                article.PublishedInfo.PublicationDate = item.PublishDate;
-
-            //            }
-            //            article.Source = blog;
-            //            if (article.CreationDate.Equals(TimeSpan.FromDays(8)))
-            //                article.Status = BlogArticleStatus.New;
-            //            article.Uri = item.BaseUri;
-            //            feed.Items.GetEnumerator().MoveNext();
-
-            //        }
+            //        blog.BlogLanguage = BlogLanguage.English;
+            //        blog.BlogHtmlDescriptionEN = feed.Description.Text;
+            //        blog.BlogTitleEN = feed.Title.ToString();
             //    }
-            //    formatter.Serialize(stream, blog);
-            //    stream.Close();
-            //    Assert.That(blog.RSSUri != null, blog.RSSUri.ToString());
+            //    else if (feed.Language == "French")
+            //    {
+            //        blog.BlogLanguage = BlogLanguage.French;
+            //        blog.BlogHtmlDescriptionFR = feed.Description.Text;
+            //        blog.BlogTitleFR = feed.Title.ToString();
+            //    }
+            //    else
+            //    {
+            //        blog.BlogLanguage = BlogLanguage.None;
+            //    }
+            //    string lang = feed.Language;
 
-            }
+            //    //blog.Articles = feed.Items;
+
+            ////    foreach (SyndicationItem item in feed.Items)
+            ////    {
+
+            ////        foreach (BlogArticle article in blog.Articles)
+            ////        {
+            ////            //article.CreationDate = feed.Items.GetEnumerator().Current.
+            ////            article.LastModificationDate = item.LastUpdatedTime;
+            ////            article.OriginalTitle = item.Title.Text ;
+                        
+            ////            if (article.Status == BlogArticleStatus.Published)
+            ////            {
+            ////                if (blog.BlogLanguage == BlogLanguage.English)
+            ////                {
+            ////                    article.PublishedInfo.HtmlAbstractEN = item.Summary.Text;
+            ////                    article.PublishedInfo.TitleEN = item.Title.Text;
+            ////                }
+            ////                else if (blog.BlogLanguage == BlogLanguage.French)
+            ////                {
+            ////                    article.PublishedInfo.HtmlAbstractFR = item.Summary.Text;
+            ////                    article.PublishedInfo.TitleFR = item.Title.Text;
+            ////                }
+            ////                //article.PublishedInfo.IsHidden;
+            ////                article.PublishedInfo.PublicationDate = item.PublishDate;
+
+            ////            }
+            ////            article.Source = blog;
+            ////            if (article.CreationDate.Equals(TimeSpan.FromDays(8)))
+            ////                article.Status = BlogArticleStatus.New;
+            ////            article.Uri = item.BaseUri;
+            ////            feed.Items.GetEnumerator().MoveNext();
+
+            ////        }
+            ////    }
+            ////    formatter.Serialize(stream, blog);
+            ////    stream.Close();
+            ////    Assert.That(blog.RSSUri != null, blog.RSSUri.ToString());
+
+            //}
 
             
            
