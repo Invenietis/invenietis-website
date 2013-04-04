@@ -7,14 +7,15 @@ using System.Web;
 
 namespace Invenietis.Blog
 {
+    [Serializable]
     public class BlogArticle
     {
-        private DateTime _creationDate;
-        private Uri _uri;
-        private BlogArticleStatus _status;
-        private BlogArticlePublished _published;
-        private DateTimeOffset _lastModificationDate;
-        private string _originalTitle;
+        internal DateTime _creationDate;
+        internal Uri _uri;
+        internal BlogArticleStatus _status;
+        internal BlogArticlePublished _published;
+        internal DateTimeOffset _lastModificationDate;
+        internal string _originalTitle;
         internal BlogSource _source;
 
         /// <summary>

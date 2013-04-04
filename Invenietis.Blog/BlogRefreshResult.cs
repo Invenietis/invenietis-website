@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Invenietis.Blog
 {
+    [Serializable]
     /// <summary>
     /// Captures the work of <see cref="BlogSource.RefreshFromUri"/>.
     /// </summary>

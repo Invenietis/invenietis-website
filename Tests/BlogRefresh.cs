@@ -11,17 +11,25 @@ namespace Tests
     public class BlogRefresh
     {
         BlogRefreshResult BlogRefreshResult = new BlogRefreshResult();
-        static string _path;
-        static BlogContext ctx = new BlogContext( _path = null);
+        
+        static BlogContext ctx = new BlogContext( TestHelper.BasePath);
         BlogSource Source = ctx.CreateBlogSource();
         //int NewArticleCount;
         [Test]
-        public void Load()
+        public void LoadLastRefresh()
         {
             BlogRefreshResult = Source.RefreshFromUri( new Uri( "http://macdarwin.github.com/atom.xml" ) );
             Assert.That( BlogRefreshResult.IsSuccess );
-            Assert.That( BlogRefreshResult.DisappearedArticleCount != 0, BlogRefreshResult.DisappearedArticleCount.ToString() );
-            Assert.That( BlogRefreshResult.NewArticleCount != 0, BlogRefreshResult.NewArticleCount.ToString() );  
+            Assert.That( BlogRefreshResult.DisappearedArticleCount == 0, BlogRefreshResult.DisappearedArticleCount.ToString() );
+            Assert.That( BlogRefreshResult.NewArticleCount == 0, BlogRefreshResult.NewArticleCount.ToString() );  
+        }
+
+        [Test]
+        public void SaveLastSuccessUpdate()
+        {
+            Source.Update( new Uri( "http://macdarwin.github.com/atom.xml" ) );
+            Assert.That( Source.SuccessfulUpdate );
+
         }
     }
 }

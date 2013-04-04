@@ -11,13 +11,15 @@ using System.Runtime.CompilerServices;
 
 namespace Invenietis.Blog
 {
-
+    [Serializable]
     public partial class BlogSource
     {
         readonly BlogContext _context;
         readonly List<BlogArticle> _articles;
-        readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
 
+        [NonSerialized]
+        readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
+     
         string _blogHtmlDescriptionFR;
         string _blogHtmlDescriptionEN;
         string _blogTitleFR;
@@ -175,7 +177,7 @@ namespace Invenietis.Blog
                 }
             }
         }
-
+        
         public CK.Core.IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
 
         internal void SetDirty( [CallerMemberName] string memberName = null )
@@ -183,5 +185,6 @@ namespace Invenietis.Blog
             _isDirty = true;
             _context.SetDirty();
         }
+
     }
 }

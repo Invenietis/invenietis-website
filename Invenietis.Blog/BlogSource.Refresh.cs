@@ -12,11 +12,25 @@ using System.Xml;
 
 namespace Invenietis.Blog
 {
+    
     public partial class BlogSource
     {
         BlogRefreshResult _lastRefreshResult;
         BlogRefreshResult _lastSuccessfulRefreshResult;
 
+        bool _successfulUpdate;
+
+        public bool SuccessfulUpdate
+        {
+            get { return _successfulUpdate; }
+            set
+            {
+                if( value != _successfulUpdate )
+                {
+                    _successfulUpdate = value;
+                }
+            }
+        }
         public BlogRefreshResult LastRefreshResult { get { return _lastRefreshResult; } }
 
         public BlogRefreshResult LastSuccessfulRefreshResult { get { return _lastSuccessfulRefreshResult; } }
@@ -27,8 +41,8 @@ namespace Invenietis.Blog
         /// <returns>An object that summarizes the update from the <see cref="RSSUri"/>.</returns>
         public BlogRefreshResult RefreshFromUri(Uri uri)
         {
-            BlogRefreshResult currentRefreshResult = LoadFromUri(uri);
-            return currentRefreshResult;
+            _lastRefreshResult = LoadFromUri( uri );
+            return _lastRefreshResult;
         }
 
         internal BlogRefreshResult LoadFromUri(Uri uri)
@@ -83,7 +97,7 @@ namespace Invenietis.Blog
             return source;
         }
 
-        internal List<BlogArticle> LoadArticles( BlogSource source, SyndicationFeed Feed )
+        internal List<BlogArticle> LoadArticles( BlogSource @this, SyndicationFeed Feed )
         {
             using( IEnumerator<SyndicationItem> item = Feed.Items.GetEnumerator() )
             {
@@ -91,14 +105,30 @@ namespace Invenietis.Blog
 
                 if( item.MoveNext() )
                 {
-                    currentArticle.LastModificationDate = item.Current.LastUpdatedTime;
-                    currentArticle.OriginalTitle = item.Current.Title.Text;
-                    source._articles.Add( currentArticle );
+                    currentArticle._lastModificationDate = item.Current.LastUpdatedTime;
+                    currentArticle._originalTitle = item.Current.Title.Text;
+                    @this._articles.Add( currentArticle );
                 }
 
             }
-            return source._articles;
+            return @this._articles;
         }
 
+        public void Update( Uri uri )
+        {
+            _lastRefreshResult = RefreshFromUri( uri );
+            if( !_isDirty && _lastRefreshResult.IsSuccess )
+            {
+
+                _lastSuccessfulRefreshResult = _lastRefreshResult;
+                _successfulUpdate = true;
+
+            }
+            else
+            {
+                _successfulUpdate = false;
+            }
+
+        }
     }
 }

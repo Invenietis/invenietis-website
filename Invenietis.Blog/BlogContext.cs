@@ -9,9 +9,11 @@ using CK.Core;
 
 namespace Invenietis.Blog
 {
+    [Serializable]
     public class BlogContext
     {
         readonly List<BlogSource> _sources;
+        [NonSerialized]
         readonly CK.Core.IReadOnlyList<BlogSource> _sourcesEx;
         private string _path;
         private bool _isDirty;
@@ -23,7 +25,7 @@ namespace Invenietis.Blog
             _sourcesEx = new ReadOnlyListOnIList<BlogSource>( _sources );
         }
 
-        static public BlogContext Load( string path )
+        public static BlogContext Load( string path )
         {
             BinaryFormatter formatter = new BinaryFormatter();
             using(Stream stream = File.Open(path, FileMode.Open))
@@ -31,6 +33,7 @@ namespace Invenietis.Blog
                 BlogSource blogData = (BlogSource)formatter.Deserialize( stream );
             }
             return new BlogContext( path );
+
         }
 
         public string CurrentPath { get { return _path; } }
@@ -38,7 +41,7 @@ namespace Invenietis.Blog
         public bool IsDirty { get { return _isDirty; } }
 
         public CK.Core.IReadOnlyList<BlogSource> BlogSource { get { return _sourcesEx; } }
-
+        
         public BlogSource CreateBlogSource()
         {
             var s = new BlogSource( this );
@@ -58,6 +61,13 @@ namespace Invenietis.Blog
             if( path == null ) path = _path;
             if( path == null ) throw new ArgumentException( "path" );
 
+            BinaryFormatter formatter = new BinaryFormatter();
+            using( Stream stream = File.Open( path, FileMode.Create ) )
+            {
+                BlogSource blogData = CreateBlogSource();
+                
+                formatter.Serialize( stream, blogData );
+            }
 
             _path = path;
             _isDirty = false;
