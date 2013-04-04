@@ -14,7 +14,7 @@ namespace Invenietis.Blog
     {
         readonly List<BlogSource> _sources;
         [NonSerialized]
-        readonly CK.Core.IReadOnlyList<BlogSource> _sourcesEx;
+        readonly IReadOnlyList<BlogSource> _sourcesEx;
         private string _path;
         private bool _isDirty;
 
@@ -40,7 +40,7 @@ namespace Invenietis.Blog
 
         public bool IsDirty { get { return _isDirty; } }
 
-        public CK.Core.IReadOnlyList<BlogSource> BlogSource { get { return _sourcesEx; } }
+        public IReadOnlyList<BlogSource> BlogSource { get { return _sourcesEx; } }
         
         public BlogSource CreateBlogSource()
         {

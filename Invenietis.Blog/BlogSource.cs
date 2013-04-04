@@ -18,7 +18,7 @@ namespace Invenietis.Blog
         readonly List<BlogArticle> _articles;
 
         [NonSerialized]
-        readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
+        readonly IReadOnlyList<BlogArticle> _articlesEx;
      
         string _blogHtmlDescriptionFR;
         string _blogHtmlDescriptionEN;
@@ -178,7 +178,7 @@ namespace Invenietis.Blog
             }
         }
         
-        public CK.Core.IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
+        public IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
 
         internal void SetDirty( [CallerMemberName] string memberName = null )
         {
