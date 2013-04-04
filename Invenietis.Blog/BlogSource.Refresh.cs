@@ -39,6 +39,7 @@ namespace Invenietis.Blog
                SyndicationFeed feed = SyndicationFeed.Load(reader);
                BlogSource source = LoadBlogData(Context, feed );
                List<BlogArticle> articles = LoadArticles( source,feed );
+
                foreach(BlogArticle a in articles)
                {
                    if( a.Status == BlogArticleStatus.HiddenByAuthor )
@@ -77,7 +78,7 @@ namespace Invenietis.Blog
             {
                 source._blogLanguage = BlogLanguage.French;
                 source._blogTitleFR = feed.Title.Text;
-                source._blogHtmlDescriptionFR = feed.Description.Text;
+                //source._blogHtmlDescriptionFR = feed.Description.Text;
             }
             return source;
         }

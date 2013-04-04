@@ -10,10 +10,11 @@ namespace Invenietis.Blog
     public class BlogArticle
     {
         private DateTime _creationDate;
-        Uri _uri;
-        BlogArticleStatus _status;
-        BlogArticlePublished _published;
-
+        private Uri _uri;
+        private BlogArticleStatus _status;
+        private BlogArticlePublished _published;
+        private DateTimeOffset _lastModificationDate;
+        private string _originalTitle;
         internal BlogSource _source;
 
         /// <summary>
@@ -62,12 +63,34 @@ namespace Invenietis.Blog
         /// <summary>
         /// Gets the modification date of the original article (extracted from the feed).
         /// </summary>
-        public DateTimeOffset LastModificationDate { get; set; }
+        public DateTimeOffset LastModificationDate 
+        {
+            get { return _lastModificationDate; }
+            set
+            {
+                if( value != _lastModificationDate )
+                {
+                    _lastModificationDate = value;
+                    _source.SetDirty();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets the original title of the article (extracted from the feed).
         /// </summary>
-        public string OriginalTitle { get; set; }
+        public string OriginalTitle 
+        {
+            get { return _originalTitle; }
+            set
+            {
+                if( value != _originalTitle )
+                {
+                    _originalTitle = value;
+                    _source.SetDirty();
+                }
+            }
+        }
 
         public BlogArticleStatus Status 
         {

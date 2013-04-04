@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Web;
 using CK.Core;
 
@@ -11,8 +13,8 @@ namespace Invenietis.Blog
     {
         readonly List<BlogSource> _sources;
         readonly CK.Core.IReadOnlyList<BlogSource> _sourcesEx;
-        string _path;
-        bool _isDirty;
+        private string _path;
+        private bool _isDirty;
 
         public BlogContext( string path = null )
         {
@@ -23,7 +25,11 @@ namespace Invenietis.Blog
 
         static public BlogContext Load( string path )
         {
-            // TODO.
+            BinaryFormatter formatter = new BinaryFormatter();
+            using(Stream stream = File.Open(path, FileMode.Open))
+            {
+                BlogSource blogData = (BlogSource)formatter.Deserialize( stream );
+            }
             return new BlogContext( path );
         }
 
