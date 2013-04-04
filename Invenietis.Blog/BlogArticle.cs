@@ -103,7 +103,7 @@ namespace Invenietis.Blog
                 _status = value;
             }
         }
-
+        public string Id { get; set; }
         /// <summary>
         /// Gets the published info if it has been created once.
         /// Null if <see cref="EnsurePublishedInfo"/> has never been called.

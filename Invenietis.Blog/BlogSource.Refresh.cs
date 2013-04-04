@@ -42,6 +42,7 @@ namespace Invenietis.Blog
         public BlogRefreshResult RefreshFromUri(Uri uri)
         {
             _lastRefreshResult = LoadFromUri( uri );
+            _lastRefreshResult.RefreshTime = DateTime.Now;
             return _lastRefreshResult;
         }
 
@@ -107,6 +108,7 @@ namespace Invenietis.Blog
                 {
                     currentArticle._lastModificationDate = item.Current.LastUpdatedTime;
                     currentArticle._originalTitle = item.Current.Title.Text;
+                    currentArticle.Id = item.Current.Id;
                     @this._articles.Add( currentArticle );
                 }
 
@@ -114,15 +116,14 @@ namespace Invenietis.Blog
             return @this._articles;
         }
 
-        public void Update( Uri uri )
+        public void Update( Uri uri, string path = null )
         {
             _lastRefreshResult = RefreshFromUri( uri );
             if( !_isDirty && _lastRefreshResult.IsSuccess )
             {
-
                 _lastSuccessfulRefreshResult = _lastRefreshResult;
                 _successfulUpdate = true;
-
+                Context.Save( path );
             }
             else
             {

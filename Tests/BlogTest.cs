@@ -36,20 +36,6 @@ namespace Tests
                 Assert.That( feed2.Id != null, feed2.Id.ToString() );
                 Assert.That( author2.Name == "Cedric Legendre", author2.Name.ToString() );
             }
-
-
-
-            using( XmlReader reader3 = XmlReader.Create( "http://blog.invenietis.com/syndication.axd" ) )
-            {
-                SyndicationFeed feed3 = SyndicationFeed.Load( reader3 );
-                SyndicationPerson author3 = feed3.Authors[0];
-                Assert.That( feed3.Authors != null, feed3.Authors.Count.ToString() );
-                //foreach (SyndicationPerson author in feed3.Authors)
-                //{
-                //    Assert.That(author.Name == "Cedric Legendre", author.Name.ToString());
-                //}
-            }
-
         }
 
         [Test]
@@ -58,7 +44,6 @@ namespace Tests
             BlogContext _ctx = new BlogContext( TestHelper.BasePath );
             _ctx.Save( Path.Combine(TestHelper.BasePath,"BlogContext" ));
             //BlogContext.Load( TestHelper.BasePath );
-
         }
 
         [Test]
