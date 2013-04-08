@@ -40,12 +40,13 @@ namespace MvcApplication1
 
             const string defautlRouteUrl = "{action}";
             RouteValueDictionary defaultRouteValueDictionary = new RouteValueDictionary( new { controller = "Home", action = "Index" } );
-            
+            RouteValueDictionary blogRoute = new RouteValueDictionary( new { controller = "Blog", action = "BlogIndex" } );
             //Route defaultRoute = new Route( defautlRouteUrl, defaultRouteValueDictionary, new MvcRouteHandler() );
 
 
             //routes.Add( "HomeLocalized", new LocalizedRoute( "", defaultRouteValueDictionary ) );
             routes.Add( "DefaultLocalized", new LocalizedRoute( defautlRouteUrl, defaultRouteValueDictionary ) );
+            routes.Add( "BlogLocalized", new LocalizedRoute( defautlRouteUrl, blogRoute ) );
             routes.MapDelegate( "Default", defautlRouteUrl, ( rq ) =>
                 {
                     var userLanguages = rq.HttpContext.Request.UserLanguages;

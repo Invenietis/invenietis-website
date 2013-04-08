@@ -34,11 +34,13 @@ namespace MvcApplication1.App_Start
 
             fr.Add( "Contact", "contactez-nous" );
             fr.Add( "Index", "acceuil" );
+            fr.Add( "BlogIndex", "Blog" );
             fr.Add( "Legal", "mentions-legales" );
             fr.Add( "Cuke", "cuke" );
 
             en.Add( "Contact", "contact-us" );
             en.Add( "Index", "home" );
+            en.Add( "BlogIndex", "Blog" );
             en.Add( "Legal", "legal-terms" );
             en.Add( "Cuke", "" );
         }

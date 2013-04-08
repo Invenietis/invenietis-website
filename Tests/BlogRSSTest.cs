@@ -14,7 +14,7 @@ using Invenietis.Blog;
 namespace Tests
 {
     [TestFixture]
-    public class BlogTest
+    public class BlogRSSTest
     {
         [Test]
         public void ReadRSSFeed()

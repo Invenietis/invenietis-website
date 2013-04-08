@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="BlogTestBase.cs" />
     <Compile Include="BlogRefresh.cs" />
-    <Compile Include="BlogTest.cs" />
+    <Compile Include="BlogRSSTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CK.Core">
+      <HintPath>..\packages\CK.Core.2.7.43\lib\net40\CK.Core.dll</HintPath>
+    </Reference>
     <Reference Include="dotless.Core">
       <HintPath>..\packages\dotless.1.3.1.0\lib\dotless.Core.dll</HintPath>
     </Reference>
@@ -52,6 +55,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -135,10 +139,19 @@
     <Compile Include="App_Start\GlobalisedRoute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlogModels\BlogArticle.cs" />
+    <Compile Include="Models\BlogModels\BlogArticlePublished.cs" />
+    <Compile Include="Models\BlogModels\BlogArticleStatus.cs" />
+    <Compile Include="Models\BlogModels\BlogContext.cs" />
+    <Compile Include="Models\BlogModels\BlogLanguage.cs" />
+    <Compile Include="Models\BlogModels\BlogRefreshResult.cs" />
+    <Compile Include="Models\BlogModels\BlogSource.cs" />
+    <Compile Include="Models\BlogModels\BlogSource.Refresh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -265,10 +278,12 @@
     <Content Include="Views\Home\Contact.en.cshtml" />
     <Content Include="Views\Home\Legal.en.cshtml" />
     <Content Include="Views\Shared\_GoogleTag.cshtml" />
+    <Content Include="Views\Blog\BlogIndex.fr.cshtml" />
+    <Content Include="Views\Blog\BlogIndex.en.cshtml" />
+    <Content Include="Views\Blog\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
