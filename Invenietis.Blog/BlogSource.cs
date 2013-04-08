@@ -19,7 +19,7 @@ namespace Invenietis.Blog
 
         [NonSerialized]
         readonly IReadOnlyList<BlogArticle> _articlesEx;
-     
+
         string _blogHtmlDescriptionFR;
         string _blogHtmlDescriptionEN;
         string _blogTitleFR;
@@ -38,7 +38,7 @@ namespace Invenietis.Blog
             Debug.Assert( context != null );
             _context = context;
             _articles = new List<BlogArticle>();
-            _articlesEx = new ReadOnlyListOnIList<BlogArticle>( _articles );
+            _articlesEx = new CKReadOnlyListOnIList<BlogArticle>( _articles );
         }
 
         public BlogContext Context { get { return _context; } }
@@ -48,8 +48,8 @@ namespace Invenietis.Blog
             _context.OnDestroyBlogSource( this );
         }
 
-        public bool Hidden 
-        { 
+        public bool Hidden
+        {
             get { return _hidden; }
             set
             {
@@ -61,7 +61,8 @@ namespace Invenietis.Blog
             }
         }
 
-        public Uri RSSUri { 
+        public Uri RSSUri
+        {
             get { return _rssUri; }
             set
             {
@@ -86,7 +87,7 @@ namespace Invenietis.Blog
             }
         }
 
-        public string BlogHtmlDescriptionFR 
+        public string BlogHtmlDescriptionFR
         {
             get { return _blogHtmlDescriptionFR; }
             set
@@ -99,20 +100,20 @@ namespace Invenietis.Blog
             }
         }
 
-        public string BlogTitleEN 
+        public string BlogTitleEN
         {
             get { return _blogTitleEN; }
-            set 
+            set
             {
                 if( value != _blogTitleEN )
                 {
                     _blogTitleEN = value;
                     SetDirty();
                 }
-            }           
+            }
         }
 
-        public string BlogHtmlDescriptionEN 
+        public string BlogHtmlDescriptionEN
         {
             get { return _blogHtmlDescriptionEN; }
             set
@@ -125,21 +126,21 @@ namespace Invenietis.Blog
             }
         }
 
-        public BlogLanguage BlogLanguage 
+        public BlogLanguage BlogLanguage
         {
             get { return _blogLanguage; }
             set
             {
-                if( value != _blogLanguage ) 
+                if( value != _blogLanguage )
                 {
                     _blogLanguage = value;
                     SetDirty();
                 }
-               
+
             }
         }
 
-        public string AuthorUri 
+        public string AuthorUri
         {
             get { return _authorUri; }
             set
@@ -177,7 +178,7 @@ namespace Invenietis.Blog
                 }
             }
         }
-        
+
         public IReadOnlyList<BlogArticle> Articles { get { return _articlesEx; } }
 
         internal void SetDirty( [CallerMemberName] string memberName = null )

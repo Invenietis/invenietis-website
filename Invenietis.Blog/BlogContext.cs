@@ -22,7 +22,7 @@ namespace Invenietis.Blog
         {
             _path = path;
             _sources = new List<BlogSource>();
-            _sourcesEx = new ReadOnlyListOnIList<BlogSource>( _sources );
+            _sourcesEx = new CKReadOnlyListOnIList<BlogSource>( _sources );
         }
 
         public static BlogContext Load( string path )
