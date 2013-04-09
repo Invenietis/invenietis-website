@@ -17,19 +17,9 @@ namespace Invenietis.Blog
     {
         BlogRefreshResult _lastRefreshResult;
         BlogRefreshResult _lastSuccessfulRefreshResult;
-
-        bool _successfulUpdate;
-
         public bool SuccessfulUpdate
         {
-            get { return _successfulUpdate; }
-            set
-            {
-                if( value != _successfulUpdate )
-                {
-                    _successfulUpdate = value;
-                }
-            }
+            get { return _lastRefreshResult ==_lastSuccessfulRefreshResult; }
         }
         public BlogRefreshResult LastRefreshResult { get { return _lastRefreshResult; } }
 
@@ -47,116 +37,105 @@ namespace Invenietis.Blog
         }
 
         internal BlogRefreshResult LoadFromUri(Uri uri)
-        {
-            BlogRefreshResult currentRefreshResult = new BlogRefreshResult();
+        {           
            using( XmlReader reader = XmlReader.Create( uri.ToString() ) )
            {
                SyndicationFeed feed = SyndicationFeed.Load(reader);
-               BlogSource source = LoadBlogData(Context, feed );
-               List<BlogArticle> articles = LoadArticles( source,feed );
-
-               foreach(BlogArticle a in articles)
+               if( Articles.Count == 0 )
+               {
+                   BlogArticle article = new BlogArticle();
+                   foreach( SyndicationItem item in feed.Items )
+                   {
+                       AddArticle( article, item );
+                   }
+               }
+               UpdateArticles(feed ); 
+               foreach(BlogArticle a in _articles)
                {
                    if( a.Status == BlogArticleStatus.HiddenByAuthor )
                    {
-                       currentRefreshResult.DisappearedArticleCount += 1;
+                       LastRefreshResult.DisappearedArticleCount += 1;
                    }
                    if( a.Status == BlogArticleStatus.New )
                    {
-                       currentRefreshResult.NewArticleCount += 1;
-                   }
-                   
+                       LastRefreshResult.NewArticleCount += 1;
+                   }               
                }
-               currentRefreshResult.RefreshTime = DateTime.Now;
-               if( !currentRefreshResult.IsSuccess )
+
+               if( LastRefreshResult.IsSuccess )
                {
-                   currentRefreshResult = LastRefreshResult;
+                   _lastSuccessfulRefreshResult = LastRefreshResult;
                }
             }
-           return currentRefreshResult;           
+           return LastSuccessfulRefreshResult;           
         }
 
-        private BlogSource LoadBlogData( BlogContext ctx, SyndicationFeed feed )
+        private void CreateBlog( SyndicationFeed feed )
         {
-            BlogSource source = new BlogSource(ctx);
-            source._authorName = feed.Authors[0].Name;
-            source._authorUri = feed.Authors[0].Uri;
-            source._authorEMail = feed.Authors[0].Email;
-            source._rssUri = feed.BaseUri;
+            var source = Context.CreateBlogSource();
+            source.Id = feed.Id;
+            source.AuthorName = feed.Authors[0].Name;
+            source.AuthorUri = feed.Authors[0].Uri;
+            source.AuthorEMail = feed.Authors[0].Email;
+            source.RSSUri = feed.BaseUri;
             if( feed.Language != null && StringComparer.OrdinalIgnoreCase.Compare( feed.Language, "en" ) == 0 )
             {
-                source._blogLanguage = BlogLanguage.English;
-                source._blogTitleEN = feed.Title.Text;
-                source._blogHtmlDescriptionEN = feed.Description.Text;
+                source.BlogLanguage = BlogLanguage.English;
+                source.BlogTitleEN = feed.Title.Text;
+                source.BlogHtmlDescriptionEN = feed.Description.Text;
             }
             else
             {
-                source._blogLanguage = BlogLanguage.French;
-                source._blogTitleFR = feed.Title.Text;
+                source.BlogLanguage = BlogLanguage.French;
+                source.BlogTitleFR = feed.Title.Text;
                 //source._blogHtmlDescriptionFR = feed.Description.Text;
             }
-            return source;
+
         }
 
-        internal List<BlogArticle> LoadArticles( BlogSource @this, SyndicationFeed Feed )
-        {
-            using( IEnumerator<SyndicationItem> item = Feed.Items.GetEnumerator() )
-            {
-                BlogArticle currentArticle = new BlogArticle();
-
-                if( item.MoveNext() )
-                {
-                    currentArticle._lastModificationDate = item.Current.LastUpdatedTime;
-                    currentArticle._originalTitle = item.Current.Title.Text;
-                    currentArticle.Id = item.Current.Id;
-                    @this._articles.Add( currentArticle );
-                }
-
-            }
-            return @this._articles;
-        }
-
-        public void Update( Uri uri, string path = null )
+        public void SaveContext( Uri uri, string path = null )
         {
             _lastRefreshResult = RefreshFromUri( uri );
             if( !_isDirty && _lastRefreshResult.IsSuccess )
             {
                 _lastSuccessfulRefreshResult = _lastRefreshResult;
-                _successfulUpdate = true;
                 Context.Save( path );
-            }
-            else
-            {
-                _successfulUpdate = false;
             }
         }
 
-        public void UpdateArticles( BlogSource @this, SyndicationFeed Feed )
+        public void UpdateArticles(SyndicationFeed Feed )
         {
+            BlogArticle currentArticle = new BlogArticle();
             SyndicationItem currentItem = new SyndicationItem();
-            foreach( BlogArticle article in @this.Articles )
+            foreach( BlogArticle article in Articles )
             {
-                using( IEnumerator<SyndicationItem> item = Feed.Items.GetEnumerator() )
+                foreach(SyndicationItem item in Feed.Items)
                 {
-                    if( item.MoveNext() )
-                    {
-                        if( article.Id == item.Current.Id )
+                        if( article.Id == item.Id)
                         {
-                            currentItem = item.Current;
-                            if( currentItem.Title.Text != article.OriginalTitle )
-                            {
-                                article.OriginalTitle = currentItem.Title.Text;
+                            if(item.Title.Text != article.OriginalTitle) 
+                            {                       
+                                article.OriginalTitle = item.Title.Text;
                                 SendNotification();
                             }
-                            if( currentItem.LastUpdatedTime != article.LastModificationDate )
+                            if( item.LastUpdatedTime != article.LastModificationDate )
                             {
                                 SendNotification();
                             }
-
                         }
-                        else
-                            throw new InvalidOperationException( "Id does not exist" );
-                    }
+                                            
+                        currentArticle.Id = item.Id;
+                        if( !Articles.Contains( currentArticle ) )
+                        {
+                            AddArticle(currentArticle, item );
+                        }
+                }
+                currentItem.Id = article.Id;
+                if( !Feed.Items.Contains( currentItem ) )
+                {
+                    article.DestroyPublishedInfo();
+                    article.Status = BlogArticleStatus.HiddenByAuthor;
+                    _articles.Remove( article );
                 }
             }
         }
@@ -166,7 +145,16 @@ namespace Invenietis.Blog
         /// </summary>
         internal void SendNotification( [CallerMemberName] string memberName = null )
         {
-            throw new NotImplementedException();
+            Debug.WriteLine( "Administrator must verify this article" );
+        }
+
+        public void AddArticle(BlogArticle article, SyndicationItem item )
+        {
+            article.Status = BlogArticleStatus.New;
+            article.OriginalTitle = item.Title.ToString();
+            article.LastModificationDate = item.LastUpdatedTime;
+            article.Uri = item.BaseUri;
+            _articles.Add( article );
         }
     }
 }

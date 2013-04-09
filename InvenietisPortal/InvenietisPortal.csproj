@@ -144,14 +144,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BlogModels\BlogArticle.cs" />
-    <Compile Include="Models\BlogModels\BlogArticlePublished.cs" />
-    <Compile Include="Models\BlogModels\BlogArticleStatus.cs" />
-    <Compile Include="Models\BlogModels\BlogContext.cs" />
-    <Compile Include="Models\BlogModels\BlogLanguage.cs" />
-    <Compile Include="Models\BlogModels\BlogRefreshResult.cs" />
-    <Compile Include="Models\BlogModels\BlogSource.cs" />
-    <Compile Include="Models\BlogModels\BlogSource.Refresh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -278,12 +270,12 @@
     <Content Include="Views\Home\Contact.en.cshtml" />
     <Content Include="Views\Home\Legal.en.cshtml" />
     <Content Include="Views\Shared\_GoogleTag.cshtml" />
-    <Content Include="Views\Blog\BlogIndex.fr.cshtml" />
-    <Content Include="Views\Blog\BlogIndex.en.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -302,13 +294,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49407</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:12345/invenietis-website</IISUrl>
-          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/test</IISAppRootUrl>
+          <IISUrl>http://localhost:49407/invenietis-website</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>http://invenietis.local</CustomServerUrl>

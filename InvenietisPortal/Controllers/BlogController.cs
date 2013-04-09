@@ -11,10 +11,10 @@ namespace MvcApplication1.Controllers
         //
         // GET: /Blog/
 
-        public ActionResult BlogIndex()
+        public ActionResult Index()
         {
             ViewBag.Page = "BlogIndex";
-            return View( "BlogIndex." + RouteData.Values["culture"] );
+            return View();
         }
 
         public ActionResult Admin()

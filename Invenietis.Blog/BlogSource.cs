@@ -19,7 +19,7 @@ namespace Invenietis.Blog
 
         [NonSerialized]
         readonly CK.Core.IReadOnlyList<BlogArticle> _articlesEx;
-     
+        string _id;
         string _blogHtmlDescriptionFR;
         string _blogHtmlDescriptionEN;
         string _blogTitleFR;
@@ -31,8 +31,7 @@ namespace Invenietis.Blog
         Uri _rssUri;
         bool _hidden;
         bool _isDirty;
-        private   BlogContext _ctx;
-
+        
         internal BlogSource( BlogContext context )
         {
             Debug.Assert( context != null );
@@ -47,7 +46,20 @@ namespace Invenietis.Blog
         {
             _context.OnDestroyBlogSource( this );
         }
-
+        
+        public string Id 
+        { 
+            get {return _id;}
+            set
+            {
+                if(_id != value)
+                {
+                    _id = value;
+                    SetDirty();
+                }
+            }      
+        }
+        
         public bool Hidden 
         { 
             get { return _hidden; }

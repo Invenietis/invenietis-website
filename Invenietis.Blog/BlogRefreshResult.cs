@@ -24,10 +24,7 @@ namespace Invenietis.Blog
             get { return _refreshTime; }
             set
             {
-                if( value != _refreshTime )
-                {
-                    _refreshTime = value;
-                }
+                _refreshTime = DateTime.UtcNow;
             }
         }
 
@@ -67,43 +64,5 @@ namespace Invenietis.Blog
                 }
             }
         }
-
-        void UpdateArticles( List<BlogArticle> articles, List<SyndicationItem> items )
-        {
-            BlogSource Source = _ctx.CreateBlogSource();
-            BlogArticle currentArticle = new BlogArticle();
-            SyndicationItem currentItem = new SyndicationItem();
-            using( IEnumerator<SyndicationItem> item = items.GetEnumerator() )
-            {
-                
-                if( item.MoveNext() )
-                {
-                    currentArticle.Id = item.Current.Id;
-                    if( !articles.Contains( currentArticle ) )
-                    {
-                        articles.Add( currentArticle );
-                    }
-                    
-                }
-
-            }
-            foreach( BlogArticle article in articles )
-            {
-                currentItem.Id = article.Id;
-                if( !items.Contains( currentItem ) )
-                {
-                    article.DestroyPublishedInfo();
-                    articles.Remove( article );
-                }
-
-            }
-            
-
-        }
-
-        
-
-        
-
     }
 }

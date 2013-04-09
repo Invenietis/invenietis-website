@@ -41,7 +41,7 @@ namespace Invenietis.Blog
         public bool IsDirty { get { return _isDirty; } }
 
         public CK.Core.IReadOnlyList<BlogSource> BlogSource { get { return _sourcesEx; } }
-        
+
         public BlogSource CreateBlogSource()
         {
             var s = new BlogSource( this );

@@ -28,7 +28,7 @@ namespace Tests
         [Test]
         public void SaveLastSuccessUpdate()
         {
-            Source.Update( new Uri( "http://macdarwin.github.com/atom.xml" ), Path.Combine( TestHelper.BasePath, "BlogContextNew" ) );
+            Source.SaveContext( new Uri( "http://macdarwin.github.com/atom.xml" ), Path.Combine( TestHelper.BasePath, "BlogContextNew" ) );
             Assert.That( Source.SuccessfulUpdate );
 
         }

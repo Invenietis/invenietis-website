@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.ServiceModel.Syndication;
 using System.Web;
 
 namespace Invenietis.Blog
@@ -10,13 +11,14 @@ namespace Invenietis.Blog
     [Serializable]
     public class BlogArticle
     {
-        internal DateTime _creationDate;
-        internal Uri _uri;
-        internal BlogArticleStatus _status;
-        internal BlogArticlePublished _published;
-        internal DateTimeOffset _lastModificationDate;
-        internal string _originalTitle;
-        internal BlogSource _source;
+        DateTime _creationDate;
+        Uri _uri;
+        BlogArticleStatus _status;
+        BlogArticlePublished _published;
+        DateTimeOffset _lastModificationDate;
+        string _originalTitle;
+        BlogSource _source;
+        string _id;
 
         /// <summary>
         /// One article could be written by many authors.
@@ -103,7 +105,21 @@ namespace Invenietis.Blog
                 _status = value;
             }
         }
-        public string Id { get; set; }
+        
+        public string Id 
+        {
+            get { return _id; }
+            set
+            {
+                if(_id != value)
+                {
+                    _id = value;
+                    _source.SetDirty();
+
+                }
+            }
+        }
+       
         /// <summary>
         /// Gets the published info if it has been created once.
         /// Null if <see cref="EnsurePublishedInfo"/> has never been called.
@@ -125,6 +141,6 @@ namespace Invenietis.Blog
             Status = BlogArticleStatus.Rejected;
         }
 
-             
+
     }
 }
