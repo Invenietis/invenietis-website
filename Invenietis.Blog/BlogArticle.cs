@@ -19,6 +19,16 @@ namespace Invenietis.Blog
         string _originalTitle;
         BlogSource _source;
         string _id;
+         
+        internal BlogArticle(BlogSource s)
+        {
+            _creationDate = new DateTime();
+            _published = new BlogArticlePublished( this );
+            _lastModificationDate = new DateTimeOffset();
+            _originalTitle = "";
+            _source = s;
+            _id = "";
+        }
 
         /// <summary>
         /// One article could be written by many authors.
@@ -87,6 +97,7 @@ namespace Invenietis.Blog
             get { return _originalTitle; }
             set
             {
+                if( value == null ) throw new InvalidOperationException( "the author didnt't specified a title for this article" );
                 if( value != _originalTitle )
                 {
                     _originalTitle = value;
@@ -111,7 +122,7 @@ namespace Invenietis.Blog
             get { return _id; }
             set
             {
-                if(_id != value)
+                if(value != _id)
                 {
                     _id = value;
                     _source.SetDirty();
