@@ -29,7 +29,7 @@
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
                                 <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="@Url.Action( "Index" )">Accueil</a></li>
-                                <li @Html.Raw(ViewBag.Page == "BlogIndex" ? "class=\"active\"": "")><a href="@Url.Action( "BlogIndex" )">Blog</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Blog" ? "class=\"active\"": "")><a href="@Url.Action( "Blog" )">Blog</a></li>
                                 @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                                 <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                             </ul>
@@ -50,7 +50,7 @@
                         <strong>Nous connaitre</strong>
                         <ul>
                             <li><a href="@Url.Action( "Index" )">Accueil</a></li>
-                            <li><a href="@Url.Action( "BlogIndex" )">Blog</a></li>
+                            <li><a href="@Url.Action( "Blog" )">Blog</a></li>
                             @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                             <li><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                         </ul>

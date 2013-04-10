@@ -33,5 +33,16 @@ namespace MvcApplication1.Controllers
             ViewBag.Page = "";
             return View();
         }
+        public ActionResult Blog()
+        {
+            ViewBag.Page = "Blog";
+            return View( "Blog." + RouteData.Values["culture"] );
+        }
+
+        public ActionResult Admin()
+        {
+            ViewBag.Page = "Admin";
+            return View();
+        }
     }
 }

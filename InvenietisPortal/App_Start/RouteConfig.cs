@@ -31,11 +31,11 @@ namespace MvcApplication1
             //    defaults: new { lang = "fr", controller = "Home", action = "Index" }
             //);
 
-            routes.MapRoute(
-                name: "BlogRoute",
-                url: "Blog/{action}",
-                defaults: new { controller = "Blog", action = "Index" }
-            );
+            //routes.MapRoute(
+            //    name: "BlogRoute",
+            //    url: "Blog/{action}",
+            //    defaults: new { controller = "Blog", action = "Index" }
+            //);
 
 
             const string defautlRouteUrl = "{action}";
@@ -45,36 +45,36 @@ namespace MvcApplication1
 
 
             //routes.Add( "HomeLocalized", new LocalizedRoute( "", defaultRouteValueDictionary ) );
-            //routes.Add( "DefaultLocalized", new LocalizedRoute( defautlRouteUrl, defaultRouteValueDictionary ) );
+            routes.Add( "DefaultLocalized", new LocalizedRoute( defautlRouteUrl, defaultRouteValueDictionary ) );
             //routes.Add( "BlogLocalized", new LocalizedRoute( "Blog/{action}", blogRoute ) );
-            //routes.MapDelegate( "Default", defautlRouteUrl, ( rq ) =>
-            //    {
-            //        var userLanguages = rq.HttpContext.Request.UserLanguages;
-            //        if( userLanguages != null && userLanguages.Length > 0 )
-            //        {
-            //            try
-            //            {
-            //                var ci = new CultureInfo( userLanguages[0] );
-            //                if( ci != null )
-            //                {
-            //                    rq.RouteData.Values[LocalizedRoute.CultureKey] = ci.TwoLetterISOLanguageName;
-            //                }
-            //                else
-            //                {
-            //                    rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
-            //                }
-            //            }
-            //            catch( CultureNotFoundException )
-            //            {
-            //                rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
-            //            }
-            //        }
-            //        else
-            //        {
-            //            rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
-            //        }
-            //        rq.HttpContext.Response.Redirect( RouteTable.Routes.GetVirtualPath( rq, null ).VirtualPath, false );
-            //    } ).Defaults = defaultRouteValueDictionary;
+            routes.MapDelegate( "Default", defautlRouteUrl, ( rq ) =>
+                {
+                    var userLanguages = rq.HttpContext.Request.UserLanguages;
+                    if( userLanguages != null && userLanguages.Length > 0 )
+                    {
+                        try
+                        {
+                            var ci = new CultureInfo( userLanguages[0] );
+                            if( ci != null )
+                            {
+                                rq.RouteData.Values[LocalizedRoute.CultureKey] = ci.TwoLetterISOLanguageName;
+                            }
+                            else
+                            {
+                                rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
+                            }
+                        }
+                        catch( CultureNotFoundException )
+                        {
+                            rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
+                        }
+                    }
+                    else
+                    {
+                        rq.RouteData.Values[LocalizedRoute.CultureKey] = CultureManager.DefaultCulture.TwoLetterISOLanguageName;
+                    }
+                    rq.HttpContext.Response.Redirect( RouteTable.Routes.GetVirtualPath( rq, null ).VirtualPath, false );
+                } ).Defaults = defaultRouteValueDictionary;
 
 
             //routes.Add( "Default", new Route( defautlRouteUrl, defaultRouteValueDictionary, new MvcRouteHandler() ) );
