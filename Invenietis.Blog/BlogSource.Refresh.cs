@@ -43,15 +43,21 @@ namespace Invenietis.Blog
                SyndicationFeed feed = SyndicationFeed.Load(reader);
                if( Articles.Count == 0 )
                {
-                   BlogArticle article = new BlogArticle(this);
+                  
                    foreach( SyndicationItem item in feed.Items )
                    {
-                       AddArticle( article, item );
+                       BlogArticle article = new BlogArticle( this );
+                       article.Id = item.Id;
+                       article.Status = BlogArticleStatus.New;
+                       article.OriginalTitle = item.Title.Text;
+                       article.LastModificationDate = item.LastUpdatedTime;
+                       article.Uri = item.BaseUri;
+                       _articles.Add( article );
                    }
                }
                UpdateArticles(feed );
 
-               RemoveArticles( feed);
+               RemoveArticles(feed);
 
                foreach(BlogArticle a in _articles)
                {
@@ -107,14 +113,12 @@ namespace Invenietis.Blog
         }
 
         public void UpdateArticles(SyndicationFeed Feed )
-        {
-            BlogArticle currentArticle = new BlogArticle(this);
-           
+        {           
             foreach( BlogArticle article in Articles )
             {
-                foreach(SyndicationItem item in Feed.Items)
+                foreach( SyndicationItem item in Feed.Items )
                 {
-                    if( item.Id == article.Id)
+                    if( item.Id == article.Id )
                     {
                         if( item.Title.Text != article.OriginalTitle )
                         {
@@ -126,30 +130,52 @@ namespace Invenietis.Blog
                             SendNotification();
                         }
                     }
-                    else
-                    {
-                        currentArticle.Id = item.Id;
-                        if( !Articles.Contains( currentArticle ) )
-                        {
-                            AddArticle( currentArticle, item );
-                        }
-                    }
                 }
-
             }
+            IEnumerable<SyndicationItem> NewItems = Enumerable.Empty<SyndicationItem>();
+            for( int i=0; i < Articles.Count; i++ )
+            {
+                NewItems = from item in Feed.Items
+                           where !Articles[i].Id.Any()
+                           select item;
+            }
+            
+            if(NewItems.Count()!= 0 )
+            {
+                foreach( SyndicationItem item in NewItems )
+                {
+                    BlogArticle currentArticle = new BlogArticle( this );
+                    currentArticle.Id = Feed.Items.GetEnumerator().Current.Id;
+                    currentArticle.Status = BlogArticleStatus.New;
+                    currentArticle.OriginalTitle = Feed.Items.GetEnumerator().Current.Title.Text;
+                    currentArticle.LastModificationDate = Feed.Items.GetEnumerator().Current.LastUpdatedTime;
+                    currentArticle.Uri = Feed.Items.GetEnumerator().Current.BaseUri;
+                    _articles.Add( currentArticle );
+                }
+            }
+            else
+            {
+                throw new ArgumentNullException("No new items");
+            }
+                 
         }
 
         private void RemoveArticles( SyndicationFeed Feed )
         {
-            SyndicationItem currentItem = new SyndicationItem();
-            foreach( BlogArticle article in Articles )
+            IEnumerable<BlogArticle> removedArticles = Enumerable.Empty<BlogArticle>();
+            foreach( SyndicationItem item in Feed.Items )
             {
-                currentItem.Id = article.Id;
-                if( !Feed.Items.Contains( currentItem ) )
+                removedArticles = from article in Articles
+                                  where !item.Id.Any()
+                                  select article;
+            }
+            if( removedArticles.Count() != 0 )
+            {
+                foreach( BlogArticle a in removedArticles )
                 {
-                    article.DestroyPublishedInfo();
-                    article.Status = BlogArticleStatus.HiddenByAuthor;
-                    _articles.Remove( article );
+                    a.DestroyPublishedInfo();
+                    a.Status = BlogArticleStatus.HiddenByAuthor;
+                    _articles.Remove( a );
                 }
             }
         }
@@ -160,15 +186,6 @@ namespace Invenietis.Blog
         internal void SendNotification( [CallerMemberName] string memberName = null )
         {
             Debug.WriteLine( "Administrator must verify this article" );
-        }
-
-        public void AddArticle(BlogArticle article, SyndicationItem item )
-        {
-            article.Status = BlogArticleStatus.New;
-            article.OriginalTitle = item.Title.ToString();
-            article.LastModificationDate = item.LastUpdatedTime;
-            article.Uri = item.BaseUri;
-            _articles.Add( article );
         }
     }
 }

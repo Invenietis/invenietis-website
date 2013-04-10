@@ -19,7 +19,8 @@ namespace Invenietis.Blog
         string _originalTitle;
         BlogSource _source;
         string _id;
-         
+        List<string> _contributors;
+
         internal BlogArticle(BlogSource s)
         {
             _creationDate = new DateTime();
@@ -44,6 +45,19 @@ namespace Invenietis.Blog
             }
         }
 
+        public List<string> Contributors
+        {
+            get { return _contributors; }
+            set
+            {
+                if( value == null ) throw new ArgumentException();
+                if( value != _contributors )
+                {
+                    _contributors = value;
+                    _source.SetDirty();
+                }
+            }
+        }
         public Uri Uri 
         {
             get { return _uri; }
