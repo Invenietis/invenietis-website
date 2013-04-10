@@ -16,13 +16,20 @@ namespace Tests
         static BlogContext ctx = new BlogContext( TestHelper.BasePath);
         BlogSource Source = ctx.CreateBlogSource();
         //int NewArticleCount;
+
+        [Test]
+        public void CreateBlogFromFeed()
+        {
+            Source.CreateBlog( new Uri( "http://macdarwin.github.com/atom.xml" ) );
+            Assert.That( Source.AuthorName == "Guillaume Fradet" , "name "+Source.AuthorName);
+        }
         [Test]
         public void LoadLastRefresh()
         {
             BlogRefreshResult = Source.RefreshFromUri( new Uri( "http://macdarwin.github.com/atom.xml" ) );
             Assert.That( BlogRefreshResult.IsSuccess );
             Assert.That( BlogRefreshResult.DisappearedArticleCount == 0, BlogRefreshResult.DisappearedArticleCount.ToString() );
-            Assert.That( BlogRefreshResult.NewArticleCount == 0, BlogRefreshResult.NewArticleCount.ToString() );  
+            Assert.That( BlogRefreshResult.NewArticleCount != 0, BlogRefreshResult.NewArticleCount.ToString() );  
         }
 
         [Test]

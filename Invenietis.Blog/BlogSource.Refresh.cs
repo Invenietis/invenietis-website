@@ -15,7 +15,7 @@ namespace Invenietis.Blog
     
     public partial class BlogSource
     {
-        BlogRefreshResult _lastRefreshResult;
+        BlogRefreshResult _lastRefreshResult = new BlogRefreshResult();
         BlogRefreshResult _lastSuccessfulRefreshResult;
         public bool SuccessfulUpdate
         {
@@ -24,7 +24,11 @@ namespace Invenietis.Blog
         public BlogRefreshResult LastRefreshResult { get { return _lastRefreshResult; } }
 
         public BlogRefreshResult LastSuccessfulRefreshResult { get { return _lastSuccessfulRefreshResult; } }
-
+        internal BlogSource()
+        {
+            //_lastRefreshResult = new BlogRefreshResult();
+            _lastSuccessfulRefreshResult = new BlogRefreshResult();
+        }
         /// <summary>
         /// Uses .Net 4.5 <see cref="SyndicationFeed"/> to retrieve changes from the source.
         /// </summary>
@@ -32,7 +36,7 @@ namespace Invenietis.Blog
         public BlogRefreshResult RefreshFromUri(Uri uri)
         {
             _lastRefreshResult = LoadFromUri( uri );
-            _lastRefreshResult.RefreshTime = DateTime.Now;
+           
             return _lastRefreshResult;
         }
 
@@ -42,8 +46,7 @@ namespace Invenietis.Blog
            {
                SyndicationFeed feed = SyndicationFeed.Load(reader);
                if( Articles.Count == 0 )
-               {
-                  
+               {  
                    foreach( SyndicationItem item in feed.Items )
                    {
                        BlogArticle article = new BlogArticle( this );
@@ -63,41 +66,44 @@ namespace Invenietis.Blog
                {
                    if( a.Status == BlogArticleStatus.HiddenByAuthor )
                    {
-                       LastRefreshResult.DisappearedArticleCount += 1;
+                       _lastRefreshResult.DisappearedArticleCount += 1;
                    }
                    if( a.Status == BlogArticleStatus.New )
                    {
-                       LastRefreshResult.NewArticleCount += 1;
+                       _lastRefreshResult.NewArticleCount += 1;
                    }               
                }
 
-               if( LastRefreshResult.IsSuccess )
+               if( _lastRefreshResult.IsSuccess )
                {
-                   _lastSuccessfulRefreshResult = LastRefreshResult;
+                   _lastSuccessfulRefreshResult = _lastRefreshResult;
                }
             }
-           return LastSuccessfulRefreshResult;           
+           return _lastSuccessfulRefreshResult;           
         }
 
-        private void CreateBlog( SyndicationFeed feed )
+        public void CreateBlog( Uri uri )
         {
-            var source = Context.CreateBlogSource();
-            source.Id = feed.Id;
-            source.AuthorName = feed.Authors[0].Name;
-            source.AuthorUri = feed.Authors[0].Uri;
-            source.AuthorEMail = feed.Authors[0].Email;
-            source.RSSUri = feed.BaseUri;
-            if( feed.Language != null && StringComparer.OrdinalIgnoreCase.Compare( feed.Language, "en" ) == 0 )
+            using( XmlReader reader = XmlReader.Create( uri.ToString() ) )
             {
-                source.BlogLanguage = BlogLanguage.English;
-                source.BlogTitleEN = feed.Title.Text;
-                source.BlogHtmlDescriptionEN = feed.Description.Text;
-            }
-            else
-            {
-                source.BlogLanguage = BlogLanguage.French;
-                source.BlogTitleFR = feed.Title.Text;
-                //source._blogHtmlDescriptionFR = feed.Description.Text;
+                SyndicationFeed feed = SyndicationFeed.Load( reader );
+                Id = feed.Id;
+                AuthorName = feed.Authors[0].Name;
+                AuthorUri = feed.Authors[0].Uri;
+                AuthorEMail = feed.Authors[0].Email;
+                RSSUri = feed.BaseUri;
+                if( feed.Language != null && StringComparer.OrdinalIgnoreCase.Compare( feed.Language, "en" ) == 0 )
+                {
+                    BlogLanguage = BlogLanguage.English;
+                    BlogTitleEN = feed.Title.Text;
+                    BlogHtmlDescriptionEN = feed.Description.Text;
+                }
+                else
+                {
+                    BlogLanguage = BlogLanguage.French;
+                    BlogTitleFR = feed.Title.Text;
+                    //source._blogHtmlDescriptionFR = feed.Description.Text;
+                }
             }
 
         }
@@ -132,16 +138,19 @@ namespace Invenietis.Blog
                     }
                 }
             }
+
             IEnumerable<SyndicationItem> NewItems = Enumerable.Empty<SyndicationItem>();
             for( int i=0; i < Articles.Count; i++ )
             {
-                NewItems = from item in Feed.Items
-                           where !Articles[i].Id.Any()
-                           select item;
+                foreach( SyndicationItem item in Feed.Items )
+                {
+                    if( item.Id != Articles[i].Id )
+                    {
+                        NewItems.ToList().Add( item );
+                    }
+                }
             }
-            
-            if(NewItems.Count()!= 0 )
-            {
+
                 foreach( SyndicationItem item in NewItems )
                 {
                     BlogArticle currentArticle = new BlogArticle( this );
@@ -152,11 +161,7 @@ namespace Invenietis.Blog
                     currentArticle.Uri = Feed.Items.GetEnumerator().Current.BaseUri;
                     _articles.Add( currentArticle );
                 }
-            }
-            else
-            {
-                throw new ArgumentNullException("No new items");
-            }
+           
                  
         }
 

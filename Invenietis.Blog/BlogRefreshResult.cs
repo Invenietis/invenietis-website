@@ -17,8 +17,16 @@ namespace Invenietis.Blog
         private string _errorMessage;
         private int _newArticleCount;
         private int _disappearedArticleCount;
-        BlogContext _ctx = new BlogContext( null );
+        BlogContext _ctx;
 
+        public BlogRefreshResult()
+        {
+            _refreshTime = new DateTime();
+            _errorMessage = null;
+            _newArticleCount = 0;
+            _disappearedArticleCount = 0;
+            _ctx = new BlogContext();
+        }
         public DateTime RefreshTime 
         { 
             get { return _refreshTime; }
