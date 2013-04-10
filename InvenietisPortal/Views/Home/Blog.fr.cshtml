@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Invenietis.Blog.BlogSource
+@{
     Layout = "~/Views/Shared/_Layout.fr.cshtml";
     ViewBag.Title = "Invenietis Blog";
     ViewBag.Keywords = "";
@@ -15,6 +16,9 @@
                         <div class="row-fluid">
                             <div class="span12">
                                 <h1 class="htitle">Invenietis Blog</h1>
+                            </div>
+                            <div class="text">
+                                <p>@using Invenietis.Blog; </p>
                             </div>
                         </div>
                     </div>
