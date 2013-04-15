@@ -17,9 +17,17 @@
                             <div class="span12">
                                 <h1 class="htitle">Gestion des articles</h1>
                             </div>
-                            <div class="text">
-                                <p>
-                                    @{var m = new Invenietis.Blog.BlogContext();
+                        </div>
+                    </div>
+                </header>
+            </div>
+</div>
+
+<div class="row-fluid">
+            <div class="span12 orange double-bx">
+                <section class="container">
+                    <div class="row-fluid">
+  @{var m = new Invenietis.Blog.BlogContext();
                                         var s = m.CreateBlogSource();
                                      s.CreateBlog( new Uri( "http://macdarwin.github.com/atom.xml" ) );
                                      var s2 = m.CreateBlogSource();
@@ -33,24 +41,50 @@
                                     @foreach( var article in s.Articles )
                                     {
                                       <br />
-                                        @article.OriginalTitle     
+                                        @article.OriginalTitle   
+                                        @article.LastModificationDate
+                                        @article.Source.BlogTitleFR
+                                        @article.Source.AuthorName
+                                        @article.Uri
+                                        @article.Status
+                                        <br />
+                                        <br />
+                                        
                                     }
                                     <br />
                                     Blog de @s2.AuthorName;
                                     @{
                                         refresh = @s2.RefreshFromUri( new Uri( "http://cedricdotnet.blogspot.com/feeds/posts/default" ) );
                                     }
-                                    @foreach( var a in s2.Articles )
-                                    {
-                                      <br />
-                                        @a.OriginalTitle     
-                                    }
+                                    <table class ="articles">
+                                        <td>Article</td>
+                                        <td>Status</td>
+                                        <td>Action</td>
+                                        @foreach( var a in s2.Articles )
+                                        {    
+                                            <td>@a.OriginalTitle</td>
+                                            <td>@a.Status</td>
+                                            if(@a.Status == Invenietis.Blog.BlogArticleStatus.New) 
+                                            {
+                                            <td>    
+                                                <div class ="btn-group btn-group-vertical">
+                                                    <a class ="btn"> Publish </a>
+                                                    <a class ="btn"> Hide</a>
+                                                </div>
+                                            </td>
+                                            }
+                                        }
+                                        
+                                </table>
+                                    
                                                                        
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+                                        </div>
+                </section>
             </div>
-</div>
+        </div>
 
+
+                                
+
+
+                                
