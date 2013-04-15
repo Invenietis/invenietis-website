@@ -1,4 +1,4 @@
-﻿@model Invenietis.Blog.BlogSource
+﻿@model Invenietis.Blog.BlogContext
 @{
     Layout = "~/Views/Shared/_Layout.fr.cshtml";
     ViewBag.Title = "Invenietis Blog";
@@ -18,7 +18,38 @@
                                 <h1 class="htitle">Invenietis Blog</h1>
                             </div>
                             <div class="text">
-                                <p>@using Invenietis.Blog; </p>
+                                <p>
+                                    @{var m = new Invenietis.Blog.BlogContext();
+                                        var s = m.CreateBlogSource();
+                                     s.CreateBlog( new Uri( "http://macdarwin.github.com/atom.xml" ) );
+                                     var s2 = m.CreateBlogSource();
+                                     s2.CreateBlog( new Uri("http://cedricdotnet.blogspot.com/feeds/posts/default") );
+                                    }
+                                    Blog de @s.AuthorName;
+                                    Articles :
+                                    @{var refresh = new Invenietis.Blog.BlogRefreshResult();
+                                      refresh = @s.RefreshFromUri( new Uri( "http://macdarwin.github.com/atom.xml" ) );
+                                    }
+                                    @foreach( var article in s.Articles )
+                                    {
+                                      <br />
+                                        @article.OriginalTitle     
+                                    }
+                                    <br />
+                                    Blog de @s2.AuthorName;
+                                    @{
+                                        refresh = @s2.RefreshFromUri( new Uri( "http://cedricdotnet.blogspot.com/feeds/posts/default" ) );
+                                    }
+                                    @foreach( var a in s2.Articles )
+                                    {
+                                      <br />
+                                        @a.OriginalTitle     
+                                    }
+
+
+
+                                    
+                                </p>
                             </div>
                         </div>
                     </div>
