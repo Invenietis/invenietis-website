@@ -13,7 +13,7 @@
     <script type="text/javascript" charset="utf-8" src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"></script>
     <script type="text/javascript" charset="utf-8" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
     <title>@ViewBag.Title</title>
-    @Html.Partial("_GoogleTag")
+    @Html.Partial( "_GoogleTag" )
     @RenderSection( "header", false )
 </head>
 <body>
@@ -28,9 +28,9 @@
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
-                                <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="@Url.Action( "Index" )">Home</a></li>
+                                <li @Html.Raw( ViewBag.Page == "Index" ? "class=\"active\"" : "" )><a href="@Url.Action( "Index" )">Home</a></li>
                                 <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
-                                <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="@Url.Action( "Contact" )">Contact us</a></li>
+                                <li @Html.Raw( ViewBag.Page == "Contact" ? "class=\"active\"" : "" )><a href="@Url.Action( "Contact" )">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -80,10 +80,10 @@
                         <div class="pull-right address">
                             <address>
                                 <strong>Invenietis</strong>
-                                <a class="minimap" href="@Url.Action( "Contact" )" ></a>
+                                <a class="minimap" href="@Url.Action( "Contact" )"></a>
 
                                 10 rue Mercoeur<br />
-                                75010 - Paris<br />
+                                75011 - Paris<br />
                                 France<br /><br />
                                 Mail: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
                                 <abbr title="Phone number">P:</abbr> (+33) 1 84 16 19 99
@@ -96,7 +96,7 @@
                         <div class="legal">
                             <img src="@Url.Content("~/Content/images/logo.png")" alt="Invenietis logo" />
                             <span>
-                                Copyright © 2012 Invenietis. All rights reserved. 
+                                Copyright © @DateTime.Now.Year Invenietis. All rights reserved.
                                 <a href="@Url.Action( "Legal" )">Legal Terms</a>.
                             </span>
                         </div>
@@ -107,11 +107,11 @@
     </div>
     @RenderSection( "js", required: false )
     <script type="text/javascript">
-            $(function () {
-               $('.expand-menu').click(function () {
-                   $('.header-links').toggleClass('visible');
-               });
+        $(function () {
+            $('.expand-menu').click(function () {
+                $('.header-links').toggleClass('visible');
             });
+        });
     </script>
     <script type="text/javascript">
         _gaq.push(['_trackPageview']);
