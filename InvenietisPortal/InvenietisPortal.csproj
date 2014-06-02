@@ -146,6 +146,9 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\conduit_itc-webfont.svg" />
+    <Content Include="Content\fonts\conduit_itc_light-webfont.svg" />
+    <Content Include="Content\fonts\conduit_itc_light_italic-webfont.svg" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg2.jpg" />
     <Content Include="Content\images\edge3.png" />
@@ -170,6 +173,8 @@
     <Content Include="Content\images\menu.png" />
     <Content Include="Content\images\microsoft_black-tw-mini.png" />
     <Content Include="Content\images\microsoft_black-tw.png" />
+    <Content Include="Content\images\microsoft_tw_en.png" />
+    <Content Include="Content\images\microsoft_tw_fr.png" />
     <Content Include="Content\images\octocat-c-32.png" />
     <Content Include="Content\images\octocat-w-32.png" />
     <Content Include="Content\images\shadow-o.png" />
@@ -211,6 +216,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.less" />
+    <Content Include="Content\fonts\conduit_itc_light-webfont.eot" />
+    <Content Include="Content\fonts\conduit_itc_light-webfont.ttf" />
+    <Content Include="Content\fonts\conduit_itc_light-webfont.woff" />
+    <Content Include="Content\fonts\conduit_itc-webfont.eot" />
+    <Content Include="Content\fonts\conduit_itc-webfont.ttf" />
+    <Content Include="Content\fonts\conduit_itc-webfont.woff" />
+    <Content Include="Content\fonts\conduit_itc_light_italic-webfont.eot" />
+    <Content Include="Content\fonts\conduit_itc_light_italic-webfont.ttf" />
+    <Content Include="Content\fonts\conduit_itc_light_italic-webfont.woff" />
     <None Include="Properties\PublishProfiles\WebSite.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js">
