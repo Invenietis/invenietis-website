@@ -36,11 +36,13 @@ namespace MvcApplication1.App_Start
             fr.Add( "Index", "acceuil" );
             fr.Add( "Legal", "mentions-legales" );
             fr.Add( "Cuke", "cuke" );
+            fr.Add( "CKMultiPlan", "ck-multiplan" );
 
             en.Add( "Contact", "contact-us" );
             en.Add( "Index", "home" );
             en.Add( "Legal", "legal-terms" );
             en.Add( "Cuke", "" );
+            en.Add( "CKMultiPlan", "ck-multiplan" );
         }
 
         private Dictionary<string,Dictionary<string,string>> _actionTrans;

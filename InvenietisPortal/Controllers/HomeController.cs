@@ -33,5 +33,10 @@ namespace MvcApplication1.Controllers
             ViewBag.Page = "";
             return View();
         }
+        public ActionResult CKMultiPlan()
+        {
+            ViewBag.Page = "CKMultiPlan";
+            return View( "CKMultiPlan." + RouteData.Values["culture"] );
+        }
     }
 }
