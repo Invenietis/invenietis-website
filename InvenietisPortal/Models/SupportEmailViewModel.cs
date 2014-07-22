@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using CK.Mailer;
+using InvPortal.Properties;
 
 namespace InvPortal.Models
 {
@@ -14,14 +15,14 @@ namespace InvPortal.Models
 
         }
 
-        [Required(ErrorMessage = "Veuillez sélectionner une adresse email valide")]
-        [EmailAddress(ErrorMessage = "Veuillez sélectionner une adresse email valide")]
+        [EmailAddress(ErrorMessage = null, ErrorMessageResourceName = "Email_AddressInvalid", ErrorMessageResourceType = typeof(Resources))]
+        [Required(ErrorMessage = null, ErrorMessageResourceName = "Email_Required", ErrorMessageResourceType = typeof(Resources))]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Veuillez saisir un titre pour votre question")]
+        [Required(ErrorMessageResourceName = "Subject_Required", ErrorMessageResourceType = typeof(Resources))]
         public string Subject { get; set; }
 
-        [Required(ErrorMessage = "Veuillez poser une question")]
+        [Required(ErrorMessageResourceName = "Body_Required", ErrorMessageResourceType = typeof(Resources))]
         public string Body { get; set; }
 
         #region IMailConfigurator<SupportEmailViewModel> Members

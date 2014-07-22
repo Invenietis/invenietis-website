@@ -6,10 +6,10 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using RouteMagic;
-using MvcApplication1.App_Start;
+using InvPortal.App_Start;
 using System.Globalization;
 
-namespace MvcApplication1
+namespace InvPortal
 {
     public class RouteConfig
     {

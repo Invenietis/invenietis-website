@@ -11,3 +11,4 @@ packages/
 *.csproj.user
 *.pubxml.user
 Invenietis.sln.ide
+Private

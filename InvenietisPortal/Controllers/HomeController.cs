@@ -53,19 +53,19 @@ namespace InvPortal.Controllers
                 {
                     try
                     {
-                        IMailerService mailer = new DefaultMailerService();
+                        IMailerService mailer = new DefaultMailerService( m );
                         mailer.SendMail( model, new RazorMailTemplateKey( "SupportEmail" ), new Recipient( ConfigurationManager.AppSettings.Get( "DestinationEmail" ) ) );
                     }
                     catch (Exception ex)
                     {
                         m.Error().Send( ex, "Email : {0}, Subject : {1}, Body : {2}", model.Email, model.Subject, model.Body );
-                        return PartialView( "_EmailNotSent", model );
+                        return PartialView( "_EmailNotSent." + RouteData.Values["culture"], model );
                     }
                 }
 
-                return PartialView( "_EmailSent" );
+                return PartialView( "_EmailSent." + RouteData.Values["culture"] );
             }
-            return PartialView( "_Form", model );
+            return PartialView( "_Form." + RouteData.Values["culture"], model );
         }
     }
 }

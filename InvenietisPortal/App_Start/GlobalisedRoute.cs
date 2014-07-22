@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MvcApplication1.App_Start
+namespace InvPortal.App_Start
 {
     public class LocalizedRoute : Route
     {
@@ -37,12 +37,14 @@ namespace MvcApplication1.App_Start
             fr.Add( "Legal", "mentions-legales" );
             fr.Add( "Cuke", "cuke" );
             fr.Add( "CKMultiPlan", "ck-multiplan" );
+            fr.Add( "Support", "support" );
 
             en.Add( "Contact", "contact-us" );
             en.Add( "Index", "home" );
             en.Add( "Legal", "legal-terms" );
             en.Add( "Cuke", "" );
             en.Add( "CKMultiPlan", "ck-multiplan" );
+            en.Add( "Support", "support" );
         }
 
         private Dictionary<string,Dictionary<string,string>> _actionTrans;
