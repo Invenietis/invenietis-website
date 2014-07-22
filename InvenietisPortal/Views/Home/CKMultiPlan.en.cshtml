@@ -184,17 +184,20 @@
                     <h2>Questions ?</h2>
                     <h3 style="margin-bottom: 0;">Want to know more?</h3>
                     <h3>Use the form below to contact us.</h3>
-                </div>
-            </div>
 
-            <div class="row-fluid" style="margin-top: 30px">
-                <div class="span8 offset2">
+                    <hr />
+
                     @using (Ajax.BeginForm( "Support", "Home", new { }, new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "form", InsertionMode = InsertionMode.Replace }, new { @class = "form-horizontal" } ))
                     {
                         <div id="form">
                             @Html.Partial( "_Form.en", Model )
                         </div>
                     }
+                </div>
+            </div>
+
+            <div class="row-fluid" style="margin-top: 30px">
+                <div class="span8 offset2">
                 </div>
             </div>
         </section>

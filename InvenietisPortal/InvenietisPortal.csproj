@@ -177,6 +177,7 @@
     <Content Include="Content\fonts\conduit_itc-webfont.svg" />
     <Content Include="Content\fonts\conduit_itc_light-webfont.svg" />
     <Content Include="Content\fonts\conduit_itc_light_italic-webfont.svg" />
+    <Content Include="Content\gimmick_100.png" />
     <Content Include="Content\images\bg.jpg" />
     <Content Include="Content\images\bg2.jpg" />
     <Content Include="Content\images\ck-multiplan\Adobe-Acrobat.png" />
@@ -186,6 +187,8 @@
     <Content Include="Content\images\ck-multiplan\Excel-Export.png" />
     <Content Include="Content\images\ck-multiplan\Export-Word.png" />
     <Content Include="Content\images\ck-multiplan\Gear.png" />
+    <Content Include="Content\images\ck-multiplan\Headphone-Mike.png" />
+    <Content Include="Content\images\ck-multiplan\logo_multiplan.png" />
     <Content Include="Content\images\ck-multiplan\Microsoft-Excel-2013-02.png" />
     <Content Include="Content\images\ck-multiplan\Microsoft-Word-01.png" />
     <Content Include="Content\images\ck-multiplan\Principal-01.png" />
