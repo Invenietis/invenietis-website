@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace MvcApplication1.App_Start
+namespace InvPortal.App_Start
 {
     public class RemoveDuplicateContentAttribute : ActionFilterAttribute
     {

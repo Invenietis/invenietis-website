@@ -10,7 +10,10 @@
     <link href="@Url.Content("~/Content/Site.less")" rel="stylesheet">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script type="text/javascript" charset="utf-8" src="@Url.Content("~/Scripts/jquery-1.8.2.min.js")"></script>
+    <script type="text/javascript" charset="utf-8" src="@Url.Content("~/Scripts/jquery-2.1.1.min.js")"></script>
+    <script type="text/javascript" charset="utf-8" src="@Url.Content( "~/Scripts/jquery.unobtrusive-ajax.min.js" )"></script>
+    <script type="text/javascript" charset="utf-8" src="@Url.Content( "~/Scripts/jquery.validate.min.js" )"></script>
+    <script type="text/javascript" charset="utf-8" src="@Url.Content( "~/Scripts/jquery.validate.unobtrusive.min.js" )"></script>
     <script type="text/javascript" charset="utf-8" src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
     <title>@ViewBag.Title</title>
     @Html.Partial( "_GoogleTag" )
@@ -56,6 +59,7 @@
                         <ul>
                             <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
                             <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
+                            <li><a href="@Url.Action( "CKMultiPlan" )">CK-MultiPlan</a></li>
                             @if( ViewContext.RouteData.Values["culture"].ToString() != "en" )
                             {
                                 <li><a href="@Url.Action( "Cuke" )">Cuke</a></li>
@@ -74,7 +78,7 @@
                             <a class="github" href="https://github.com/Invenietis" target="_blank"></a>
                             <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
-                        <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_black-tw-mini.png")" />
+                        <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_tw_en.png")" />
                     </div>
                     <div class="span3">
                         <div class="pull-right address">

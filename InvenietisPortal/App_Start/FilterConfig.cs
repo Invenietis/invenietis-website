@@ -1,8 +1,8 @@
 ﻿using System.Web;
 using System.Web.Mvc;
-using MvcApplication1.App_Start;
+using InvPortal.App_Start;
 
-namespace MvcApplication1
+namespace InvPortal
 {
     public class FilterConfig
     {

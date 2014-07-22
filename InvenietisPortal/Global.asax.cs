@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CK.Core;
+using CK.Monitoring;
 
-namespace MvcApplication1
+namespace InvPortal
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
 
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -24,6 +24,9 @@ namespace MvcApplication1
             FilterConfig.RegisterGlobalFilters( GlobalFilters.Filters );
             RouteConfig.RegisterRoutes( RouteTable.Routes );
             BundleConfig.RegisterBundles( BundleTable.Bundles );
+
+            SystemActivityMonitor.RootLogPath = ConfigurationManager.AppSettings.Get( "LogFolderPath" ); //"~/Private/Logs" 
+            GrandOutput.EnsureActiveDefaultWithDefaultSettings();
         }
     }
 }
