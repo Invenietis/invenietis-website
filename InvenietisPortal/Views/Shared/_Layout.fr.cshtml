@@ -33,6 +33,7 @@
                             <ul class="nav nav-pills pull-right header-links">
                                 <li @Html.Raw( ViewBag.Page == "Index" ? "class=\"active\"" : "" )><a href="@Url.Action( "Index" )">Accueil</a></li>
                                 <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                                <li @Html.Raw( ViewBag.Page == "References" ? "class=\"active\"" : "" )><a href="@Url.Action( "References" )">Références</a></li>
                                 <li @Html.Raw( ViewBag.Page == "Contact" ? "class=\"active\"" : "" )><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                             </ul>
                         </div>

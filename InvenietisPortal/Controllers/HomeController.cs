@@ -43,6 +43,12 @@ namespace InvPortal.Controllers
             return View( "CKMultiPlan." + RouteData.Values["culture"] );
         }
 
+        public ActionResult References()
+        {
+            ViewBag.Page = "References";
+            return View( "References." + RouteData.Values["culture"] );
+        }
+
         [HttpPost]
         public ActionResult Support( SupportEmailViewModel model )
         {

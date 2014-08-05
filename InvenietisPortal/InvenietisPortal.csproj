@@ -219,6 +219,19 @@
     <Content Include="Content\images\microsoft_tw_fr.png" />
     <Content Include="Content\images\octocat-c-32.png" />
     <Content Include="Content\images\octocat-w-32.png" />
+    <Content Include="Content\images\references\logo_AirCrewWorld.png" />
+    <Content Include="Content\images\references\Logo_ANSP.jpg" />
+    <Content Include="Content\images\references\logo_Canal-PCR.png" />
+    <Content Include="Content\images\references\logo_CIO.png" />
+    <Content Include="Content\images\references\logo_ClefVerte.jpg" />
+    <Content Include="Content\images\references\logo_Cofely.jpg" />
+    <Content Include="Content\images\references\logo_ESIEA-gde-ecole.png" />
+    <Content Include="Content\images\references\logo_Microsoft-Campus-Challenge.png" />
+    <Content Include="Content\images\references\logo_Microsoft-Campus-Program.png" />
+    <Content Include="Content\images\references\logo_Naitways.png" />
+    <Content Include="Content\images\references\logo_Orange.jpg" />
+    <Content Include="Content\images\references\logo_PAPV.jpg" />
+    <Content Include="Content\images\references\logo_Pavillon-Bleu.jpg" />
     <Content Include="Content\images\shadow-o.png" />
     <Content Include="Content\images\shadow.png" />
     <Content Include="Content\images\tech.png" />
@@ -297,6 +310,8 @@
     <Content Include="Views\Home\_Form.en.cshtml" />
     <Content Include="Views\Home\_EmailNotSent.fr.cshtml" />
     <Content Include="Views\Home\_EmailSent.en.cshtml" />
+    <Content Include="Views\Home\References.fr.cshtml" />
+    <Content Include="Views\Home\References.en.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

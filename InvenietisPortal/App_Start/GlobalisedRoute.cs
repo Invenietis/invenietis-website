@@ -37,6 +37,7 @@ namespace InvPortal.App_Start
             fr.Add( "Legal", "mentions-legales" );
             fr.Add( "Cuke", "cuke" );
             fr.Add( "CKMultiPlan", "ck-multiplan" );
+            fr.Add( "References", "references" );
             fr.Add( "Support", "support" );
 
             en.Add( "Contact", "contact-us" );
@@ -44,6 +45,7 @@ namespace InvPortal.App_Start
             en.Add( "Legal", "legal-terms" );
             en.Add( "Cuke", "" );
             en.Add( "CKMultiPlan", "ck-multiplan" );
+            en.Add( "References", "references" );
             en.Add( "Support", "support" );
         }
 
