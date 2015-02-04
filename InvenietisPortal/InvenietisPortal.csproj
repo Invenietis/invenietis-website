@@ -234,6 +234,7 @@
     <Content Include="Content\images\references\logo_Pavillon-Bleu.jpg" />
     <Content Include="Content\images\shadow-o.png" />
     <Content Include="Content\images\shadow.png" />
+    <Content Include="Content\images\syntec.png" />
     <Content Include="Content\images\tech.png" />
     <Content Include="Content\images\touch.png" />
     <Content Include="Content\images\twitter-c-32.png" />
