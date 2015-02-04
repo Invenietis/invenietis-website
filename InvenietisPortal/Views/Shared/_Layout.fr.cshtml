@@ -33,6 +33,7 @@
                             <ul class="nav nav-pills pull-right header-links">
                                 <li @Html.Raw( ViewBag.Page == "Index" ? "class=\"active\"" : "" )><a href="@Url.Action( "Index" )">Accueil</a></li>
                                 <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                                <li @Html.Raw( ViewBag.Page == "References" ? "class=\"active\"" : "" )><a href="@Url.Action( "References" )">Nos réalisations</a></li>
                                 <li @Html.Raw( ViewBag.Page == "Contact" ? "class=\"active\"" : "" )><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                             </ul>
                         </div>
@@ -60,10 +61,6 @@
                             <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
                             <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
                             <li><a href="@Url.Action( "CKMultiPlan" )">CK-MultiPlan</a></li>
-                            @if( ViewContext.RouteData.Values["culture"].ToString() != "en" )
-                            {
-                                <li><a href="@Url.Action( "Cuke" )">Cuke</a></li>
-                            }
                         </ul>
                         <strong>Langues</strong>
                         <ul>
@@ -79,6 +76,8 @@
                             <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
                         <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_tw_fr.png")" />
+                        <img src="@Url.Content("~/Content/images/syntec.png")" />
+
                     </div>
                     <div class="span3">
                         <div class="pull-right address">
@@ -86,8 +85,8 @@
                                 <strong>Invenietis</strong>
                                 <a class="minimap" href="@Url.Action( "Contact" )"></a>
 
-                                10 rue Mercoeur<br />
-                                75011 - Paris<br />
+                                28 rue Godefroy Cavaignac<br>
+                                75011 - Paris<br>
                                 France<br /><br />
                                 Email: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
                                 <abbr title="Téléphone">Tel:</abbr> (+33) 1 84 16 19 99
