@@ -1,9 +1,10 @@
-Invenietis Website: new version (WIP)
+Invenietis Website
 ===
+Work in progress
 
-Current framework : dnxcore50
+Current framework : **dnxcore50**
 
-1 - Restore NuGet packages
-2 - Compile
-3 - Restore Node modules
-4 - Launch "build:all" task from Gulpfile.js
+1. Restore NuGet packages
+2. Compile
+3. Restore Node modules
+4. Launch "build:all" task from Gulpfile.js
