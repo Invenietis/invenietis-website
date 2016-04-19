@@ -1,0 +1,35 @@
+﻿@{ 
+    ViewBag.TitleTemplate = "Invenietis | {0}";
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/global.min.css">
+    <link rel="stylesheet" href="~/css/page.min.css">
+
+    <script type="text/javascript" src="~/js/base.min.js"></script>
+
+    @if( IsSectionDefined( "Styles" ) )
+    {
+        RenderSection( "Styles" );
+    }
+
+    @if( IsSectionDefined( "Scripts" ) )
+    {
+        RenderSection( "Scripts" );
+    }
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @Html.Partial( "_Header.fr" )
+
+    @RenderBody()
+
+    @Html.Partial( "_Footer.fr" )
+</body>
+</html>

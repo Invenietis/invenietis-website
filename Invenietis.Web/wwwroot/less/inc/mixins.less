@@ -1,0 +1,83 @@
+.vertical-align(@position: relative; @topPercent: 50%; @transformPercent: -50%) {
+    position: @position;
+    top: @topPercent;
+    -webkit-transform: translateY(@transformPercent);
+    -ms-transform: translateY(@transformPercent);
+    transform: translateY(@transformPercent);
+}
+
+.horizontal-align(@position: relative; @leftPercent: 50%; @transformPercent: -50%) {
+    position: @position;
+    left: @leftPercent;
+    -webkit-transform: translateX(@transformPercent);
+    -ms-transform: translateX(@transformPercent);
+    transform: translateX(@transformPercent);
+}
+
+.both-align(@position: relative; @topPercent: 50%; @transformLeftPercent: -50%; @leftPercent: 50%; @transformRightPercent: -50%) {
+    position: @position;
+    top: @topPercent;
+    left: @leftPercent;
+    -webkit-transform: translate(@transformLeftPercent, @transformRightPercent);
+    -ms-transform: translate(@transformLeftPercent, @transformRightPercent);
+    transform: translate(@transformLeftPercent, @transformRightPercent);
+}
+
+.preserve-3d() {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.scale(@w, @h) {
+    -ms-transform: scale(@w,@h); /* IE 9 */
+    -webkit-transform: scale(@w,@h); /* Safari */
+    transform: scale(@w,@h);
+}
+
+.grayscaleFilter(@p: 100%) {
+    -webkit-filter: grayscale(@p);
+    -moz-filter: grayscale(@p); 
+    -o-filter: grayscale(@p); 
+    filter: grayscale(@p);  
+}
+
+.grayscaleTransition(@p, @d) {
+    -webkit-filter: grayscale(@p);
+    -webkit-transition: @d ease-in-out;
+    -moz-filter: grayscale(@p); 
+    -moz-transition: @d ease-in-out;
+    -o-filter: grayscale(@p); 
+    -o-transition: @d ease-in-out;   
+    filter: grayscale(@p); 
+    transition: @d ease-in-out;             
+}
+
+.text-black-shadow(@opacity: 1; @hShadow: 0px; @vShadow: 2px; @blurRadius: 2px) {
+    text-shadow: @hShadow @vShadow @blurRadius rgba(0,0,0, @opacity); 
+}
+
+.box-black-shadow(@opacity: 1; @hShadow: 0px; @vShadow: 2px; @blurRadius: 2px) {
+    box-shadow: @hShadow @vShadow @blurRadius rgba(0,0,0, @opacity); 
+}
+
+.link(@color; @hoverColor) {
+    color: @color;
+    
+    &:hover {
+        color: @hoverColor;
+    }        
+}
+
+.bordered-link(@borderSize: 3px; @padding: 5px; @borderColor: white; @bgColor: none; @hoverBorderColor: black; @hoverBgColor: black; @display: block) {
+    border: @borderSize solid @borderColor;
+    display: @display;
+    padding: @padding (@padding *3) @padding (@padding *3);
+    background-color: @bgColor;
+    text-transform: uppercase;
+    
+    &:hover {
+        background-color: @hoverBgColor;
+        border: @borderSize solid @hoverBorderColor;    
+    }    
+}

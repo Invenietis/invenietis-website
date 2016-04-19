@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/global.min.css">
+    <link rel="stylesheet" href="~/css/home.min.css">
+
+    <script type="text/javascript" src="~/js/base.min.js"></script>
+    <script type="text/javascript" src="~/js/home.min.js"></script>
+
+    <title>Invenietis</title>
+</head>
+<body>
+    @Html.Partial( "_Header.fr" )
+
+    <div id="full-banner" class="hidden-xs">
+        <div id="banner-carousel" class="carousel slide" data-ride="carousel">
+            <a class="left carousel-control" href="#banner-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#banner-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <div id="bg-full-banner">
+                        <div id="bg-full-banner-output"></div>
+                        <div class="bg-shader-noise"></div>
+                    </div>
+
+                    <div class="content">
+                        <div class="invenietis-logo deluxe-light">
+                            <div class="logo-group1 letters">
+                                <div class="logo-i1"></div>
+                                <div class="logo-n1"></div>
+                            </div>
+                            <div class="logo-group2">
+                                <div class="logo-v2 shadow"></div>
+                                <div class="logo-v1 shadow"></div>
+                            </div>
+                            <div class="logo-group3 letters">
+                                <div class="logo-e1"></div>
+                                <div class="logo-n2"></div>
+                                <div class="logo-i2"></div>
+                                <div class="logo-e2"></div>
+                                <div class="logo-t"></div>
+                                <div class="logo-i3"></div>
+                                <div class="logo-s"></div>
+                            </div>
+                            <div class="logo-group4">
+                                <div class="logo-slash1 shadow"></div>
+                                <div class="logo-slash2 shadow"></div>
+                            </div>
+                            <div class="texts">
+                                Nous accompagnons et réalisons
+                                <br /> <b>vos systèmes métiers.</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item photo-cover" style="background-image: url('/img/60.jpg');">
+                    <div class="caption">
+                        Les systèmes métiers transforment les entreprises.
+                        <br />Découvrez comment Invenietis peut transformer la vôtre.
+                        <br />
+                        <a asp-culture="fr" asp-route-id="Home.BusinessSystems">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottom-arrow">
+            <a href="#">
+                <i class="glyphicon glyphicon-menu-down"></i>
+                <i class="glyphicon glyphicon-menu-down"></i>
+            </a>
+        </div>
+
+        <div class="orange-line"></div>
+    </div>
+
+    <div id="page" class="page">
+        <div class="full-separator"></div>
+        <div class="container">
+            <div class="text-part about-us">
+                <h1 class="separator">Qui sommes-nous ?</h1>
+
+                <p>
+                    <b>Invenietis</b> est une entreprise basée à Paris, animée par 9 passionnés, spécialistes en <b>ingénierie logicielle</b>.
+                    L’aventure a commencé en 2004 avec 2 personnes pour arriver aujourd’hui à <b>
+                        une équipe opérationnelle, cohérente et
+                        disponible
+                    </b> pour résoudre les problématiques complexes des projets web et bureautiques actuels. Notre
+                    entreprise est avant tout un moyen d’<b>aider nos partenaires et clients</b> à créer rapidement de la
+                    valeur en leur permettant de se consacrer pleinement à leur cœur de métier. Nous cherchons à établir
+                    des relations de confiance, d’humain à humain, pour <b>accompagner les projets sur le long terme.</b>
+                </p>
+            </div>
+        </div>
+
+        <div class="what-we-do colored-part">
+            <div id="bg-what-we-do">
+                <div id="bg-what-we-do-output"></div>
+                <div class="bg-shader-noise"></div>
+            </div>
+
+            <div class="content">
+                <h1 class="separator">Que faisons-nous ?</h1>
+
+                <div class="container-fluid ">
+                    <div class="row" data-role="equal-height">
+                        <div class="col-md-3 col-sm-6 job">
+                            <img src="/img/wedowork.png" />
+                            <h2>Systèmes métiers</h2>
+                            <p data-role="equal-element">
+                                Notre exigence est de mettre le meilleur de la technologie actuelle au service de <b>l’ingénierie logicielle</b>                                
+                                et de l’industrialisation des projets que nous réalisons.
+                            </p>
+
+                            <a asp-culture="fr" asp-route-id="Home.BusinessSystems">En savoir plus</a>
+                        </div>
+                        <div class="col-md-3 col-sm-6 job">
+                            <img src="/img/wedoadvice.png" />
+                            <h2>Conseil</h2>
+                            <p data-role="equal-element">
+                                Audits, études de faisabilités : Invenietis accompagne vos projets existants ou futurs.
+                            </p>
+
+                            <a asp-culture="fr" asp-route-id="Home.Consulting">En savoir plus</a>
+                        </div>
+                        <div class="col-md-3 col-sm-6 job">
+                            <img src="/img/wedolearning.png" />
+                            <h2>Formation</h2>
+                            <p data-role="equal-element">
+                                <b>Passionnés d’aspects techniques</b>, nous avons toujours fait en sorte de travailler sur
+                                des technologies de pointe et porteuses d’avenir. Ecoles, entreprises : <b>nous vous transmettons ce savoir</b>.
+                            </p>
+
+                            <a asp-culture="fr" asp-route-id="Learning.Index">En savoir plus</a>
+                        </div>
+                        <div class="col-md-3 col-sm-6 job">
+                            <img src="/img/wedord.png" />
+                            <h2>R&D</h2>
+                            <p data-role="equal-element">
+                                Notre activité de R&D, principalement orientée sur les enjeux de <b>capitalisation</b> et
+                                <b>d'evolution des systèmes</b>, nous permet de proposer des composants et des architectures
+                                logicielles durables.
+                            </p>
+
+                            <a asp-culture="fr" asp-route-id="Home.ResearchAndDev">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="text-part latest-projects">
+                <h1 class="separator">Nos dernières réalisations</h1>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>ENGIE</h2>
+                                <h3>Systèmes métiers</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-role="thumbnail" data-type="business-system" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>EcoEcole</h2>
+                                <h3>Systèmes métiers</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>Human Side</h2>
+                                <h3>Systèmes métiers</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="latest-news text-part">
+                <h1 class="separator">Nos dernières actualités</h1>
+
+                <div class="as-table">
+                    <div class="as-row news">
+                        <div class="as-cell date">
+                            <div class="day">02</div>
+                            <div class="month-year">Septembre 16</div>
+                        </div>
+
+                        <div class="as-cell news-content">
+                            <h4><a href="#">Vitae gravida dolor facilisis vel.</a></h4> Aliquam mauris leo, placerat sit amet auctor eget, malesuada eu est. Maecenas accumsan purus
+                            ut dignissim imperdiet.
+                        </div>
+                    </div>
+
+                    <div class="as-row news">
+                        <div class="as-cell date">
+                            <div class="day">02</div>
+                            <div class="month-year">Mai 16</div>
+                        </div>
+
+                        <div class="as-cell news-content">
+                            <h4><a href="#">Vitae gravida dolor facilisis vel.</a></h4> Aliquam mauris leo, placerat sit amet auctor eget, malesuada eu est. Maecenas accumsan purus
+                            ut dignissim imperdiet.
+                        </div>
+                    </div>
+
+                    <div class="as-row news">
+                        <div class="as-cell date">
+                            <div class="day">02</div>
+                            <div class="month-year">Juin 16</div>
+                        </div>
+
+                        <div class="as-cell news-content">
+                            <h4><a href="#">Vitae gravida dolor facilisis vel.</a></h4> Aliquam mauris leo, placerat sit amet auctor eget, malesuada eu est. Maecenas accumsan purus
+                            ut dignissim imperdiet.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="more-link">
+                    <a href="#">Consulter le blog</a>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial( "_Footer.fr" )
+    </div>
+</body>
+</html>

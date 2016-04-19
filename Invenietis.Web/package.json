@@ -1,0 +1,31 @@
+{
+  "name": "invenietis",
+  "version": "0.0.0",
+  "description": "Invenietis website",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+	"jquery": "^2.2.3",
+    "lightbox2": "^2.8.2",
+  },
+  "devDependencies": {
+	"gulp-bundle-aspnet": "^0.3.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-cssmin": "^0.1.7",
+    "gulp": "^3.8.11",
+    "gulp-less": "^3.0.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-run-sequence": "^0.3.2",
+    "gulp-util": "^3.0.7",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.3.5",
+	"through2": "^2.0.1",
+    "rimraf": "^2.2.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Invenietis",
+  "license": "ISC"
+}

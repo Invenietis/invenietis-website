@@ -1,14 +1,24 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 bin
 obj
+artifacts/
 
-# mstest test results
+# MSTest test results
 TestResults
-MvcApplication1.v11.suo
-MvcApplication1/MvcApplication1.csproj.user
+
+# Packages
 packages/
+node_modules/
+
+# User files
 *.suo
 *.csproj.user
 *.pubxml.user
+*.xproj.user
 Invenietis.sln.ide
 Private
+.vs/
+
+# Minified files
+*/wwwroot/js/*.min.js
+*/wwwroot/css/

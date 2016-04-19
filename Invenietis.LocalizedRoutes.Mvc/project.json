@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "description": "Invenietis.LocalizedRoutes.Mvc Class Library",
+  "authors": [ "Invenietis" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnxcore50": {}
+  },
+  "dependencies": {
+    "Invenietis.LocalizedRoutes": "1.0.0-*",
+    "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
+    "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+  }
+}

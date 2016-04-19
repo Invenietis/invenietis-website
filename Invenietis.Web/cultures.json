@@ -1,0 +1,12 @@
+﻿{
+  "defaultCulture": "fr",
+  "supportedCultures": [
+    "fr",
+    "en"
+  ],
+  "fallbackMap": {
+    "fr": [ "en" ],
+    "en": [ "fr" ],
+    "es": ["it", "fr"]
+  }
+}

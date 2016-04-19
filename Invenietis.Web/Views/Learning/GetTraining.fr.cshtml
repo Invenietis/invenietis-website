@@ -1,0 +1,79 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
+    ViewBag.Title = String.Format( ViewBag.TitleTemplate, "Une formation" );
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/job.min.css">
+    <link rel="stylesheet" href="/css/training.min.css">
+}
+
+<div class="header-banner">
+    <div id="bg-header-banner" data-role="polygons-container" data-mesh-ambient="#555555" data-mesh-diffuse="#FFFFFF" data-light-ambient="#880066"
+         data-light-diffuse="#ff8800" data-light-zoffset="20" class="photo">
+        <div id="bg-header-banner-output" data-role="polygons-output"></div>
+        <div class="bg-shader-noise"></div>
+    </div>
+
+    <div class="content text-center">
+        <img src="/img/technos/angularlogo.png" />
+        <h1>AngularJS : Les fondamentaux</h1>
+    </div>
+</div>
+
+<div class="details">
+    <div class="detail"><i class="glyphicon glyphicon-calendar"></i> <b>Durée :</b> 2 jours</div>
+</div>
+
+<div class="container">
+    <div class="centered-text-part">
+        <h1 class="separator">Présentation de la formation</h1>
+
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tortor erat, pretium ac porttitor vitae, ultrices ut ex. Vivamus
+            aliquet gravida tristique. Pellentesque molestie scelerisque arcu. Fusce quis nunc vel tortor hendrerit vulputate.
+            Phasellus efficitur nisi mauris, nec tempus enim ultricies vel. Aenean finibus mollis justo, non egestas
+            odio posuere vel. Curabitur at suscipit enim. Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur ridiculus mus. Curabitur quis porta est. Donec tincidunt ultricies mi quis tincidunt.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-part check-list">
+        <h1 class="separator">Les points abordés</h1>
+        <ul>
+            <li>
+                <h3>Donec in viverra mauris.</h3>
+                <br /> Fusce aliquam, ex id rutrum sagittis, nisl tellus rhoncus eros, eget rhoncus sapien arcu in erat. Etiam
+                sed nisl est. Proin vitae imperdiet enim. Vestibulum quis interdum purus. Mauris imperdiet mi ac mauris
+                semper maximus. Integer sed consequat nisl.
+            </li>
+            <li>
+                <h3>Fusce in interdum magna.</h3>
+                <br /> Curabitur sed nisl tempus ipsum congue viverra. Nulla facilisi. Nunc euismod dolor a nulla porta, iaculis
+                condimentum ipsum euismod. Aenean semper, eros at gravida malesuada, nibh justo pellentesque nunc, at
+                dapibus nisi magna at enim. Suspendisse non diam diam. Aenean et ex vel quam pulvinar volutpat.
+            </li>
+            <li>
+                <h3>Sed auctor ut erat et tempus.</h3>
+                <br /> Maecenas nisl tortor, congue vitae velit ac, semper rhoncus sapien. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit. Morbi vulputate in mi eu laoreet. Suspendisse vehicula metus id ex eleifend accumsan.
+                Nulla non tincidunt arcu.
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="container order">
+    <div class="centered-text-part text-center">
+        <h1 class="separator">Réserver une session</h1>
+        <a href="mailto:contact@invenietis.com" class="btn btn-primary">
+            <i class="glyphicon glyphicon-envelope"></i> formation@invenietis.com
+        </a>
+        <a href="callto:+33184161999" class="btn btn-default">
+            <i class="glyphicon glyphicon-earphone"></i> 01 84 16 19 99
+        </a>
+    </div>
+</div>

@@ -1,0 +1,131 @@
+@import (reference) "./page.less";
+
+.header-banner {
+    &.no-photo {
+        height: 400px;
+        
+        .content {
+            .vertical-align();
+            
+            h1 {
+                font-size: 30pt;
+                margin-bottom: 20px;
+            }
+            
+            p {
+                line-height: 1.8em;
+                font-size: 12pt;
+                max-width: 700px;
+            }
+        }
+    }
+    
+    ul {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 0px;
+        list-style: none;
+        background-color: rgba(0, 0, 0, 0.40);
+        
+        li {
+            .text-black-shadow(0.5);            
+            padding: 5px 20px 5px 20px;
+            display: inline-block;
+            color: white;   
+        }
+    }
+}
+
+.presentation {
+    box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.3);                
+    background-color: @inv-grey;
+    position: relative;
+    border-bottom: 15px solid @inv-orange-first;
+    
+    @media(max-width: 768px) {
+        .as-table, .as-row, .as-cell {
+            display: block;
+        }
+        
+        #project-carousel {
+            .picture {
+                margin: 20px !important;
+            }   
+        }
+    }
+    
+    #bg-presentation-banner {
+        z-index: 0;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+    } 
+    
+    .as-table {
+        z-index: 1;
+        position: relative;
+    }
+        
+    #project-carousel {
+        width: 100%;
+                      
+        .picture { 
+            height: 500px;
+            margin: 50px;
+            position: relative;
+            .preserve-3d();
+                                             
+            img {
+                .both-align();   
+                display: block;
+                position: absolute;
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);                
+                // Keep aspect ratio
+                max-width: 100%;
+                max-height: 100%;
+                cursor: zoom-in;
+            }
+        }    
+        .carousel-control {
+            background: none;
+            z-index: 1;
+        }  
+    }
+    
+    .infos {
+        color: white;
+        background-color: rgba(0, 0, 0, 0.40);
+        vertical-align: top;
+        padding: 20px 50px 50px 50px;
+        white-space: nowrap;
+        
+        h1 {
+            color: white;
+        }      
+        
+        .btn {
+            padding: 15px;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            
+            li {
+                border-bottom: 1px solid @inv-grey-very-clear;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                
+                &:last-child {
+                    border-bottom: none;
+                }                
+            }
+        }
+    }   
+}

@@ -1,0 +1,39 @@
+@import (reference) "./page.less";
+
+.check-list {   
+    ul {        
+        li {
+            margin-top: 10px;
+            
+            h3 {
+                display: inline;    
+            }
+            
+            &:before {
+                font-size: 30pt;
+                font-weight: 300;
+            }
+        }
+    }
+}  
+
+.details {
+    background-color: @inv-orange-first;
+    padding: 3px;
+    color: white;
+    .text-black-shadow(0.3);
+    text-align: center;
+    
+    .detail {
+        display: inline-block;
+        margin-left: 5px;
+        margin-right: 5px;
+    } 
+}
+
+.order {
+    .btn {
+        padding: 10px 20px 10px 20px;
+        margin-bottom: 10px;
+    }
+}

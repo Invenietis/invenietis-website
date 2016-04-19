@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
+    ViewBag.Title = String.Format( ViewBag.TitleTemplate, "Nos réalisations" );
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/projects.min.css">
+}
+
+@section Scripts {
+    <script type="text/javascript" src="/js/projects.js"></script>
+}
+
+<div class="header-banner">
+    <div class="photo" data-bg-img="/img/projects.jpg"></div>
+    <div class="content">
+        <h1>Nos réalisations</h1>
+        <p>
+            Chez Invenietis, chaque projet concrétisé est une fierté. Découvrez ici nos différentes réalisations qui contribuent, chaque jour, au succès de nos clients.
+        </p>
+    </div>
+</div>
+
+<div class="latest-projects">
+    <div class="filters">
+        <ul>
+            <li>
+                <a data-role="selector" data-value="all" class="selected" href="#">Voir tout</a>
+            </li>
+            <li>
+                <a data-role="selector" data-value="business-system" href="#">Systèmes métiers</a>
+            </li>
+            <li>
+                <a data-role="selector" data-value="advise" href="#">Conseil</a>
+            </li>
+            <li>
+                <a data-role="selector" data-value="learning" href="#">Formation</a>
+            </li>
+            <li>
+                <a data-role="selector" data-value="rd" href="#">R&D</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div data-role="thumbnail" data-type="business-system" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>ENGIE</h2>
+                        <h3>Systèmes métiers</h3>
+                    </div>
+                </div>
+            </div>
+            <div data-role="thumbnail" data-type="business-system" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>EcoEcole</h2>
+                        <h3>Systèmes métiers</h3>
+                    </div>
+                </div>
+            </div>
+            <div data-role="thumbnail" data-type="business-system" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>Human Side</h2>
+                        <h3>Systèmes métiers</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="thumbnail" data-type="learning" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>IN'TECH</h2>
+                        <h3>Formation</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="thumbnail" data-type="advise" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>FacForPro</h2>
+                        <h3>Conseil</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div data-role="thumbnail" data-type="rd" class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <div class="photo">
+                        <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                        <div class="controls">
+                            <a asp-culture="fr" asp-route-id="Projects.GetProject" asp-params="id: 1, name: un-projet" class="btn btn-default">+ d'infos</a>
+                        </div>
+                    </div>
+                    <div class="caption">
+                        <h2>CK.Database</h2>
+                        <h3>R&D</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

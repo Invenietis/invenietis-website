@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0",
+  "defaultMinJs": "js",
+  "webRoot": "./wwwroot/",
+  "bundles": {
+    "base": {
+      "js": [
+        "./node_modules/jquery/dist/jquery.min.js",
+        "./wwwroot/js/jquery.helpers.js",
+        "./node_modules/lightbox2/dist/js/lightbox.min.js",
+        "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "./wwwroot/lib/fss.min.js",
+        "./wwwroot/js/fss.helpers.js",
+        "./wwwroot/js/responsive-utilities.js",
+        "./wwwroot/js/scroll.js",
+        "./wwwroot/js/template.js",
+        "./wwwroot/js/page.js"
+      ]
+    }
+  }
+}

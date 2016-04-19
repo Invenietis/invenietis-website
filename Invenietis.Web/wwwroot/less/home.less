@@ -1,0 +1,222 @@
+@import (reference) "./global.less";
+
+body {
+    overflow: hidden;
+}
+
+#full-banner {
+    .preserve-3d();     
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    font-size: 26pt;
+    color: white;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.50);
+   
+    #bg-full-banner {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+        background-color: #0b0b0b;
+    }
+    
+    #banner-carousel {
+        .item {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        .photo-cover {
+            background-size: cover; 
+            background-position: middle center;
+            .preserve-3d();
+                        
+            .caption {
+                position: absolute;
+                margin-left: @vMargin;
+                margin-right: @vMargin;
+                text-align: center;
+                .vertical-align(relative, 50%, -50%);
+                line-height: 1.35em;
+                font-weight: 300;    
+            }
+            
+            a {
+                display: inline-block;
+                margin-top: 30px;
+                color: white;
+                border: 4px solid white;
+                padding: 5px 30px 5px 30px;
+                font-size: 18pt;
+                text-transform: uppercase;
+                font-weight: bold;
+                box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+                
+                &:hover {
+                    background-color: white;
+                    color: @inv-grey;
+                    text-shadow: none;   
+                }
+            } 
+        }
+        
+        .carousel-control {
+            background: none;
+            z-index: 3;
+        }
+    }
+
+    .content {
+        .vertical-align(relative, 50%, -50%);
+        padding-left: 100px;
+        
+        .invenietis-logo {
+            color: white;
+            
+            .shadow {
+                box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.25); 
+            }
+        }     
+           
+        .texts {
+            opacity: 0;            
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+            text-align: right; 
+            display: inline-block;
+            margin-left: -30px;     
+            margin-top: -10px;  
+            line-height: 1.35em;  
+            font-weight: 300;
+            
+            b {
+                font-weight: normal;
+            }
+        }      
+    }
+    
+    .controls {
+        position: absolute;
+
+        .vertical-align(relative, 40%, -50%);
+        
+        .prev {
+            margin-left: 50px;
+        }
+        
+        .next {
+            margin-right: 50px;
+        }
+    }
+
+    #bottom-arrow {
+        position: absolute;
+        bottom: 100px;
+        right: 100px;
+        z-index: 3;  
+        
+        animation-name: bottomArrow;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+              
+        @keyframes bottomArrow {
+            0%   { bottom: 100px; }
+            50%   { bottom: 150px; }
+            100% { bottom: 100px; }
+        }
+        
+        i {
+            display: block;
+            
+            &:last-child {
+                margin-top: -20px;    
+            }
+        }    
+    }
+    
+    .orange-line {
+        width: 100%;
+        height: 15px;
+        background-color: @inv-orange-first;
+        position: absolute;
+        bottom: 0px;
+    }    
+}
+
+.page {
+    overflow: auto;
+    position: relative;
+    top: 100vh;
+    padding-top: 50px;
+    background-color: white;
+    height: 100%;
+    
+    @media(max-width: 768px) {
+        top: 0;
+        padding-top: 50px;
+    }   
+}
+
+.what-we-do {
+    position: relative;
+    min-height: 400px;
+    text-align: center;
+    .text-black-shadow(0.5);
+    
+    .job {
+        padding-top: 20px;
+    }
+    
+    #bg-what-we-do {
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #62124a;
+    }
+    
+    .content {
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+
+        a {
+            display: inline-block;
+            padding-top: 5px;
+            padding-bottom: 10px;
+            color: white;
+            border: 3px solid white;
+            padding: 5px 15px 5px 15px;
+            font-weight: bold;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;            
+            
+            &:hover {
+                background-color: white;
+                color: @inv-grey;
+                text-shadow: none;   
+            }
+        }   
+    }
+    
+    h2 {
+        color: white;
+        margin-top: 10px;
+    }
+    
+    h1 { 
+        color: white;          
+        margin-top: 0px;
+        
+        &:after {
+            margin-top: 10px;
+        }
+    }
+}

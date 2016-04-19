@@ -1,0 +1,205 @@
+@import (reference) "./page.less";
+
+body {
+    background-color: #eeeee8;
+}   
+
+.header-banner {
+    height: 500px;
+            
+    .photo {
+        background-image: url('../img/89.jpg');
+        opacity: 0.4;
+        background-position: center center;
+        
+        &.top-center {
+            background-position: top center;            
+        }
+    }
+    
+    .content {
+        .vertical-align();
+        
+        h1 {
+            font-size: 30pt;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            line-height: 1.8em;
+            font-size: 12pt;
+            max-width: 700px;
+        }
+    }
+}
+
+.blog-list {   
+    .nav-pagination {
+        text-align: center;
+    }
+
+    .articles {  
+        .article-details {
+            background-color: white;
+            .box-black-shadow(0.20); 
+            padding: 15px 25px 25px 25px; 
+            margin-bottom: 25px;   
+        }
+        
+        .article-comments {
+            background-color: white;
+            .box-black-shadow(0.20); 
+            padding: 15px 25px 25px 25px; 
+            margin-bottom: 50px;
+            
+            .comment {
+                margin-bottom: 25px;
+                padding-bottom: 25px;
+                border-bottom: 1px solid @inv-grey-very-clear;
+                
+                .avatar {
+                    margin-right: 25px;
+                }
+                
+                &:last-child {
+                    border-bottom: none;
+                    padding-bottom: 0px;
+                }
+            }  
+        }
+        
+        .article {
+            background-color: white;
+            border-top: 4px solid @inv-orange-first;
+            .box-black-shadow(0.20); 
+            padding: 15px 25px 25px 25px; 
+            margin-bottom: 50px;
+            
+            .quote-block {
+                margin-top: 100px;
+                margin-bottom: 100px;
+            }
+            
+            img {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                
+                &.centered {
+                    display: block;                    
+                    margin-left:auto;
+                    margin-right:auto;
+                }
+                
+                &.bordered {
+                    padding: 5px;
+                    .box-black-shadow(0.20);    
+                }
+            }
+            
+            &.full {
+                margin-bottom: 25px;
+                padding: 25px;
+                line-height: 1.8em;
+            }
+            
+            .comments {        
+                text-align: left;
+                padding-top: 10px;
+            }
+            
+            h1 {
+                margin-bottom: 10px;    
+            }
+            
+            .details {
+                margin-bottom: 5px;                    
+            }
+            
+            .tag-list {
+                margin-bottom: 20px;
+            }
+            
+            .more-link {
+                text-align: right;
+                    
+                a {
+                    display: inline-block;
+                    padding-top: 5px;
+                    padding-bottom: 10px;
+                    color: @brand-primary;
+                    border-bottom: 3px solid @brand-primary;
+                    padding: 5px 15px 5px 15px;
+                    font-weight: bold;
+                    text-transform: uppercase;            
+                    
+                    &:hover {
+                        background-color: @brand-primary;
+                        color: white;
+                    }
+                }
+            } 
+        }   
+    }
+    
+    .side {
+        .btn-home {
+             padding: 15px;
+             margin-bottom: 50px;   
+        }
+        
+        .side-block {
+            background-color: white;
+            .box-black-shadow(0.20); 
+            padding: 15px 25px 25px 25px; 
+            margin-bottom: 50px;  
+        }          
+        
+        .categories {
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                
+                li {
+                    border-bottom: 1px solid @inv-grey-very-clear;
+                    padding: 10px;
+                    
+                    a {
+                        color: @inv-grey;
+                        
+                        &:hover {
+                            color: white;
+                        }
+                    }
+                    
+                    &:hover {                     
+                        background-color: @inv-orange-first;
+                        border-bottom: 1px solid white;
+                        
+                        a {
+                            color: white;
+                        }
+                    }
+                    
+                    &:last-child {
+                        border-bottom: none;
+                    }                
+                }
+            }
+        }
+    }
+    
+    .tag-list {
+        .label {
+            font-weight: normal;
+            
+            a, a:hover {
+                color: white;
+            }
+            
+            &:hover {
+                background-color: @inv-orange-first;
+            }
+        }
+    }
+}

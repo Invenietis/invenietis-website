@@ -1,0 +1,167 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
+    ViewBag.Title = String.Format( ViewBag.TitleTemplate, "Formation" );
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/job.min.css">
+}
+
+@section Scripts {
+    <script type="text/javascript" src="/js/projects.min.js"></script>
+}
+
+
+<div class="header-banner">
+    <div class="photo" data-bg-align="bottom center" data-bg-img="/img/13.jpg"></div>
+    <div class="content">
+        <h1>Formation</h1>
+        <p>
+            Fusce in interdum magna. Curabitur sed nisl tempus ipsum congue viverra. Nulla facilisi. Nunc euismod dolor a nulla porta,
+            iaculis condimentum ipsum euismod. Aenean semper, eros at gravida malesuada, nibh justo pellentesque nunc,
+            at dapibus nisi magna at enim. Suspendisse non diam diam. Aenean et ex vel quam pulvinar volutpat.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="centered-text-part">
+        <h1 class="separator">Des formations adaptées à chacun</h1>
+
+        <p>Infographie : écoles, formation professionnelle, entreprises</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-with-photo">
+        <h1 class="separator">Un partenaire historique : le groupe ESIEA</h1>
+
+        <div class="as-table">
+            <div class="as-row">
+                <div class="as-cell content">
+                    <p>
+                        Maecenas consectetur lacus sed nibh iaculis, sed interdum ligula semper. Quisque blandit ipsum quam, non feugiat est venenatis
+                        a. Donec volutpat convallis neque at efficitur. Ut justo ex, fermentum in cursus sit amet, volutpat
+                        non leo. Nunc quis ante libero. Phasellus efficitur efficitur est non gravida. Quisque vel dolor
+                        fermentum, cursus elit eget, vehicula est. Nulla consectetur enim posuere, vestibulum velit porttitor,
+                        vehicula ante.
+                    </p>
+
+                    <p>
+                        Donec vel quam ante. Pellentesque luctus, erat eget consectetur semper, risus justo ultrices lectus, id mattis augue sapien
+                        quis urna. Praesent at dui et metus maximus tincidunt. Vestibulum iaculis imperdiet quam, vel
+                        mattis ex consectetur vitae. Sed mollis, augue et cursus bibendum, est tortor hendrerit mauris,
+                        ac ultricies massa risus vitae metus.
+                    </p>
+                </div>
+
+                <div class="as-cell photo">
+                    <img src="/img/refs/intechandesiea.png" width="250" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="quote-block">
+    <div class="container">
+        <div class="open-quote"></div>
+        <p>
+            Maecenas consectetur lacus sed nibh iaculis, sed interdum ligula semper. Quisque blandit ipsum quam, non feugiat est venenatisa.
+        </p>
+        <div class="author">Eric Lalitte, directeur d'IN'TECH</div>
+
+        <div class="close-quote"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="centered-text-part">
+        <h1 class="separator">Catalogue des formations disponibles</h1>
+
+        <div class="latest-projects">
+            <div class="filters">
+                <ul>
+                    <li>
+                        <a data-role="selector" data-value="all" class="selected" href="#">Voir tout</a>
+                    </li>
+                    <li>
+                        <a data-role="selector" data-value="dd" href="#">Développement desktop</a>
+                    </li>
+                    <li>
+                        <a data-role="selector" data-value="dw" href="#">Développement web</a>
+                    </li>
+                    <li>
+                        <a data-role="selector" data-value="aq" href="#">Assurance qualité</a>
+                    </li>
+                    <li>
+                        <a data-role="selector" data-value="t" href="#">Transverse</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div data-role="thumbnail" data-type="dw" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Learning.GetTraining" asp-params="id: 1, name: une-formation" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>AngularJS</h2>
+                                <h3>Développement web</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-role="thumbnail" data-type="aq" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Learning.GetTraining" asp-params="id: 1, name: une-formation" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>Tests unitaires</h2>
+                                <h3>Assurance qualité</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-role="thumbnail" data-type="dw" class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="photo">
+                                <img src="http://placehold.it/350x200" alt="Thumbnail">
+
+                                <div class="controls">
+                                    <a asp-culture="fr" asp-route-id="Learning.GetTraining" asp-params="id: 1, name: une-formation" class="btn btn-default">+ d'infos</a>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <h2>ASP.NET</h2>
+                                <h3>Développement web</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="centered-text-part">
+        <h1 class="separator">Références</h1>
+
+        <div class="references">
+            <a href="#"><img src="/img/refs/esiea.png" /></a>
+            <a href="#"><img src="/img/refs/intech.jpg" /></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+@import (reference) "./page.less";
+
+.header-banner {
+    height: 500px;
+    
+    .photo {
+        opacity: 0.3;
+        background-position: center center;
+    }
+
+    .content {
+        .vertical-align();
+        
+        h1 {
+            font-size: 30pt;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            line-height: 1.8em;
+            font-size: 12pt;
+            max-width: 700px;
+        }
+    }
+}
+
+.chrono {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.check-list {   
+    ul {        
+        li {
+            margin-top: 10px;
+            
+            h3 {
+                display: inline;    
+            }
+            
+            &:before {
+                font-size: 30pt;
+                font-weight: 300;
+            }
+        }
+    }
+}

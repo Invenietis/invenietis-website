@@ -1,0 +1,128 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.fr.cshtml";
+    ViewBag.Title = String.Format( ViewBag.TitleTemplate, "Un projet" );
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/css/project.min.css">
+}
+
+
+<div class="header-banner">
+    <div id="bg-header-banner" data-role="polygons-container" data-mesh-ambient="#555555" data-mesh-diffuse="#FFFFFF" data-light-ambient="#880066"
+         data-light-diffuse="#ff8800" data-light-zoffset="20" class="photo">
+        <div id="bg-header-banner-output" data-role="polygons-output"></div>
+        <div class="bg-shader-noise"></div>
+    </div>
+
+    <div class="content text-center">
+        <h1>ENGIE : Un nouvel outil pour les commerciaux</h1>
+    </div>
+</div>
+
+<div class="presentation">
+    <div id="bg-presentation-banner" data-role="polygons-container" data-light-ambient="#0c0c0c" data-light-diffuse="#141414">
+        <div id="bg-presentation-banner-output" data-role="polygons-output"></div>
+        <div class="bg-shader-noise"></div>
+    </div>
+
+    <div class="as-table">
+        <div class="as-row">
+            <div id="project-carousel" class="as-cell carousel slide" data-ride="carousel">
+                <a class="left carousel-control" href="#project-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#project-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="picture">
+                            <a href="/img/engie.png" data-lightbox="carousel">
+                                <img src="/img/engie.png" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="picture">
+                            <a href="http://placehold.it/700x500" data-lightbox="carousel">
+                                <img src="http://placehold.it/700x500" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="infos as-cell">
+                <h1 class="separator">Informations</h1>
+
+                <ul>
+                    <li><i class="glyphicon glyphicon-calendar"></i> <b>Date :</b> 17/03/2016</li>
+                    <li><i class="glyphicon glyphicon-user"></i> <b>Client :</b> ENGIE</li>
+                    <li><i class="glyphicon glyphicon-hourglass"></i> <b>Durée :</b> 6 mois</li>
+                </ul>
+
+                <br /><a href="#" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-arrow-right"></i> Découvrir le site d'ENGIE</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-part">
+        <h1 class="separator">Le besoin</h1>
+
+        <p>
+            Maecenas consectetur lacus sed nibh iaculis, sed interdum ligula semper. Quisque blandit ipsum quam, non feugiat est venenatis
+            a. Donec volutpat convallis neque at efficitur. Ut justo ex, fermentum in cursus sit amet, volutpat non leo.
+            Nunc quis ante libero. Phasellus efficitur efficitur est non gravida. Quisque vel dolor fermentum, cursus
+            elit eget, vehicula est. Nulla consectetur enim posuere, vestibulum velit porttitor, vehicula ante. Donec
+            vel quam ante. Pellentesque luctus, erat eget consectetur semper, risus justo ultrices lectus, id mattis
+            augue sapien quis urna. Praesent at dui et metus maximus tincidunt. Vestibulum iaculis imperdiet quam, vel
+            mattis ex consectetur vitae. Sed mollis, augue et cursus bibendum, est tortor hendrerit mauris, ac ultricies
+            massa risus vitae metus.
+        </p>
+    </div>
+</div>
+
+<div class="quote-block">
+    <div class="container">
+        <div class="open-quote"></div>
+        <p>
+            Maecenas consectetur lacus sed nibh iaculis, sed interdum ligula semper. Quisque blandit ipsum quam, non feugiat est venenatisa.
+        </p>
+        <div class="author">Fabien N, Directeur des opérations commerciales</div>
+
+        <div class="close-quote"></div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="text-part check-list">
+        <h1 class="separator">La solution proposée par Invenietis</h1>
+
+        <p>
+            Maecenas consectetur lacus sed nibh iaculis, sed interdum ligula semper. Quisque blandit ipsum quam, non feugiat est venenatis
+            a. Donec volutpat convallis neque at efficitur. Ut justo ex, fermentum in cursus sit amet, volutpat non leo.
+            Nunc quis ante libero. Phasellus efficitur efficitur est non gravida. Quisque vel dolor fermentum, cursus
+            elit eget, vehicula est. Nulla consectetur enim posuere, vestibulum velit porttitor, vehicula ante. Donec
+            vel quam ante. Pellentesque luctus, erat eget consectetur semper, risus justo ultrices lectus, id mattis
+            augue sapien quis urna. Praesent at dui et metus maximus tincidunt. Vestibulum iaculis imperdiet quam, vel
+            mattis ex consectetur vitae. Sed mollis, augue et cursus bibendum, est tortor hendrerit mauris, ac ultricies
+            massa risus vitae metus.
+        </p>
+
+        <h2>Fonctionnalités</h2>
+
+        <ul>
+            <li>Maecenas consectetur lacus sed nibh iaculis.</li>
+            <li>Ut justo ex, fermentum in cursus sit amet.</li>
+            <li>Praesent at dui et metus maximus tincidunt. </li>
+            <li>Sed mollis, augue et cursus bibendum.</li>
+            <li>Sed auctor ut erat et tempus.</li>
+        </ul>
+    </div>
+</div>

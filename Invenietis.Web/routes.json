@@ -1,0 +1,120 @@
+﻿{
+  "cultures": [
+    {
+      "culture": "fr",
+      "defaultRouteId": "Home.Index",
+      "routeFragments": [
+        {
+          "id": "Home",
+          "value": "",
+          "isAbstract": true
+        },
+        {
+          "id": "Home.Index"
+        },
+        {
+          "id": "Home.Error",
+          "value": "error"
+        },
+        {
+          "id": "Home.BusinessSystems",
+          "value": "systemes-metiers"
+        },
+        {
+          "id": "Home.AboutUs",
+          "value": "qui-sommes-nous"
+        },
+        {
+          "id": "Home.Consulting",
+          "value": "conseil"
+        },
+        {
+          "id": "Home.ResearchAndDev",
+          "value": "recherche-et-developpement"
+        },
+        {
+          "id": "Projects",
+          "value": "projets",
+          "isAbstract": true
+        },
+        {
+          "id": "Projects.Index"
+        },
+        {
+          "id": "Projects.GetProject",
+          "value": "{id}-{name}"
+        },
+        {
+          "id": "Learning",
+          "value": "formation",
+          "isAbstract": true
+        },
+        {
+          "id": "Learning.Index"
+        },
+        {
+          "id": "Learning.GetTraining",
+          "value": "{id}-{name}"
+        }
+      ]
+    },
+    {
+      "culture": "en",
+      "defaultRouteId": "Home.Index",
+      "routeFragments": [
+        {
+          "id": "Home",
+          "value": "",
+          "isAbstract": true
+        },
+        {
+          "id": "Home.Index"
+        },
+        {
+          "id": "Home.Error",
+          "value": "error"
+        },
+        {
+          "id": "Home.BusinessSystems",
+          "value": "business-systems"
+        },
+        {
+          "id": "Home.AboutUs",
+          "value": "who-we-are"
+        },
+        {
+          "id": "Home.Consulting",
+          "value": "consulting"
+        },
+        {
+          "id": "Home.ResearchAndDev",
+          "value": "research-and-development"
+        },
+        {
+          "id": "Projects",
+          "value": "projects",
+          "isAbstract": true
+        },
+        {
+          "id": "Projects.Index"
+        },
+        {
+          "id": "Projects.GetProject",
+          "value": "{id}-{name}"
+        },
+        {
+          "id": "Learning",
+          "value": "learning",
+          "isAbstract": true
+        },
+        {
+          "id": "Learning.Index"
+        },
+        {
+          "id": "Learning.GetTraining",
+          "value": "{id}-{name}"
+        }
+      ]
+    }
+  ]
+}

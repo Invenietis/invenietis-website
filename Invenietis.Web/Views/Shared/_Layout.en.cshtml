@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/global.min.css">
+    <script type="text/javascript" src="~/js/base.min.js"></script>
+
+    @if( IsSectionDefined( "Styles" ) )
+    {
+        RenderSection( "Styles" );
+    }
+
+    @if( IsSectionDefined( "Scripts" ) )
+    {
+        RenderSection( "Scripts" );
+    }
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    @Html.Partial( "_Header.en" )
+
+    @RenderBody()
+
+    @Html.Partial( "_Footer.en" )
+</body>
+</html>
