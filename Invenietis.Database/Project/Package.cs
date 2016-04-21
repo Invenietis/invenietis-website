@@ -18,7 +18,7 @@ namespace Invenietis.Database.Project
     [Versions( "1.0.0" )]
     public class Package : SqlPackage
     {
-        void Construct()
+        void Construct( CK.DB.Resource.Package ResPackage )
         {
 
         }

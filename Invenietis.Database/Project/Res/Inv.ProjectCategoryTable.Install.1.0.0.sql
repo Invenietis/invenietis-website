@@ -2,7 +2,7 @@
 create table Inv.tProjectCategory
 (
 	ProjectCategoryId int not null constraint PK_tProjectCategory primary key,
-	ResId int not null
+	ResId int not null constraint FK_tProjectCategory_ResId foreign key references CK.tRes(ResId)
 );
 
 insert into Inv.tProjectCategory

@@ -18,10 +18,9 @@ namespace Invenietis.Database
     [Versions( "1.0.0" )]
     public class Package : SqlPackage
     {
-        [InjectContract]
-        public Learning.Package LearningPackage { get; protected set; }
+        void Construct()
+        {
 
-        [InjectContract]
-        public Project.Package ProjectPackage { get; protected set; }
+        }
     }
 }

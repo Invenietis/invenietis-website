@@ -10,7 +10,7 @@ namespace Invenietis.Database.Project
     [SqlTable( "tProjectCategory", Package = typeof( Package ) ), Versions( "1.0.0" )]
     public abstract class ProjectCategoryTable : SqlTable
     {
-        void Construct()
+        void Construct( CK.DB.Resource.ResTable ResTable )
         {
 
         }

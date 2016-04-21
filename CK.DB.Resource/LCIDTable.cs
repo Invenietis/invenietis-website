@@ -15,19 +15,5 @@ namespace CK.DB.Resource
         void Construct( XLCIDTable xlcid )
         {
         }
-
-        [SqlProcedureNonQuery( "sResCultureRegister" )]
-        public abstract void CultureRegister( short lcid, string name, string englishName, string nativeName, short parentLCID );
-
-        [SqlProcedureNonQuery( "sResCultureDestroy" )]
-        public abstract void CultureDestroy( short lcid );
-
-        public void RegisterCulture( CultureInfo c )
-        {
-            if( c == null ) throw new ArgumentNullException();
-            if( c.LCID == 127 ) return;
-            if( c.Parent.LCID != 127 ) RegisterCulture( c.Parent );
-            CultureRegister( (short)c.LCID, c.Name, c.EnglishName, c.NativeName, (short)c.Parent.LCID );
-        }
     }
 }

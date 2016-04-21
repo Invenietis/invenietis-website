@@ -57,6 +57,8 @@ namespace CK.SqlServer.DbSetup
             SetupEngineConfiguration setupConfig = CreateConfig(assembliesToSetup, connectionString, dynamicAssemblyName, directory);
 
             IStObjMap resultMap = RunDBSetup( m, setupConfig );
+
+            Console.ReadKey();
         }
 
         SetupEngineConfiguration CreateConfig( IEnumerable<string> assembliesToSetup, string connectionString, string dynamicAssemblyName, string directory )

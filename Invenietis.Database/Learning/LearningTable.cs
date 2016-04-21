@@ -10,7 +10,7 @@ namespace Invenietis.Database.Learning
     [SqlTable( "tLearning", Package = typeof( Package ) ), Versions( "1.0.0" )]
     public abstract class LearningTable : SqlTable
     {
-        void Construct( LearningCategoryTable LearningCategoryTable )
+        void Construct( CK.DB.Resource.ResTable ResTable, LearningCategoryTable LearningCategoryTable )
         {
 
         }

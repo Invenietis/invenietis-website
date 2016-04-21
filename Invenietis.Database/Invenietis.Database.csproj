@@ -80,6 +80,12 @@
     <EmbeddedResource Include="Project\Res\Inv.ProjectTable.Install.1.0.0.sql" />
     <EmbeddedResource Include="Res\InvPackage.Init.1.0.0.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CK.DB.Resource\CK.DB.Resource.csproj">
+      <Project>{3a39492e-fdde-44f5-b5bd-9a8a7967e0e3}</Project>
+      <Name>CK.DB.Resource</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

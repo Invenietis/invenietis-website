@@ -247,6 +247,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "CK.Core": "4.3.0",
+          "CK.DB.Resource": "1.0.0",
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",
@@ -2154,6 +2155,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "CK.Core": "4.3.0",
+          "CK.DB.Resource": "1.0.0",
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",
@@ -4064,6 +4066,7 @@
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
           "CK.Core": "4.3.0",
+          "CK.DB.Resource": "1.0.0",
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",

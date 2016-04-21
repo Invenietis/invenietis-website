@@ -10,20 +10,11 @@ namespace CK.DB.Resource
 {
     [SqlTable( "tResHtml", Package = typeof( Package ) ), Versions( "1.0.0" )]
     [SqlObjectItem( "vResHtml, vXLCIDResHtml" )]
+    [SqlObjectItem( "sResHtmlSet, sResHtmlAssume, sResHtmlRemove" )]
     public abstract class ResHtmlTable : SqlTable
     {
         void Construct( ResTable res, LCIDTable lcid )
         {
         }
-
-        [SqlProcedureNonQuery( "sResHtmlSet" )]
-        public abstract void HtmlSet( int resId, short lcid, string value );
-
-        [SqlProcedureNonQuery( "sResHtmlAssume" )]
-        public abstract int HtmlAssume( string resName, short lcid, string value );
-
-        [SqlProcedureNonQuery( "sResHtmlRemove" )]
-        public abstract void HtmlRemove( int resId, short lcid );
-
     }
 }
