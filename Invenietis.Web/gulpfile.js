@@ -1,4 +1,4 @@
-﻿/// <binding Clean='clean' />
+﻿/// <binding Clean='clean:all' />
 /// <binding Build='build:all' />
 
 "use strict";
@@ -44,7 +44,7 @@ gulp.task("clean:css", function (cb) {
     rimraf(paths.minCss, cb);
 });
 
-gulp.task("clean", ["clean:js", "clean:css"]);
+gulp.task("clean:all", ["clean:js", "clean:css"]);
 
 gulp.task('less', function () {
     return gulp.src([paths.less, "!" + paths.excludedLess])
