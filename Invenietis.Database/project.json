@@ -1,0 +1,12 @@
+﻿{
+  "version": "0.0.0",
+  "description": "Invenietis.Database Class Library",
+  "authors": [ "Thunderya" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "frameworks": {
+    "dnx451": { }
+  }
+}

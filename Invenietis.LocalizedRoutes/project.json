@@ -1,12 +1,12 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "0.0.0",
   "description": "Invenietis.LocalizedRoutes Class Library",
   "authors": [ "Invenietis" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "frameworks": {
-    "dnxcore50": {}
+    "net451": {}
   },
   "dependencies": {
     "Microsoft.AspNet.Localization": "1.0.0-rc1-final",

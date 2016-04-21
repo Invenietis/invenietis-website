@@ -2,7 +2,7 @@ Invenietis Website
 ===
 Work in progress
 
-Current framework : **dnxcore50**
+Current framework : **dnx451**
 
 1. Restore NuGet packages
 2. Compile
