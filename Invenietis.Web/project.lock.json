@@ -3,6 +3,242 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "CK.Core/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Core.dll": {}
+        }
+      },
+      "CK.Reflection/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Reflection.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Reflection.dll": {}
+        }
+      },
+      "CK.Setup.Dependency/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        }
+      },
+      "CK.Setupable.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        }
+      },
+      "CK.Setupable.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        }
+      },
+      "CK.Setupable.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        }
+      },
+      "CK.SqlServer.Core/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        }
+      },
+      "CK.SqlServer.DbSetup/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser": "4.0.2",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Engine": "4.0.0",
+          "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.CommandLine": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+        }
+      },
+      "CK.SqlServer.Parser/4.0.2": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.SqlServer.Parser.Model": "1.0.1"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        }
+      },
+      "CK.SqlServer.Parser.Model/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Engine": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.SqlServer.Setup.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        }
+      },
+      "CK.StObj.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        }
+      },
+      "CK.StObj.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        }
+      },
+      "CK.StObj.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        }
+      },
+      "Invenietis.Database/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -1660,6 +1896,242 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
+      "CK.Core/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Core.dll": {}
+        }
+      },
+      "CK.Reflection/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Reflection.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Reflection.dll": {}
+        }
+      },
+      "CK.Setup.Dependency/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        }
+      },
+      "CK.Setupable.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        }
+      },
+      "CK.Setupable.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        }
+      },
+      "CK.Setupable.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        }
+      },
+      "CK.SqlServer.Core/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        }
+      },
+      "CK.SqlServer.DbSetup/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser": "4.0.2",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Engine": "4.0.0",
+          "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.CommandLine": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+        }
+      },
+      "CK.SqlServer.Parser/4.0.2": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.SqlServer.Parser.Model": "1.0.1"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        }
+      },
+      "CK.SqlServer.Parser.Model/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Engine": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.SqlServer.Setup.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        }
+      },
+      "CK.StObj.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        }
+      },
+      "CK.StObj.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        }
+      },
+      "CK.StObj.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        }
+      },
+      "Invenietis.Database/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -3320,6 +3792,242 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
+      "CK.Core/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Core.dll": {}
+        }
+      },
+      "CK.Reflection/4.3.0": {
+        "type": "package",
+        "compile": {
+          "lib/net45/CK.Reflection.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Reflection.dll": {}
+        }
+      },
+      "CK.Setup.Dependency/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setup.Dependency.dll": {}
+        }
+      },
+      "CK.Setupable.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Engine.dll": {}
+        }
+      },
+      "CK.Setupable.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Model.dll": {}
+        }
+      },
+      "CK.Setupable.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.Setupable.Runtime.dll": {}
+        }
+      },
+      "CK.SqlServer.Core/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Core.dll": {}
+        }
+      },
+      "CK.SqlServer.DbSetup/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser": "4.0.2",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Engine": "4.0.0",
+          "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.CommandLine": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0-rc1-final",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final"
+        }
+      },
+      "CK.SqlServer.Parser/4.0.2": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.SqlServer.Parser.Model": "1.0.1"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.dll": {}
+        }
+      },
+      "CK.SqlServer.Parser.Model/1.0.1": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Parser.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Engine": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.SqlServer.Setup.Runtime": "4.0.0",
+          "CK.StObj.Engine": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Engine.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Model.dll": {}
+        }
+      },
+      "CK.SqlServer.Setup.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.Setupable.Runtime": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Parser.Model": "1.0.1",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.SqlServer.Setup.Runtime.dll": {}
+        }
+      },
+      "CK.StObj.Engine/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Reflection": "4.3.0",
+          "CK.Setup.Dependency": "4.0.0",
+          "CK.StObj.Model": "4.0.0",
+          "CK.StObj.Runtime": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Engine.dll": {}
+        }
+      },
+      "CK.StObj.Model/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Model.dll": {}
+        }
+      },
+      "CK.StObj.Runtime/4.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.StObj.Model": "4.0.0"
+        },
+        "compile": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net45/CK.StObj.Runtime.dll": {}
+        }
+      },
+      "Invenietis.Database/0.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -4981,6 +5689,14 @@
     }
   },
   "libraries": {
+    "CK.SqlServer.DbSetup/0.0.0": {
+      "type": "project",
+      "path": "../CK.SqlServer.DbSetup/project.json"
+    },
+    "Invenietis.Database/0.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Database/project.json"
+    },
     "Invenietis.LocalizedRoutes/0.0.0": {
       "type": "project",
       "path": "../Invenietis.LocalizedRoutes/project.json"
@@ -4988,6 +5704,191 @@
     "Invenietis.LocalizedRoutes.Mvc/0.0.0": {
       "type": "project",
       "path": "../Invenietis.LocalizedRoutes.Mvc/project.json"
+    },
+    "CK.Core/4.3.0": {
+      "type": "package",
+      "sha512": "xK8gu/dIrbyNDU3sVjFnRqKmJwzZGMIJiADbb1cXs3zuNGc2+OtFRJQUyokZ491AeiuNEioe8va19I/IJqneqw==",
+      "files": [
+        "CK.Core.4.3.0.nupkg",
+        "CK.Core.4.3.0.nupkg.sha512",
+        "CK.Core.nuspec",
+        "lib/net40/CK.Core.dll",
+        "lib/net40/CK.Core.pdb",
+        "lib/net40/CK.Core.xml",
+        "lib/net45/CK.Core.dll",
+        "lib/net45/CK.Core.pdb",
+        "lib/net45/CK.Core.xml"
+      ]
+    },
+    "CK.Reflection/4.3.0": {
+      "type": "package",
+      "sha512": "NXNVClPniwb9vZozOAmKlz2irBN3F9euhbmZqsE2INGp5LpG8Op8HblLwBciqSzYcuK0dmLue6XAxxqIndrISg==",
+      "files": [
+        "CK.Reflection.4.3.0.nupkg",
+        "CK.Reflection.4.3.0.nupkg.sha512",
+        "CK.Reflection.nuspec",
+        "lib/net40/CK.Reflection.dll",
+        "lib/net40/CK.Reflection.pdb",
+        "lib/net40/CK.Reflection.xml",
+        "lib/net45/CK.Reflection.dll",
+        "lib/net45/CK.Reflection.pdb",
+        "lib/net45/CK.Reflection.xml"
+      ]
+    },
+    "CK.Setup.Dependency/4.0.0": {
+      "type": "package",
+      "sha512": "pRSR+Ioo0eGPGLGLAblzzkVLEpyWn83d4py2Vgc1aXnvFl8jBhdFxWRtARHbhA8u5aowQ4u/eDhftxoJ0wYu+w==",
+      "files": [
+        "CK.Setup.Dependency.4.0.0.nupkg",
+        "CK.Setup.Dependency.4.0.0.nupkg.sha512",
+        "CK.Setup.Dependency.nuspec",
+        "lib/net45/CK.Setup.Dependency.dll",
+        "lib/net45/CK.Setup.Dependency.pdb",
+        "lib/net45/CK.Setup.Dependency.xml"
+      ]
+    },
+    "CK.Setupable.Engine/4.0.0": {
+      "type": "package",
+      "sha512": "PUEv0wn20Uc8TpBUGUWLDoSmZ9B6r1z9AtDVApjbAFAbWZxnJSWIEJFxPyOjWtRMSKnfft0DXYTKXSRzMuwQzg==",
+      "files": [
+        "CK.Setupable.Engine.4.0.0.nupkg",
+        "CK.Setupable.Engine.4.0.0.nupkg.sha512",
+        "CK.Setupable.Engine.nuspec",
+        "lib/net45/CK.Setupable.Engine.dll",
+        "lib/net45/CK.Setupable.Engine.pdb",
+        "lib/net45/CK.Setupable.Engine.xml"
+      ]
+    },
+    "CK.Setupable.Model/4.0.0": {
+      "type": "package",
+      "sha512": "B7hMElYDNii5y5XoA1IF6O+qbuwOBYkJmk/b/9FYQb5CIoCFlIZmDGhPCbMdyJxrJ6npYpCd9DMbKp74mD0qnA==",
+      "files": [
+        "CK.Setupable.Model.4.0.0.nupkg",
+        "CK.Setupable.Model.4.0.0.nupkg.sha512",
+        "CK.Setupable.Model.nuspec",
+        "lib/net45/CK.Setupable.Model.dll",
+        "lib/net45/CK.Setupable.Model.pdb",
+        "lib/net45/CK.Setupable.Model.xml"
+      ]
+    },
+    "CK.Setupable.Runtime/4.0.0": {
+      "type": "package",
+      "sha512": "eGkHRn8IH6EYGXyLMSuJ44Hu2WQelIm9Xi47C+ZJfnw1Tt0Yh03ugU6FrAuHLZJF5hlQwnOPtwE3Bmyc/w51sg==",
+      "files": [
+        "CK.Setupable.Runtime.4.0.0.nupkg",
+        "CK.Setupable.Runtime.4.0.0.nupkg.sha512",
+        "CK.Setupable.Runtime.nuspec",
+        "lib/net45/CK.Setupable.Runtime.dll",
+        "lib/net45/CK.Setupable.Runtime.pdb",
+        "lib/net45/CK.Setupable.Runtime.xml"
+      ]
+    },
+    "CK.SqlServer.Core/4.0.0": {
+      "type": "package",
+      "sha512": "zKkaND9xlz9Km/sDo+u2Z0xsH5V45kcje4+PJT8Bnqx+W5g1snvrvz0Tt0uQXuPXcKGOfY21Txn1g3V4CW2RiA==",
+      "files": [
+        "CK.SqlServer.Core.4.0.0.nupkg",
+        "CK.SqlServer.Core.4.0.0.nupkg.sha512",
+        "CK.SqlServer.Core.nuspec",
+        "lib/net45/CK.SqlServer.Core.dll",
+        "lib/net45/CK.SqlServer.Core.pdb",
+        "lib/net45/CK.SqlServer.Core.xml"
+      ]
+    },
+    "CK.SqlServer.Parser/4.0.2": {
+      "type": "package",
+      "sha512": "q+Hgc2LzVpy1DgMjUkWQNN0qAO7OUXPeo5mjdAWGkngdgA+EqzeqVUHfH2roIijDTHRjqeUKKs6BY1ZAxmgCvA==",
+      "files": [
+        "CK.SqlServer.Parser.4.0.2.nupkg",
+        "CK.SqlServer.Parser.4.0.2.nupkg.sha512",
+        "CK.SqlServer.Parser.nuspec",
+        "lib/net45/CK.SqlServer.Parser.dll",
+        "lib/net45/CK.SqlServer.Parser.pdb",
+        "lib/net45/CK.SqlServer.Parser.xml"
+      ]
+    },
+    "CK.SqlServer.Parser.Model/1.0.1": {
+      "type": "package",
+      "sha512": "IE9qTMimNcUB2og7+40OE7fgw8oo8lpxQ2t1icd4Oxd08mQxcvfyS5Wre4+v3PObfbkOFFI7759L7gfbHbRRhQ==",
+      "files": [
+        "CK.SqlServer.Parser.Model.1.0.1.nupkg",
+        "CK.SqlServer.Parser.Model.1.0.1.nupkg.sha512",
+        "CK.SqlServer.Parser.Model.nuspec",
+        "lib/net45/CK.SqlServer.Parser.Model.dll",
+        "lib/net45/CK.SqlServer.Parser.Model.xml"
+      ]
+    },
+    "CK.SqlServer.Setup.Engine/4.0.0": {
+      "type": "package",
+      "sha512": "n4bNRNsWHH4uTxjEv9LObjuR69n8Lw+iHjztrv840cpTp8yWpqbCnovkkFivGQAEXymPcVNehSvWW1vp7EhLng==",
+      "files": [
+        "CK.SqlServer.Setup.Engine.4.0.0.nupkg",
+        "CK.SqlServer.Setup.Engine.4.0.0.nupkg.sha512",
+        "CK.SqlServer.Setup.Engine.nuspec",
+        "lib/net45/CK.SqlServer.Setup.Engine.dll",
+        "lib/net45/CK.SqlServer.Setup.Engine.pdb",
+        "lib/net45/CK.SqlServer.Setup.Engine.xml"
+      ]
+    },
+    "CK.SqlServer.Setup.Model/4.0.0": {
+      "type": "package",
+      "sha512": "QlnYCJ1iVLuA0ezE0tbNl1rVN5YNK4Mei0LHzu7uZKQK8GjfDueYA2QK99pYnAw3ZFrXSCKb3qVO/tUOpZUMnA==",
+      "files": [
+        "CK.SqlServer.Setup.Model.4.0.0.nupkg",
+        "CK.SqlServer.Setup.Model.4.0.0.nupkg.sha512",
+        "CK.SqlServer.Setup.Model.nuspec",
+        "lib/net45/CK.SqlServer.Setup.Model.dll",
+        "lib/net45/CK.SqlServer.Setup.Model.pdb",
+        "lib/net45/CK.SqlServer.Setup.Model.xml"
+      ]
+    },
+    "CK.SqlServer.Setup.Runtime/4.0.0": {
+      "type": "package",
+      "sha512": "yfz544F4UCdwDbR2aWgOB065zhFtunNoQX3phI1zUNEbn0D8N4Ih6+Kr3UREW4c+4TozJXZxcjY1ZHwc9ijLHQ==",
+      "files": [
+        "CK.SqlServer.Setup.Runtime.4.0.0.nupkg",
+        "CK.SqlServer.Setup.Runtime.4.0.0.nupkg.sha512",
+        "CK.SqlServer.Setup.Runtime.nuspec",
+        "lib/net45/CK.SqlServer.Setup.Runtime.dll",
+        "lib/net45/CK.SqlServer.Setup.Runtime.pdb",
+        "lib/net45/CK.SqlServer.Setup.Runtime.xml"
+      ]
+    },
+    "CK.StObj.Engine/4.0.0": {
+      "type": "package",
+      "sha512": "Ho+98iq+8zZ4zHKju4FNTJjyLwcIQpBPankfJ0I462n0G/fWUO5455ZAI51ahxonXtPa8Vm8xLgUXQIBhQ8w/w==",
+      "files": [
+        "CK.StObj.Engine.4.0.0.nupkg",
+        "CK.StObj.Engine.4.0.0.nupkg.sha512",
+        "CK.StObj.Engine.nuspec",
+        "lib/net45/CK.StObj.Engine.dll",
+        "lib/net45/CK.StObj.Engine.pdb",
+        "lib/net45/CK.StObj.Engine.xml"
+      ]
+    },
+    "CK.StObj.Model/4.0.0": {
+      "type": "package",
+      "sha512": "mYWFarbKsOk7//QtdXErTHMwgfpOBX7HPf4eyRtMuJB6WITBFUpM/wxYTsmew3QEWOPoo3NOkaT4CdTEKKPirw==",
+      "files": [
+        "CK.StObj.Model.4.0.0.nupkg",
+        "CK.StObj.Model.4.0.0.nupkg.sha512",
+        "CK.StObj.Model.nuspec",
+        "lib/net45/CK.StObj.Model.dll",
+        "lib/net45/CK.StObj.Model.pdb",
+        "lib/net45/CK.StObj.Model.xml"
+      ]
+    },
+    "CK.StObj.Runtime/4.0.0": {
+      "type": "package",
+      "sha512": "e2XXTy+6f09nh8hth2uiO9v0V4RK9SI/chN/5V/bpfENtbRuxWIZ+N8nAVrwJuZYHOcMpjOMqBgppJG9osV6+w==",
+      "files": [
+        "CK.StObj.Runtime.4.0.0.nupkg",
+        "CK.StObj.Runtime.4.0.0.nupkg.sha512",
+        "CK.StObj.Runtime.nuspec",
+        "lib/net45/CK.StObj.Runtime.dll",
+        "lib/net45/CK.StObj.Runtime.pdb",
+        "lib/net45/CK.StObj.Runtime.xml"
+      ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
       "type": "package",
@@ -6909,6 +7810,8 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "CK.SqlServer.DbSetup >= 0.0.0",
+      "Invenietis.Database >= 0.0.0",
       "Invenietis.LocalizedRoutes >= 0.0.0",
       "Invenietis.LocalizedRoutes.Mvc >= 0.0.0",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-rc1-final",
