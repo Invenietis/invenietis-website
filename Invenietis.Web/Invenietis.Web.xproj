@@ -21,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CK.DB.Resource\CK.DB.Resource.csproj" />
     <ProjectReference Include="..\Invenietis.Database\Invenietis.Database.csproj" />
+    <ProjectReference Include="..\Invenietis.Model\Invenietis.Model.csproj" />
+    <ProjectReference Include="..\Invenietis.Repositories\Invenietis.Repositories.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

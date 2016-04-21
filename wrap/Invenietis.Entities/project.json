@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../Invenietis.Entities/Invenietis.Entities.csproj",
+      "bin": {
+        "assembly": "../../Invenietis.Entities/obj/{configuration}/Invenietis.Entities.dll",
+        "pdb": "../../Invenietis.Entities/obj/{configuration}/Invenietis.Entities.pdb"
+      },
+      "dependencies": {
+        "EntityFramework": "6.1.3"
+      }
+    }
+  }
+}

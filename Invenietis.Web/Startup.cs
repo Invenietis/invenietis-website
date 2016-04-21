@@ -81,11 +81,6 @@ namespace Invenietis.Web
 
                 // Default route to choose the right localization
                 routes.MapRoute( "Default", "", new { controller = "Localization", action = "Index" } );
-
-                // Areas
-                routes.MapRoute( name: "areaRoute",
-                    template: "{area:exists}/{controller}/{action}",
-                    defaults: new { controller = "Home", action = "Index" } );
             } );
         }
 

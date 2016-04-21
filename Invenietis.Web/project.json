@@ -32,7 +32,9 @@
     "dnx451": {
       "dependencies": {
         "CK.DB.Resource": "1.0.0-*",
-        "Invenietis.Database": "1.0.0-*"
+        "Invenietis.Database": "1.0.0-*",
+        "Invenietis.Model": "1.0.0-*",
+        "Invenietis.Repositories": "1.0.0-*"
       }
     }
   },

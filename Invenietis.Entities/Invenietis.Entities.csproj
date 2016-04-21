@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Invenietis.Entities</RootNamespace>
     <AssemblyName>Invenietis.Entities</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,8 +31,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +52,122 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fResNamePrefixes_Result.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvenietisWebsite.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvenietisWebsite.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvenietisWebsite.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvenietisWebsite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InvenietisWebsite.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tLCID.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tLearning.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tLearningCategory.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tProject.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tProjectCategory.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tRes.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tResHtml.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tResString.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tResText.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tXLCID.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tXLCIDMap.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vLCID.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vRes.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vResHtml.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vResString.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vResText.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vRes_AllChildren.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vRes_DirectChildren.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vRes_ParentPrefixes.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vXLCID.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vXLCIDResHtml.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vXLCIDResString.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vXLCIDResText.cs">
+      <DependentUpon>InvenietisWebsite.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="InvenietisWebsite.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>InvenietisWebsite.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="InvenietisWebsite.edmx.diagram">
+      <DependentUpon>InvenietisWebsite.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InvenietisWebsite.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InvenietisWebsite.edmx</DependentUpon>
+      <LastGenOutput>InvenietisWebsite.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="InvenietisWebsite.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>InvenietisWebsite.edmx</DependentUpon>
+      <LastGenOutput>InvenietisWebsite.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
