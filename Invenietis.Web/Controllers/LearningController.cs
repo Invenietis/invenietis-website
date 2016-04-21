@@ -12,6 +12,11 @@ namespace Invenietis.Web.Controllers
     [LocalizedRoutes]
     public class LearningController : Controller
     {
+        public LearningController()
+        {
+
+        }
+
         public IActionResult Index()
         {
             return this.LocalizedView();

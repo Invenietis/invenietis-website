@@ -29,6 +29,7 @@ namespace Invenietis.Web
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("routes.json")
+                .AddJsonFile("connectionString.json")
                 .AddJsonFile("cultures.json");
 
             builder.AddEnvironmentVariables();

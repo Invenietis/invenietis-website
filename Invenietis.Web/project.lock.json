@@ -242,19 +242,9 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        }
+      "EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -301,6 +291,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
       },
@@ -2182,19 +2173,9 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        }
+      "EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -2241,6 +2222,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
       },
@@ -4125,19 +4107,9 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/6.1.3": {
-        "type": "package",
-        "frameworkAssemblies": [
-          "System.ComponentModel.DataAnnotations"
-        ],
-        "compile": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        },
-        "runtime": {
-          "lib/net45/EntityFramework.dll": {},
-          "lib/net45/EntityFramework.SqlServer.dll": {}
-        }
+      "EntityFramework/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1"
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -4184,6 +4156,7 @@
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
       },
@@ -5838,6 +5811,10 @@
       "type": "project",
       "path": "../CK.SqlServer.DbSetup/project.json"
     },
+    "EntityFramework/1.0.0": {
+      "type": "project",
+      "path": "../wrap/EntityFramework/project.json"
+    },
     "Invenietis.Database/1.0.0": {
       "type": "project",
       "path": "../wrap/Invenietis.Database/project.json"
@@ -6045,34 +6022,6 @@
         "lib/net45/CK.StObj.Runtime.dll",
         "lib/net45/CK.StObj.Runtime.pdb",
         "lib/net45/CK.StObj.Runtime.xml"
-      ]
-    },
-    "EntityFramework/6.1.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
-      "files": [
-        "content/App.config.transform",
-        "content/Web.config.transform",
-        "EntityFramework.6.1.3.nupkg",
-        "EntityFramework.6.1.3.nupkg.sha512",
-        "EntityFramework.nuspec",
-        "lib/net40/EntityFramework.dll",
-        "lib/net40/EntityFramework.SqlServer.dll",
-        "lib/net40/EntityFramework.SqlServer.xml",
-        "lib/net40/EntityFramework.xml",
-        "lib/net45/EntityFramework.dll",
-        "lib/net45/EntityFramework.SqlServer.dll",
-        "lib/net45/EntityFramework.SqlServer.xml",
-        "lib/net45/EntityFramework.xml",
-        "tools/about_EntityFramework.help.txt",
-        "tools/EntityFramework.PowerShell.dll",
-        "tools/EntityFramework.PowerShell.Utility.dll",
-        "tools/EntityFramework.psd1",
-        "tools/EntityFramework.psm1",
-        "tools/init.ps1",
-        "tools/install.ps1",
-        "tools/migrate.exe"
       ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {

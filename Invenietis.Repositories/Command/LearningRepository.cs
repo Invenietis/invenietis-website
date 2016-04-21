@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Invenietis.Repositories.Command
 {
-    class LearningRepository
+    public class LearningRepository
     {
+        public LearningRepository()
+        {
+
+        }
     }
 }
