@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Invenietis.Database")]
+[assembly: AssemblyTitle("CK.DB.Resource")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Invenietis.Database")]
+[assembly: AssemblyProduct("CK.DB.Resource")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("e19ba56f-a5e6-420d-abb4-4cee15a6a414")]
+[assembly: Guid("3a39492e-fdde-44f5-b5bd-9a8a7967e0e3")]
 
 // Version information for an assembly consists of the following four values:
 //

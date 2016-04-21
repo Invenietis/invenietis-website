@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../CK.DB.Resource/CK.DB.Resource.csproj",
+      "bin": {
+        "assembly": "../../CK.DB.Resource/obj/{configuration}/CK.DB.Resource.dll",
+        "pdb": "../../CK.DB.Resource/obj/{configuration}/CK.DB.Resource.pdb"
+      },
+      "dependencies": {
+        "CK.Core": "4.3.0",
+        "CK.Setupable.Model": "4.0.0",
+        "CK.SqlServer.Core": "4.0.0",
+        "CK.SqlServer.Setup.Model": "4.0.0",
+        "CK.StObj.Model": "4.0.0"
+      }
+    }
+  }
+}

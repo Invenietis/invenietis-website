@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "0.0.0",
   "compilationOptions": {
     "emitEntryPoint": true
@@ -6,7 +6,6 @@
 
   "dependencies": {
     "CK.SqlServer.DbSetup": "0.0.0",
-    "Invenietis.Database": "0.0.0",
     "Invenietis.LocalizedRoutes": "0.0.0",
     "Invenietis.LocalizedRoutes.Mvc": "0.0.0",
     "Microsoft.AspNet.Diagnostics": "1.0.0-rc1-final",
@@ -30,7 +29,12 @@
   },
 
   "frameworks": {
-    "dnx451": { }
+    "dnx451": {
+      "dependencies": {
+        "CK.DB.Resource": "1.0.0-*",
+        "Invenietis.Database": "1.0.0-*"
+      }
+    }
   },
 
   "exclude": [

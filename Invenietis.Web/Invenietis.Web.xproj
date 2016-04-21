@@ -19,6 +19,7 @@
     <DnxInvisibleContent Include=".bowerrc" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CK.DB.Resource\CK.DB.Resource.csproj" />
     <ProjectReference Include="..\Invenietis.Database\Invenietis.Database.csproj" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />

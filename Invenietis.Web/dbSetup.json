@@ -1,7 +1,7 @@
 ﻿{
   "CK.SqlServer.Config": {
     "ConnectionString": "Server=.;Database=InvenietisWebsite;Trusted_Connection=True;MultipleActiveResultSets=true;Enlist=True",
-    "AssembliesToSetup": "CK.DB.Actor, CK.DB.Acl, Invenietis.Database",
+    "AssembliesToSetup": "CK.DB.Resource, Invenietis.Database",
     "UsedSchemas": "Inv, CK, CKCore",
     "DynamicAssemblyName": "Invenietis.Database.Generated"
   }

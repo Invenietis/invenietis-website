@@ -1,4 +1,6 @@
 ﻿/// <binding Clean='clean' />
+/// <binding Build='build:all' />
+
 "use strict";
 
 var gulp = require("gulp"),

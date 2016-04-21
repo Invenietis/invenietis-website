@@ -12,6 +12,17 @@
           "lib/net45/CK.Core.dll": {}
         }
       },
+      "CK.DB.Resource/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        }
+      },
       "CK.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -231,12 +242,15 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "Invenietis.Database/0.0.0": {
+      "Invenietis.Database/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
-          "CK.SqlServer.Setup.Model": "4.0.0"
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -1905,6 +1919,17 @@
           "lib/net45/CK.Core.dll": {}
         }
       },
+      "CK.DB.Resource/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        }
+      },
       "CK.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -2124,12 +2149,15 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "Invenietis.Database/0.0.0": {
+      "Invenietis.Database/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
-          "CK.SqlServer.Setup.Model": "4.0.0"
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -3801,6 +3829,17 @@
           "lib/net45/CK.Core.dll": {}
         }
       },
+      "CK.DB.Resource/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
+          "CK.SqlServer.Core": "4.0.0",
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
+        }
+      },
       "CK.Reflection/4.3.0": {
         "type": "package",
         "compile": {
@@ -4020,12 +4059,15 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "Invenietis.Database/0.0.0": {
+      "Invenietis.Database/1.0.0": {
         "type": "project",
-        "framework": "DNX,Version=v4.5.1",
+        "framework": ".NETFramework,Version=v4.5.1",
         "dependencies": {
+          "CK.Core": "4.3.0",
+          "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
-          "CK.SqlServer.Setup.Model": "4.0.0"
+          "CK.SqlServer.Setup.Model": "4.0.0",
+          "CK.StObj.Model": "4.0.0"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -5689,13 +5731,17 @@
     }
   },
   "libraries": {
+    "CK.DB.Resource/1.0.0": {
+      "type": "project",
+      "path": "../wrap/CK.DB.Resource/project.json"
+    },
     "CK.SqlServer.DbSetup/0.0.0": {
       "type": "project",
       "path": "../CK.SqlServer.DbSetup/project.json"
     },
-    "Invenietis.Database/0.0.0": {
+    "Invenietis.Database/1.0.0": {
       "type": "project",
-      "path": "../Invenietis.Database/project.json"
+      "path": "../wrap/Invenietis.Database/project.json"
     },
     "Invenietis.LocalizedRoutes/0.0.0": {
       "type": "project",
@@ -7811,7 +7857,6 @@
   "projectFileDependencyGroups": {
     "": [
       "CK.SqlServer.DbSetup >= 0.0.0",
-      "Invenietis.Database >= 0.0.0",
       "Invenietis.LocalizedRoutes >= 0.0.0",
       "Invenietis.LocalizedRoutes.Mvc >= 0.0.0",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-rc1-final",
@@ -7828,6 +7873,9 @@
       "Microsoft.Extensions.Logging.Debug >= 1.0.0-rc1-final",
       "System.Reflection >= 4.1.0-beta-23516"
     ],
-    "DNX,Version=v4.5.1": []
+    "DNX,Version=v4.5.1": [
+      "CK.DB.Resource >= 1.0.0-*",
+      "Invenietis.Database >= 1.0.0-*"
+    ]
   }
 }
