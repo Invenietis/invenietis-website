@@ -22,5 +22,11 @@ namespace Invenietis.Database
         {
 
         }
+
+        [InjectContract]
+        public Learning.Package LearningPackage { get; protected set; }
+
+        [InjectContract]
+        public Project.Package ProjectPackage { get; protected set; }
     }
 }
