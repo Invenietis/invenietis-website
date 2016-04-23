@@ -1,7 +1,4 @@
-﻿/// <binding Clean='clean:all' />
-/// <binding Build='build:all' />
-
-"use strict";
+﻿"use strict";
 
 var gulp = require("gulp"),
     rimraf = require("rimraf"),

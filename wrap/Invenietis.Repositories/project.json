@@ -8,8 +8,7 @@
         "pdb": "../../Invenietis.Repositories/obj/{configuration}/Invenietis.Repositories.pdb"
       },
       "dependencies": {
-        "Invenietis.Entities": "1.0.0-*",
-        "EntityFramework": "1.0.0-*"
+
       }
     }
   }

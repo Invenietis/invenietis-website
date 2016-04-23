@@ -1,3 +1,3 @@
 ﻿{
-  "connectionString": "Server=.;Database=InvenietisWebsite;Trusted_Connection=True;MultipleActiveResultSets=true;Enlist=True"
+  "connectionString": "Server=.;Database=Invenietis;Trusted_Connection=True;MultipleActiveResultSets=true;Enlist=True"
 }

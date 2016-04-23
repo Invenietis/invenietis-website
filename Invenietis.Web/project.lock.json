@@ -242,9 +242,14 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+      "EntityFramework/4.1.10311": {
+        "type": "package",
+        "compile": {
+          "lib/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/EntityFramework.dll": {}
+        }
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -255,14 +260,10 @@
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",
-          "CK.StObj.Model": "4.0.0"
-        }
-      },
-      "Invenietis.Entities/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "EntityFramework": "6.1.3"
+          "CK.StObj.Model": "4.0.0",
+          "linq2db": "1.0.7.3",
+          "linq2db.SqlServer": "1.0.7.3",
+          "linq2db.t4models": "1.0.7.1"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -294,6 +295,25 @@
           "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
+      },
+      "linq2db/1.0.7.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/linq2db.dll": {}
+        },
+        "runtime": {
+          "lib/net45/linq2db.dll": {}
+        }
+      },
+      "linq2db.SqlServer/1.0.7.3": {
+        "type": "package",
+        "dependencies": {
+          "linq2db": null,
+          "linq2db.t4models": null
+        }
+      },
+      "linq2db.t4models/1.0.7.1": {
+        "type": "package"
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
@@ -2173,9 +2193,14 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+      "EntityFramework/4.1.10311": {
+        "type": "package",
+        "compile": {
+          "lib/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/EntityFramework.dll": {}
+        }
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -2186,14 +2211,10 @@
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",
-          "CK.StObj.Model": "4.0.0"
-        }
-      },
-      "Invenietis.Entities/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "EntityFramework": "6.1.3"
+          "CK.StObj.Model": "4.0.0",
+          "linq2db": "1.0.7.3",
+          "linq2db.SqlServer": "1.0.7.3",
+          "linq2db.t4models": "1.0.7.1"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -2225,6 +2246,25 @@
           "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
+      },
+      "linq2db/1.0.7.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/linq2db.dll": {}
+        },
+        "runtime": {
+          "lib/net45/linq2db.dll": {}
+        }
+      },
+      "linq2db.SqlServer/1.0.7.3": {
+        "type": "package",
+        "dependencies": {
+          "linq2db": null,
+          "linq2db.t4models": null
+        }
+      },
+      "linq2db.t4models/1.0.7.1": {
+        "type": "package"
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
@@ -4107,9 +4147,14 @@
           "lib/net45/CK.StObj.Runtime.dll": {}
         }
       },
-      "EntityFramework/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1"
+      "EntityFramework/4.1.10311": {
+        "type": "package",
+        "compile": {
+          "lib/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/EntityFramework.dll": {}
+        }
       },
       "Invenietis.Database/1.0.0": {
         "type": "project",
@@ -4120,14 +4165,10 @@
           "CK.Setupable.Model": "4.0.0",
           "CK.SqlServer.Core": "4.0.0",
           "CK.SqlServer.Setup.Model": "4.0.0",
-          "CK.StObj.Model": "4.0.0"
-        }
-      },
-      "Invenietis.Entities/1.0.0": {
-        "type": "project",
-        "framework": ".NETFramework,Version=v4.5.1",
-        "dependencies": {
-          "EntityFramework": "6.1.3"
+          "CK.StObj.Model": "4.0.0",
+          "linq2db": "1.0.7.3",
+          "linq2db.SqlServer": "1.0.7.3",
+          "linq2db.t4models": "1.0.7.1"
         }
       },
       "Invenietis.LocalizedRoutes/0.0.0": {
@@ -4159,6 +4200,25 @@
           "EntityFramework": "1.0.0",
           "Invenietis.Entities": "1.0.0"
         }
+      },
+      "linq2db/1.0.7.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/linq2db.dll": {}
+        },
+        "runtime": {
+          "lib/net45/linq2db.dll": {}
+        }
+      },
+      "linq2db.SqlServer/1.0.7.3": {
+        "type": "package",
+        "dependencies": {
+          "linq2db": null,
+          "linq2db.t4models": null
+        }
+      },
+      "linq2db.t4models/1.0.7.1": {
+        "type": "package"
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
         "type": "package",
@@ -5811,17 +5871,9 @@
       "type": "project",
       "path": "../CK.SqlServer.DbSetup/project.json"
     },
-    "EntityFramework/1.0.0": {
-      "type": "project",
-      "path": "../wrap/EntityFramework/project.json"
-    },
     "Invenietis.Database/1.0.0": {
       "type": "project",
       "path": "../wrap/Invenietis.Database/project.json"
-    },
-    "Invenietis.Entities/1.0.0": {
-      "type": "project",
-      "path": "../wrap/Invenietis.Entities/project.json"
     },
     "Invenietis.LocalizedRoutes/0.0.0": {
       "type": "project",
@@ -6022,6 +6074,84 @@
         "lib/net45/CK.StObj.Runtime.dll",
         "lib/net45/CK.StObj.Runtime.pdb",
         "lib/net45/CK.StObj.Runtime.xml"
+      ]
+    },
+    "EntityFramework/4.1.10311": {
+      "type": "package",
+      "sha512": "4X3UvEVyf2PJdEXbSJXUbMsL20Gw+z/1oK2qpGD3TC91lvCoIUFNcrJ8q9WeaTmA1RmzmxOLtEqvBMLqIWdMJw==",
+      "files": [
+        "EntityFramework.4.1.10311.nupkg",
+        "EntityFramework.4.1.10311.nupkg.sha512",
+        "EntityFramework.nuspec",
+        "lib/EntityFramework.dll",
+        "lib/EntityFramework.xml",
+        "tools/install.ps1"
+      ]
+    },
+    "linq2db/1.0.7.3": {
+      "type": "package",
+      "sha512": "SOsr9XOO7E7fI1R4PoYZhH8fIzFdYk8w91/pW46anahXtBp50myV7qv/Ycpb/bYEr9NfhrEa5l1QIXV9uas/mQ==",
+      "files": [
+        "lib/net40/linq2db.dll",
+        "lib/net40/linq2db.pdb",
+        "lib/net45/linq2db.dll",
+        "lib/net45/linq2db.pdb",
+        "lib/netcore45/linq2db.WindowsStore.dll",
+        "lib/netcore45/linq2db.WindowsStore.pdb",
+        "lib/sl4/linq2db.Silverlight.dll",
+        "lib/sl4/linq2db.Silverlight.pdb",
+        "lib/sl5/linq2db.Silverlight.dll",
+        "lib/sl5/linq2db.Silverlight.pdb",
+        "lib/windows8/linq2db.WindowsStore.dll",
+        "lib/windows8/linq2db.WindowsStore.pdb",
+        "linq2db.1.0.7.3.nupkg",
+        "linq2db.1.0.7.3.nupkg.sha512",
+        "linq2db.nuspec",
+        "Readme.txt"
+      ]
+    },
+    "linq2db.SqlServer/1.0.7.3": {
+      "type": "package",
+      "sha512": "054vjgMoth7dnoIPWP1wlY0FljNxcFmt2dee/ydLYLKRoRupw33fGLttJIzvNz/j1mCD/kd1D6zCAYH/CeyY1g==",
+      "files": [
+        "content/LinqToDB.Templates/CopyMe.SqlServer.tt.txt",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.SqlTypes.Tools.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.Tools.ttinclude",
+        "linq2db.SqlServer.1.0.7.3.nupkg",
+        "linq2db.SqlServer.1.0.7.3.nupkg.sha512",
+        "linq2db.SqlServer.nuspec",
+        "tools/Microsoft.SqlServer.Types.dll"
+      ]
+    },
+    "linq2db.t4models/1.0.7.1": {
+      "type": "package",
+      "sha512": "Sqbl2Ig30iog2Bf9pWIsin9upKdcAdFwz5OGXHQXF+KC0EdUYFwyn0RSgMywBNmU1apMF+1P1qPeLGbZdTdGbg==",
+      "files": [
+        "content/LinqToDB.Templates/!ReadMe.LinqToDB.md",
+        "content/LinqToDB.Templates/DataAnnotations.ttinclude",
+        "content/LinqToDB.Templates/DataModel.ttinclude",
+        "content/LinqToDB.Templates/EditableObject.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Access.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.DB2.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Firebird.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Informix.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.MySql.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Oracle.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.PostgreSQL.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlCe.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SQLite.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.SqlServer.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Sybase.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.Tools.ttinclude",
+        "content/LinqToDB.Templates/LinqToDB.ttinclude",
+        "content/LinqToDB.Templates/NotifyPropertyChanged.ttinclude",
+        "content/LinqToDB.Templates/PluralizationService.ttinclude",
+        "content/LinqToDB.Templates/T4Model.ttinclude",
+        "content/LinqToDB.Templates/Validation.ttinclude",
+        "linq2db.t4models.1.0.7.1.nupkg",
+        "linq2db.t4models.1.0.7.1.nupkg.sha512",
+        "linq2db.t4models.nuspec",
+        "tools/linq2db.dll"
       ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {

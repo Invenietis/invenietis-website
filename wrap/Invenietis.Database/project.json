@@ -13,7 +13,10 @@
         "CK.SqlServer.Core": "4.0.0",
         "CK.SqlServer.Setup.Model": "4.0.0",
         "CK.StObj.Model": "4.0.0",
-        "CK.DB.Resource": "1.0.0-*"
+        "CK.DB.Resource": "1.0.0-*",
+        "linq2db": "1.0.7.3",
+        "linq2db.SqlServer": "1.0.7.3",
+        "linq2db.t4models": "1.0.7.1"
       }
     }
   }
