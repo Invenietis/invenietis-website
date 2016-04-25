@@ -10,11 +10,20 @@ namespace CK.DB.Resource
 {
     [SqlTable( "tResString", Package = typeof( Package ) ), Versions( "1.0.0" )]
     [SqlObjectItem( "vResString, vXLCIDResString" )]
-    [SqlObjectItem( "sResStringSet, sResStringAssume, sResStringRemove" )]
     public abstract class ResStringTable : SqlTable
     {
         void Construct( ResTable res, LCIDTable lcid )
         {
         }
+
+        [SqlProcedureNonQuery( "sResStringSet" )]
+        public abstract void StringSet( ISqlCallContext ctx, int resId, short lcid, string value );
+
+        [SqlProcedureNonQuery( "sResStringAssume" )]
+        public abstract int StringAssume( ISqlCallContext ctx, string resName, short lcid, string value );
+
+        [SqlProcedureNonQuery( "sResStringRemove" )]
+        public abstract void StringRemove( ISqlCallContext ctx, int resId, short lcid );
+
     }
 }

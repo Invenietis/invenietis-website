@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CK.SqlServer.Parser.Model</name>
+    </assembly>
+    <members>
+        <member name="T:CK.SqlServer.Parser.ISqlServerFunctionInlineTable">
+            <summary>
+            Defines an inline function table.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerAlterOrCreateStatement">
+            <summary>
+            Supported by objects that can be created or altered.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerAlterOrCreateStatement.IsAlterKeyword">
+            <summary>
+            Gets whether this object is defined with a alter keyword.
+            When false, it is a create statement.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerAlterOrCreateStatement.ToggleAlterKeyword">
+            <summary>
+            Returns a new <see cref="T:CK.SqlServer.Parser.ISqlServerAlterOrCreateStatement"/> with "create" if <see cref="P:CK.SqlServer.Parser.ISqlServerAlterOrCreateStatement.IsAlterKeyword"/>
+            is true, or an "alter" statement otherwise.
+            </summary>
+            <returns>The same object with a changed create/alter keyword.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerFunctionTable">
+            <summary>
+            Defines multi-statements function table.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerFunctionScalar">
+            <summary>
+            Defines a function that returns a scalar.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerFunctionScalar.ReturnType">
+            <summary>
+            Gets the returned type.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerView">
+            <summary>
+            Defines a view.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerStoredProcedure">
+            <summary>
+            Defines a stored procedure.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerObject">
+            <summary>
+            General object definition with an <see cref="P:CK.SqlServer.Parser.ISqlServerObject.ObjectName"/> and an <see cref="P:CK.SqlServer.Parser.ISqlServerObject.ObjectType"/>.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerObject.ObjectName">
+            <summary>
+            Gets the name of this object, including its schema if any.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerObject.SchemaName">
+            <summary>
+            Gets the schema of this object if there is one (null otherwise).
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerObject.SetSchemaName(System.String)">
+            <summary>
+            Returns a new <see cref="T:CK.SqlServer.Parser.ISqlServerObject"/> with the given schema name.
+            When null, the schema is removed.
+            </summary>
+            <returns>The same object with a changed schema name.</returns>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerObject.ObjectType">
+            <summary>
+            Gets the type of this object.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerObject.ToStringSignature(System.Boolean)">
+            <summary>
+            Writes the header of this object, optionally with its options.
+            </summary>
+            <param name="withOptions">True to obtain object options if any.</param>
+            <returns>The object header.</returns>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerObject.Write(System.Text.StringBuilder)">
+            <summary>
+            Writes full object text to a StringBuilder.
+            </summary>
+            <param name="b">The StringBuilder to write to.</param>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerParameter">
+            <summary>
+            Modelizes a sql server parameter.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsPureInput">
+            <summary>
+            Gets whether the parameter is a input only parameter.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsInput">
+            <summary>
+            Gets whether the parameter is an input parameter or an output one with a /*input*/ tag.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsOutput">
+            <summary>
+            Gets whether the parameter is output. It can be /*input*/output (see <see cref="P:CK.SqlServer.Parser.ISqlServerParameter.IsInputOutput"/>).
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsPureOutput">
+            <summary>
+            Gets whether the parameter is an output only parameter (ie. it is <see cref="P:CK.SqlServer.Parser.ISqlServerParameter.IsOutput"/> but not <see cref="P:CK.SqlServer.Parser.ISqlServerParameter.IsInputOutput"/>).
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsInputOutput">
+            <summary>
+            Gets whether the parameter is input and output (by ref). <see cref="P:CK.SqlServer.Parser.ISqlServerParameter.IsOutput"/> is true: the parameter uses the '/*input*/output' syntax.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.IsReadOnly">
+            <summary>
+            Gets whether the parameter is read only.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.Name">
+            <summary>
+            Gets the name of the parameter.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.SqlType">
+            <summary>
+            Gets the type of the parameter.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameter.DefaultValue">
+            <summary>
+            Gets the default value or null if no default are defined.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParameter.ToStringClean">
+            <summary>
+            Gets the parameter representation without comments nor extraneous white spaces on a sigle line.
+            </summary>
+            <returns>A clean parameter representation.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerParameterDefaultValue">
+            <summary>
+            Defines default value for a <see cref="T:CK.SqlServer.Parser.ISqlServerParameter"/>: a default value can be a 
+            variable (another parameter), null, a literal and may have a minus sign.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.IsVariable">
+            <summary>
+            Gets whether this default value is a parameter name.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.IsNull">
+            <summary>
+            Gets whether the default value is null.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.IsLiteral">
+            <summary>
+            Gets whether this default value is a literal.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.HasMinusSign">
+            <summary>
+            Gets whether a minus sign appears in front of the default value.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.NullOrLitteralDotNetValue">
+            <summary>
+            Gets the default value (<see cref="P:CK.SqlServer.Parser.ISqlServerParameterDefaultValue.IsVariable"/> must be false).
+            It can be <see cref="F:System.DBNull.Value"/>, a <see cref="T:System.Int32"/>, <see cref="T:System.Decimal"/>, a <see cref="T:System.Double"/> or 
+            a string for too big numerics (that exceed Decimal .Net capacity) and money:
+            .Net <see cref="T:System.Decimal"/> type has only 28 digits whereas Sql server numerics has 38. And money is actually 
+            a Int64 for sql server.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerParameterList">
+            <summary>
+            A read-only list of <see cref="T:CK.SqlServer.Parser.ISqlServerParameter"/>.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParameterList.ToStringClean">
+            <summary>
+            Gets a clean text representation on one line of the parameters.
+            </summary>
+            <returns>A clean representation.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerParser">
+            <summary>
+            Primary parser contract.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParser.ParseObject(System.String,CK.SqlServer.Parser.ISqlServerObject@)">
+            <summary>
+            Parses the text and tries to extract a <see cref="T:CK.SqlServer.Parser.ISqlServerObject"/> from it.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="sqlObject">The parsed object. Null on error.</param>
+            <returns>A result object.</returns>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParser.ParseStoredProcedure(System.String,CK.SqlServer.Parser.ISqlServerStoredProcedure@)">
+            <summary>
+            Parses the text and tries to extract a <see cref="T:CK.SqlServer.Parser.ISqlServerStoredProcedure"/> from it.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="sqlProcedure">The parsed procedure. Null on error.</param>
+            <returns>A result object.</returns>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParser.ParseStoredFunctionScalar(System.String,CK.SqlServer.Parser.ISqlServerFunctionScalar@)">
+            <summary>
+            Parses the text and tries to extract a <see cref="T:CK.SqlServer.Parser.ISqlServerFunctionScalar"/> from it.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="sqlFScalar">The parsed scalar function. Null on error.</param>
+            <returns>A result object.</returns>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParser.ParseStoredFunctionTable(System.String,CK.SqlServer.Parser.ISqlServerFunctionTable@)">
+            <summary>
+            Parses the text and tries to extract a <see cref="T:CK.SqlServer.Parser.ISqlServerFunctionTable"/> from it.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="sqlFTable">The parsed scalar multi-statement function. Null on error.</param>
+            <returns>A result object.</returns>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParser.ParseStoredFunctionInlineTable(System.String,CK.SqlServer.Parser.ISqlServerFunctionInlineTable@)">
+            <summary>
+            Parses the text and tries to extract a <see cref="T:CK.SqlServer.Parser.ISqlServerFunctionInlineTable"/> from it.
+            </summary>
+            <param name="text">The text to parse.</param>
+            <param name="sqlFInlineTable">The parsed scalar inline table function. Null on error.</param>
+            <returns>A result object.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerCallableObject">
+            <summary>
+            Generalizes objects that can be called: they all have parameters.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerCallableObject.Parameters">
+            <summary>
+            Gets the parameters.
+            </summary>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerParserError">
+            <summary>
+            Captures parsing error.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParserError.ErrorMessage">
+            <summary>
+            Gets the error message.
+            Null if <see cref="P:CK.SqlServer.Parser.ISqlServerParserError.IsError"/> is false.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParserError.HeadSource">
+            <summary>
+            Gets the source where the error occurs.
+            Null if <see cref="P:CK.SqlServer.Parser.ISqlServerParserError.IsError"/> is false.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerParserError.IsError">
+            <summary>
+            True on error.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerParserError.LogOnError(CK.Core.IActivityMonitor,System.Boolean)">
+            <summary>
+            Logs the error message if <see cref="P:CK.SqlServer.Parser.ISqlServerParserError.IsError"/> is true, otherwise does nothing.
+            </summary>
+            <param name="monitor">Monitor to log into. Must not be null.</param>
+            <param name="asWarning">True to log a warning instead of an error.</param>
+        </member>
+        <member name="T:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl">
+            <summary>
+            Unifies Sql types.
+            </summary>
+            <remarks>
+            This is not an attempt to model the actual type capacity, but only focuses on syntax representation. <see cref="F:System.Data.SqlDbType.DateTime"/> for example
+            has a Precision of 23 and a Scale of 3 in terms of digits, but here, we consider Precision and Scale to be 0 (non applicable) since 'datetime(p,s)' is not valid.
+            To make this more explicit, the Size/Precision/Scale properties have been prefixed with 'Syntax'.
+            </remarks>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.DbType">
+            <summary>
+            Gets the database type.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.SyntaxSize">
+            <summary>
+            Gets a positive size if it is specified, 0 when not specified (see below), -1 for 'max' (like in nvarchar(max)) 
+            and -2 when not applicable (for example when <see cref="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.DbType"/> is <see cref="F:System.Data.SqlDbType.Int"/>).
+            When not specified (0), the actual default value is 1 (in a data definition) or 30 (for variable declaration statement). 
+            When using the CAST and CONVERT functions, the default length is 30.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.SyntaxPrecision">
+            <summary>
+            The maximum total number of decimal digits that can be stored, both to the left and to the right of the decimal point.
+            The precision must be a value from 1 through the maximum precision of 38 (0 when not applicable or not specified). 
+            The default precision is 18.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.SyntaxScale">
+            <summary>
+            Gets the number scale: it is the number of digits to the right of the decimal point in a number. 
+            0 is the default and is used also when not applicable. This must always be true: 0 &lt;= scale &lt;= precision.
+            </summary>
+        </member>
+        <member name="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.SyntaxSecondScale">
+            <summary>
+            Gets the fractional seconds precision (actually is the scale) of <see cref="F:System.Data.SqlDbType.DateTime2"/>, <see cref="F:System.Data.SqlDbType.Time"/> and <see cref="F:System.Data.SqlDbType.DateTimeOffset"/>.
+            Can be between 0 and 7. -1 when not applicable (for any other <see cref="P:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.DbType"/>).
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.ISqlServerUnifiedTypeDecl.ToStringClean">
+            <summary>
+            Gets a clean text representation on one line of this type.
+            </summary>
+            <returns>A clean representation.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.SqlServerExtension">
+            <summary>
+            Defines extension methods on models.
+            </summary>
+        </member>
+        <member name="M:CK.SqlServer.Parser.SqlServerExtension.ToFullString(CK.SqlServer.Parser.ISqlServerObject)">
+            <summary>
+            Returns the full text of this object.
+            </summary>
+            <param name="this">This object.</param>
+            <returns>The full text.</returns>
+        </member>
+        <member name="T:CK.SqlServer.Parser.SqlServerObjectType">
+            <summary>
+            Defines the different types of Sql Server objects.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.None">
+            <summary>
+            Not a known type.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.Procedure">
+            <summary>
+            Stored procedure.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.View">
+            <summary>
+            View.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.ScalarFunction">
+            <summary>
+            Scalar function.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.InlineTableFunction">
+            <summary>
+            Inline table function.
+            </summary>
+        </member>
+        <member name="F:CK.SqlServer.Parser.SqlServerObjectType.MultiStatementTableFunction">
+            <summary>
+            Multi-statement table function.
+            </summary>
+        </member>
+        <member name="T:SimpleGitVersionInfoAttribute">
+            <summary>
+            Automatically generated by SimpleGitVersionTask 2.0.0-alpha.2. 
+            </summary>
+        </member>
+    </members>
+</doc>

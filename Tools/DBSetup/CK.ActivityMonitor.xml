@@ -1,0 +1,2812 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CK.ActivityMonitor</name>
+    </assembly>
+    <members>
+        <member name="T:CK.Core.ActivityLogGroupConclusion">
+            <summary>
+            Describes the conclusion of a group. Conclusions are simply <see cref="F:CK.Core.ActivityLogGroupConclusion.Text"/> <see cref="F:CK.Core.ActivityLogGroupConclusion.Tag"/>ged with a <see cref="T:CK.Core.CKTrait"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityLogGroupConclusion.Tag">
+            <summary>
+            The tag (never null).
+            It may be combined but is often atomic like <see cref="F:CK.Core.ActivityMonitor.Tags.UserConclusion"/>, 
+            or <see cref="F:CK.Core.ActivityMonitor.Tags.GetTextConclusion"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityLogGroupConclusion.Text">
+            <summary>
+            The conclusion (never null).
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.#ctor(System.String,CK.Core.CKTrait)">
+            <summary>
+            Initializes a new conclusion for a group.
+            </summary>
+            <param name="conclusion">Must not be null (may be empty).</param>
+            <param name="tag">Must be null or be registered in <see cref="T:CK.Core.ActivityMonitor.Tags"/>.</param>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.Equals(System.Object)">
+            <summary>
+            Explicit test for <see cref="F:CK.Core.ActivityLogGroupConclusion.Text"/> and <see cref="F:CK.Core.ActivityLogGroupConclusion.Tag"/> equality.
+            </summary>
+            <param name="obj">Object to test.</param>
+            <returns>True when equal.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.op_Equality(CK.Core.ActivityLogGroupConclusion,CK.Core.ActivityLogGroupConclusion)">
+            <summary>
+            Equality operator definition.
+            </summary>
+            <param name="x">First value type.</param>
+            <param name="y">Second value type.</param>
+            <returns>True if and only if Tag and Text are equals.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.op_Inequality(CK.Core.ActivityLogGroupConclusion,CK.Core.ActivityLogGroupConclusion)">
+            <summary>
+            Inequality operator definition.
+            </summary>
+            <param name="x">First value type.</param>
+            <param name="y">Second value type.</param>
+            <returns>True if Tag or Text differ.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.GetHashCode">
+            <summary>
+            Computes the hash code.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityLogGroupConclusion.ToString">
+            <summary>
+            Overriden to return <see cref="F:CK.Core.ActivityLogGroupConclusion.Text"/>.
+            </summary>
+            <returns>Text field.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorGroupData">
+            <summary>
+            Data required by <see cref="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorGroupData.#ctor(CK.Core.LogLevel,CK.Core.CKTrait,System.String,CK.Core.DateTimeStamp,System.Exception,System.Func{System.String},System.String,System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorGroupData"/>.
+            </summary>
+            <param name="level">Log level. Can not be <see cref="F:CK.Core.LogLevel.None"/>.</param>
+            <param name="tags">Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. It will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>.</param>
+            <param name="text">Text of the log. Can be null or empty only if <paramref name="exception"/> is not null: the <see cref="P:System.Exception.Message"/> is the text.</param>
+            <param name="logTime">
+            Time of the log.
+            You may use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+            <param name="exception">Exception of the log. Can be null.</param>
+            <param name="getConclusionText">Optional function that provides delayed obtention of the group conclusion: will be called on group closing.</param>
+            <param name="fileName">Name of the source file that emitted the log. Can be null.</param>
+            <param name="lineNumber">Line number in the source file that emitted the log. Can be null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorGroupData.#ctor(CK.Core.LogLevel,System.String,System.Int32)">
+            <summary>
+            Preinitializes a new <see cref="T:CK.Core.ActivityMonitorLogData"/>: <see cref="M:CK.Core.ActivityMonitorGroupData.Initialize(System.String,System.Exception,CK.Core.CKTrait,CK.Core.DateTimeStamp,System.Func{System.String})"/> has yet to be called.
+            </summary>
+            <param name="level">Log level. Can not be <see cref="F:CK.Core.LogLevel.None"/>.</param>
+            <param name="fileName">Name of the source file that emitted the log. Can be null.</param>
+            <param name="lineNumber">Line number in the source file that emitted the log. Can be null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorGroupData.#ctor">
+            <summary>
+            Initializes a mere new <see cref="T:CK.Core.ActivityMonitorGroupData"/> without any actual data.
+            Should be unsed only for rejected opened group.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorGroupData.Initialize(System.String,System.Exception,CK.Core.CKTrait,CK.Core.DateTimeStamp,System.Func{System.String})">
+            <summary>
+            Initializes this group data.
+            </summary>
+            <param name="text">Text of the log. Can be null or empty only if <paramref name="exception"/> is not null: the <see cref="P:System.Exception.Message"/> is the text.</param>
+            <param name="exception">Exception of the log. Can be null.</param>
+            <param name="tags">Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. It will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>.</param>
+            <param name="logTime">
+            Time of the log.
+            You may use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+            <param name="getConclusionText">Optional function that provides delayed obtention of the group conclusion: will be called on group closing.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorGroupData.ConsumeConclusionText">
+            <summary>
+            Calls <see cref="P:CK.Core.ActivityMonitorGroupData.GetConclusionText"/> and sets it to null.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorLogData">
+            <summary>
+            Data required by <see cref="M:CK.Core.IActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)"/>.
+            This is also the base class for <see cref="T:CK.Core.ActivityMonitorGroupData"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorLogData.Level">
+            <summary>
+            Log level. Can not be <see cref="F:CK.Core.LogLevel.None"/>.
+            If the log has been successfully filtered, the <see cref="F:CK.Core.LogLevel.IsFiltered"/> bit flag is set.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorLogData.MaskedLevel">
+            <summary>
+            The actual level (<see cref="F:CK.Core.LogLevel.Trace"/> to <see cref="F:CK.Core.LogLevel.Fatal"/>) associated to this group
+            without <see cref="F:CK.Core.LogLevel.IsFiltered"/> bit flag.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorLogData.FileName">
+            <summary>
+            Name of the source file that emitted the log. Can be null.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorLogData.LineNumber">
+            <summary>
+            Line number in the source file that emitted the log. Can be null.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.IsFilteredLog">
+            <summary>
+            Gets whether this log data has been successfully filtered (otherwise it is an unfiltered log).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.Tags">
+            <summary>
+            Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) associated to the log. 
+            It will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.Text">
+            <summary>
+            Text of the log. Can not be null.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.LogTime">
+            <summary>
+            Gets the time of the log.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.Exception">
+            <summary>
+            Exception of the log. Can be null.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.ExceptionData">
+            <summary>
+            Gets the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information 
+            if it exists. Returns null if no <see cref="P:Exception"/> exists.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorLogData.EnsureExceptionData">
+            <summary>
+            Gets or creates the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information.
+            If <see cref="P:Exception"/> is null, this returns null.
+            </summary>
+            <returns>A data representation of the exception or null.</returns>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorLogData.IsTextTheExceptionMessage">
+            <summary>
+            Gets whether the <see cref="P:CK.Core.ActivityMonitorLogData.Text"/> is actually the <see cref="P:Exception"/> message.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorLogData.#ctor(CK.Core.LogLevel,System.Exception,CK.Core.CKTrait,System.String,CK.Core.DateTimeStamp,System.String,System.Int32)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorLogData"/>.
+            </summary>
+            <param name="level">Log level. Can not be <see cref="F:CK.Core.LogLevel.None"/>.</param>
+            <param name="exception">Exception of the log. Can be null.</param>
+            <param name="tags">Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. It will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>.</param>
+            <param name="text">Text of the log. Can be null or empty only if <paramref name="exception"/> is not null: the <see cref="T:Exception.Message"/> is the text.</param>
+            <param name="logTime">
+            Time of the log. 
+            You can use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+            <param name="fileName">Name of the source file that emitted the log. Can be null.</param>
+            <param name="lineNumber">Line number in the source file that emitted the log. Can be null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorLogData.#ctor(CK.Core.LogLevel,System.String,System.Int32)">
+            <summary>
+            Preinitializes a new <see cref="T:CK.Core.ActivityMonitorLogData"/>: <see cref="M:CK.Core.ActivityMonitorLogData.Initialize(System.String,System.Exception,CK.Core.CKTrait,CK.Core.DateTimeStamp)"/> has yet to be called.
+            </summary>
+            <param name="level">Log level. Can not be <see cref="F:CK.Core.LogLevel.None"/>.</param>
+            <param name="fileName">Name of the source file that emitted the log. Can be null.</param>
+            <param name="lineNumber">Line number in the source file that emitted the log. Can be null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorLogData.#ctor">
+            <summary>
+            Used only to initialize a ActivityMonitorGroupSender for rejected opened group.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorLogData.Initialize(System.String,System.Exception,CK.Core.CKTrait,CK.Core.DateTimeStamp)">
+            <summary>
+            Initializes this data.
+            </summary>
+            <param name="text">
+            Text of the log. Can be null or empty: if <paramref name="exception"/> is not null, 
+            the <see cref="P:System.Exception.Message"/> becomes the text otherwise <see cref="F:CK.Core.ActivityMonitor.NoLogText"/> is used.
+            </param>
+            <param name="exception">Exception of the log. Can be null.</param>
+            <param name="tags">
+            Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. 
+            It will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>.</param>
+            <param name="logTime">
+            Time of the log. 
+            You can use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorClient">
+            <summary>
+            Base class that explicitly implements <see cref="T:CK.Core.IActivityMonitorClient"/> (to hide it from public interface, except its <see cref="P:CK.Core.ActivityMonitorClient.MinimalFilter"/>).
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorClient.Empty">
+            <summary>
+            Empty <see cref="T:CK.Core.IActivityMonitorClient"/> (null object design pattern).
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.#ctor">
+            <summary>
+            Initialize a new <see cref="T:CK.Core.ActivityMonitorClient"/> that does nothing.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorClient.MinimalFilter">
+            <summary>
+            Gets the minimal log level that this Client expects: defaults to <see cref="F:CK.Core.LogFilter.Undefined"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnUnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Called for each <see cref="M:CK.Core.IActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)"/>. Does nothing by default.
+            The <see cref="P:CK.Core.ActivityMonitorLogData.Exception"/> is always null since exceptions
+            are carried by groups.
+            </summary>
+            <param name="data">Log data. Never null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnOpenGroup(CK.Core.IActivityLogGroup)">
+            <summary>
+            Called for each <see cref="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)"/>.
+            Does nothing by default.
+            </summary>
+            <param name="group">The newly opened <see cref="T:CK.Core.IActivityLogGroup"/>.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnGroupClosing(CK.Core.IActivityLogGroup,System.Collections.Generic.List{CK.Core.ActivityLogGroupConclusion}@)">
+            <summary>
+            Called once the user conclusions are known at the group level but before 
+            the group is actually closed: clients can update the conclusions for the group.
+            Does nothing by default.
+            </summary>
+            <param name="group">The closing group.</param>
+            <param name="conclusions">
+            Mutable conclusions associated to the closing group. 
+            This can be null if no conclusions have been added yet. 
+            It is up to the first client that wants to add a conclusion to instantiate a new List object to carry the conclusions.
+            </param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnGroupClosed(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Called when the group is actually closed.
+            Does nothing by default.
+            </summary>
+            <param name="group">The closed group.</param>
+            <param name="conclusions">Text that conclude the group. Never null but can be empty.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnTopicChanged(System.String,System.String,System.Int32)">
+            <summary>
+            Called when <see cref="P:CK.Core.IActivityMonitor.Topic"/> changed.
+            Does nothing by default.
+            </summary>
+            <param name="newTopic">The new topic.</param>
+            <param name="fileName">Source file name where <see cref="M:CK.Core.IActivityMonitor.SetTopic(System.String,System.String,System.Int32)"/> has been called.</param>
+            <param name="lineNumber">Source line number where IActivityMonitor.SetTopic has been called.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.OnAutoTagsChanged(CK.Core.CKTrait)">
+            <summary>
+            Called when <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> changed.
+            Does nothing by default.
+            </summary>
+            <param name="newTags">The new auto tags.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorClient.CreateMultipleRegisterOnBoundClientException(CK.Core.IActivityMonitorBoundClient)">
+            <summary>
+            Creates a standardized exception that can be thrown by <see cref="M:CK.Core.IActivityMonitorBoundClient.SetMonitor(CK.Core.Impl.IActivityMonitorImpl,System.Boolean)"/>.
+            </summary>
+            <param name="boundClient">The bound client.</param>
+            <returns>An exception with an explicit message.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorConsoleClient">
+            <summary>
+            Displays the activity to the console.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorConsoleClient.#ctor">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorConsoleClient"/>.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorErrorCounter">
+            <summary>
+            Count fatal, error or warn that occurred. 
+            It can also automatically adds a conclusion to closed groups that summarizes
+            the number of fatals, errors and warnings.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorErrorCounter.TagErrorCounter">
+            <summary>
+            Gets the tag used for generated error conclusions ("c:ErrorCounter") when <see cref="P:CK.Core.ActivityMonitorErrorCounter.GenerateConclusion"/> is true.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorErrorCounter.State">
+            <summary>
+            Encapsulates error information.
+            The <see cref="M:CK.Core.ActivityMonitorErrorCounter.State.ToString"/> method displays the conclusion in a default text format.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.FatalCount">
+            <summary>
+            Gets the current number of fatal errors.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.ErrorCount">
+            <summary>
+            Gets the current number of errors.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.WarnCount">
+            <summary>
+            Gets the current number of warnings.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.MaxLogLevel">
+            <summary>
+            Gets the current maximum <see cref="T:CK.Core.LogLevel"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.HasError">
+            <summary>
+            Gets whether an error or a fatal occurred.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.State.HasWarnOrError">
+            <summary>
+            Gets whether a fatal, an error or a warn occurred.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.State.ClearError">
+            <summary>
+            Resets <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.FatalCount"/> and <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.ErrorCount"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.State.ClearWarn(System.Boolean)">
+            <summary>
+            Resets current <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.WarnCount"/>, and optionnaly <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.FatalCount"/> and <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.ErrorCount"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.State.ToString">
+            <summary>
+            Gets the current message if <see cref="P:CK.Core.ActivityMonitorErrorCounter.State.HasWarnOrError"/> is true, otherwise null.
+            </summary>
+            <returns>Formatted message or null if no error nor warning occurred.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new error counter with <see cref="P:CK.Core.ActivityMonitorErrorCounter.GenerateConclusion"/> sets to false.
+            </summary>
+            <param name="generateConclusion">True to generate a conclusion. See <see cref="P:CK.Core.ActivityMonitorErrorCounter.GenerateConclusion"/>.</param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.Root">
+            <summary>
+            Gets the root <see cref="T:CK.Core.ActivityMonitorErrorCounter.State"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.Current">
+            <summary>
+            Gets the current <see cref="T:CK.Core.ActivityMonitorErrorCounter.State"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorErrorCounter.GenerateConclusion">
+            <summary>
+            Gets or sets whether the Group conclusion must be generated.
+            Defaults to false.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.OnUnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Updates error counters.
+            </summary>
+            <param name="data">Log data. Never null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.OnOpenGroup(CK.Core.IActivityLogGroup)">
+            <summary>
+            Updates error counters.
+            </summary>
+            <param name="group">The newly opened <see cref="T:CK.Core.IActivityLogGroup"/>.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.OnGroupClosing(CK.Core.IActivityLogGroup,System.Collections.Generic.List{CK.Core.ActivityLogGroupConclusion}@)">
+            <summary>
+            Handles group conclusion.
+            </summary>
+            <param name="group">The closing group.</param>
+            <param name="conclusions">
+            Mutable conclusions associated to the closing group. 
+            This can be null if no conclusions have been added yet. 
+            It is up to the first client that wants to add a conclusion to instantiate a new List object to carry the conclusions.
+            </param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorErrorCounter.OnGroupClosed(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Restores current to the previous one (or keep it on the root if no opened group exist).
+            </summary>
+            <param name="group">The log group.</param>
+            <param name="conclusions">Texts that conclude the group.</param>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorPathCatcher">
+            <summary>
+            The "Path Catcher" captures the current path of the opened groups and the last, current, line and exposes it thanks to 
+            a read only list of <see cref="T:CK.Core.ActivityMonitorPathCatcher.PathElement"/> (the <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath"/> property),
+            plus two other specific paths, the <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastErrorPath"/> and the <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastWarnOrErrorPath"/>.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorPathCatcher.PathElement">
+            <summary>
+            Element of the <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath">DynamicPath</see>, <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastErrorPath">LastErrorPath</see>,
+            or <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastWarnOrErrorPath">LastWarnOrErrorPath</see>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.PathElement.Tags">
+            <summary>
+            Gets the tags of the log entry.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.PathElement.MaskedLevel">
+            <summary>
+            Gets the log level of the log entry.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.PathElement.Text">
+            <summary>
+            Gets the text of the log entry.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.PathElement.GroupConclusion">
+            <summary>
+            Gets the conclusions associated to a group. Null if this element does not correspond to a group.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.PathElement.ToString">
+            <summary>
+            Overridden to return the <see cref="P:CK.Core.ActivityMonitorPathCatcher.PathElement.Text"/> of this element.
+            </summary>
+            <returns>This <see cref="P:CK.Core.ActivityMonitorPathCatcher.PathElement.Text"/> property.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.#ctor">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorPathCatcher"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.IsLocked">
+            <summary>
+            Gets or sets whether this <see cref="T:CK.Core.ActivityMonitorPathCatcher"/> can be removed from its monitor.
+            Defaults to false. When setting this to true, <see cref="M:CK.Core.IActivityMonitorOutput.UnregisterClient(CK.Core.IActivityMonitorClient)"/>
+            does not remove it.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath">
+            <summary>
+            Gets the current (mutable) path. You may use ToArray or ToList methods to take a snapshot of this list.
+            Use the extension method <see cref="M:CK.Core.ActivityMonitorExtension.ToStringPath(System.Collections.Generic.IEnumerable{CK.Core.ActivityMonitorPathCatcher.PathElement},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"/> to easily format this path.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.LastErrorPath">
+            <summary>
+            Gets the last <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath"/> where an <see cref="F:CK.Core.LogLevel.Error"/> or a <see cref="F:CK.Core.LogLevel.Fatal"/> occurred.
+            Null if no error nor fatal occurred.
+            Use the extension method <see cref="M:CK.Core.ActivityMonitorExtension.ToStringPath(System.Collections.Generic.IEnumerable{CK.Core.ActivityMonitorPathCatcher.PathElement},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"/> to easily format this path.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.ClearLastErrorPath">
+            <summary>
+            Clears current <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastErrorPath"/> (sets it to null).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorPathCatcher.LastWarnOrErrorPath">
+            <summary>
+            Gets the last path with a <see cref="F:CK.Core.LogLevel.Fatal"/>, <see cref="F:CK.Core.LogLevel.Error"/> or a <see cref="F:CK.Core.LogLevel.Warn"/>.
+            Null if no error, fatal nor warn occurred.
+            Use the extension method <see cref="M:CK.Core.ActivityMonitorExtension.ToStringPath(System.Collections.Generic.IEnumerable{CK.Core.ActivityMonitorPathCatcher.PathElement},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)"/> to easily format this path.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.ClearLastWarnPath(System.Boolean)">
+            <summary>
+            Clears current <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastWarnOrErrorPath"/> (sets it to null), and
+            optionally clears <see cref="P:CK.Core.ActivityMonitorPathCatcher.LastErrorPath"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.OnUnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Appends or updates the last <see cref="T:CK.Core.ActivityMonitorPathCatcher.PathElement"/> of <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath"/>
+            and handles errors or warning.
+            </summary>
+            <param name="data">Log data. Never null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.OnOpenGroup(CK.Core.IActivityLogGroup)">
+            <summary>
+            Appends or updates the last <see cref="T:CK.Core.ActivityMonitorPathCatcher.PathElement"/> of <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath"/>
+            and handles errors or warning.
+            </summary>
+            <param name="group">The newly opened <see cref="T:CK.Core.IActivityLogGroup"/>.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorPathCatcher.OnGroupClosed(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Removes one or two last <see cref="T:CK.Core.ActivityMonitorPathCatcher.PathElement"/> of <see cref="P:CK.Core.ActivityMonitorPathCatcher.DynamicPath"/>.
+            </summary>
+            <param name="group">The closed group.</param>
+            <param name="conclusions">Texts that conclude the group. Never null but can be empty.</param>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorSimpleCollector">
+            <summary>
+            Simple collector of log entries which level is greater or equal to <see cref="P:CK.Core.ActivityMonitorSimpleCollector.MinimalFilter"/>.
+            Its <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Capacity"/> defaults to 50 (no more than Capacity entries are kept).
+            Used by the <see cref="M:CK.Core.ActivityMonitorExtension.CollectEntries(CK.Core.IActivityMonitor,System.Action{System.Collections.Generic.IReadOnlyList{CK.Core.ActivityMonitorSimpleCollector.Entry}},CK.Core.LogLevelFilter)">CollectEntries</see> extension method.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorSimpleCollector.Entry">
+            <summary>
+            Element of the <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Entries">Entries</see>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorSimpleCollector.Entry.Tags">
+            <summary>
+            The tags of the log entry.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorSimpleCollector.Entry.MaskedLevel">
+            <summary>
+            The log level of the log entry.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorSimpleCollector.Entry.LogTime">
+            <summary>
+            Time of the log entry.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorSimpleCollector.Entry.Text">
+            <summary>
+            The text of the log entry.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorSimpleCollector.Entry.Exception">
+            <summary>
+            The exception of the log entry if any.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorSimpleCollector.Entry.ToString">
+            <summary>
+            Overridden to return the <see cref="F:CK.Core.ActivityMonitorSimpleCollector.Entry.Text"/> of this element.
+            </summary>
+            <returns>This <see cref="F:CK.Core.ActivityMonitorSimpleCollector.Entry.Text"/> property.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorSimpleCollector.#ctor">
+            <summary>
+            Initializes a new collector with an initial capacity of 50 errors (<see cref="P:CK.Core.ActivityMonitorSimpleCollector.MinimalFilter"/> is set to <see cref="F:CK.Core.LogLevelFilter.Error"/>).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorSimpleCollector.Capacity">
+            <summary>
+            Gets or sets the maximum numbers of <see cref="T:CK.Core.ActivityMonitorSimpleCollector.Entry"/> that must be kept in <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Entries"/>.
+            Defaults to 50.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorSimpleCollector.MinimalFilter">
+            <summary>
+            Gets or sets the filter level.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorSimpleCollector.Entries">
+            <summary>
+            Gets a read only list of (at most) <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Capacity"/> entries that occurred since last 
+            call to <see cref="M:CK.Core.ActivityMonitorSimpleCollector.Clear"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorSimpleCollector.Clear">
+            <summary>
+            Clears the current <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Entries"/> list.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorSimpleCollector.CK#Core#IActivityMonitorClient#OnUnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Appends any log with level equal or above <see cref="P:CK.Core.ActivityMonitorSimpleCollector.MinimalFilter"/> to <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Entries"/>.
+            </summary>
+            <param name="data">Log data. Never null.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorSimpleCollector.CK#Core#IActivityMonitorClient#OnOpenGroup(CK.Core.IActivityLogGroup)">
+            <summary>
+            Appends any group with level equal or above <see cref="P:CK.Core.ActivityMonitorSimpleCollector.MinimalFilter"/> to <see cref="P:CK.Core.ActivityMonitorSimpleCollector.Entries"/>.
+            </summary>
+            <param name="group">Log group description.</param>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorTextHelperClient">
+            <summary>
+            Base class for <see cref="T:CK.Core.IActivityMonitorClient"/> that tracks groups and level changes in order
+            to ease text-based renderer.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.#ctor(CK.Core.LogFilter)">
+            <summary>
+            Initialize a new <see cref="T:CK.Core.ActivityMonitorTextHelperClient"/> with a filter.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.#ctor">
+            <summary>
+            Initialize a new <see cref="T:CK.Core.ActivityMonitorTextHelperClient"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.OnEnterLevel(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Called for the first text of a <see cref="T:CK.Core.LogLevel"/>.
+            </summary>
+            <param name="data">Log data.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.OnContinueOnSameLevel(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Called for text with the same <see cref="T:CK.Core.LogLevel"/> as the previous ones.
+            </summary>
+            <param name="data">Log data.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.OnLeaveLevel(CK.Core.LogLevel)">
+            <summary>
+            Called when current log level changes.
+            </summary>
+            <param name="level">The previous log level (without <see cref="F:CK.Core.LogLevel.IsFiltered"/>).</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.OnGroupOpen(CK.Core.IActivityLogGroup)">
+            <summary>
+            Called whenever a group is opened.
+            </summary>
+            <param name="group">The newly opened group.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextHelperClient.OnGroupClose(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Called when the group is actually closed.
+            </summary>
+            <param name="group">The closing group.</param>
+            <param name="conclusions">Texts that concludes the group. Never null but can be empty.</param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorTextHelperClient.Filter">
+            <summary>
+            Gets or sets the filter for this client.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorTextWriterClient">
+            <summary>
+            Formats the activity and pushes piece of texts to an <see cref="T:System.Action`1"/> where T is a string.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.#ctor(System.Action{System.String},CK.Core.LogFilter)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorTextWriterClient"/> bound to a 
+            function that must write a string, with a filter.
+            </summary>
+            <param name="writer">Function that writes the content.</param>
+            <param name="filter">Filter to apply</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.#ctor(System.Action{System.String})">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorTextWriterClient"/> bound to a 
+            function that must write a string.
+            </summary>
+            <param name="writer">Function that writes the content.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.OnEnterLevel(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Writes all the information.
+            </summary>
+            <param name="data">Log data.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.OnContinueOnSameLevel(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Writes all information.
+            </summary>
+            <param name="data">Log data.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.OnLeaveLevel(CK.Core.LogLevel)">
+            <summary>
+            Updates the internally maintained prefix for lines.
+            </summary>
+            <param name="level">Previous level.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.OnGroupOpen(CK.Core.IActivityLogGroup)">
+            <summary>
+            Writes a group opening.
+            </summary>
+            <param name="g">Group information.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.OnGroupClose(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Writes group conclusion and updates internally managed line prefix.
+            </summary>
+            <param name="g">Group that must be closed.</param>
+            <param name="conclusions">Conclusions for the group.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorTextWriterClient.DumpException(System.Text.StringBuilder,System.String,System.Boolean,System.Exception)">
+            <summary>
+            Recursively dumps an <see cref="T:System.Exception"/> as readable text.
+            </summary>
+            <param name="w">The TextWriter to write to.</param>
+            <param name="prefix">Prefix that will start all lines.</param>
+            <param name="displayMessage">Whether the exception message must be displayed or skip.</param>
+            <param name="ex">The exception to display.</param>
+        </member>
+        <member name="T:CK.Core.IActivityLogGroup">
+            <summary>
+            Exposes all the relevant information for a currently opened group.
+            Groups are linked together from the current one to the very first one 
+            thanks to the <see cref="P:CK.Core.IActivityLogGroup.Parent"/> property.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.GroupTags">
+            <summary>
+            Gets the tags for the log group.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.LogTime">
+            <summary>
+            Gets the log time for the log.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.CloseLogTime">
+            <summary>
+            Gets the log time of the group closing.
+            It is <see cref="F:CK.Core.DateTimeStamp.MinValue"/> when the group is not closed yet.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.Parent">
+            <summary>
+            Get the previous group in its origin monitor. Null if this group is a top level group.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.Depth">
+            <summary>
+            Gets the depth of this group in its origin monitor. (1 for top level groups).
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.SavedMonitorFilter">
+            <summary>
+            Gets the <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> that will be restored when group will be closed.
+            Initialized with the current value of IActivityMonitor.Filter when the group has been opened.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.SavedMonitorTags">
+            <summary>
+            Gets the <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> that will be restored when group will be closed.
+            Initialized with the current value of IActivityMonitor.Tags when the group has been opened.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.GroupLevel">
+            <summary>
+            Gets the level associated to this group.
+            The <see cref="F:CK.Core.LogLevel.IsFiltered"/> can be set here: use <see cref="P:CK.Core.IActivityLogGroup.MaskedGroupLevel"/> to get 
+            the actual level from <see cref="F:CK.Core.LogLevel.Trace"/> to <see cref="F:CK.Core.LogLevel.Fatal"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.MaskedGroupLevel">
+            <summary>
+            Gets the actual level (<see cref="F:CK.Core.LogLevel.Trace"/> to <see cref="F:CK.Core.LogLevel.Fatal"/>) associated to this group
+            without <see cref="F:CK.Core.LogLevel.IsFiltered"/> bit.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.GroupText">
+            <summary>
+            Gets the text associated to this group.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.Exception">
+            <summary>
+            Gets the associated <see cref="P:CK.Core.IActivityLogGroup.Exception"/> if it exists.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.ExceptionData">
+            <summary>
+            Gets the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information 
+            if it exists. Returns null if no <see cref="P:Exception"/> exists.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityLogGroup.EnsureExceptionData">
+            <summary>
+            Gets or creates the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information.
+            If <see cref="P:Exception"/> is null, this method returns null.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.IsGroupTextTheExceptionMessage">
+            <summary>
+            Gets whether the <see cref="P:CK.Core.IActivityLogGroup.GroupText"/> is actually the <see cref="P:CK.Core.IActivityLogGroup.Exception"/> message.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.FileName">
+            <summary>
+            Gets the file name of the source code that issued the log.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityLogGroup.LineNumber">
+            <summary>
+            Gets the line number of the <see cref="P:CK.Core.IActivityLogGroup.FileName"/> that issued the log.
+            </summary>
+        </member>
+        <member name="T:CK.Core.IActivityMonitor">
+            <summary>
+            Defines the core Activity Monitor interface. Small is beautiful. 
+            </summary>
+            <remarks>
+            This is not the same as a classical logging framework: the "activity" captures by an activity monitor is structured. 
+            It can be seen as a "Story Writer": its output can be displayed to an end user (even if some structured information 
+            can easily be injected).
+            Furthermore, activities can be tracked (with the help of the developer of course) across threads, tasks or application domain.
+            </remarks>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.AutoTags">
+            <summary>
+            Gets or sets the tags of this monitor: any subsequent logs will be tagged by these tags.
+            The <see cref="T:CK.Core.CKTrait"/> must be registered in <see cref="T:CK.Core.ActivityMonitor.Tags"/>.
+            Modifications to this property are scoped to the current Group since when a Group is closed, this
+            property (and <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/>) is automatically restored to its original value (captured when the Group was opened).
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.MinimalFilter">
+            <summary>
+            Gets or sets a filter for the log level.
+            Modifications to this property are scoped to the current Group since when a Group is closed, this
+            property (and <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>) is automatically restored to its original value (captured when the Group was opened).
+            Defaults to <see cref="F:CK.Core.LogFilter.Undefined"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.ActualFilter">
+            <summary>
+            Gets the actual filter level for logs: this combines the configured <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> and the minimal requirements
+            of any <see cref="T:CK.Core.IActivityMonitorBoundClient"/> that specifies such a minimal filter level.
+            </summary>
+            <remarks>
+            This does NOT take into account the static (application-domain) <see cref="P:CK.Core.ActivityMonitor.DefaultFilter"/>.
+            This global default must be used if this ActualFilter is <see cref="F:CK.Core.LogLevelFilter.None"/> for <see cref="F:CK.Core.LogFilter.Line"/> or <see cref="F:CK.Core.LogFilter.Group"/>: 
+            the <see cref="M:CK.Core.ActivityMonitorExtension.ShouldLogLine(CK.Core.IActivityMonitor,CK.Core.LogLevel,System.String,System.Int32)">ShouldLog</see> extension method takes it into account.
+            </remarks>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.Topic">
+            <summary>
+            Gets the current topic for this monitor. This can be any non null string (null topic is mapped to the empty string) that describes
+            the current activity. It must be set with <see cref="M:CK.Core.IActivityMonitor.SetTopic(System.String,System.String,System.Int32)"/> and unlike <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> and <see cref="P:CK.Core.IActivityMonitor.AutoTags"/>, 
+            the topic is not reseted when groups are closed.
+            </summary>
+            <remarks>
+            Clients are warned of the change thanks to <see cref="M:CK.Core.IActivityMonitorClient.OnTopicChanged(System.String,System.String,System.Int32)"/> and an unfiltered <see cref="F:CK.Core.LogLevel.Info"/> log 
+            with the new topic prefixed with "Topic:" and tagged with <see cref="F:CK.Core.ActivityMonitor.Tags.MonitorTopicChanged"/> is emitted.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.IActivityMonitor.SetTopic(System.String,System.String,System.Int32)">
+            <summary>
+            Sets the current topic for this monitor. This can be any non null string (null topic is mapped to the empty string) that describes
+            the current activity.
+            </summary>
+            <param name="fileName">The source code file name from which the topic is set.</param>
+            <param name="lineNumber">The line number in the source from which the topic is set.</param>
+            <param name="newTopic">The new topic string to associate to this monitor.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Logs a line regardless of <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> level (except for <see cref="F:CK.Core.LogLevelFilter.Off"/>). 
+            </summary>
+            <param name="data">Data that describes the log. Can not be null.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)">
+            <summary>
+            Opens a group regardless of <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> level (except for <see cref="F:CK.Core.LogLevelFilter.Off"/>). 
+            <see cref="M:CK.Core.IActivityMonitor.CloseGroup(CK.Core.DateTimeStamp,System.Object)"/> must be called in order to close the group, and/or the returned object must be disposed (both safely can be called: 
+            the group is closed on the first action, the second one is ignored).
+            </summary>
+            <param name="data">Data that describes the log. Can not be null.</param>
+            <returns>A disposable object that can be used to set a function that provides a conclusion text and/or close the group.</returns>
+            <remarks>
+            <para>
+            Opening a group does not change the current <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/>, except when opening a <see cref="F:CK.Core.LogLevel.Fatal"/> or <see cref="F:CK.Core.LogLevel.Error"/> group:
+            in such case, the MinimalFilter is automatically sets to <see cref="F:CK.Core.LogFilter.Debug"/> to capture all potential information inside the error group.
+            </para>
+            <para>
+            Changes to the monitor's current Filter or AutoTags that occur inside a group are automatically restored to their original values when the group is closed.
+            This behavior guaranties that a local modification (deep inside unknown called code) does not impact caller code: groups are a way to easily isolate such 
+            configuration changes.
+            </para>
+            <para>
+            Note that this automatic configuration restoration works even if the group has been filtered.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:CK.Core.IActivityMonitor.CloseGroup(CK.Core.DateTimeStamp,System.Object)">
+            <summary>
+            Closes the current Group. Optional parameter is polymorphic. It can be a string, a <see cref="T:CK.Core.ActivityLogGroupConclusion"/>, 
+            a <see cref="T:System.Collections.Generic.List`1"/> or an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of ActivityLogGroupConclusion, or any object with an overridden <see cref="M:System.Object.ToString"/> method. 
+            See remarks (especially for List&lt;ActivityLogGroupConclusion&gt;).
+            </summary>
+            <param name="userConclusion">Optional string, ActivityLogGroupConclusion object, enumerable of ActivityLogGroupConclusion or object to conclude the group. See remarks.</param>
+            <param name="logTime">
+            Log time of the closing of the group. 
+            You can use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.</param>
+            <remarks>
+            An untyped object is used here to easily and efficiently accommodate both string and already existing ActivityLogGroupConclusion.
+            When a List&lt;ActivityLogGroupConclusion&gt; is used, it will be directly used to collect conclusion objects (new conclusions will be added to it). This is an optimization.
+            </remarks>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.Output">
+            <summary>
+            Gets the <see cref="T:CK.Core.IActivityMonitorOutput"/> for this monitor.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitor.LastLogTime">
+            <summary>
+            Gets the last <see cref="T:CK.Core.DateTimeStamp"/> for this monitor.
+            </summary>
+        </member>
+        <member name="T:CK.Core.IActivityMonitorBoundClient">
+            <summary>
+            Specialized <see cref="T:CK.Core.IActivityMonitorClient"/> that is bound to one <see cref="T:CK.Core.IActivityMonitor"/>.
+            Clients that can not be registered into multiple outputs (and receive logs from multiple monitors at the same time) should implement this 
+            interface in order to control their registration/un-registration.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitorBoundClient.MinimalFilter">
+            <summary>
+            Gets the minimal log level that this Client expects. 
+            Should default to <see cref="F:CK.Core.LogLevelFilter.None"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorBoundClient.SetMonitor(CK.Core.Impl.IActivityMonitorImpl,System.Boolean)">
+            <summary>
+            Called by <see cref="T:CK.Core.IActivityMonitorOutput"/> when registering or unregistering
+            this client.
+            </summary>
+            <param name="source">The monitor that will send log.</param>
+            <param name="forceBuggyRemove">
+            True if this client must be removed because one of its method thrown an exception. The <paramref name="source"/> is null.
+            </param>
+        </member>
+        <member name="T:CK.Core.IActivityMonitorClient">
+            <summary>
+            Listener for <see cref="T:CK.Core.IActivityMonitor"/> registered in a <see cref="T:CK.Core.IActivityMonitorOutput"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnUnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Called for each <see cref="M:CK.Core.IActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)"/>.
+            The <see cref="P:CK.Core.ActivityMonitorLogData.Exception"/> is always null since exceptions
+            are carried by groups.
+            </summary>
+            <param name="data">Log data. Never null.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnOpenGroup(CK.Core.IActivityLogGroup)">
+            <summary>
+            Called for each <see cref="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)"/>.
+            </summary>
+            <param name="group">The newly opened <see cref="T:CK.Core.IActivityLogGroup"/>.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnGroupClosing(CK.Core.IActivityLogGroup,System.Collections.Generic.List{CK.Core.ActivityLogGroupConclusion}@)">
+            <summary>
+            Called once the user conclusions are known at the group level but before 
+            the group is actually closed: clients can update the conclusions for the group.
+            Does nothing by default.
+            </summary>
+            <param name="group">The closing group.</param>
+            <param name="conclusions">
+            Mutable conclusions associated to the closing group. 
+            This can be null if no conclusions have been added yet. 
+            It is up to the first client that wants to add a conclusion to instantiate a new List object to carry the conclusions.
+            </param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnGroupClosed(CK.Core.IActivityLogGroup,System.Collections.Generic.IReadOnlyList{CK.Core.ActivityLogGroupConclusion})">
+            <summary>
+            Called when the group is actually closed.
+            </summary>
+            <param name="group">The closed group.</param>
+            <param name="conclusions">Texts that conclude the group. Never null but can be empty.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnTopicChanged(System.String,System.String,System.Int32)">
+            <summary>
+            Called when a new <see cref="P:CK.Core.IActivityMonitor.Topic"/> is set.
+            </summary>
+            <param name="newTopic">The new topic string (never null but can be empty).</param>
+            <param name="fileName">Source file name where <see cref="M:CK.Core.IActivityMonitor.SetTopic(System.String,System.String,System.Int32)"/> has been called.</param>
+            <param name="lineNumber">Source line number where IActivityMonitor.SetTopic has been called.</param>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorClient.OnAutoTagsChanged(CK.Core.CKTrait)">
+            <summary>
+            Called when <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> changed.
+            </summary>
+            <param name="newTrait">The new tags (never null but can be empty).</param>
+        </member>
+        <member name="T:CK.Core.IActivityMonitorOutput">
+            <summary>
+            Offers <see cref="T:CK.Core.IActivityMonitorClient"/> registration/unregistration and exposes a <see cref="P:CK.Core.IActivityMonitorOutput.BridgeTarget"/> 
+            (an <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>) that can be used to accept logs from other monitors.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorOutput.RegisterClient(CK.Core.IActivityMonitorClient,System.Boolean@)">
+            <summary>
+            Registers an <see cref="T:CK.Core.IActivityMonitorClient"/> to the <see cref="P:CK.Core.IActivityMonitorOutput.Clients"/> list.
+            Duplicate IActivityMonitorClient instances are ignored.
+            </summary>
+            <param name="client">An <see cref="T:CK.Core.IActivityMonitorClient"/> implementation.</param>
+            <param name="added">True if the client has been added, false if it was already registered.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorOutput.RegisterClient``1(``0,System.Boolean@)">
+            <summary>
+            Registers a typed <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            Duplicate IActivityMonitorClient instances are ignored.
+            </summary>
+            <typeparam name="T">Any type that specializes <see cref="T:CK.Core.IActivityMonitorClient"/>.</typeparam>
+            <param name="client">Client to register.</param>
+            <param name="added">True if the client has been added, false if it was already registered.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorOutput.UnregisterClient(CK.Core.IActivityMonitorClient)">
+            <summary>
+            Unregisters the given <see cref="T:CK.Core.IActivityMonitorClient"/> from the <see cref="P:CK.Core.IActivityMonitorOutput.Clients"/> list.
+            Silently ignores an unregistered client.
+            </summary>
+            <param name="client">An <see cref="T:CK.Core.IActivityMonitorClient"/> implementation.</param>
+            <returns>The unregistered client or null if it has not been found.</returns>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorOutput.RegisterUniqueClient``1(System.Func{``0,System.Boolean},System.Func{``0})">
+            <summary>
+            Registers a <see cref="T:CK.Core.IActivityMonitorClient"/> that must be unique in a sense.
+            </summary>
+            <param name="tester">Predicate that must be satisfied for at least one registered client.</param>
+            <param name="factory">Factory that will be called if no existing client satisfies <paramref name="tester"/>.</param>
+            <returns>The found or newly created client.</returns>
+            <remarks>
+            The factory function MUST return a client that satisfies the tester function otherwise a <see cref="T:System.InvalidOperationException"/> is thrown.
+            The factory is called only when the no client satisfies the tester function: this makes the 'added' out parameter useless.
+            </remarks>
+        </member>
+        <member name="P:CK.Core.IActivityMonitorOutput.Clients">
+            <summary>
+            Gets the list of registered <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitorOutput.BridgeTarget">
+            <summary>
+            Gets an entry point for other monitors: by registering <see cref="T:CK.Core.ActivityMonitorBridge"/> in other <see cref="P:CK.Core.IActivityMonitor.Output"/>
+            bound to this <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>, log streams can easily be merged.
+            </summary>
+        </member>
+        <member name="T:CK.Core.IDisposableActivityMonitor">
+            <summary>
+            A diposable <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+        </member>
+        <member name="T:CK.Core.IDisposableGroup">
+            <summary>
+            Interface obtained once a Group has been opened.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IDisposableGroup.SetTopic(System.String)">
+            <summary>
+            Sets a temporary topic associated to this group.
+            The current monitor's topic will be automatically restored when group will be closed.
+            </summary>
+            <param name="topicOtherThanGroupText">Explicit topic it it must differ from the group's text.</param>
+            <returns>This object in order to call <see cref="M:CK.Core.IDisposableGroup.ConcludeWith(System.Func{System.String})"/> or to dispose it to close the group.</returns>
+        </member>
+        <member name="M:CK.Core.IDisposableGroup.ConcludeWith(System.Func{System.String})">
+            <summary>
+            Sets a function that will be called on group closing to generate a conclusion.
+            </summary>
+            <param name="getConclusionText">Function that generates a group conclusion.</param>
+            <returns>A disposable object that can be used to close the group.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor">
+            <summary>
+            Concrete implementation of <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+            <summary>
+            Concrete implementation of <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+            <summary>
+            Concrete implementation of <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.SetTopicPrefix">
+            <summary>
+            Prefix used by <see cref="M:CK.Core.IActivityMonitor.SetTopic(System.String,System.String,System.Int32)"/> is "Topic: ".
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.ParkLevel">
+            <summary>
+            String to use to break the current <see cref="T:CK.Core.LogLevel"/> (as if a different <see cref="T:CK.Core.LogLevel"/> was used).
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor.Tags">
+            <summary>
+            Thread-safe context for tags used to categorize log entries (and group conclusions).
+            All tags used in monitoring must be <see cref="M:CK.Core.ActivityMonitor.Tags.Register(System.String)"/>ed here.
+            </summary>
+            <remarks>
+            Tags used for conclusions should start with "c:".
+            </remarks>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.Context">
+            <summary>
+            The central, unique, context of all monitoring related tags used in the application domain.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.Empty">
+            <summary>
+            Shortcut to <see cref="P:CK.Core.CKTraitContext.EmptyTrait">Context.EmptyTrait</see>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.CreateDependentActivity">
+            <summary>
+            Creation of dependent activities are marked with "dep:CreateActivity".
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.StartDependentActivity">
+            <summary>
+            Start of dependent activities are marked with "dep:StartActivity".
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.UserConclusion">
+            <summary>
+            Conclusions provided to IActivityMonitor.Close(string) are marked with "c:User".
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.GetTextConclusion">
+            <summary>
+            Conclusions returned by the optional function when a group is opened (see <see cref="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)"/>) are marked with "c:GetText".
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Tags.MonitorTopicChanged">
+            <summary>
+            Whenever <see cref="P:CK.Core.ActivityMonitor.Topic"/> changed, a <see cref="F:CK.Core.LogLevel.Info"/> is emitted marked with "MonitorTopicChanged".
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Tags.Register(System.String)">
+            <summary>
+            Simple shortcut to <see cref="M:CK.Core.CKTraitContext.FindOrCreate(System.String)"/>.
+            </summary>
+            <param name="tags">Atomic tag or multiple tags separated by pipes (|).</param>
+            <returns>Registered tags.</returns>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.CriticalErrorCollector">
+            <summary>
+            The monitoring error collector. 
+            Any error that occurs while dispatching logs to <see cref="T:CK.Core.IActivityMonitorClient"/>
+            are collected and the culprit is removed from <see cref="P:CK.Core.ActivityMonitor.Output"/>.
+            See <see cref="T:CriticalErrorCollector"/>.
+            </summary>
+        </member>
+        <member name="E:CK.Core.ActivityMonitor.DefaultFilterLevelChanged">
+            <summary>
+            Internal event used by ActivityMonitorBridgeTarget that have at least one ActivityMonitorBridge in another application domain.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.DefaultFilter">
+            <summary>
+            Gets or sets the default filter that should be used when the <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> is <see cref="F:CK.Core.LogFilter.Undefined"/>.
+            This configuration is per application domain (the backing field is static).
+            It defaults to <see cref="F:CK.Core.LogFilter.Undefined"/>: it has the same effect as setting it to <see cref="F:CK.Core.LogFilter.Debug"/> (i.e. sending everything) when
+            no other configuration exists.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.AutoConfiguration">
+            <summary>
+            The automatic configuration actions.
+            Registers actions via += (or <see cref="G:Delegate.Combine"/> if you like pain), unregister with -= operator (or <see cref="M:System.Delegate.Remove(System.Delegate,System.Delegate)"/>).
+            Simply sets it to null to clear all currently registered actions (this, of course, only from tests and not in real code).
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.NoLogText">
+            <summary>
+            The no-log text replaces any null or empty log text.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.#ctor">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitor"/> that applies all <see cref="F:CK.Core.ActivityMonitor.AutoConfiguration"/> and has no <see cref="P:CK.Core.ActivityMonitor.Topic"/> initially set.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.#ctor(System.String)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitor"/> that applies all <see cref="F:CK.Core.ActivityMonitor.AutoConfiguration"/> and has an initial <see cref="P:CK.Core.ActivityMonitor.Topic"/> set.
+            </summary>
+            <param name="topic">Initial topic (can be null).</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitor"/> that optionally applies <see cref="F:CK.Core.ActivityMonitor.AutoConfiguration"/> and with an initial topic.
+            </summary>
+            <param name="applyAutoConfigurations">Whether <see cref="F:CK.Core.ActivityMonitor.AutoConfiguration"/> should be applied.</param>
+            <param name="topic">Optional initial topic (can be null).</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.#ctor(CK.Core.Impl.ActivityMonitorOutput,CK.Core.CKTrait,System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitor"/> with a specific <see cref="P:CK.Core.ActivityMonitor.Output"/> or null
+            to postpone the setting of Output by using <see cref="M:CK.Core.ActivityMonitor.SetOutput(CK.Core.Impl.ActivityMonitorOutput)"/>.
+            </summary>
+            <param name="output">The output to use. Can be null.</param>
+            <param name="tags">Initial tags.</param>
+            <param name="applyAutoConfigurations">Whether <see cref="F:CK.Core.ActivityMonitor.AutoConfiguration"/> should be applied.</param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.UniqueId">
+            <summary>
+            Gets the unique identifier for this monitor.
+            It is a <see cref="M:System.Guid.NewGuid"/> by default but specialized implementations can set it
+            via the protected <see cref="M:CK.Core.ActivityMonitor.SetUniqueId(System.Guid)"/> if a unique identifier exists in the context 
+            that can more easily identify this activity.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SetUniqueId(System.Guid)">
+            <summary>
+            Sets the unique identifier of this activity monitor.
+            This must be used only during monitor construction or initialization, before the 
+            monitor is actually used.
+            </summary>
+            <param name="uniqueId">New unique identifier.</param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Output">
+            <summary>
+            Gets the <see cref="T:CK.Core.IActivityMonitorOutput"/> for this monitor.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SetOutput(CK.Core.Impl.ActivityMonitorOutput)">
+            <summary>
+            Sets the <see cref="P:CK.Core.ActivityMonitor.Output"/>.
+            </summary>
+            <param name="output">Can not be null.</param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.LastLogTime">
+            <summary>
+            Gets the last <see cref="T:CK.Core.DateTimeStamp"/> for this monitor.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Topic">
+            <summary>
+            Gets the current topic for this monitor. This can be any non null string (null topic is mapped to the empty string) that describes
+            the current activity. It must be set with <see cref="M:CK.Core.ActivityMonitor.SetTopic(System.String,System.String,System.Int32)"/> and unlike <see cref="P:CK.Core.ActivityMonitor.MinimalFilter"/> and <see cref="P:CK.Core.ActivityMonitor.AutoTags"/>, 
+            the topic is not reseted when groups are closed.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SetTopic(System.String,System.String,System.Int32)">
+            <summary>
+            Sets the current topic for this monitor. This can be any non null string (null topic is mapped to the empty string) that describes
+            the current activity.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.AutoTags">
+            <summary>
+            Gets or sets the tags of this monitor: any subsequent logs will be tagged by these tags.
+            The <see cref="T:CK.Core.CKTrait"/> must be registered in <see cref="T:CK.Core.ActivityMonitor.Tags"/>.
+            Modifications to this property are scoped to the current Group since when a Group is closed, this
+            property (like <see cref="P:CK.Core.ActivityMonitor.MinimalFilter"/>) is automatically restored to its original value (captured when the Group was opened).
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.CK#Core#Impl#IActivityMonitorImpl#InitializeTopicAndAutoTags(System.String,CK.Core.CKTrait,System.String,System.Int32)">
+            <summary>
+            Called by IActivityMonitorBoundClient clients to initialize Topic and AutoTag from 
+            inside their SetMonitor or any other methods provided that a reentrant and concurrent lock 
+            has been obtained (otherwise an InvalidOperationException is thrown).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.MinimalFilter">
+            <summary>
+            Gets or sets a filter based for the log level.
+            Modifications to this property are scoped to the current Group since when a Group is closed, this
+            property (like <see cref="P:CK.Core.ActivityMonitor.AutoTags"/>) is automatically restored to its original value (captured when the Group was opened).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.ActualFilter">
+            <summary>
+            Gets the actual filter level for logs: this combines the configured <see cref="P:CK.Core.ActivityMonitor.MinimalFilter"/> and the minimal requirements
+            of any <see cref="T:CK.Core.IActivityMonitorBoundClient"/> that specifies such a minimal filter level.
+            </summary>
+            <remarks>
+            This does NOT take into account the static (application-domain) <see cref="P:CK.Core.ActivityMonitor.DefaultFilter"/>.
+            This global default must be used if this ActualFilter is <see cref="F:CK.Core.LogLevelFilter.None"/> for <see cref="F:CK.Core.LogFilter.Line"/> or <see cref="F:CK.Core.LogFilter.Group"/>: 
+            the <see cref="M:CK.Core.ActivityMonitorExtension.ShouldLogLine(CK.Core.IActivityMonitor,CK.Core.LogLevel,System.String,System.Int32)">ShouldLog</see> extension method takes it into account.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)">
+            <summary>
+            Logs a text regardless of <see cref="P:CK.Core.ActivityMonitor.MinimalFilter"/> level (except for <see cref="F:CK.Core.LogLevelFilter.Off"/>). 
+            Each call to log is considered as a unit of text: depending on the rendering engine, a line or a 
+            paragraph separator (or any appropriate separator) should be appended between each text if 
+            the level is the same as the previous one.
+            See remarks.
+            </summary>
+            <param name="data">Data that describes the log. Can not be null.</param>
+            <remarks>
+            A null or empty <see cref="P:CK.Core.ActivityMonitorLogData.Text"/> is not logged.
+            If needed, the special text <see cref="F:CK.Core.ActivityMonitor.ParkLevel"/> ("PARK-LEVEL") breaks the current <see cref="T:CK.Core.LogLevel"/>
+            and resets it: the next log, even with the same LogLevel, will be treated as if
+            a different LogLevel is used.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)">
+            <summary>
+            Opens a group regardless of <see cref="P:CK.Core.ActivityMonitor.ActualFilter"/> level (except for <see cref="F:CK.Core.LogLevelFilter.Off"/>). 
+            <see cref="M:CK.Core.ActivityMonitor.CloseGroup(CK.Core.DateTimeStamp,System.Object)"/> must be called in order to close the group, and/or the returned object must be disposed (both safely can be called: 
+            the group is closed on the first action, the second one is ignored).
+            </summary>
+            <param name="data">Data that describes the log. Can not be null.</param>
+            <returns>A disposable object that can be used to set a function that provides a conclusion text and/or close the group.</returns>
+            <remarks>
+            <para>
+            Opening a group does not change the current <see cref="P:CK.Core.ActivityMonitor.MinimalFilter"/>, except when opening a <see cref="F:CK.Core.LogLevel.Fatal"/> or <see cref="F:CK.Core.LogLevel.Error"/> group:
+            in such case, the MinimalFilter is automatically sets to <see cref="F:CK.Core.LogFilter.Debug"/> to capture all potential information inside the error group.
+            </para>
+            <para>
+            Changes to the monitor's current Filter or AutoTags that occur inside a group are automatically restored to their original values when the group is closed.
+            This behavior guaranties that a local modification (deep inside unknown called code) does not impact caller code: groups are a way to easily isolate such 
+            configuration changes.
+            </para>
+            <para>
+            Note that this automatic configuration restoration works even if the group has been filtered.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.CloseGroup(CK.Core.DateTimeStamp,System.Object)">
+            <summary>
+            Closes the current <see cref="T:CK.Core.ActivityMonitor.Group"/>. Optional parameter is polymorphic. It can be a string, a <see cref="T:CK.Core.ActivityLogGroupConclusion"/>, 
+            a <see cref="T:System.Collections.Generic.List`1"/> or an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of ActivityLogGroupConclusion, or any object with an overridden <see cref="M:System.Object.ToString"/> method. 
+            See remarks (especially for List&lt;ActivityLogGroupConclusion&gt;).
+            </summary>
+            <param name="userConclusion">Optional string, enumerable of <see cref="T:CK.Core.ActivityLogGroupConclusion"/>) or object to conclude the group. See remarks.</param>
+            <param name="logTime">Times-tamp of the group closing.</param>
+            <remarks>
+            An untyped object is used here to easily and efficiently accommodate both string and already existing ActivityLogGroupConclusion.
+            When a List&lt;ActivityLogGroupConclusion&gt; is used, it will be directly used to collect conclusion objects (new conclusions will be added to it). This is an optimization.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.MonoParameterSafeCall``1(System.Action{CK.Core.IActivityMonitorClient,``0},``0)">
+            <summary>
+            Generalizes calls to IActivityMonitorClient methods that have only one parameter.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.ReentrancyAndConcurrencyLock">
+            <summary>
+            Gets a disposable object that checks for reentrant and concurrent calls.
+            </summary>
+            <returns>A disposable object (that must be disposed).</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.ConcurrentOnlyCheck">
+            <summary>
+            Checks only for concurrency issues. 
+            False if a call already exists (reentrant call): when true is returned, ReentrantAndConcurrentRelease must be called.
+            </summary>
+            <returns>False for a reentrant call, true otherwise.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor.DependentToken">
+            <summary>
+            Describes the origin of a dependent activity: it is created by <see cref="M:CK.Core.ActivityMonitorExtension.DependentActivity(CK.Core.IActivityMonitor,System.String,System.Int32)">IActivityMonitor.DependentActivity</see> 
+            (extension methods).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.DependentToken.OriginatorId">
+            <summary>
+            Unique identifier of the activity that created this dependent token.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.DependentToken.CreationDate">
+            <summary>
+            Gets the creation date. This is the log time of the unfiltered Info log that has 
+            been emitted in the originator monitor.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.DependentToken.Topic">
+            <summary>
+            Gets the topic that must be set on the dependent activity.
+            When null, the current <see cref="P:CK.Core.IActivityMonitor.Topic"/> of the dependent monitor is not changed.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.DependentToken.ToString">
+            <summary>
+            Overridden to give a readable description (without Topic: this is the same as what appears in the start message info). 
+            It can be parsed with <see cref="M:CK.Core.ActivityMonitor.DependentToken.TryParseStartMessage(System.String,System.Guid@,CK.Core.DateTimeStamp@)"/>.
+            </summary>
+            <returns>A readable string (the start message).</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.DependentToken.CreateDependentMonitor(System.Action{CK.Core.IActivityMonitor},System.String,System.Int32)">
+            <summary>
+            Creates a monitor and executes <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.StartDependentActivity(CK.Core.ActivityMonitor.DependentToken)">StartDependentActivity</see> on it
+            that opens a root info group with the token information.
+            </summary>
+            <param name="configurator">Optionally applies any configuration on the created monitor before opening the root activity group.</param>
+            <param name="fileName">Source file name of the emitter (automatically injected by C# compiler but can be explicitly set).</param>
+            <param name="lineNumber">Line number in the source file (automatically injected by C# compiler but can be explicitly set).</param>
+            <returns>An activity monitor that must be disposed when the activity ends (to close any opened groups).</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.DependentToken.TryParseLaunchOrCreateMessage(System.String,System.Boolean@,System.Boolean@,System.String@)">
+            <summary>
+            Tries to parse a launch message. 
+            </summary>
+            <param name="message">The message to parse.</param>
+            <param name="launched">True if the activity has been launched or the token has only be created.</param>
+            <param name="withTopic">True if an explicit topic has been associated to the dependent activity.</param>
+            <param name="dependentTopic">When <paramref name="withTopic"/> is true, this contains the explicitly set topic.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.DependentToken.DelayedLaunchMessage">
+            <summary>
+            Captures the log message when created with a delayed launch so that DependentSender.Launch( token ) can log it.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.DependentToken.TryParseStartMessage(System.String,System.Guid@,CK.Core.DateTimeStamp@)">
+            <summary>
+            Attempts to parse the start message of a dependent activity (tagged with <see cref="F:CK.Core.ActivityMonitor.Tags.StartDependentActivity"/>).
+            </summary>
+            <param name="startMessage">The start message to parse.</param>
+            <param name="id">The originator monitor identifier.</param>
+            <param name="time">The creation time of the dependent activity.</param>
+            <returns>True on success.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor.Group">
+            <summary>
+            Groups are bound to an <see cref="T:CK.Core.ActivityMonitor"/> and are linked together from 
+            the current one to the very first one (a kind of stack).
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Group.Monitor">
+            <summary>
+            The monitor that owns this group.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.Group.Index">
+            <summary>
+            The raw index of the group. 
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Group.#ctor(CK.Core.ActivityMonitor,System.Int32)">
+            <summary>
+            Initialized a new Group at a given index.
+            </summary>
+            <param name="monitor">Monitor.</param>
+            <param name="index">Index of the group.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Group.Initialize(CK.Core.ActivityMonitorGroupData)">
+            <summary>
+            Initializes or reinitializes this group (if it has been disposed). 
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Group.InitializeRejectedGroup(CK.Core.ActivityMonitorGroupData)">
+            <summary>
+            Initializes or reinitializes this group (if it has been disposed) as a filtered group. 
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.IsRejectedGroup">
+            <summary>
+            Gets whether the group is rejected: Depth is 0 when ActualFilter is Off or the GroupLevel 
+            is None (the OpenGroup has been filtered).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.GroupTags">
+            <summary>
+            Gets the tags for the log group.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.LogTime">
+            <summary>
+            Gets the log time for the log.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.CloseLogTime">
+            <summary>
+            Gets the log time of the group closing.
+            It is <see cref="F:CK.Core.DateTimeStamp.MinValue"/> when the group is not closed yet.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.ExceptionData">
+            <summary>
+            Gets the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information 
+            if it exists. Returns null if no <see cref="P:Exception"/> exists.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Group.EnsureExceptionData">
+            <summary>
+            Gets or creates the <see cref="T:CK.Core.CKExceptionData"/> that captures exception information.
+            If <see cref="P:Exception"/> is null, this returns null.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.Parent">
+            <summary>
+            Get the previous group in its origin monitor. Null if this group is a top level group.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.Depth">
+            <summary>
+            Gets the depth of this group in its origin monitor (1 for top level groups).
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.GroupLevel">
+            <summary>
+            Gets the level associated to this group.
+            The <see cref="F:CK.Core.LogLevel.IsFiltered"/> can be set here: use <see cref="P:CK.Core.ActivityMonitor.Group.MaskedGroupLevel"/> to get 
+            the actual level from <see cref="F:CK.Core.LogLevel.Trace"/> to <see cref="F:CK.Core.LogLevel.Fatal"/>.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.MaskedGroupLevel">
+            <summary>
+            Gets the actual level (from <see cref="F:CK.Core.LogLevel.Trace"/> to <see cref="F:CK.Core.LogLevel.Fatal"/>) associated to this group
+            without <see cref="F:CK.Core.LogLevel.IsFiltered"/> bit.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.GroupText">
+            <summary>
+            Gets the text with which this group has been opened. Null if and only if the group is closed.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.Exception">
+            <summary>
+            Gets the associated <see cref="P:CK.Core.ActivityMonitor.Group.Exception"/> if it exists.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.SavedMonitorFilter">
+            <summary>
+            Gets or sets the <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> that will be restored when group will be closed.
+            Initialized with the current value of IActivityMonitor.Filter when the group has been opened.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.SavedMonitorTags">
+            <summary>
+            Gets or sets the <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> that will be restored when group will be closed.
+            Initialized with the current value of IActivityMonitor.Tags when the group has been opened.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.IsGroupTextTheExceptionMessage">
+            <summary>
+            Gets whether the <see cref="P:CK.Core.ActivityMonitor.Group.GroupText"/> is actually the <see cref="P:CK.Core.ActivityMonitor.Group.Exception"/> message.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.PreviousTopic">
+            <summary>
+            Gets the previous topic it it must be restored. Null otherwise.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.FileName">
+            <summary>
+            Gets the file name of the source code that issued the log.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.Group.LineNumber">
+            <summary>
+            Gets the line number of the <see cref="P:CK.Core.ActivityMonitor.Group.FileName"/> that issued the log.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.Group.System#IDisposable#Dispose">
+            <summary>
+            Ensures that any groups opened after this one are closed before closing this one.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitor.CurrentGroup">
+            <summary>
+            Gets the currently opened group.
+            Null when no group is currently opened.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor.SourceFilter">
+            <summary>
+            Manages source filtering.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitor.SourceFilter.FilterSourceDelegate">
+            <summary>
+            Delegate type that can be assigned to <see cref="F:CK.Core.ActivityMonitor.SourceFilter.FilterSource"/> static property to 
+            enable filter override based on the caller source location. 
+            </summary>
+            <param name="fileName">FileName of the source file (that can be changed, typically by removing a common path prefix).</param>
+            <param name="lineNumber">The line number in the source file.</param>
+            <returns>The <see cref="T:CK.Core.SourceLogFilter"/> to apply. Must default to <see cref="F:CK.Core.LogFilter.Undefined"/>.</returns>
+        </member>
+        <member name="F:CK.Core.ActivityMonitor.SourceFilter.FilterSource">
+            <summary>
+            Holds a <see cref="T:CK.Core.ActivityMonitor.SourceFilter.FilterSourceDelegate"/> that can override filter configuration and/or alter 
+            source file name.
+            It can be changed at any time and application is immediate. 
+            It is set by default to <see cref="M:CK.Core.ActivityMonitor.SourceFilter.DefaultFilter(System.String@,System.Int32@)"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.ClearAll">
+            <summary>
+            Clears all existing filters.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.ClearOverrides">
+            <summary>
+            Clears all existing Override filters.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.ClearMinimals">
+            <summary>
+            Clears all existing Minimal filters.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.Update(System.Func{System.String,CK.Core.SourceLogFilter,CK.Core.SourceLogFilter})">
+            <summary>
+            Updates (or simply scans) all existing filters.
+            </summary>
+            <param name="mapper">
+            Function that takes the file name, the existing filter and maps it to a new filter.
+            </param>
+            <remarks>
+            When the mapper returns <see cref="F:CK.Core.SourceLogFilter.Undefined"/>, the file configuration is removed.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.DefaultFilter(System.String@,System.Int32@)">
+            <summary>
+            Default filter, challenging file names added by <see cref="M:CK.Core.ActivityMonitor.SourceFilter.SetFilter(CK.Core.SourceLogFilter,System.String)"/> method.
+            </summary>
+            <param name="fileName">The file name.</param>
+            <param name="lineNumber">The line number.</param>
+            <returns>Defaults to <see cref="F:CK.Core.LogFilter.Undefined"/>.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.SetFilter(CK.Core.SourceLogFilter,System.String)">
+            <summary>
+            Sets a <see cref="T:CK.Core.SourceLogFilter"/> for a given file. 
+            Use <see cref="F:CK.Core.SourceLogFilter.Undefined"/> to clear any existing configuration for the file.
+            </summary>
+            <param name="filter">The filter to set for the file.</param>
+            <param name="fileName">The file name: do not specify it to inject the path of your source file.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.SetOverrideFilter(CK.Core.LogFilter,System.String)">
+            <summary>
+            Sets an override <see cref="T:CK.Core.LogFilter"/> for a given file: when not <see cref="F:CK.Core.LogFilter.Undefined"/> this 
+            takes precedence over <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/>.
+            Use <see cref="F:CK.Core.LogFilter.Undefined"/> to clear it.
+            </summary>
+            <param name="overrideFilter">The override filter to set for the file.</param>
+            <param name="fileName">The file name: do not specify it to inject the path of your source file.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitor.SourceFilter.SetMinimalFilter(CK.Core.LogFilter,System.String)">
+            <summary>
+            Sets a minimal <see cref="T:CK.Core.LogFilter"/> for a given file.
+            Use <see cref="F:CK.Core.LogFilter.Undefined"/> to clear it.
+            </summary>
+            <param name="minimalFilter">The minimal filter to set for the file.</param>
+            <param name="fileName">The file name: do not specify it to inject the path of your source file.</param>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorBridge">
+            <summary>
+            A <see cref="T:CK.Core.IActivityMonitorClient"/> that relays what happens in a monitor to another monitor.
+            In Net55, automatically supports logs crossing Application Domains. See <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.ActivityMonitorBridge.TagBridgePrematureClose">
+            <summary>
+            Tags group conclusions emitted because of premature (unbalanced) removing of a bridge from a source monitor.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridge.#ctor(CK.Core.ActivityMonitorBridgeTarget,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Initialize a new <see cref="T:CK.Core.ActivityMonitorBridge"/> bound to an existing <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>
+            This Client should be registered in the <see cref="P:CK.Core.IActivityMonitor.Output"/> of a local monitor.
+            </summary>
+            <param name="bridge">The target bridge.</param>
+            <param name="pullTargetTopicAndAutoTagsFromTarget">
+            When true, the <see cref="P:CK.Core.IActivityMonitor.Topic"/> and <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> are automaticaly updated whenever they change on the target monitor.
+            </param>
+            <param name="pushTopicAndAutoTagsToTarget">
+            When true, any change to <see cref="P:CK.Core.IActivityMonitor.Topic"/> or <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> are applied to the target monitor.
+            </param>
+            <param name="applyTargetFilterToUnfilteredLogs">
+            True to avoid sending logs with level below the target <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> (when <see cref="P:CK.Core.ActivityMonitorBridgeTarget.HonorMonitorFilter"/> is true
+            and it is an unfiltered line or group log).
+            This is an optimization that can be used to send less data to the target monitor but breaks the UnfilteredLog/UnfilteredOpenGroup contract.
+            </param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridge.TargetMonitor">
+            <summary>
+            Gets the target monitor. 
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridge.BridgeTarget">
+            <summary>
+            Gets the target bridge of the <see cref="P:CK.Core.ActivityMonitorBridge.TargetMonitor"/>. 
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridge.PullTopicAndAutoTagsFromTarget">
+            <summary>
+            Gets whether this bridge updates the Topic and AutoTags of its monitor whenever 
+            they change on the target monitor.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridge.CK#Core#IActivityMonitorBoundClient#SetMonitor(CK.Core.Impl.IActivityMonitorImpl,System.Boolean)">
+            <summary>
+            forceBuggyRemove is not used here since this client is not lockable.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridge.GetActualTargetFilter">
+            <summary>
+            This is necessarily called in the context of the activity: we can call the bridge that can call 
+            the Monitor's ActualFilter that will be resynchronized if needed.
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorBridgeTarget">
+            <summary>
+            This class used with <see cref="T:CK.Core.ActivityMonitorBridge"/>, enables <see cref="T:CK.Core.IActivityMonitor"/> to relay logs.
+            Each activity monitor exposes such a bridge target on its output thanks to <see cref="P:CK.Core.IActivityMonitorOutput.BridgeTarget"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridgeTarget.#ctor(CK.Core.Impl.IActivityMonitorImpl,System.Boolean)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/> bound to a <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+            <param name="targetMonitor">Monitor that will receive the logs.</param>
+            <param name="honorMonitorFilter">
+            False to ignore the actual filter <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> value: logs coming from the bridge (ie. the remote Application Domain)
+            will always be added to this target monitor.
+            </param>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridgeTarget.HonorMonitorFilter">
+            <summary>
+            Gets or sets whether the <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> of the target monitor should be honored or not.
+            Defaults to true.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridgeTarget.TargetMonitor">
+            <summary>
+            Gets the target monitor.
+            </summary>
+        </member>
+        <member name="P:CK.Core.ActivityMonitorBridgeTarget.TargetFinalFilter">
+            <summary>
+            Gets the target final filter that must be used without taking into account the ActivityMonitor.DefaultFilter application domain value.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridgeTarget.AddCallback(CK.Core.IActivityMonitorBridgeCallback)">
+            <summary>
+            Called by ActivityMonitorBridge.SetMonitor (the reentrant check is acquired).
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridgeTarget.RemoveCallback(CK.Core.IActivityMonitorBridgeCallback)">
+            <summary>
+            Called by ActivityMonitorBridge.SetMonitor (the reentrant check is acquired).
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorBridgeTarget.TargetActualFilterChanged">
+            <summary>
+            This is called when HonorMonitorFilter changes or by ActivityMonitor.UpdateActualFilter 
+            whenever the monitors's ActualFilter changed (in such cases, we are bound to the activity: the Reentrancy and concurrency 
+            lock has been obtained), or by our monitor's SetClientMinimalFilterDirty() method (in this case, we are called on 
+            any thread).
+            </summary>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorExtension">
+            <summary>
+            Provides extension methods for <see cref="T:CK.Core.IActivityMonitor"/> and other types from the Activity monitor framework.
+            </summary>
+            <summary>
+            Provides extension methods for <see cref="T:CK.Core.IActivityMonitor"/> and other types from the Activity monitor framework.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">
+            <summary>
+            Returns a valid <see cref="T:CK.Core.DateTimeStamp"/> that will be used for a log: it is based on <see cref="P:System.DateTime.UtcNow"/> and has 
+            a <see cref="F:CK.Core.DateTimeStamp.Uniquifier"/> that will not be changed when emitting the next log.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <returns>The next log time for the monitor.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.ShouldLogLine(CK.Core.IActivityMonitor,CK.Core.LogLevel,System.String,System.Int32)">
+            <summary>
+            Challenges source filters based on FileName/LineNumber, <see cref="P:CK.Core.IActivityMonitor.ActualFilter">this monitors' actual filter</see> and application 
+            domain's <see cref="P:CK.Core.ActivityMonitor.DefaultFilter"/> filters to test whether a log line should actually be emitted.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="level">Log level.</param>
+            <param name="fileName">Source file name of the emitter (automatically injected by C# compiler but can be explicitly set).</param>
+            <param name="lineNumber">Line number in the source file (automatically injected by C# compiler but can be explicitly set).</param>
+            <returns>True if the log should be emitted.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.ShouldLogGroup(CK.Core.IActivityMonitor,CK.Core.LogLevel,System.String,System.Int32)">
+            <summary>
+            Challenges source filters based on FileName/LineNumber, <see cref="P:CK.Core.IActivityMonitor.ActualFilter">this monitor's actual filter</see> and application 
+            domain's <see cref="P:CK.Core.ActivityMonitor.DefaultFilter"/> filters to test whether a log group should actually be emitted.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="level">Log level.</param>
+            <param name="fileName">Source file name of the emitter (automatically injected by C# compiler but can be explicitly set).</param>
+            <param name="lineNumber">Line number in the source file (automatically injected by C# compiler but can be explicitly set).</param>
+            <returns>True if the log should be emitted.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.UnfilteredLog(CK.Core.IActivityMonitor,CK.Core.CKTrait,CK.Core.LogLevel,System.String,CK.Core.DateTimeStamp,System.Exception,System.String,System.Int32)">
+            <summary>
+            Logs a text regardless of <see cref="P:CK.Core.IActivityMonitor.ActualFilter">ActualFilter</see> level. 
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="tags">
+            Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. 
+            These tags will be union-ed with the current <see cref="P:CK.Core.IActivityMonitor.AutoTags">AutoTags</see>.
+            </param>
+            <param name="level">Log level. Must not be <see cref="F:CK.Core.LogLevel.None"/>.</param>
+            <param name="text">Text to log. Must not be null or empty.</param>
+            <param name="logTime">
+            Time-stamp of the log entry.
+            You can use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+            <param name="ex">Optional exception associated to the log. When not null, a Group is automatically created.</param>
+            <param name="fileName">The source code file name from which the log is emitted.</param>
+            <param name="lineNumber">The line number in the source from which the log is emitted.</param>
+            <remarks>
+            The <paramref name="text"/> can not be null or empty.
+            <para>
+            Each call to log is considered as a unit of text: depending on the rendering engine, a line or a 
+            paragraph separator (or any appropriate separator) should be appended between each text if 
+            the <paramref name="level"/> is the same as the previous one.
+            </para>
+            <para>If needed, the special text <see cref="F:CK.Core.ActivityMonitor.ParkLevel"/> ("PARK-LEVEL") can be used as a convention 
+            to break the current <see cref="T:CK.Core.LogLevel"/> and resets it: the next log, even with the same LogLevel, should be 
+            treated as if a different LogLevel is used.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.UnfilteredOpenGroup(CK.Core.IActivityMonitor,CK.Core.CKTrait,CK.Core.LogLevel,System.Func{System.String},System.String,CK.Core.DateTimeStamp,System.Exception,System.String,System.Int32)">
+            <summary>
+            Opens a group regardless of <see cref="P:CK.Core.IActivityMonitor.ActualFilter">ActualFilter</see> level. 
+            <see cref="M:CK.Core.ActivityMonitorExtension.CloseGroup(CK.Core.IActivityMonitor,System.Object)"/> must be called in order to close the group, and/or the returned object must be disposed (both safely can be called: 
+            the group is closed on the first action, the second one is ignored).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="tags">Tags (from <see cref="T:CK.Core.ActivityMonitor.Tags"/>) to associate to the log. It will be union-ed with current <see cref="P:CK.Core.IActivityMonitor.AutoTags">AutoTags</see>.</param>
+            <param name="level">Log level. The <see cref="F:CK.Core.LogLevel.None"/> level is used to open a filtered group. See remarks.</param>
+            <param name="getConclusionText">Optional function that will be called on group closing.</param>
+            <param name="text">Text to log (the title of the group). Null text is valid and considered as <see cref="F:System.String.Empty"/> or assigned to the <see cref="P:System.Exception.Message"/> if it exists.</param>
+            <param name="logTime">
+            Time of the log entry.
+            You can use <see cref="P:CK.Core.DateTimeStamp.UtcNow"/> or <see cref="M:CK.Core.ActivityMonitorExtension.NextLogTime(CK.Core.IActivityMonitor)">IActivityMonitor.NextLogTime()</see> extension method.
+            </param>
+            <param name="ex">Optional exception associated to the group.</param>
+            <param name="fileName">The source code file name from which the group is opened.</param>
+            <param name="lineNumber">The line number in the source from which the group is opened.</param>
+            <returns>A disposable object that can be used to close the group.</returns>
+            <remarks>
+            <para>
+            Opening a group does not change the current <see cref="P:CK.Core.IActivityMonitor.MinimalFilter">MinimalFilter</see>, except when 
+            opening a <see cref="F:CK.Core.LogLevel.Fatal"/> or <see cref="F:CK.Core.LogLevel.Error"/> group: in such case, the Filter is automatically 
+            sets to <see cref="F:CK.Core.LogFilter.Debug"/> to capture all potential information inside the error group.
+            </para>
+            <para>
+            Changes to the monitor's current Filter or AutoTags that occur inside a group are automatically restored to their original values when the group is closed.
+            This behavior guaranties that a local modification (deep inside unknown called code) does not impact caller code: groups are a way to easily isolate such 
+            configuration changes.
+            </para>
+            <para>
+            Note that this automatic configuration restoration works even if the group is filtered (when the <paramref name="level"/> is None).
+            </para>
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.CloseGroup(CK.Core.IActivityMonitor,System.Object)">
+            <summary>
+            Closes the current Group. Optional parameter is polymorphic. It can be a string, a <see cref="T:CK.Core.ActivityLogGroupConclusion"/>, 
+            a <see cref="T:System.Collections.Generic.List`1"/> or an <see cref="T:System.Collections.Generic.IEnumerable`1"/> of ActivityLogGroupConclusion, or any object with an overridden <see cref="M:System.Object.ToString"/> method. 
+            See remarks (especially for List&lt;ActivityLogGroupConclusion&gt;).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="userConclusion">Optional string, ActivityLogGroupConclusion object, enumerable of ActivityLogGroupConclusion or object to conclude the group. See remarks.</param>
+            <remarks>
+            An untyped object is used here to easily and efficiently accommodate both string and already existing ActivityLogGroupConclusion.
+            When a List&lt;ActivityLogGroupConclusion&gt; is used, it will be directly used to collect conclusion objects (new conclusions will be added to it). This is an optimization.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.FindBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)">
+            <summary>
+            Finds an existing bridge to another monitor.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/>.</param>
+            <param name="targetBridge">The target bridge that receives our logs.</param>
+            <returns>The existing <see cref="T:CK.Core.ActivityMonitorBridge"/> or null if no such bridge exists.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.CreateBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)">
+            <summary>
+            Creates a bridge to another monitor's <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>. Only one bridge to the same monitor can exist at a time: if <see cref="M:CK.Core.ActivityMonitorExtension.FindBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)"/> is not null, 
+            this throws a <see cref="T:System.InvalidOperationException"/>.
+            This bridge does not synchronize <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> and <see cref="P:CK.Core.IActivityMonitor.Topic"/> (see <see cref="M:CK.Core.ActivityMonitorExtension.CreateStrongBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)"/>). 
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/>.</param>
+            <param name="targetBridge">The target bridge that will receive our logs.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object that can be disposed to automatically call <see cref="M:CK.Core.ActivityMonitorExtension.UnbridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)"/>.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.CreateStrongBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)">
+            <summary>
+            Creates a strong bridge to another monitor's <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>. 
+            Only one bridge to the same monitor can exist at a time: if <see cref="M:CK.Core.ActivityMonitorExtension.FindBridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)"/> is not null, 
+            this throws a <see cref="T:System.InvalidOperationException"/>.
+            A strong bridge synchronizes <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> and <see cref="P:CK.Core.IActivityMonitor.Topic"/> between the two monitors. When created, the 2 properties
+            of the local monitor are set to the ones of the target monitor. 
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/>.</param>
+            <param name="targetBridge">The target bridge that will receive our logs.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object that can be disposed to automatically call <see cref="M:CK.Core.ActivityMonitorExtension.UnbridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)"/>.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.UnbridgeTo(CK.Core.IActivityMonitorOutput,CK.Core.ActivityMonitorBridgeTarget)">
+            <summary>
+            Removes an existing <see cref="T:CK.Core.ActivityMonitorBridge"/> to another monitor if it exists (silently ignores it if not found).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/>.</param>
+            <param name="targetBridge">The target bridge that will no more receive our logs.</param>
+            <returns>The unregistered <see cref="T:CK.Core.ActivityMonitorBridge"/> if found, null otherwise.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.CollectEntries(CK.Core.IActivityMonitor,System.Action{System.Collections.Generic.IReadOnlyList{CK.Core.ActivityMonitorSimpleCollector.Entry}},CK.Core.LogLevelFilter)">
+            <summary>
+            Enables simple "using" syntax to easily collect any <see cref="T:CK.Core.LogLevel"/> (or above) entries (defaults to <see cref="F:CK.Core.LogLevel.Error"/>) around operations.
+            The callback is called when the the returned IDisposable is disposed and there are at least one collected entry.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="errorHandler">An action that accepts a list of fatal or error <see cref="T:CK.Core.ActivityMonitorSimpleCollector.Entry">entries</see>.</param>
+            <param name="level">Defines the level of the collected entries (by default fatal or error entries).</param>
+            <returns>A <see cref="T:System.IDisposable"/> object used to manage the scope of this handler.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.OnError(CK.Core.IActivityMonitor,System.Action)">
+            <summary>
+            Enables simple "using" syntax to easily detect <see cref="F:CK.Core.LogLevel.Fatal"/> or <see cref="F:CK.Core.LogLevel.Error"/>.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="onFatalOrError">An action that is called whenever an Error or Fatal error occurs.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object used to manage the scope of this handler.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.OnError(CK.Core.IActivityMonitor,System.Action,System.Action)">
+            <summary>
+            Enables simple "using" syntax to easily detect <see cref="F:CK.Core.LogLevel.Fatal"/> or <see cref="F:CK.Core.LogLevel.Error"/>.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="onFatal">An action that is called whenever a Fatal error occurs.</param>
+            <param name="onError">An action that is called whenever an Error occurs.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object used to manage the scope of this handler.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.SetMinimalFilter(CK.Core.IActivityMonitor,CK.Core.LogLevelFilter,CK.Core.LogLevelFilter)">
+            <summary>
+            Sets filter levels on this <see cref="T:CK.Core.IActivityMonitor"/>. The current <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> will be automatically 
+            restored when the returned <see cref="T:System.IDisposable"/> will be disposed.
+            Even if when a Group is closed, the IActivityMonitor.Filter is automatically restored to its original value 
+            (captured when the Group was opened), this may be useful to locally change the filter level without bothering to restore the 
+            initial value (this is what OpenGroup/CloseGroup do with both the Filter and the AutoTags).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/> object.</param>
+            <param name="group">The new filter level for group.</param>
+            <param name="line">The new filter level for log line.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object that will restore the current level.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.SetMinimalFilter(CK.Core.IActivityMonitor,CK.Core.LogFilter)">
+            <summary>
+            Sets a filter level on this <see cref="T:CK.Core.IActivityMonitor"/>. The current <see cref="P:CK.Core.IActivityMonitor.MinimalFilter"/> will be automatically 
+            restored when the returned <see cref="T:System.IDisposable"/> will be disposed.
+            Even if when a Group is closed, the IActivityMonitor.Filter is automatically restored to its original value 
+            (captured when the Group was opened), this may be useful to locally change the filter level without bothering to restore the 
+            initial value (this is what OpenGroup/CloseGroup do with both the Filter and the AutoTags).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/> object.</param>
+            <param name="f">The new filter.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object that will restore the current level.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.SetAutoTags(CK.Core.IActivityMonitor,CK.Core.CKTrait,CK.Core.SetOperation)">
+            <summary>
+            Alter tags of this <see cref="T:CK.Core.IActivityMonitor"/>. Current <see cref="P:CK.Core.IActivityMonitor.AutoTags"/> will be automatically 
+            restored when the returned <see cref="T:System.IDisposable"/> will be disposed.
+            Even if when a Group is closed, the IActivityMonitor.AutoTags is automatically restored to its original value 
+            (captured when the Group was opened), this may be useful to locally change the tags level without bothering to restore the 
+            initial value (this is close to what OpenGroup/CloseGroup do with both the Filter and the AutoTags).
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/> object.</param>
+            <param name="tags">Tags to combine with the current one.</param>
+            <param name="operation">Defines the way the new <paramref name="tags"/> must be combined with current ones.</param>
+            <returns>A <see cref="T:System.IDisposable"/> object that will restore the current tag when disposed.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.RegisterClient(CK.Core.IActivityMonitorOutput,CK.Core.IActivityMonitorClient)">
+            <summary>
+            Registers an <see cref="T:CK.Core.IActivityMonitorClient"/> to the <see cref="P:CK.Core.IActivityMonitorOutput.Clients">Clients</see> list.
+            Duplicates IActivityMonitorClient are silently ignored.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/> object.</param>
+            <param name="client">An <see cref="T:CK.Core.IActivityMonitorClient"/> implementation.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.RegisterClient``1(CK.Core.IActivityMonitorOutput,``0)">
+            <summary>
+            Registers a typed <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            Duplicate IActivityMonitorClient instances are ignored.
+            </summary>
+            <typeparam name="T">Any type that specializes <see cref="T:CK.Core.IActivityMonitorClient"/>.</typeparam>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/> object.</param>
+            <param name="client">Client to register.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.RegisterClients(CK.Core.IActivityMonitorOutput,System.Collections.Generic.IEnumerable{CK.Core.IActivityMonitorClient})">
+            <summary>
+            Registers multiple <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            Duplicate IActivityMonitorClient instances are ignored.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/> object.</param>
+            <param name="clients">Multiple clients to register.</param>
+            <returns>This registrar to enable fluent syntax.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.RegisterClients(CK.Core.IActivityMonitorOutput,CK.Core.IActivityMonitorClient[])">
+            <summary>
+            Registers multiple <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            Duplicate IActivityMonitorClient instances are ignored.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/> object.</param>
+            <param name="clients">Multiple clients to register.</param>
+            <returns>This registrar to enable fluent syntax.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.RegisterUniqueClient``1(CK.Core.IActivityMonitorOutput)">
+            <summary>
+            Registers a unique client for a type that must have a public default constructor. 
+            <see cref="M:System.Activator.CreateInstance``1"/> is called if necessary.
+            </summary>
+            <returns>The found or newly created client.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.UnregisterClient``1(CK.Core.IActivityMonitorOutput,System.Func{``0,System.Boolean})">
+            <summary>
+            Unregisters the first <see cref="T:CK.Core.IActivityMonitorClient"/> from the <see cref="P:CK.Core.IActivityMonitorOutput.Clients"/> list
+            that satisfies the predicate.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitorOutput"/>.</param>
+            <param name="predicate">A predicate that will be used to determine the first client to unregister.</param>
+            <returns>The unregistered client, or null if no client has been found.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.ToStringGroupConclusion(System.Collections.Generic.IEnumerable{CK.Core.ActivityLogGroupConclusion},System.String)">
+            <summary>
+            Gets this Group conclusions as a readable string.
+            </summary>
+            <param name="this">This group conclusion. Can be null.</param>
+            <param name="conclusionSeparator">Conclusion separator.</param>
+            <returns>A lovely concatenated string of conclusions.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.ToStringPath(System.Collections.Generic.IEnumerable{CK.Core.ActivityMonitorPathCatcher.PathElement},System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the path as a readable string.
+            </summary>
+            <param name="this">This path. Can be null.</param>
+            <param name="elementSeparator">Between elements.</param>
+            <param name="withoutConclusionFormat">There must be 3 placeholders {0} for the level, {1} for the text and {2} for the conclusion.</param>
+            <param name="withConclusionFormat">There must be 2 placeholders {0} for the level and {1} for the text.</param>
+            <param name="conclusionSeparator">Conclusion separator.</param>
+            <param name="fatal">For Fatal errors.</param>
+            <param name="error">For Errors.</param>
+            <param name="warn">For Warnings.</param>
+            <param name="info">For Infos.</param>
+            <param name="trace">For Traces.</param>
+            <returns>A lovely path.</returns>
+        </member>
+        <member name="T:CK.Core.ActivityMonitorExtension.DependentSender">
+            <summary>
+            Offers dependent token creation and launching.
+            </summary>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.CreateToken(System.Boolean)">
+            <summary>
+            Creates a token for a dependent activity that will use the current monitor's topic.
+            By default, a line with <see cref="F:CK.Core.ActivityMonitor.Tags.CreateDependentActivity"/> is logged that describes the 
+            creation of the token.
+            If <paramref name="delayedLaunch"/> is true, the actual launch of the dependent activity must be signaled thanks to <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.Launch(CK.Core.ActivityMonitor.DependentToken)"/>
+            (otherwise there will be no way to bind the two activities). 
+            </summary>
+            <param name="delayedLaunch">True to use <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.Launch(CK.Core.ActivityMonitor.DependentToken)"/> later to indicate the actual launch of the dependent activity.</param>
+            <returns>A dependent token.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.CreateTokenWithTopic(System.String,System.Boolean)">
+            <summary>
+            Creates a token for a dependent activity that will be bound to a specified topic (or that will not change the dependent monitor's topic
+            if null is specified).
+            </summary>
+            <param name="dependentTopic">Topic for the dependent activity. Use null to not change the dependent monitor's topic.</param>
+            <param name="delayedLaunch">True to use <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.Launch(CK.Core.ActivityMonitor.DependentToken)"/> later to indicate the actual launch of the dependent activity.</param>
+            <returns>A dependent token.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.Launch(CK.Core.ActivityMonitor.DependentToken)">
+            <summary>
+            Signals the launch of one or more dependent activities by emitting a log line that describes the token.
+            The token must have been created by <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.CreateToken(System.Boolean)"/> or <see cref="M:CK.Core.ActivityMonitorExtension.DependentSender.CreateTokenWithTopic(System.String,System.Boolean)"/> with a true delayedLaunch parameter
+            otherwise an <see cref="T:System.InvalidOperationException"/> is thrown.
+            </summary>
+            <param name="token">Dependent token.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.Launch(System.Action{CK.Core.ActivityMonitor.DependentToken})">
+            <summary>
+            Launches one or more dependent activities (thanks to a delegate) that will use the current monitor's topic.
+            This creates a new <see cref="T:CK.Core.ActivityMonitor.DependentToken"/> and opens a group that wraps the execution of the <paramref name="dependentLauncher"/>.
+            </summary>
+            <param name="dependentLauncher">Must create and launch dependent activities that should use the created token.</param>
+            <returns>A dependent token.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.LaunchWithTopic(System.Action{CK.Core.ActivityMonitor.DependentToken},System.String)">
+            <summary>
+            Launches one or more dependent activities (thanks to a delegate) that will be bound to a specified topic (or that will not change 
+            the dependent monitor's topic if null is specified).
+            This creates a new <see cref="T:CK.Core.ActivityMonitor.DependentToken"/> and opens a group that wraps the execution of the <paramref name="dependentLauncher"/>.
+            </summary>
+            <param name="dependentLauncher">Must create and launch dependent activities that should use the created token.</param>
+            <param name="dependentTopic">Topic for the dependent activity. When null, the dependent monitor's topic is not changed.</param>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentSender.StartDependentActivity(CK.Core.ActivityMonitor.DependentToken)">
+            <summary>
+            
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.DependentActivity(CK.Core.IActivityMonitor,System.String,System.Int32)">
+            <summary>
+            Enables dependent activities token creation and activities launch.
+            Use <see cref="M:CK.Core.ActivityMonitorExtension.StartDependentActivity(CK.Core.IActivityMonitor,CK.Core.ActivityMonitor.DependentToken,System.String,System.Int32)">IActivityMonitor.StartDependentActivity</see> to declare the start of a 
+            dependent activity on the target monitor.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="fileName">Source file name of the emitter (automatically injected by C# compiler but can be explicitly set).</param>
+            <param name="lineNumber">Line number in the source file (automatically injected by C# compiler but can be explicitly set).</param>
+            <returns>Sender object.</returns>
+        </member>
+        <member name="M:CK.Core.ActivityMonitorExtension.StartDependentActivity(CK.Core.IActivityMonitor,CK.Core.ActivityMonitor.DependentToken,System.String,System.Int32)">
+            <summary>
+            Starts a dependent activity. This sets the <see cref="P:CK.Core.ActivityMonitor.DependentToken.Topic"/> if it is not null and opens a group
+            tagged with <see cref="F:CK.Core.ActivityMonitor.Tags.StartDependentActivity"/> with a message that can be parsed back thanks to <see cref="M:CK.Core.ActivityMonitor.DependentToken.TryParseStartMessage(System.String,System.Guid@,CK.Core.DateTimeStamp@)"/>.
+            </summary>
+            <param name="this">This <see cref="T:CK.Core.IActivityMonitor"/>.</param>
+            <param name="token">Token that describes the origin of the activity.</param>
+            <param name="fileName">Source file name of the emitter (automatically injected by C# compiler but can be explicitly set).</param>
+            <param name="lineNumber">Line number in the source file (automatically injected by C# compiler but can be explicitly set).</param>
+            <returns>A disposable object. It must be disposed at the end of the activity.</returns>
+        </member>
+        <member name="T:CK.Core.Impl.ActivityMonitorOutput">
+            <summary>
+            Implementation of <see cref="T:CK.Core.IActivityMonitorOutput"/> for <see cref="P:CK.Core.IActivityMonitor.Output"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.ActivityMonitorOutput.#ctor(CK.Core.Impl.IActivityMonitorImpl)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.Impl.ActivityMonitorOutput"/> bound to a <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+            <param name="monitor"></param>
+        </member>
+        <member name="P:CK.Core.Impl.ActivityMonitorOutput.BridgeTarget">
+            <summary>
+            Gets an entry point for other monitors: by registering <see cref="T:CK.Core.ActivityMonitorBridge"/> in other <see cref="P:CK.Core.IActivityMonitor.Output"/>
+            bound to this <see cref="T:CK.Core.ActivityMonitorBridgeTarget"/>, log streams can easily be merged.
+            </summary>
+        </member>
+        <member name="P:CK.Core.Impl.ActivityMonitorOutput.Monitor">
+            <summary>
+            Gets the associated <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.ActivityMonitorOutput.RegisterClient(CK.Core.IActivityMonitorClient,System.Boolean@)">
+            <summary>
+            Registers an <see cref="T:CK.Core.IActivityMonitorClient"/> to the <see cref="P:CK.Core.Impl.ActivityMonitorOutput.Clients"/> list.
+            Duplicate IActivityMonitorClient are silently ignored.
+            </summary>
+            <param name="client">An <see cref="T:CK.Core.IActivityMonitorClient"/> implementation.</param>
+            <param name="added">True if the client has been added, false if it was already registered.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.Impl.ActivityMonitorOutput.RegisterClient``1(``0,System.Boolean@)">
+            <summary>
+            Registers a typed <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            </summary>
+            <typeparam name="T">Any type that specializes <see cref="T:CK.Core.IActivityMonitorClient"/>.</typeparam>
+            <param name="client">Clients to register.</param>
+            <param name="added">True if the client has been added, false if it was already registered.</param>
+            <returns>The registered client.</returns>
+        </member>
+        <member name="M:CK.Core.Impl.ActivityMonitorOutput.RegisterUniqueClient``1(System.Func{``0,System.Boolean},System.Func{``0})">
+            <summary>
+            Registers a <see cref="T:CK.Core.IActivityMonitorClient"/> that must be unique in a sense.
+            </summary>
+            <param name="tester">Predicate that must be satisfied for at least one registered client.</param>
+            <param name="factory">Factory that will be called if no existing client satisfies <paramref name="tester"/>.</param>
+            <returns>The existing or newly created client.</returns>
+            <remarks>
+            The factory function MUST return a client that satisfies the tester function otherwise a <see cref="T:System.InvalidOperationException"/> is thrown.
+            The factory is called only when the no client satisfies the tester function: this makes the 'added' out parameter useless.
+            </remarks>
+        </member>
+        <member name="M:CK.Core.Impl.ActivityMonitorOutput.UnregisterClient(CK.Core.IActivityMonitorClient)">
+            <summary>
+            Unregisters the given <see cref="T:CK.Core.IActivityMonitorClient"/> from the <see cref="P:CK.Core.Impl.ActivityMonitorOutput.Clients"/> list.
+            Silently ignores unregistered client.
+            </summary>
+            <param name="client">An <see cref="T:CK.Core.IActivityMonitorClient"/> implementation.</param>
+            <returns>The unregistered client or null if it has not been found.</returns>
+        </member>
+        <member name="P:CK.Core.Impl.ActivityMonitorOutput.Clients">
+            <summary>
+            Gets the list of registered <see cref="T:CK.Core.IActivityMonitorClient"/>.
+            </summary>
+        </member>
+        <member name="T:CK.Core.Impl.ActivityMonitorResources">
+            <summary>
+            String values for errors and messages.
+            </summary>
+        </member>
+        <member name="T:CK.Core.Impl.DisposableActivityMonitor">
+            <summary>
+            Trivial implementation of <see cref="T:CK.Core.IDisposableActivityMonitor"/> that respects the disposable 
+            pattern (to support potential unmanaged resources).
+            <see cref="M:CK.Core.Impl.DisposableActivityMonitor.Dispose"/> simply closes all opened groups.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.DisposableActivityMonitor.Finalize">
+            <summary>
+            Ensures that potential unmanaged resources are correctly released by calling <see cref="M:CK.Core.Impl.DisposableActivityMonitor.Dispose(System.Boolean)"/> with false.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.DisposableActivityMonitor.Dispose">
+            <summary>
+            Automatically close any opened groups.
+            Can be called multiple times.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.DisposableActivityMonitor.Dispose(System.Boolean)">
+            <summary>
+            Automatically close any opened groups.
+            Can be called multiple times.
+            </summary>
+            <param name="disposing">Whether <see cref="M:CK.Core.Impl.DisposableActivityMonitor.Dispose"/> is called.</param>
+        </member>
+        <member name="T:CK.Core.Impl.IActivityMonitorImpl">
+            <summary>
+            Defines required aspects that an actual monitor implementation must support.
+            </summary>
+        </member>
+        <member name="P:CK.Core.Impl.IActivityMonitorImpl.CurrentGroup">
+            <summary>
+            Gets the currently opened group.
+            Null when no group is currently opened.
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.IActivityMonitorImpl.ReentrancyAndConcurrencyLock">
+            <summary>
+            Gets a disposable object that checks for reentrant and concurrent calls.
+            </summary>
+            <returns>A disposable object (that must be disposed).</returns>
+        </member>
+        <member name="M:CK.Core.Impl.IActivityMonitorImpl.OnClientMinimalFilterChanged(CK.Core.LogFilter,CK.Core.LogFilter)">
+            <summary>
+            Enables a <see cref="T:CK.Core.IActivityMonitorBoundClient"/> to warn its Monitor
+            whenever its <see cref="P:CK.Core.IActivityMonitorBoundClient.MinimalFilter"/> changed.
+            This can be called from any <see cref="T:CK.Core.IActivityMonitorBoundClient"/> methods (when a <see cref="M:CK.Core.Impl.IActivityMonitorImpl.ReentrancyAndConcurrencyLock"/> has 
+            been acquired) or not, but NOT concurrently: <see cref="M:CK.Core.Impl.IActivityMonitorImpl.SetClientMinimalFilterDirty"/> must be used to signal
+            a change on any thread at any time.
+            </summary>
+            <param name="oldLevel">The previous minimal level that the client expected.</param>
+            <param name="newLevel">The new minimal level that the client expects.</param>
+        </member>
+        <member name="M:CK.Core.Impl.IActivityMonitorImpl.SetClientMinimalFilterDirty">
+            <summary>
+            Signals the monitor that one of the <see cref="P:CK.Core.IActivityMonitorBoundClient.MinimalFilter"/> has changed:
+            the <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/> is marked as needing a re computation in a thread-safe manner.
+            This can be called by bound clients on any thread at any time as opposed to <see cref="M:CK.Core.Impl.IActivityMonitorImpl.OnClientMinimalFilterChanged(CK.Core.LogFilter,CK.Core.LogFilter)"/>
+            that can only be called non-concurrently (typically from inside client methods).
+            </summary>
+        </member>
+        <member name="M:CK.Core.Impl.IActivityMonitorImpl.InitializeTopicAndAutoTags(System.String,CK.Core.CKTrait,System.String,System.Int32)">
+            <summary>
+            Enables <see cref="T:CK.Core.IActivityMonitorBoundClient"/> clients to initialize Topic and AutoTag typically from 
+            inside their <see cref="M:CK.Core.IActivityMonitorBoundClient.SetMonitor(CK.Core.Impl.IActivityMonitorImpl,System.Boolean)"/> method or any other methods provided 
+            that a reentrant and concurrent lock has been obtained (otherwise an <see cref="T:System.InvalidOperationException"/> is thrown).
+            </summary>
+            <param name="newTopic">New topic to set. When null, it is ignored.</param>
+            <param name="newTags">new tags to set. When null, it is ignored.</param>
+            <param name="fileName">Source file name of the caller. Do not set it: the attribute will do the job.</param>
+            <param name="lineNumber">Line number in the source file. Do not set it: the attribute will do the job.</param>
+        </member>
+        <member name="T:CK.Core.IActivityMonitorBridgeCallback">
+            <summary>
+            Internal interface that allows ActivityMonitorBridgeTarget to call back
+            the ActivityMonitorBridges that are bound to it.
+            </summary>
+        </member>
+        <member name="P:CK.Core.IActivityMonitorBridgeCallback.PullTopicAndAutoTagsFromTarget">
+            <summary>
+            Gets whether this bridge updates the Topic and AutoTags of its monitor whenever they change on the target monitor.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorBridgeCallback.OnTargetActualFilterChanged">
+            <summary>
+            Called when the target filter changed or is dirty. This can be called on any thread.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorBridgeCallback.OnTargetAutoTagsChanged(CK.Core.CKTrait)">
+            <summary>
+            Called when the target AutoTags changed.
+            </summary>
+        </member>
+        <member name="M:CK.Core.IActivityMonitorBridgeCallback.OnTargetTopicChanged(System.String,System.String,System.Int32)">
+            <summary>
+            Called when the target Topic changed.
+            </summary>
+        </member>
+        <member name="T:CK.Core.LogFilter">
+            <summary>
+            Immutable capture of a double <see cref="T:CK.Core.LogLevelFilter"/>. One for <see cref="F:CK.Core.LogFilter.Line"/> and one for <see cref="F:CK.Core.LogFilter.Group"/>.
+            This value type exposes predefined configured couples: <see cref="F:CK.Core.LogFilter.Debug"/> (full trace), <see cref="F:CK.Core.LogFilter.Verbose"/>, <see cref="F:CK.Core.LogFilter.Monitor"/>, 
+            <see cref="F:CK.Core.LogFilter.Terse"/>, <see cref="F:CK.Core.LogFilter.Release"/> and <see cref="F:CK.Core.LogFilter.Off"/> (no log at all).
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Undefined">
+            <summary>
+            Undefined filter is <see cref="F:CK.Core.LogLevelFilter.None"/> for both <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/>.
+            This is the same as using the default constructor for this structure (it is exposed here for clarity).
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Debug">
+            <summary>
+            Debug filter enables full <see cref="F:CK.Core.LogLevelFilter.Trace"/> for both <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Verbose">
+            <summary>
+            Verbose <see cref="F:CK.Core.LogLevelFilter.Trace"/> all <see cref="F:CK.Core.LogFilter.Group"/>s but limits <see cref="F:CK.Core.LogFilter.Line"/> to <see cref="F:CK.Core.LogLevelFilter.Info"/> level.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Monitor">
+            <summary>
+            While monitoring, only errors and warnings are captured, whereas all <see cref="F:CK.Core.LogFilter.Group"/>s appear to get the detailed structure of the activity.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Terse">
+            <summary>
+            Terse filter captures only errors for <see cref="F:CK.Core.LogFilter.Line"/> and limits <see cref="F:CK.Core.LogFilter.Group"/>s to <see cref="F:CK.Core.LogLevelFilter.Info"/> level.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Release">
+            <summary>
+            Release filter captures only <see cref="F:CK.Core.LogLevelFilter.Error"/>s for both <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Off">
+            <summary>
+            Off filter does not capture anything.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Invalid">
+            <summary>
+            Invalid must be used as a special value. It is <see cref="F:CK.Core.LogLevelFilter.Invalid"/> for both <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Group">
+            <summary>
+            The filter that applies to groups. 
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogFilter.Line">
+            <summary>
+            The filter that applies to log lines (Trace, Info, Warn, Error and Fatal). 
+            </summary>
+        </member>
+        <member name="M:CK.Core.LogFilter.#ctor(CK.Core.LogLevelFilter,CK.Core.LogLevelFilter)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.LogFilter"/> with a level for <see cref="F:CK.Core.LogFilter.Group"/>s and <see cref="F:CK.Core.LogFilter.Line"/> logs.
+            </summary>
+            <param name="group">Filter for groups.</param>
+            <param name="line">Filter for lines.</param>
+        </member>
+        <member name="M:CK.Core.LogFilter.Combine(CK.Core.LogFilter)">
+            <summary>
+            Combines this filter with another one. <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/> level filters
+            are combined with <see cref="M:CK.Core.LogFilter.Combine(CK.Core.LogLevelFilter,CK.Core.LogLevelFilter)"/>.
+            </summary>
+            <param name="other">The other filter to combine with this one.</param>
+            <returns>The resulting filter.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.CombineNoneOnly(CK.Core.LogFilter)">
+            <summary>
+            Combines this filter with another one only if <see cref="F:CK.Core.LogFilter.Line"/> or <see cref="F:CK.Core.LogFilter.Group"/> is <see cref="F:CK.Core.LogLevelFilter.None"/>.
+            </summary>
+            <param name="other">The other filter to combine with this one.</param>
+            <returns>The resulting filter.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.SetLine(CK.Core.LogLevelFilter)">
+            <summary>
+            Returns a <see cref="T:CK.Core.LogFilter"/> with a given <see cref="T:CK.Core.LogLevelFilter"/> for the <see cref="F:CK.Core.LogFilter.Line"/>.
+            </summary>
+            <param name="line">Filter for the line.</param>
+            <returns>The filter with the line level.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.SetGroup(CK.Core.LogLevelFilter)">
+            <summary>
+            Returns a <see cref="T:CK.Core.LogFilter"/> with a given <see cref="T:CK.Core.LogLevelFilter"/> for the <see cref="F:CK.Core.LogFilter.Group"/>.
+            </summary>
+            <param name="group">Filter for the group.</param>
+            <returns>The filter with the group level.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.HasImpactOn(CK.Core.LogFilter)">
+            <summary>
+            Tests if <see cref="M:CK.Core.LogFilter.Combine(CK.Core.LogFilter)">combining</see> this and <paramref name="x"/> will result in a different filter than x.
+            </summary>
+            <param name="x">The other filter.</param>
+            <returns>True if combining this filter and <paramref name="x"/> will change x.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.Combine(CK.Core.LogLevelFilter,CK.Core.LogLevelFilter)">
+            <summary>
+            Combines two enums <see cref="T:CK.Core.LogLevelFilter"/> into one.
+            The resulting filter is the more verbose one (the smallest level). <see cref="F:CK.Core.LogLevelFilter.Invalid"/> is considered as <see cref="F:CK.Core.LogLevelFilter.None"/> (it has no impact).
+            This operation is commutative and associative: different order of combination always give the same result.
+            </summary>
+            <param name="x">First filter level.</param>
+            <param name="y">Second filter level.</param>
+            <returns>The resulting level.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.Equals(System.Object)">
+            <summary>
+            Overridden to compare <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/>.
+            </summary>
+            <param name="obj">Other object.</param>
+            <returns>True if Line and Group are equal.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.GetHashCode">
+            <summary>
+            Overridden to compute hash based on <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/> values.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.ToString">
+            <summary>
+            Overridden to show the group and the line level.
+            </summary>
+            <returns>A {group,line} string.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.op_Equality(CK.Core.LogFilter,CK.Core.LogFilter)">
+            <summary>
+            Equality operator.
+            </summary>
+            <param name="x">First filter.</param>
+            <param name="y">Second filter.</param>
+            <returns>True if <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/> are the same for the two filters.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.op_Inequality(CK.Core.LogFilter,CK.Core.LogFilter)">
+            <summary>
+            Inequality operator.
+            </summary>
+            <param name="x">First filter.</param>
+            <param name="y">Second filter.</param>
+            <returns>True if <see cref="F:CK.Core.LogFilter.Line"/> and <see cref="F:CK.Core.LogFilter.Group"/> are the same for the two filters.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.Parse(System.String)">
+            <summary>
+            Parses the filter: it can be a predefined filter as ("Undefined", "Debug", "Verbose", etc.) 
+            or as {GroupLogLevelFilter,LineLogLevelFilter} pairs like "{None,None}", "{Error,Trace}".
+            </summary>
+            <param name="filter">Predefined filter as (Undefined, Debug, Verbose, etc.) or as {LineLogLevelFilter,GroupLogLevelFilter} like {None,None}, {Error,Trace}.</param>
+            <returns>The filter.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilter.TryParse(System.String,CK.Core.LogFilter@)">
+            <summary>
+            Tries to parse a <see cref="T:CK.Core.LogFilter"/>: it can be a predefined filter as ("Undefined", "Debug", "Verbose", etc.)  
+            or as {GroupLogLevelFilter,LineLogLevelFilter} pairs like "{None,None}", "{Error,Trace}".
+            </summary>
+            <param name="s">Filter to parse.</param>
+            <param name="f">Resulting filter.</param>
+            <returns>True on success, false on error.</returns>
+        </member>
+        <member name="T:CK.Core.LogFilterMatcherExtension">
+            <summary>
+            Supports <see cref="T:CK.Core.LogFilter"/> and <see cref="T:CK.Core.LogLevelFilter"/> extension methods.
+            </summary>
+        </member>
+        <member name="M:CK.Core.LogFilterMatcherExtension.MatchLogFilter(CK.Text.StringMatcher,CK.Core.LogFilter@)">
+            <summary>
+            Matches a <see cref="T:CK.Core.LogFilter"/>: it can be a predefined filter as ("Undefined", "Debug", "Verbose", etc.)  
+            or as {GroupLogLevelFilter,LineLogLevelFilter} pairs like "{None,None}", "{Error,Trace}".
+            </summary>
+            <param name="m">This <see cref="T:CK.Text.StringMatcher"/>.</param>
+            <param name="f">Resulting filter.</param>
+            <returns>True on success, false on error.</returns>
+        </member>
+        <member name="M:CK.Core.LogFilterMatcherExtension.MatchLogLevelFilter(CK.Text.StringMatcher,CK.Core.LogLevelFilter@)">
+            <summary>
+            Matches a <see cref="T:CK.Core.LogLevelFilter"/>.
+            </summary>
+            <param name="this">This <see cref="T:CK.Text.StringMatcher"/>.</param>
+            <param name="level">Resulting level.</param>
+            <returns>True on success, false on error.</returns>
+        </member>
+        <member name="T:CK.Core.LogLevel">
+            <summary>
+            Five standard log levels in increasing order used by <see cref="T:CK.Core.IActivityMonitor"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.None">
+            <summary>
+            No logging level.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Trace">
+            <summary>
+            A trace logging level (the most verbose level).
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Info">
+            <summary>
+            An info logging level.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Warn">
+            <summary>
+            A warn logging level.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Error">
+            <summary>
+            An error logging level: denotes an error for the current activity. 
+            This error does not necessarily abort the activity.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Fatal">
+            <summary>
+            A fatal error logging level: denotes an error that breaks (aborts)
+            the current activity. This kind of error may have important side effects
+            on the system.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.Mask">
+            <summary>
+            Mask that covers actual levels to easily ignore <see cref="F:CK.Core.LogLevel.IsFiltered"/> bit.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.IsFiltered">
+            <summary>
+            Flag that denotes a log level that has been filtered.
+            When this flag is not set, the <see cref="M:CK.Core.IActivityMonitor.UnfilteredOpenGroup(CK.Core.ActivityMonitorGroupData)"/> or <see cref="M:CK.Core.IActivityMonitor.UnfilteredLog(CK.Core.ActivityMonitorLogData)"/> has been 
+            called directly. When set, the log has typically been emitted through the extension methods that challenge the 
+            monitor's <see cref="P:CK.Core.IActivityMonitor.ActualFilter">actual filter</see> and <see cref="P:CK.Core.ActivityMonitor.DefaultFilter"/> static configuration.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevel.NumberOfBits">
+            <summary>
+            Number of bits actually covered by this bit flag.
+            </summary>
+        </member>
+        <member name="T:CK.Core.LogLevelFilter">
+            <summary>
+            Defines filters for <see cref="T:CK.Core.LogLevel"/>.
+            </summary>
+            <remarks>
+            <see cref="T:CK.Core.LogFilter"/> capture two levels: one for lines and one for groups.
+            </remarks>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.None">
+            <summary>
+            No filter: can have the same effect as Trace but SHOULD indicate
+            an unknown or undefined filter that, when combined with other level filters to 
+            compute the final (minimal) filter level to take into account, must be ignored.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Trace">
+            <summary>
+            Everything is logged (<see cref="F:CK.Core.LogLevel.Trace"/>).
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Info">
+            <summary>
+            Only <see cref="F:CK.Core.LogLevel.Info"/> and above is logged.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Warn">
+            <summary>
+            Only <see cref="F:CK.Core.LogLevel.Warn"/> and above is logged.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Error">
+            <summary>
+            Only <see cref="F:CK.Core.LogLevel.Error"/> and above is logged.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Fatal">
+            <summary>
+            Only <see cref="F:CK.Core.LogLevel.Fatal"/> is logged.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Off">
+            <summary>
+            Do not log anything.
+            </summary>
+        </member>
+        <member name="F:CK.Core.LogLevelFilter.Invalid">
+            <summary>
+            Invalid filter can be use to designate an unknown filter. 
+            Since its value is -1, in the worst case it will not filter anything.
+            </summary>
+        </member>
+        <member name="T:CK.Core.SourceLogFilter">
+            <summary>
+            Immutable encapsulation of the two source filters: this enables overriding or per source file filtering.
+            </summary>
+        </member>
+        <member name="F:CK.Core.SourceLogFilter.Undefined">
+            <summary>
+            Undefined filter is <see cref="F:CK.Core.LogFilter.Undefined"/> for both <see cref="F:CK.Core.SourceLogFilter.Override"/> and <see cref="F:CK.Core.SourceLogFilter.Minimal"/>.
+            This is the same as using the default constructor for this structure (it is exposed here for clarity).
+            </summary>
+        </member>
+        <member name="F:CK.Core.SourceLogFilter.Override">
+            <summary>
+            The filter to be applied before challenging the <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/>.
+            When not <see cref="F:CK.Core.LogFilter.Undefined"/>, the ActualFilter is ignored  (as well as this <see cref="F:CK.Core.SourceLogFilter.Minimal"/>).
+            </summary>
+        </member>
+        <member name="F:CK.Core.SourceLogFilter.Minimal">
+            <summary>
+            The filter that when defined is combined with the  <see cref="P:CK.Core.IActivityMonitor.ActualFilter"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.SourceLogFilter.#ctor(CK.Core.LogFilter,CK.Core.LogFilter)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.SourceLogFilter"/> with a given filter for <see cref="F:CK.Core.SourceLogFilter.Override"/>s and <see cref="F:CK.Core.SourceLogFilter.Minimal"/>.
+            </summary>
+            <param name="overrideFilter">Overridden filter.</param>
+            <param name="minimalFilter">Minimal filter.</param>
+        </member>
+        <member name="P:CK.Core.SourceLogFilter.IsUndefined">
+            <summary>
+            Gets whether this is equal to <see cref="F:CK.Core.SourceLogFilter.Undefined"/>.
+            </summary>
+        </member>
+        <member name="M:CK.Core.SourceLogFilter.Combine(CK.Core.SourceLogFilter)">
+            <summary>
+            Combines this filter with another one. <see cref="F:CK.Core.SourceLogFilter.Override"/> and <see cref="F:CK.Core.SourceLogFilter.Minimal"/> level filters
+            are combined with <see cref="M:CK.Core.LogFilter.Combine(CK.Core.LogFilter)"/>.
+            </summary>
+            <param name="other">The other filter to combine with this one.</param>
+            <returns>The resulting filter.</returns>
+        </member>
+        <member name="P:CK.Core.SourceLogFilter.LineFilter">
+            <summary>
+            Gets a combined integer: high word contains Override and low word contains Minimal filter for lines.
+            </summary>
+        </member>
+        <member name="P:CK.Core.SourceLogFilter.GroupFilter">
+            <summary>
+            Gets a combined integer: high word contains Override and low word contains Minimal filter for groups.
+            </summary>
+        </member>
+        <member name="T:CK.Core.SystemActivityMonitor">
+            <summary>
+            This <see cref="T:CK.Core.ActivityMonitor"/> logs errors in a directory (if the static <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> property is not null) and 
+            raises <see cref="E:CK.Core.SystemActivityMonitor.OnError"/> events.
+            Its main goal is to be internally used by the Monitor framework but can be used as a "normal" monitor (if you believe it is a good idea).
+            The easiest way to configure it is to set an application settings with the key "CK.Core.SystemActivityMonitor.RootLogPath" and the root path 
+            for logs as the value.
+            </summary>
+            <remarks>
+            The RootLogPath uses the Application configuration (if it exists):
+            <code>
+                &lt;appSettings&gt;
+                     &lt;add key="CK.Core.SystemActivityMonitor.RootLogPath" value="..." /&gt;
+                 &lt;/appSettings&gt;
+            </code>
+            If the setting is not there, the Critical errors will NOT be logged
+            except if it is explicitly set:
+            <code>
+                SystemActivityMonitor.RootLogPath = "...";
+            </code>
+            </remarks>
+        </member>
+        <member name="T:CK.Core.SystemActivityMonitor.SysClient">
+            <summary>
+            A client that can be added and removed and is available as a singleton.
+            Its MinimalFilter is set to Release ensuring that errors are always monitored. Fatals and Errors are stored in RootLogPath/CriticalErrors.
+            </summary>
+        </member>
+        <member name="T:CK.Core.SystemActivityMonitor.SysLockedClient">
+            <summary>
+            A SysClient that can not be removed and is available as a singleton registered in every new SystemActivityMonitor.
+            </summary>
+        </member>
+        <member name="T:CK.Core.SystemActivityMonitor.LowLevelErrorEventArgs">
+            <summary>
+            Defines the event argument of <see cref="E:CK.Core.SystemActivityMonitor.OnError"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.SystemActivityMonitor.LowLevelErrorEventArgs.ErrorMessage">
+            <summary>
+            The error message. Never null nor empty.
+            </summary>
+        </member>
+        <member name="F:CK.Core.SystemActivityMonitor.LowLevelErrorEventArgs.FullLogFilePath">
+            <summary>
+            Not null if the <see cref="F:CK.Core.SystemActivityMonitor.LowLevelErrorEventArgs.ErrorMessage"/> has been successfully written (if <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> is set).
+            Contains the full path of the log file.
+            </summary>
+        </member>
+        <member name="F:CK.Core.SystemActivityMonitor.LowLevelErrorEventArgs.ErrorWhileWritingLogFile">
+            <summary>
+            Exception raised while attempting to create the error file.
+            This could be used to handle configuration error: an exception here means that something is going really wrong.
+            </summary>
+        </member>
+        <member name="M:CK.Core.SystemActivityMonitor.EnsureStaticInitialization">
+            <summary>
+            Touches this type to ensure that its static information is initialized.
+            This does nothing except that, since the Type is solicited, the type constructor is called if needed.
+            </summary>
+            <returns>Always true.</returns>
+        </member>
+        <member name="F:CK.Core.SystemActivityMonitor.AppSettingsKey">
+            <summary>
+            The key in the application settings used to initialize the <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> if it exists in <see cref="F:CK.Core.AppSettings.Default"/>.
+            </summary>
+        </member>
+        <member name="F:CK.Core.SystemActivityMonitor.SubDirectoryName">
+            <summary>
+            The directory in <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> into which errors file will be created is "CriticalErrors/".
+            </summary>
+        </member>
+        <member name="E:CK.Core.SystemActivityMonitor.OnError">
+            <summary>
+            Event that enables subsequent handling of errors.
+            Raising this event is protected: a registered handler that raises an exception will be automatically removed and the
+            exception will be added to the <see cref="F:CK.Core.ActivityMonitor.CriticalErrorCollector"/> collector to give other participants a chance 
+            to handle it and track the culprit.
+            </summary>
+        </member>
+        <member name="P:CK.Core.SystemActivityMonitor.TrackActivityMonitorLoggingError">
+            <summary>
+            Gets or sets whether <see cref="F:CK.Core.ActivityMonitor.CriticalErrorCollector"/> are tracked (this is thread safe).
+            When true, LoggingError events are tracked, written to a file (if <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> is available) and ultimately 
+            published again as a <see cref="E:CK.Core.SystemActivityMonitor.OnError"/> events.
+            Defaults to true.
+            </summary>
+        </member>
+        <member name="P:CK.Core.SystemActivityMonitor.AppSettingsRootLogPath">
+            <summary>
+            Gets the <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> that is configured in application settings (null otherwise).
+            Getting this property ensures that this type's static information is initialized.
+            </summary>
+        </member>
+        <member name="P:CK.Core.SystemActivityMonitor.RootLogPath">
+            <summary>
+            Gets or sets (it can be set only once) the log folder to use (setting multiple time the same path is accepted). 
+            Once set, the path is <see cref="M:CK.Core.FileUtil.NormalizePathSeparator(System.String,System.Boolean)">normalized and ends with a path separator</see>.
+            See remarks.
+            </summary>
+            <remarks>
+            <para>
+            When setting it, the path must be valid (when it is not an absolute path, it is combined 
+            with the AppDomain.CurrentDomain.BaseDirectory or the application base path).
+            </para>
+            <para>
+            The subordinate directory "CriticalErrors" is created (if not already here) and a test file is created (and deleted) inside it 
+            to ensure that (at least at configuration time), no security configuration prevents us to create log files: all errors files will be created in this sub directory.
+            </para>
+            <para>
+            It is recommended to use this directory to store all other logs and/or files related to activity tracking.
+            </para>
+            <para>
+            When not null, it necessarily ends with a <see cref="F:System.IO.Path.DirectorySeparatorChar"/>.
+            </para>
+            <para>
+            When not sets, the first get initializes it with the value of <see cref="F:CK.Core.SystemActivityMonitor.AppSettingsKey"/> in <see cref="F:CK.Core.AppSettings.Default"/> if it exists.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:CK.Core.SystemActivityMonitor.AssertRootLogPathIsSet">
+            <summary>
+            Checks that <see cref="P:CK.Core.SystemActivityMonitor.RootLogPath"/> is correctly configured by throwing a detailed exception if not. 
+            </summary>
+        </member>
+        <member name="M:CK.Core.SystemActivityMonitor.EnsureSystemClient(CK.Core.IActivityMonitor)">
+            <summary>
+            Registers the internal system client that routes errors and fatals as ActivityMonitor errors.
+            </summary>
+            <param name="monitor">The monitor that can be temporary works as a <see cref="T:CK.Core.SystemActivityMonitor"/>.</param>
+            <returns>A disposable object that will unregister the system client (if it has been actually added).</returns>
+        </member>
+        <member name="M:CK.Core.SystemActivityMonitor.#ctor(System.Boolean,System.String)">
+            <summary>
+            Initializes a new <see cref="T:CK.Core.SystemActivityMonitor"/> that can behave as a standard monitor (when
+            automatic configurations applies).
+            </summary>
+            <param name="applyAutoConfigurations">True to apply automatic configurations and, hence, behave like any other <see cref="T:CK.Core.ActivityMonitor"/>.</param>
+            <param name="topic">Optional initial topic (can be null).</param>
+        </member>
+        <member name="T:SimpleGitVersionInfoAttribute">
+            <summary>
+            Automatically generated by SimpleGitVersionTask 5.0.0-delta.2. 
+            </summary>
+        </member>
+    </members>
+</doc>
