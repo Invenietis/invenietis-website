@@ -11,10 +11,14 @@ namespace Invenietis.Data
     {
         private LiteDatabase _connection;
 
-        public DataContext()
+        public static string DatabaseFolder { get; set; }
+
+        public DataContext( string databaseName )
         {
-            _connection = new LiteDatabase( "Invenietis.db" );
+            _connection = new LiteDatabase( databaseName );
         }
+
+        public static Func<DataContext> GetDefault { get; set; }
 
         public LiteDatabase Connection { get { return _connection; } }
 

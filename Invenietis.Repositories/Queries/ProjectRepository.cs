@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<Project> GetProjectsByCategory( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var projects = db.Projects.Find( x => x.Category.Id == categoryId ).ToArray();
                 PopulateProjects( db, projects );
@@ -27,7 +27,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<Project> GetProjectsByClient( int clientId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var projects = db.Projects.Find( x => x.Client.Id == clientId ).ToArray();
                 PopulateProjects( db, projects );
@@ -47,7 +47,7 @@ namespace Invenietis.Repositories.Queries
 
         public Project GetProjectById( int projectId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var project = db.Projects.FindById( projectId );
                 if( project != null ) project.Category.Fetch( db.Connection );
@@ -58,7 +58,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<ProjectCategory> GetProjectCategories()
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.ProjectCategories.FindAll().ToList();
             }
@@ -66,7 +66,7 @@ namespace Invenietis.Repositories.Queries
 
         public ProjectCategory GetProjectCategoryById( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.ProjectCategories.FindById( categoryId );
             }

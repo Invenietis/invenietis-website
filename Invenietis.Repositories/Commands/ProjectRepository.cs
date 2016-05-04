@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Commands
 
         public int CreateProject( Project project )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Projects.Insert( project );
             }
@@ -24,7 +24,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool UpdateProject( Project project )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Projects.Update( project );
             }
@@ -32,7 +32,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool DeleteProject( int projectId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Projects.Delete( projectId );
             }
@@ -40,7 +40,7 @@ namespace Invenietis.Repositories.Commands
 
         public int CreateCategory( ProjectCategory category )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.ProjectCategories.Insert( category );
             }
@@ -48,7 +48,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool UpdateCategory( ProjectCategory category )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.ProjectCategories.Update( category );
             }
@@ -56,7 +56,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool DeleteCategory( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.ProjectCategories.Delete( categoryId );
             }

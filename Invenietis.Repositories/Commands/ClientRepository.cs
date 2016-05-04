@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Commands
 
         public int CreateClient( Client client )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Clients.Insert( client );
             }
@@ -24,7 +24,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool UpdateClient( Client client )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Clients.Update( client );
             }
@@ -32,7 +32,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool DeleteClient( int clientId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Clients.Delete( clientId );
             }

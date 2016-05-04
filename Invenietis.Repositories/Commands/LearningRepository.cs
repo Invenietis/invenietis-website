@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Commands
 
         public int CreateLearning( Learning learning )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Learnings.Insert( learning );
             }
@@ -24,7 +24,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool UpdateLearning( Learning learning )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Learnings.Update( learning );
             }
@@ -32,7 +32,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool DeleteLearning( int learningId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Learnings.Delete( learningId );
             }
@@ -40,7 +40,7 @@ namespace Invenietis.Repositories.Commands
 
         public int CreateCategory( LearningCategory category )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.LearningCategories.Insert( category );
             }
@@ -48,7 +48,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool UpdateCategory( LearningCategory category )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.LearningCategories.Update( category );
             }
@@ -56,7 +56,7 @@ namespace Invenietis.Repositories.Commands
 
         public bool DeleteCategory( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.LearningCategories.Delete( categoryId );
             }

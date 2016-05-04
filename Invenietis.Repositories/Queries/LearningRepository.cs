@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<Learning> GetLearningsByCategory( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var learnings = db.Learnings.Find( x => x.Category.Id == categoryId ).ToArray();
                 PopulateLearnings( db, learnings );
@@ -35,7 +35,7 @@ namespace Invenietis.Repositories.Queries
 
         public Learning GetLearningById( int learningId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var learning = db.Learnings.FindById( learningId );
                 if( learning != null ) learning.Category.Fetch( db.Connection );
@@ -46,7 +46,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<LearningCategory> GetLearningCategories()
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.LearningCategories.FindAll().ToList();
             }
@@ -54,7 +54,7 @@ namespace Invenietis.Repositories.Queries
 
         public LearningCategory GetLearningCategoryById( int categoryId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.LearningCategories.FindById( categoryId );
             }

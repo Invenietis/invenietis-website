@@ -16,7 +16,7 @@ namespace Invenietis.Repositories.Queries
 
         public Client GetClientById( int clientId )
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 var client = db.Clients.FindById( clientId );
 
@@ -26,7 +26,7 @@ namespace Invenietis.Repositories.Queries
 
         public IEnumerable<Client> GetClients()
         {
-            using( var db = new DataContext() )
+            using( var db = DataContext.GetDefault() )
             {
                 return db.Clients.FindAll().ToList();
             }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Invenietis.Common.Cultures;
+using Invenietis.Data;
 using Invenietis.LocalizedRoutes;
 using Invenietis.LocalizedRoutes.Config;
 using Invenietis.LocalizedRoutes.Mvc;
@@ -30,6 +31,7 @@ namespace Invenietis.Web
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("routes.json")
+                .AddJsonFile("config.json")
                 .AddJsonFile("cultures.json");
 
             builder.AddEnvironmentVariables();
@@ -74,6 +76,11 @@ namespace Invenietis.Web
             app.UseStaticFiles();
 
             app.UseStatusCodePages();
+
+            // DataContext provider
+            var dbPath =  Configuration.Get( "DatabasePath" );
+            if( String.IsNullOrEmpty( dbPath ) ) throw new ArgumentNullException( "DatabasePath must be specified in config.json" );
+            DataContext.GetDefault = () => new DataContext( dbPath );
 
             // Localization
             var cultureConfig = Configuration.Get<CultureConfig>();
