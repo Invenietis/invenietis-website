@@ -3,6 +3,21 @@
   "version": 2,
   "targets": {
     "DNX,Version=v4.5.1": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -19,6 +34,23 @@
           "Invenietis.LocalizedRoutes": "0.0.0",
           "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        }
+      },
+      "Invenietis.Repositories/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "Invenietis.Data": "1.0.0"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -1660,6 +1692,21 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x86": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -1676,6 +1723,23 @@
           "Invenietis.LocalizedRoutes": "0.0.0",
           "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        }
+      },
+      "Invenietis.Repositories/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "Invenietis.Data": "1.0.0"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -3320,6 +3384,21 @@
       }
     },
     "DNX,Version=v4.5.1/win7-x64": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
       "Invenietis.LocalizedRoutes/0.0.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.1",
@@ -3336,6 +3415,23 @@
           "Invenietis.LocalizedRoutes": "0.0.0",
           "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
           "Microsoft.AspNet.Routing": "1.0.0-rc1-final"
+        }
+      },
+      "Invenietis.Repositories/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "Invenietis.Data": "1.0.0"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
         }
       },
       "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
@@ -4981,6 +5077,14 @@
     }
   },
   "libraries": {
+    "Invenietis.Common/1.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Common/project.json"
+    },
+    "Invenietis.Data/1.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Data/project.json"
+    },
     "Invenietis.LocalizedRoutes/0.0.0": {
       "type": "project",
       "path": "../Invenietis.LocalizedRoutes/project.json"
@@ -4988,6 +5092,21 @@
     "Invenietis.LocalizedRoutes.Mvc/0.0.0": {
       "type": "project",
       "path": "../Invenietis.LocalizedRoutes.Mvc/project.json"
+    },
+    "Invenietis.Repositories/1.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Repositories/project.json"
+    },
+    "LiteDB/1.0.4": {
+      "type": "package",
+      "sha512": "ck0kft8ZvBCyeDca9hKFcl4pC8csmyZ00zdvIUcCr+dehPgyE0MngHZ0zknhmPPSnVO1kilYKoeFjgK1Xf93kQ==",
+      "files": [
+        "lib/net40/LiteDB.dll",
+        "lib/net40/LiteDB.xml",
+        "LiteDB.1.0.4.nupkg",
+        "LiteDB.1.0.4.nupkg.sha512",
+        "LiteDB.nuspec"
+      ]
     },
     "Microsoft.AspNet.Antiforgery/1.0.0-rc1-final": {
       "type": "package",
@@ -6909,8 +7028,11 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Invenietis.Common >= 1.0.0-*",
+      "Invenietis.Data >= 1.0.0-*",
       "Invenietis.LocalizedRoutes >= 0.0.0",
       "Invenietis.LocalizedRoutes.Mvc >= 0.0.0",
+      "Invenietis.Repositories >= 1.0.0-*",
       "Microsoft.AspNet.Diagnostics >= 1.0.0-rc1-final",
       "Microsoft.AspNet.IISPlatformHandler >= 1.0.0-rc1-final",
       "Microsoft.AspNet.Mvc >= 6.0.0-rc1-final",

@@ -5,21 +5,21 @@ using System.Threading.Tasks;
 
 namespace Invenietis.LocalizedRoutes.Config
 {
-    public class CultureConfig : ICultureConfig
+    public interface ICultureConfig
     {
         /// <summary>
         /// The default culture to use
         /// </summary>
-        public string DefaultCulture { get; set; }
+        string DefaultCulture { get; } 
 
         /// <summary>
         /// The cultures supported by the application. The <see cref="DefaultCulture"/> must be part of the list.
         /// </summary>
-        public string[] SupportedCultures { get; set; }
+        string[] SupportedCultures { get; } 
 
         /// <summary>
         /// The available fallbacks to supported cultures
         /// </summary>
-        public Dictionary<string, string[]> FallbackMap { get; set; }
+        Dictionary<string, string[]> FallbackMap { get; } 
     }
 }

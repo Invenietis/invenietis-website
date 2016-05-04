@@ -7,6 +7,6 @@
   "fallbackMap": {
     "fr": [ "en" ],
     "en": [ "fr" ],
-    "es": ["it", "fr"]
+    "es": [ "fr" ]
   }
 }

@@ -1,0 +1,931 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    "DNX,Version=v4.5.1": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
+      "Invenietis.LocalizedRoutes/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Microsoft.AspNet.Localization": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
+          "Microsoft.AspNet.Razor.Runtime": "4.0.0-rc1-final"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Html.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final",
+          "Microsoft.Net.Http.Headers": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Localization/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Globalization.CultureInfoCache": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/4.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor.Runtime/4.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Html.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x86": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
+      "Invenietis.LocalizedRoutes/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Microsoft.AspNet.Localization": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
+          "Microsoft.AspNet.Razor.Runtime": "4.0.0-rc1-final"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Html.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final",
+          "Microsoft.Net.Http.Headers": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Localization/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Globalization.CultureInfoCache": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/4.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor.Runtime/4.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Html.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        }
+      }
+    },
+    "DNX,Version=v4.5.1/win7-x64": {
+      "Invenietis.Common/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.LocalizedRoutes": "0.0.0"
+        }
+      },
+      "Invenietis.Data/1.0.0": {
+        "type": "project",
+        "framework": "DNX,Version=v4.5.1",
+        "dependencies": {
+          "Invenietis.Common": "1.0.0",
+          "LiteDB": "1.0.4"
+        }
+      },
+      "Invenietis.LocalizedRoutes/0.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.5.1",
+        "dependencies": {
+          "Microsoft.AspNet.Localization": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final",
+          "Microsoft.AspNet.Razor.Runtime": "4.0.0-rc1-final"
+        }
+      },
+      "LiteDB/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/LiteDB.dll": {}
+        },
+        "runtime": {
+          "lib/net40/LiteDB.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Html.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Html.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Features": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.WebEncoders.Core": "1.0.0-rc1-final",
+          "Microsoft.Net.Http.Headers": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Extensions.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Http.Features.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Localization/1.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Http.Extensions": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Globalization.CultureInfoCache": "1.0.0-rc1-final",
+          "Microsoft.Extensions.Localization.Abstractions": "1.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Localization.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/4.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor.Runtime/4.0.0-rc1-final": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Html.Abstractions": "1.0.0-rc1-final",
+          "Microsoft.AspNet.Razor": "4.0.0-rc1-final"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core",
+          "System.Xml",
+          "System.Xml.Linq"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.AspNet.Razor.Runtime.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.Primitives.dll": {}
+        }
+      },
+      "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll": {}
+        }
+      },
+      "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        },
+        "runtime": {
+          "lib/net451/Microsoft.Net.Http.Headers.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Invenietis.Common/1.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Common/project.json"
+    },
+    "Invenietis.Data/1.0.0": {
+      "type": "project",
+      "path": "../Invenietis.Data/project.json"
+    },
+    "Invenietis.LocalizedRoutes/0.0.0": {
+      "type": "project",
+      "path": "../Invenietis.LocalizedRoutes/project.json"
+    },
+    "LiteDB/1.0.4": {
+      "type": "package",
+      "sha512": "ck0kft8ZvBCyeDca9hKFcl4pC8csmyZ00zdvIUcCr+dehPgyE0MngHZ0zknhmPPSnVO1kilYKoeFjgK1Xf93kQ==",
+      "files": [
+        "lib/net40/LiteDB.dll",
+        "lib/net40/LiteDB.xml",
+        "LiteDB.1.0.4.nupkg",
+        "LiteDB.1.0.4.nupkg.sha512",
+        "LiteDB.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Html.Abstractions/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "49aE5EnPr4/IBhrI5fH43o20GgqPCOZqcTDf+Ya8iVSIeorhj2Pn9e12DXqFPTKPHD7+H44K2MaU2lw1/uMiKQ==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Html.Abstractions.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Html.Abstractions.xml",
+        "lib/net451/Microsoft.AspNet.Html.Abstractions.dll",
+        "lib/net451/Microsoft.AspNet.Html.Abstractions.xml",
+        "Microsoft.AspNet.Html.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Html.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Html.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Http.Abstractions/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sfzc1WJMl8wGCF+rChVfJ7otT6tTv24RNXUej2r8tlQ2RDNnAozYyGb0SCW2mxpHrC31On99Wt0rksgF0c2WUw==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Abstractions.xml",
+        "lib/net451/Microsoft.AspNet.Http.Abstractions.dll",
+        "lib/net451/Microsoft.AspNet.Http.Abstractions.xml",
+        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Http.Extensions/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "rsjbxD9W6NfqP0WNHMRyetIh6ZoKRbK1ea0V5xWdVAx53WdvgBy0HmkSwXt506+xU65jjZP19F4Ua4YjZdPHfQ==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Extensions.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Extensions.xml",
+        "lib/net451/Microsoft.AspNet.Http.Extensions.dll",
+        "lib/net451/Microsoft.AspNet.Http.Extensions.xml",
+        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Extensions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Extensions.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Http.Features/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "WlscfdAvN8XaaK1iv1Iewp5emei7+0SlXNkUh7kMJpeaS6K0GhwNmwqZR6VrT1oN+Maw98nEONHS34/suqQwOA==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Features.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Http.Features.xml",
+        "lib/net451/Microsoft.AspNet.Http.Features.dll",
+        "lib/net451/Microsoft.AspNet.Http.Features.xml",
+        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Http.Features.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Http.Features.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Localization/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "ImoAQSIWbZifALakJI5kR0l5XOBixrnnR7+7RoNfFQFvPmM6lqJv2mNEYgkpFGea/hVdfHPfsWErb1oVVnYMaw==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Localization.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Localization.xml",
+        "lib/net451/Microsoft.AspNet.Localization.dll",
+        "lib/net451/Microsoft.AspNet.Localization.xml",
+        "Microsoft.AspNet.Localization.1.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Localization.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Localization.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Razor/4.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "j4R032B5HY3WjgGir8/Zer2FWZzsux8SS1fD6AugKmI7Msx/4d8/0FCMRbLCFNytt2rosOmNJhoAp7qOlzOHVw==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Razor.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Razor.xml",
+        "lib/net451/Microsoft.AspNet.Razor.dll",
+        "lib/net451/Microsoft.AspNet.Razor.xml",
+        "Microsoft.AspNet.Razor.4.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Razor.4.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Razor.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Razor.Runtime/4.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "UQSVaYFnLiSI3gtb6Q2jSv3yZia+vmve/TQrprlXUT5jAeUJa5G2DWYTcGPZE6BfmAim5SZ1BOW6ozMLRBHQ/Q==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.AspNet.Razor.Runtime.dll",
+        "lib/dotnet5.4/Microsoft.AspNet.Razor.Runtime.xml",
+        "lib/net451/Microsoft.AspNet.Razor.Runtime.dll",
+        "lib/net451/Microsoft.AspNet.Razor.Runtime.xml",
+        "Microsoft.AspNet.Razor.Runtime.4.0.0-rc1-final.nupkg",
+        "Microsoft.AspNet.Razor.Runtime.4.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.AspNet.Razor.Runtime.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Globalization.CultureInfoCache/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "HZggxvkQz5r5Dp36eCdnV8A/fmuhlK2xxmSnUKPES4w3l0C8mzbRLoJlPVdxyd9xy00odSlS5tz8w2IegZcqBQ==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Extensions.Globalization.CultureInfoCache.dll",
+        "lib/dotnet5.4/Microsoft.Extensions.Globalization.CultureInfoCache.xml",
+        "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.dll",
+        "lib/net451/Microsoft.Extensions.Globalization.CultureInfoCache.xml",
+        "Microsoft.Extensions.Globalization.CultureInfoCache.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Globalization.CultureInfoCache.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Globalization.CultureInfoCache.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Localization.Abstractions/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "0Z6Knet4Re5ZLIpixjLX9w8TrTPjsB3F/b9EIN1RdX5inXkdOrnpgiT6j/PzcgUcCNlCXe1dTqutVSDE6+26ig==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Extensions.Localization.Abstractions.dll",
+        "lib/dotnet5.4/Microsoft.Extensions.Localization.Abstractions.xml",
+        "lib/net451/Microsoft.Extensions.Localization.Abstractions.dll",
+        "lib/net451/Microsoft.Extensions.Localization.Abstractions.xml",
+        "Microsoft.Extensions.Localization.Abstractions.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Localization.Abstractions.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Localization.Abstractions.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Primitives/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "oHWqBARJveyM7LctuqQqvsTC58hxoq0gGnHr6Qsxie71LIkZpfE21IklhSLOsqmv4QIpes/G6k1vZbAQ+cC/nw==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Extensions.Primitives.dll",
+        "lib/dotnet5.4/Microsoft.Extensions.Primitives.xml",
+        "lib/net451/Microsoft.Extensions.Primitives.dll",
+        "lib/net451/Microsoft.Extensions.Primitives.xml",
+        "lib/netcore50/Microsoft.Extensions.Primitives.dll",
+        "lib/netcore50/Microsoft.Extensions.Primitives.xml",
+        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.Primitives.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.Primitives.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.WebEncoders.Core/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "wt47w3Zu7JvuD7CfRSCaz0IZL5EzpuzicRm6Qcidteb2TVeB98Psg7YGiwIBeYB1b52YFTBgqC+ySKk/GRhy2A==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.dll",
+        "lib/dotnet5.4/Microsoft.Extensions.WebEncoders.Core.xml",
+        "lib/net451/Microsoft.Extensions.WebEncoders.Core.dll",
+        "lib/net451/Microsoft.Extensions.WebEncoders.Core.xml",
+        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg",
+        "Microsoft.Extensions.WebEncoders.Core.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Extensions.WebEncoders.Core.nuspec"
+      ]
+    },
+    "Microsoft.Net.Http.Headers/1.0.0-rc1-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "Y10hkmHQZLieW3J6J+vTiq86vifmJ7Vc2zrwNR349oAaUGjTHL0ws6rqHn0JDIcawBna4AE3OBNsL9vuZuE8bw==",
+      "files": [
+        "lib/dotnet5.4/Microsoft.Net.Http.Headers.dll",
+        "lib/dotnet5.4/Microsoft.Net.Http.Headers.xml",
+        "lib/net451/Microsoft.Net.Http.Headers.dll",
+        "lib/net451/Microsoft.Net.Http.Headers.xml",
+        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg",
+        "Microsoft.Net.Http.Headers.1.0.0-rc1-final.nupkg.sha512",
+        "Microsoft.Net.Http.Headers.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Invenietis.Common >= 1.0.0-*",
+      "Invenietis.Data >= 1.0.0-*"
+    ],
+    "DNX,Version=v4.5.1": []
+  }
+}

@@ -14,7 +14,7 @@ namespace Invenietis.LocalizedRoutes
     /// </summary>
     public class UrlCultureProvider : RequestCultureProvider
     {
-        public UrlCultureProvider( CultureConfig cultureConfig )
+        public UrlCultureProvider( ICultureConfig cultureConfig )
         {
             if( cultureConfig == null ) throw new ArgumentNullException( nameof( cultureConfig ) );
 
@@ -24,7 +24,7 @@ namespace Invenietis.LocalizedRoutes
         /// <summary>
         /// The configuration used to manage cultures and fallbacks
         /// </summary>
-        public CultureConfig CultureConfiguration { get; set; }
+        public ICultureConfig CultureConfiguration { get; set; }
 
         public override Task<ProviderCultureResult> DetermineProviderCultureResult( HttpContext httpContext )
         {

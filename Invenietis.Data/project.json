@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Invenietis.Data Class Library",
+  "authors": [ "Invenietis" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "frameworks": {
+    "dnx451": { }
+  },
+  "dependencies": {
+    "Invenietis.Common": "1.0.0-*",
+    "LiteDB": "1.0.4"
+  }
+}

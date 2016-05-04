@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Invenietis.Common.Cultures;
 using Invenietis.LocalizedRoutes;
 using Invenietis.LocalizedRoutes.Config;
 using Invenietis.LocalizedRoutes.Mvc;
@@ -29,7 +30,6 @@ namespace Invenietis.Web
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("routes.json")
-                .AddJsonFile("connectionString.json")
                 .AddJsonFile("cultures.json");
 
             builder.AddEnvironmentVariables();
@@ -50,6 +50,14 @@ namespace Invenietis.Web
 
             services.AddInstance( routeProvider );
             services.AddInstance( mvcAdapter );
+
+            // Cultures provider
+            var cultureProvider = Configuration.Get<CultureProvider>();
+            services.AddInstance( cultureProvider );
+
+            // Repositories
+            services.AddSingleton<Repositories.Commands.ProjectRepository>();
+            services.AddSingleton<Repositories.Queries.ProjectRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,7 +94,7 @@ namespace Invenietis.Web
         }
 
         // Change culture if url starts with '/fr' or '/en', ...
-        private void ConfigureLocalization( IApplicationBuilder app, CultureConfig cultureConfig )
+        private void ConfigureLocalization( IApplicationBuilder app, ICultureConfig cultureConfig )
         {
             RequestCulture defaultCulture = new RequestCulture( cultureConfig.DefaultCulture );
 

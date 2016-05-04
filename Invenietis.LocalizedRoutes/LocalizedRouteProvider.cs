@@ -18,7 +18,7 @@ namespace Invenietis.LocalizedRoutes
     {
         List<LocalizedRoute> _routes;
         ILocalizedRouteConfig _config;
-        CultureConfig _cultureConfig;
+        ICultureConfig _cultureConfig;
         Regex _paramsRegex = new Regex("{(?<routeParam>[a-z0-9]*)(?::[a-z0-9]*)*}", RegexOptions.Compiled);
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Invenietis.LocalizedRoutes
         /// <summary>
         /// The configuration used to manage cultures and fallbacks
         /// </summary>
-        public CultureConfig CultureConfiguration { get { return _cultureConfig; } }
+        public ICultureConfig CultureConfiguration { get { return _cultureConfig; } }
 
         /// <summary>
         /// The routes built from the specified configuration
@@ -71,7 +71,7 @@ namespace Invenietis.LocalizedRoutes
         /// Setup default culture, supported cultures, and fallbacks
         /// </summary>
         /// <param name="config">The specified configuration</param>
-        public void SetupCultures( CultureConfig config )
+        public void SetupCultures( ICultureConfig config )
         {
             if( config == null ) throw new InvalidOperationException( nameof( config ) );
 
