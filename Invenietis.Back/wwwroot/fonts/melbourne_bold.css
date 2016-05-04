@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'MelbourneBold';
+    src: url('melbourne_bold.eot');
+    src: url('melbourne_bold.eot') format('embedded-opentype'),
+         url('melbourne_bold.woff') format('woff'),
+         url('melbourne_bold.ttf') format('truetype'),
+         url('melbourne_bold.svg#MelbourneBold') format('svg');
+}
