@@ -1,0 +1,1 @@
+﻿angular.module('invenietis.app.learning', ['invenietis.app.learning.categories']);

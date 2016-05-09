@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Invenietis.Common;
 using Invenietis.Data;
 using Invenietis.Data.Entities;
+using Invenietis.Repositories.Queries.Filters;
+using LiteDB;
 
 namespace Invenietis.Repositories.Queries
 {
@@ -14,25 +17,23 @@ namespace Invenietis.Repositories.Queries
 
         }
 
-        public IEnumerable<Project> GetProjectsByCategory( int categoryId )
+        public PaginatedResult<Project> GetProjects( ProjectFilter pFilter, OrderFilter oFilter, PaginationInfo pInfo )
         {
             using( var db = DataContext.GetDefault() )
             {
-                var projects = db.Projects.Find( x => x.Category.Id == categoryId ).ToArray();
+                var total = db.Learnings.Count();
+
+                var qOrder = oFilter.OrderDesc ? -1 : 1;
+                Query q = !String.IsNullOrEmpty(oFilter.OrderBy) ? Query.All( oFilter.OrderBy, qOrder ) : Query.All( qOrder );
+
+                if( pFilter.CategoryId > 0 ) q = Query.And( q, Query.EQ( "CategoryId", pFilter.CategoryId ) );
+                if( pFilter.ClientId > 0 ) q = Query.And( q, Query.EQ( "ClientId", pFilter.ClientId ) );
+                if( pFilter.Published.HasValue ) q = Query.And( q, Query.EQ( "Published", pFilter.Published.Value ) );
+
+                var projects = db.Projects.Find(q, pInfo.Page * pInfo.PerPage, pInfo.PerPage).ToArray();
                 PopulateProjects( db, projects );
 
-                return projects;
-            }
-        }
-
-        public IEnumerable<Project> GetProjectsByClient( int clientId )
-        {
-            using( var db = DataContext.GetDefault() )
-            {
-                var projects = db.Projects.Find( x => x.Client.Id == clientId ).ToArray();
-                PopulateProjects( db, projects );
-
-                return projects;
+                return new PaginatedResult<Project>( pInfo, projects, total );
             }
         }
 
@@ -60,7 +61,7 @@ namespace Invenietis.Repositories.Queries
         {
             using( var db = DataContext.GetDefault() )
             {
-                return db.ProjectCategories.FindAll().ToList();
+                return db.ProjectCategories.FindAll().ToArray();
             }
         }
 

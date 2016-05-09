@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.TitleTemplate = "Invenietis | {0}";
+}
+
+<!DOCTYPE html>
+<html ng-app="invenietis.app" lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/global.min.css">
+    <link rel="stylesheet" href="~/css/base.min.css">
+
+    <script>
+        var Invenietis = {};
+        Invenietis.Cultures = @Json.Serialize( CultureProvider );
+    </script>
+
+    <script type="text/javascript" src="~/js/base.min.js"></script>
+    <script type="text/javascript" src="~/js/common.min.js"></script>
+    <script type="text/javascript" src="~/js/clients.min.js"></script>
+    <script type="text/javascript" src="~/js/projects.min.js"></script>
+    <script type="text/javascript" src="~/js/learning.min.js"></script>
+    <script type="text/javascript" src="~/js/app.min.js"></script>
+
+    @if( IsSectionDefined( "Styles" ) )
+    {
+        RenderSection( "Styles" );
+    }
+
+    @if( IsSectionDefined( "Scripts" ) )
+    {
+        RenderSection( "Scripts" );
+    }
+
+    <title>@ViewBag.Title</title>
+</head>
+<body ng-controller="HomeCtrl as ctrl">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="~/">Invenietis</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="~/">Accueil</a></li>
+                    <li><a ui-sref="app.clients.list">Clients</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projets <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/">Gestion des projets</a></li>
+                            <li><a href="~/">Gestion des catégories</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Formations <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="~/">Gestion des formations</a></li>
+                            <li><a href="~/">Gestion des catégories</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>

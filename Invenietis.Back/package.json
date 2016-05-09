@@ -4,28 +4,33 @@
   "description": "Invenietis back-office",
   "main": "gulpfile.js",
   "dependencies": {
+    "angular": "^1.5.5",
+    "angular-resource": "^1.5.5",
+    "angular-ui-router": "^0.2.18",    
     "bootstrap": "^3.3.6",
     "jquery": "^2.2.3",
-    "lightbox2": "^2.8.2"
+    "lightbox2": "^2.8.2",
+    "ng-file-upload": "^12.0.4",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "gulp-bundle-aspnet": "^0.3.0",
-    "gulp-concat": "^2.5.2",
+	"gulp": "^3.9.1",
+	"gulp-bundle-aspnet": "^0.3.0",
+    "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
-    "gulp": "^3.8.11",
-    "gulp-less": "^3.0.5",
     "gulp-plumber": "^1.1.0",
+    "gulp-less": "^3.0.5",
     "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
     "gulp-run-sequence": "^0.3.2",
     "gulp-util": "^3.0.7",
-    "gulp-uglify": "^1.2.0",
     "gulp-watch": "^4.3.5",
+	"rimraf": "^2.5.2",
     "through2": "^2.0.1",
-    "rimraf": "^2.2.8"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Invenietis",
+  "author": "",
   "license": "ISC"
 }

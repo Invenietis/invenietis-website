@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Q = Invenietis.Repositories.Queries;
 using C = Invenietis.Repositories.Commands;
+using Invenietis.Common;
 
 namespace Invenietis.Back
 {
@@ -23,8 +24,7 @@ namespace Invenietis.Back
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("config.json")
-                .AddJsonFile("cultures.json");
+                .AddJsonFile("config.json");
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -39,8 +39,12 @@ namespace Invenietis.Back
             services.AddMvc();
 
             // Cultures provider
-            var cultureProvider = Configuration.Get<CultureProvider>();
-            services.AddInstance( cultureProvider );
+            var config = Configuration.Get<Config>();
+            if( config == null ) throw new ArgumentNullException("Config must be specified in config.json");
+            var cultures = config.Cultures;
+            if( cultures == null ) throw new ArgumentNullException( "Cultures must be specified in config.json" );
+
+            services.AddInstance( new CultureProvider(cultures.DefaultCulture, cultures.SupportedCultures, cultures.FallbackMap) );
 
             // Repositories
             services.AddSingleton<Q.ProjectRepository>();
@@ -68,16 +72,21 @@ namespace Invenietis.Back
             app.UseStatusCodePages();
 
             // DataContext provider
-            var dbPath =  Configuration.Get( "DatabasePath" );
+            var dbPath =  Configuration.Get<Config>().DatabasePath;
             if( String.IsNullOrEmpty( dbPath ) ) throw new ArgumentNullException( "DatabasePath must be specified in config.json" );
             DataContext.GetDefault = () => new DataContext( dbPath );
 
             // Build routes
             app.UseMvc( routes =>
             {
-                routes.MapRoute( name: "default",
-                    template: "{controller}/{action}",
-                    defaults: new { controller = "Home", action = "Index" } );
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}" );
+
+                routes.MapRoute(
+                    "html5",
+                    "{*all}",
+                    new { controller = "Home", action = "Index" } );
             } );
         }
 

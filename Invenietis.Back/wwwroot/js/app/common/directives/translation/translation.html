@@ -1,0 +1,22 @@
+﻿<div class="translation">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img src="{{ getFlag(selector.lang1) }}" />
+
+                <br />
+
+                <select class="col-md-12 form-control" data-ng-model="selector.lang1" data-ng-options="c.Name for c in selector.availableCulturesLang1()"></select>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <img src="{{ getFlag(selector.lang2) }}" />
+
+                <br />
+
+                <select class="col-md-12 form-control" data-ng-model="selector.lang2" data-ng-options="c.Name for c in selector.availableCulturesLang2()"></select>
+            </div>
+        </div>
+    </div>
+
+</div>

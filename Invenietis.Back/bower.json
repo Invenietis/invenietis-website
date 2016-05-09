@@ -1,0 +1,22 @@
+{
+  "name": "invenietis",
+  "description": "Invenietis back-office",
+  "main": "gulpfile.js",
+  "authors": [
+    "Invenietis"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Invenietis/invenietis-website",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert2": "^2.2.1"
+  }
+}

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Invenietis.Common;
 using Invenietis.Data;
 using Invenietis.Data.Entities;
+using Invenietis.Repositories.Queries.Filters;
+using LiteDB;
 
 namespace Invenietis.Repositories.Queries
 {
@@ -14,14 +17,22 @@ namespace Invenietis.Repositories.Queries
 
         }
 
-        public IEnumerable<Learning> GetLearningsByCategory( int categoryId )
+        public PaginatedResult<Learning> GetLearnings( LearningFilter lFilter, OrderFilter oFilter, PaginationInfo pInfo )
         {
             using( var db = DataContext.GetDefault() )
             {
-                var learnings = db.Learnings.Find( x => x.Category.Id == categoryId ).ToArray();
+                var total = db.Learnings.Count();
+
+                var qOrder = oFilter.OrderDesc ? -1 : 1;
+                Query q = !String.IsNullOrEmpty(oFilter.OrderBy) ? Query.All( oFilter.OrderBy, qOrder ) : Query.All( qOrder );
+
+                if( lFilter.CategoryId > 0 ) q = Query.And( q, Query.EQ( "CategoryId", lFilter.CategoryId ) );
+                if( lFilter.Published.HasValue ) q = Query.And( q, Query.EQ( "Published", lFilter.Published.Value ) );
+
+                var learnings = db.Learnings.Find(q, pInfo.Page * pInfo.PerPage, pInfo.PerPage).ToArray();
                 PopulateLearnings( db, learnings );
 
-                return learnings;
+                return new PaginatedResult<Learning>( pInfo, learnings, total );
             }
         }
 
@@ -48,7 +59,7 @@ namespace Invenietis.Repositories.Queries
         {
             using( var db = DataContext.GetDefault() )
             {
-                return db.LearningCategories.FindAll().ToList();
+                return db.LearningCategories.FindAll().ToArray();
             }
         }
 

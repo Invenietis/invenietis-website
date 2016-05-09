@@ -9,6 +9,7 @@ TestResults
 # Packages
 packages/
 node_modules/
+bower_components/
 
 # User files
 *.suo

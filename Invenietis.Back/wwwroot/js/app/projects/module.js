@@ -1,0 +1,1 @@
+﻿angular.module('invenietis.app.projects', ['invenietis.app.projects.categories']);

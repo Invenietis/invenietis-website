@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Invenietis.Common;
 using Invenietis.Common.Cultures;
 using Invenietis.Data;
 using Invenietis.LocalizedRoutes;
@@ -32,8 +33,7 @@ namespace Invenietis.Web
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("routes.json")
-                .AddJsonFile("config.json")
-                .AddJsonFile("cultures.json");
+                .AddJsonFile("config.json");
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -55,8 +55,12 @@ namespace Invenietis.Web
             services.AddInstance( mvcAdapter );
 
             // Cultures provider
-            var cultureProvider = Configuration.Get<CultureProvider>();
-            services.AddInstance( cultureProvider );
+            var config = Configuration.Get<Config>();
+            if( config == null ) throw new ArgumentNullException( "Config must be specified in config.json" );
+            var cultures = config.Cultures;
+            if( cultures == null ) throw new ArgumentNullException( "Cultures must be specified in config.json" );
+
+            services.AddInstance( new CultureProvider( cultures.DefaultCulture, cultures.SupportedCultures, cultures.FallbackMap ) );
 
             // Repositories
             services.AddSingleton<Q.ProjectRepository>();
@@ -80,7 +84,7 @@ namespace Invenietis.Web
             app.UseStatusCodePages();
 
             // DataContext provider
-            var dbPath =  Configuration.Get( "DatabasePath" );
+            var dbPath =  Configuration.Get<Config>().DatabasePath;
             if( String.IsNullOrEmpty( dbPath ) ) throw new ArgumentNullException( "DatabasePath must be specified in config.json" );
             DataContext.GetDefault = () => new DataContext( dbPath );
 

@@ -1,3 +1,16 @@
 ﻿{
-  "DatabasePath": "D:\\Invenietis\\Projects\\Internal\\Website\\Current\\Invenietis\\Invenietis.db"
+  "DatabasePath": "D:\\Invenietis\\Projects\\Internal\\Website\\Current\\Invenietis\\Invenietis.db",
+
+  "Cultures": {
+    "defaultCulture": "fr",
+    "supportedCultures": [
+      "fr",
+      "en"
+    ],
+    "fallbackMap": {
+      "fr": [ "en" ],
+      "en": [ "fr" ],
+      "es": [ "fr" ]
+    }
+  }
 }

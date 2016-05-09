@@ -63,7 +63,7 @@ gulp.task("min:js", function () {
             .pipe(gulp.dest(paths.jsFolder));
 });
 
-gulp.task("min", ["min:js", "min:css"]);
+gulp.task("min:all", ["min:js", "min:css"]);
 
 gulp.task('bundles', function () {
     return gulp.src('./bundles.json')
@@ -88,8 +88,8 @@ gulp.task('build:css', function (cb) {
 
 gulp.task("build:all", function (cb) {
     return runSequence(
-        ['clean', 'less'],
-        ['min', 'bundles'],
+        ['clean:all', 'less'],
+        ['min:all', 'bundles'],
         cb
     );
 });

@@ -6,8 +6,13 @@ using Invenietis.Common.Cultures;
 
 namespace Invenietis.Data.Entities
 {
-    public class Client : ICulturedItem
+    public class Client
     {
+        public Client()
+        {
+            Cultures = new Dictionary<string, string>();
+        }
+
         public int ClientId { get; set; }
 
         public Dictionary<string, string> Cultures { get; set; }

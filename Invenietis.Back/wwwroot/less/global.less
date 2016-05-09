@@ -1,0 +1,29 @@
+﻿@import "../../node_modules/bootstrap/less/bootstrap.less";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,300italic,600,700,800);
+
+/* -------- Override default Bootstrap variables -------- */
+@icon-font-path: '../fonts/';
+@link-hover-decoration: none;
+
+@border-radius-base: 0px;
+@border-radius-large: 0px;
+@border-radius-small: 0px;
+
+/* -------- Custom Invenietis variables -------- */
+// Typography
+@font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-size-base: 15px;
+
+/* -------- Hacks -------- */
+// Magic trick: forces child div to have the same height as its parent when "height: 100%;" set on child
+html, body {
+    height: 100%;
+}
+
+body {
+    line-height: 1.8em;
+}
+
+.translation {
+    margin-top: 15px;
+}

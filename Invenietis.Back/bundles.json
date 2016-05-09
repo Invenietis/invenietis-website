@@ -1,0 +1,57 @@
+﻿{
+  "version": "1.0.0",
+  "defaultMinJs": "js",
+  "defaultMinCss": "css",
+  "webRoot": "./wwwroot/",
+  "bundles": {
+    "base": {
+      "js": [
+        "./node_modules/jquery/dist/jquery.min.js",
+        "./node_modules/lightbox2/dist/js/lightbox.min.js",
+        "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+        "./node_modules/angular/angular.min.js",
+        "./node_modules/angular-resource/angular-resource.min.js",
+        "./node_modules/angular-ui-router/release/angular-ui-router.min.js",
+        "./node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js",
+        "./node_modules/ng-file-upload/dist/ng-file-upload.min.js",
+        "./node_modules/underscore/underscore-min.js",
+        "./bower_components/es6-promise-polyfill/promise.min.js",
+        "./bower_components/sweetalert2/dist/sweetalert2.min.js"
+      ],
+      "css": [
+        "bower_components/sweetalert2/dist/sweetalert2.min.css"
+      ]
+    },
+    "app": {
+      "js": [
+        "./wwwroot/js/app/app.js"
+      ]
+    },
+    "common": {
+      "js": [
+        "./wwwroot/js/app/common/module.js",
+        "./wwwroot/js/app/common/resources.js",
+        "./wwwroot/js/app/common/directives/**/*.js",
+        "./wwwroot/js/app/common/helpers/**/*.js"
+      ]
+    },
+    "clients": {
+      "js": [
+        "./wwwroot/js/app/clients/module.js",
+        "./wwwroot/js/app/clients/*/*.js"
+      ]
+    },
+    "learning": {
+      "js": [
+        "./wwwroot/js/app/learning/module.js",
+        "./wwwroot/js/app/learning/*/*.js"
+      ]
+    },
+    "projects": {
+      "js": [
+        "./wwwroot/js/app/projects/module.js",
+        "./wwwroot/js/app/projects/*/*.js"
+      ]
+    }
+  }
+}

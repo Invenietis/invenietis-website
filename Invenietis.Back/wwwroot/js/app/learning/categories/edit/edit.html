@@ -1,0 +1,30 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="panel-title">Editer une catégorie</div>
+    </div>
+
+    <translation item="ctrl.category" selector="ctrl.translation"></translation>
+
+    <div class="panel-body">
+        <form ng-submit="ctrl.save()">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" ng-model="ctrl.category.Cultures[ctrl.translation.lang1.Id]" placeholder="{{ctrl.translation.lang1.Id}}">
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" class="form-control" ng-model="ctrl.category.Cultures[ctrl.translation.lang2.Id]" placeholder="{{ctrl.translation.lang2.Id}}">
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enregistrer</button>
+        </form>
+    </div>
+</div>
