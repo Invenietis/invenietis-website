@@ -9,8 +9,7 @@
     ],
     "fallbackMap": {
       "fr": [ "en" ],
-      "en": [ "fr" ],
-      "es": [ "fr" ]
+      "en": [ "fr" ]
     }
   }
 }

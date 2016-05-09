@@ -42,7 +42,7 @@
         },
         {
           "id": "Projects.GetProject",
-          "value": "{id}-{name}"
+          "value": "{name}"
         },
         {
           "id": "Learning",
@@ -54,7 +54,7 @@
         },
         {
           "id": "Learning.GetTraining",
-          "value": "{id}-{name}"
+          "value": "{name}"
         }
       ]
     },
@@ -100,7 +100,7 @@
         },
         {
           "id": "Projects.GetProject",
-          "value": "{id}-{name}"
+          "value": "{name}"
         },
         {
           "id": "Learning",
@@ -112,7 +112,7 @@
         },
         {
           "id": "Learning.GetTraining",
-          "value": "{id}-{name}"
+          "value": "{name}"
         }
       ]
     }

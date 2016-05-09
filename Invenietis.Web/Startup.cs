@@ -32,14 +32,20 @@ namespace Invenietis.Web
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddJsonFile("routes.json")
                 .AddJsonFile("config.json");
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            builder = new ConfigurationBuilder()
+                .AddJsonFile( "routes.json" );
+
+            RoutesConfiguration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; set; }
+
+        public IConfigurationRoot RoutesConfiguration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices( IServiceCollection services )
@@ -48,7 +54,7 @@ namespace Invenietis.Web
             services.AddMvc();
 
             // Localized routes provider
-            var routeProvider = new LocalizedRouteProvider( Configuration.Get<LocalizedRouteConfig>() );
+            var routeProvider = new LocalizedRouteProvider( RoutesConfiguration.Get<LocalizedRouteConfig>() );
             var mvcAdapter = new LocalizedRoutesMvcAdapter( routeProvider, typeof(Startup).GetTypeInfo().Assembly );
 
             services.AddInstance( routeProvider );
@@ -89,7 +95,7 @@ namespace Invenietis.Web
             DataContext.GetDefault = () => new DataContext( dbPath );
 
             // Localization
-            var cultureConfig = Configuration.Get<CultureConfig>();
+            var cultureConfig = Configuration.Get<Config>().Cultures;
             ConfigureLocalization( app, cultureConfig );
 
             // Build localized routes

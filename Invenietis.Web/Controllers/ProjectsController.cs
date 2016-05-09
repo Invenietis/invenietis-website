@@ -26,9 +26,9 @@ namespace Invenietis.Web.Controllers
             return this.LocalizedView();
         }
 
-        public IActionResult GetProject( int id, string name )
+        public IActionResult GetProject( string name )
         {
-            return this.LocalizedView();
+            return this.CustomLocalizedView( $"Pages/{name}" );
         }
     }
 }

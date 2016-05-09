@@ -21,5 +21,11 @@ namespace Invenietis.LocalizedRoutes.Mvc
             var viewName = $"{ctrl.ActionContext.ActionDescriptor.Name}.{CultureInfo.CurrentCulture.Name}";
             return ctrl.View( viewName, model );
         }
+
+        public static ViewResult CustomLocalizedView( this Controller ctrl, string viewName, object model = null )
+        {
+            var localizedViewName = $"{viewName}.{CultureInfo.CurrentCulture.Name}";
+            return ctrl.View( localizedViewName, model );
+        }
     }
 }

@@ -22,9 +22,9 @@ namespace Invenietis.Web.Controllers
             return this.LocalizedView();
         }
 
-        public IActionResult GetTraining( int id, string name )
+        public IActionResult GetTraining( string name )
         {
-            return this.LocalizedView();
+            return this.CustomLocalizedView( $"Pages/{name}" );
         }
     }
 }

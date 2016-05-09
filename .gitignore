@@ -19,6 +19,7 @@ bower_components/
 Invenietis.sln.ide
 Private
 .vs/
+PublishProfiles/
 
 # Minified files
 */wwwroot/js/*.min.js
