@@ -22,7 +22,7 @@ namespace Invenietis.Repositories.Commands
             using( var db = DataContext.GetDefault() )
             {
                 var learning = new Learning();
-                foreach( var c in CultureProvider.SupportedCultures ) learning.Cultures.Add( c.Id, null );
+                foreach( var c in CultureProvider.SupportedCultures ) learning.Cultures.Add( c.Id, new CulturedLearning() );
 
                 return db.Learnings.Insert( learning );
             }
@@ -50,7 +50,7 @@ namespace Invenietis.Repositories.Commands
             using( var db = DataContext.GetDefault() )
             {
                 var category = new LearningCategory();
-                foreach( var c in CultureProvider.SupportedCultures ) category.Cultures.Add( c.Id, null );
+                foreach( var c in CultureProvider.SupportedCultures ) category.Cultures.Add( c.Id, String.Empty );
 
                 return db.LearningCategories.Insert( category );
             }

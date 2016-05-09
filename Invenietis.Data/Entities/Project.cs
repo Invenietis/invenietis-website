@@ -67,6 +67,11 @@ namespace Invenietis.Data.Entities
 
     public class ProjectCategory
     {
+        public ProjectCategory()
+        {
+            Cultures = new Dictionary<string, string>();
+        }
+
         public int ProjectCategoryId { get; set; }
 
         public Dictionary<string, string> Cultures { get; set; }

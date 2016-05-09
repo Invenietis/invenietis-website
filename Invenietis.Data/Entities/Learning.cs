@@ -47,6 +47,11 @@ namespace Invenietis.Data.Entities
 
     public class LearningCategory
     {
+        public LearningCategory()
+        {
+            Cultures = new Dictionary<string, string>();
+        }
+
         public int LearningCategoryId { get; set; }
 
         public Dictionary<string, string> Cultures { get; set; }

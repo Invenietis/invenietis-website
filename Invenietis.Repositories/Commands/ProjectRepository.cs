@@ -22,7 +22,7 @@ namespace Invenietis.Repositories.Commands
             using( var db = DataContext.GetDefault() )
             {
                 var project = new Project();
-                foreach( var c in CultureProvider.SupportedCultures ) project.Cultures.Add( c.Id, null );
+                foreach( var c in CultureProvider.SupportedCultures ) project.Cultures.Add( c.Id, new CulturedProject() );
 
                 return db.Projects.Insert( project );
             }
@@ -52,7 +52,7 @@ namespace Invenietis.Repositories.Commands
             using( var db = DataContext.GetDefault() )
             {
                 var category = new ProjectCategory();
-                foreach( var c in CultureProvider.SupportedCultures ) category.Cultures.Add( c.Id, null );
+                foreach( var c in CultureProvider.SupportedCultures ) category.Cultures.Add( c.Id, String.Empty );
 
                 return db.ProjectCategories.Insert( category );
             }

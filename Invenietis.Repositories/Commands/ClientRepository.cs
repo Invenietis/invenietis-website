@@ -21,7 +21,7 @@ namespace Invenietis.Repositories.Commands
             using( var db = DataContext.GetDefault() )
             {
                 var client = new Client();
-                foreach( var c in CultureProvider.SupportedCultures ) client.Cultures.Add( c.Id, null );
+                foreach( var c in CultureProvider.SupportedCultures ) client.Cultures.Add( c.Id, String.Empty );
                                       
                 return db.Clients.Insert( client );
             }
