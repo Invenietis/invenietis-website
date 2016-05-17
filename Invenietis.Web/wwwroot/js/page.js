@@ -44,15 +44,6 @@ var Page = function () {
         });
     }
 
-    function enableFooterBackground() {
-        var config = Invenietis.ShaderConfigFactory();
-
-        config.background.LIGHT.ambient = "#0c0c0c";
-        config.background.LIGHT.diffuse = "#141414";
-
-        FSS.Helpers.initShader(config, "bg-footer", "bg-footer-output");
-    }
-
     function enableLightbox() {
         lightbox.init();
 
@@ -63,9 +54,8 @@ var Page = function () {
     }
 
     $(function () {
-        enableBackgroundImages();
         enableBannerPolygons();
-        enableFooterBackground();
+        enableBackgroundImages();
         enableLightbox();
     });
 }

@@ -30,8 +30,6 @@ var Home = function() {
         _scrollHandler.onScrollUp(onScrollUp);
         _scrollHandler.onScrollDown(onScrollDown);
 
-        enableWhatWeDoBackground();
-        enableFullBannerBackground();
         enableBottomArrowScroll();
     });
 
@@ -148,30 +146,6 @@ var Home = function() {
         else {
             if (!_jNavbar.hasClass("white")) _jNavbar.addClass("white");
         }
-    }
-
-    /* Full banner polygons background */
-    function enableFullBannerBackground() {
-        var config = Invenietis.ShaderConfigFactory();
-
-        config.background.LIGHT.ambient = "#0c0c0c";
-        config.background.LIGHT.diffuse = "#141414";
-
-        FSS.Helpers.initShader(config, "bg-full-banner", "bg-full-banner-output");
-    }
-
-    /* What We Do polygons background */
-    function enableWhatWeDoBackground() {
-        var config = Invenietis.ShaderConfigFactory();
-
-        config.background.MESH.ambient = "#555555";
-        config.background.MESH.diffuse = "#ffffff";
-
-        config.background.LIGHT.ambient = "#880066";
-        config.background.LIGHT.diffuse = "#ff8800";
-        config.background.LIGHT.zOffset = 20;
-
-        FSS.Helpers.initShader(config, "bg-what-we-do", "bg-what-we-do-output");
     }
 
     /* Click handler for scroll arrow */

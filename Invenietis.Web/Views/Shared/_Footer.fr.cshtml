@@ -1,12 +1,12 @@
 ﻿<div id="footer" class="full-separator">
-    <div id="bg-footer">
-        <div id="bg-footer-output"></div>
+    <div id="bg-footer" data-role="polygons-container" data-light-ambient="#0c0c0c" data-light-diffuse="#141414">
+        <div id="bg-footer-output" data-role="polygons-output"></div>
         <div class="bg-shader-noise"></div>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-offset-1 col-sm-3">
                 <h1>Invenietis</h1>
 
                 <p>
@@ -19,48 +19,36 @@
                 </p>
 
                 <p>
-                    <i class="glyphicon glyphicon-envelope"></i> contact@invenietis.com
+                    <i class="glyphicon glyphicon-envelope"></i> <a href="mailto:contact@invenietis.com">contact@invenietis.com</a>
                 </p>
 
             </div>
 
-            <div class="col-sm-2 col-xs-6">
-                <h1>A propos</h1>
+            <div class="col-sm-3 col-xs-12 networks">
+                <h1>Réseaux sociaux</h1>
                 <ul>
-                    <li><a href="#">Vestibulum</a></li>
-                    <li><a href="#">Efficitur</a></li>
-                    <li><a href="#">Luctus</a></li>
-                    <li><a href="#">Mauris</a></li>
+                    <li><a href="#"><img src="~/img/twitter_48.png" /></a></li>
+                    <li><a href="#"><img src="~/img/fb_48.png" /></a></li>
+                    <li><a href="#"><img src="~/img/linkedin_48.png" /></a></li>
+                </ul>
+            </div>
+
+            <div class="col-sm-2 col-xs-6">
+                <h1>Navigation</h1>
+                <ul>
+                    <li><a asp-route-id="Home.AboutUs" asp-culture="fr">A propos</a></li>
+                    <li><a asp-route-id="Projects.Index" asp-culture="fr">Réalisations</a></li>
+                    <li><a href="http://blog.invenietis.com">Blog</a></li>
                 </ul>
             </div>
 
             <div class="col-sm-2 col-xs-6">
                 <h1>Nos métiers</h1>
                 <ul>
-                    <li><a href="#">Vestibulum</a></li>
-                    <li><a href="#">Efficitur</a></li>
-                    <li><a href="#">Luctus</a></li>
-                    <li><a href="#">Mauris</a></li>
-                </ul>
-            </div>
-
-            <div class="col-sm-2 col-xs-6">
-                <h1>Réalisations</h1>
-                <ul>
-                    <li><a href="#">Vestibulum</a></li>
-                    <li><a href="#">Efficitur</a></li>
-                    <li><a href="#">Luctus</a></li>
-                    <li><a href="#">Mauris</a></li>
-                </ul>
-            </div>
-
-            <div class="col-sm-2 col-xs-6">
-                <h1>Blog</h1>
-                <ul>
-                    <li><a href="#">Vestibulum</a></li>
-                    <li><a href="#">Efficitur</a></li>
-                    <li><a href="#">Luctus</a></li>
-                    <li><a href="#">Mauris</a></li>
+                    <li><a asp-route-id="Home.BusinessSystems" asp-culture="fr">Systèmes métiers</a></li>
+                    <li><a asp-route-id="Home.Consulting" asp-culture="fr">Conseil</a></li>
+                    <li><a asp-route-id="Learning.Index" asp-culture="fr">Formation</a></li>
+                    <li><a asp-route-id="Home.ResearchAndDev" asp-culture="fr">R&D</a></li>
                 </ul>
             </div>
         </div>
