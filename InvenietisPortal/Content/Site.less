@@ -27,6 +27,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('fonts/Montserrat-Light.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 .rotation(@deg: 5deg) {
     -webkit-transform: rotate(@deg);
@@ -127,8 +134,8 @@ html {
 }
 
 .header-logo {
-    width: 150px;
-    height: 65px;
+    width: 221px;
+    height: 62px;
 }
 
 header .title {
@@ -145,11 +152,14 @@ header .title {
         .keywords {
             position: absolute;
             top: 160px;
+            left: 34px;
 
             h2 {
                 color: @orange;
-                font-family: 'conduit_itc_light-regular',"Helvetica Neue",Helvetica,Arial,sans-serif;
-                font-size: 40px;
+                font-family: "Montserrat-Light","Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 32px;
+                font-weight: normal;
+                font-size: 34px;
             }
         }
     }

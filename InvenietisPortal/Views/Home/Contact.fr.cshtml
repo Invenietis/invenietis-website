@@ -1,6 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.fr.cshtml";
-    ViewBag.Title = "Invenietis - Nous contacter";
+    ViewBag.Title = "Signature - Nous contacter";
     ViewBag.Keywords = "";
     ViewBag.Description = "";
 }
@@ -32,13 +32,13 @@
                 <div class="row-fluid">
                     <div class="span4 center">
                         <strong class="lead">Téléphone, email :</strong><br /><br />
-                        <p class="center"><a href="mailto:contact@invenietis.com">contact@invenietis.com</a></p>
+                        <p class="center"><a href="mailto:contact@signature-code.com">contact@signature-code.com</a></p>
                         <p class="center">(+33) 1 84 16 19 99</p>
                     </div>
                     <div class="span4 center">
                         <strong class="lead">Centre technique :</strong><br /><br />
                         <address>
-                            <strong>Société Invenietis</strong><br />
+                            <strong>Signature Code</strong><br />
                             10, rue Mercoeur<br>
                             75011 - Paris<br>
                             France
@@ -47,9 +47,9 @@
                     <div class="span4 center">
                         <strong class="lead">Siège social :</strong><br /><br />
                         <address>
-                            <strong>Société Invenietis</strong><br />
-                            23, rue Pelleport <br />
-                            75020 - Paris<br>
+                            <strong>Signature SAS</strong><br />
+                            29, avenue de l'industrie<br />
+                            42390 - Villars<br />
                             France
                         </address>
                     </div>
@@ -61,7 +61,7 @@
         <div class="infomap">
             <address>
                 <img src="/Content/images/marcker.png" alt="logo" />
-                <strong>Invenietis - Centre technique</strong><br />
+                <strong>Signature Code</strong><br />
                 10, rue Mercoeur<br>
                 75011 - Paris<br>
                 France
@@ -73,9 +73,9 @@
         <div class="infomap">
             <address>
                 <img src="/Content/images/marcker.png" alt="logo" />
-                <strong>Invenietis - Siège social</strong><br />
-                23 rue Pelleport<br>
-                75020 - Paris<br>
+                <strong>Signature SAS</strong><br />                
+                29, avenue de l'industrie<br />
+                42390 - Villars<br />
                 France
             </address>
             <a target="_blank" href="https://maps.google.fr/maps?q=23+Rue+Pelleport,+Paris&hl=fr&ie=UTF8&sll=48.85472,2.384012&sspn=0.013766,0.033023&oq=23&t=h&gl=fr&hnear=23+Rue+Pelleport,+75020+Paris,+%C3%8Ele-de-France&z=17">Voir sur Google Map</a>
@@ -142,7 +142,7 @@
 
             var markerTech = new google.maps.Marker({
                 position: new google.maps.LatLng(48.8572848, 2.384046),
-                title: 'Invenietis - Centre technique',
+                title: 'Signature Code',
                 zoomControl: true,
                 map: map,
                 animation: google.maps.Animation.DROP,
@@ -152,7 +152,7 @@
             bounds.extend(markerTech.position);
             var markerHQ = new google.maps.Marker({
                 position: new google.maps.LatLng(48.863282, 2.404191),
-                title: 'Invenietis - Siège Social',
+                title: 'Signature SAS',
                 zoomControl: true,
                 map: map,
                 animation: google.maps.Animation.DROP,

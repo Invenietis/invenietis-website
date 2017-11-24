@@ -22,6 +22,8 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -263,6 +265,24 @@
     <Content Include="Content\Site.css.map">
       <DependentUpon>Site.css</DependentUpon>
     </Content>
+    <Content Include="Content\fonts\Montserrat-Black.otf" />
+    <Content Include="Content\fonts\Montserrat-Bold.otf" />
+    <Content Include="Content\fonts\Montserrat-ExtraBold.otf" />
+    <Content Include="Content\fonts\Montserrat-ExtraLight.otf" />
+    <Content Include="Content\fonts\Montserrat-Light.otf" />
+    <Content Include="Content\fonts\Montserrat-Medium.otf" />
+    <Content Include="Content\fonts\Montserrat-Regular.otf" />
+    <Content Include="Content\fonts\Montserrat-SemiBold.otf" />
+    <Content Include="Content\fonts\Montserrat-Thin.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Black.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Bold.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-ExtraBold.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-ExtraLight.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Light.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Medium.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Regular.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-SemiBold.otf" />
+    <Content Include="Content\fonts\MontserratAlternates-Thin.otf" />
     <None Include="Properties\PublishProfiles\WebSite.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js">

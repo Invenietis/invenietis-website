@@ -27,12 +27,12 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <a href="@Url.Action( "Index" )">
-                                <img alt="Invenietis" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
+                                <img alt="Signature" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
                                 <li @Html.Raw( ViewBag.Page == "Index" ? "class=\"active\"" : "" )><a href="@Url.Action( "Index" )">Home</a></li>
-                                <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                                @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                                 <li @Html.Raw( ViewBag.Page == "References" ? "class=\"active\"" : "" )><a href="@Url.Action( "References" )">References</a></li>
                                 <li @Html.Raw( ViewBag.Page == "Contact" ? "class=\"active\"" : "" )><a href="@Url.Action( "Contact" )">Contact us</a></li>
                             </ul>
@@ -53,13 +53,13 @@
                         <strong>More about us</strong>
                         <ul>
                             <li><a href="@Url.Action( "Index" )">Home</a></li>
-                            <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                            @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                             <li><a href="@Url.Action( "Contact" )">Contact us</a></li>
                         </ul>
                         <strong>Our products</strong>
                         <ul>
-                            <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
-                            <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
+                            @*<li><a href="https://get-package.com" target="_blank">Get-Package</a></li>*@
+                            @*<li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>*@
                             <li><a href="@Url.Action( "CKMultiPlan" )">CK-MultiPlan</a></li>
                         </ul>
                         <strong>Languages</strong>
@@ -76,19 +76,19 @@
                             <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
                         <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_tw_en.png")" />
-                        <img src="@Url.Content("~/Content/images/syntec.png")" />
+                        @*<img src="@Url.Content("~/Content/images/syntec.png")" />*@
 
                     </div>
                     <div class="span3">
                         <div class="pull-right address">
                             <address>
-                                <strong>Invenietis</strong>
+                                <strong>Signature Code</strong>
                                 <a class="minimap" href="@Url.Action( "Contact" )"></a>
 
                                 10, rue Mercoeur<br>
                                 75011 - Paris<br>
                                 France<br /><br />
-                                Mail: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
+                                Mail: <a href="mailto:contact@signature-code.com">contact@signature-code.com</a><br />
                                 <abbr title="Phone number">P:</abbr> (+33) 1 84 16 19 99
                             </address>
                         </div>
@@ -97,9 +97,9 @@
                 <div class="row-fluid">
                     <div class="span12 center">
                         <div class="legal">
-                            <img src="@Url.Content("~/Content/images/logo.png")" alt="Invenietis logo" />
+                            <img src="@Url.Content("~/Content/images/logo.png")" alt="Signature logo" />
                             <span>
-                                Copyright © @DateTime.Now.Year Invenietis. All rights reserved.
+                                Copyright © @DateTime.Now.Year Signature SAS. All rights reserved.
                                 <a href="@Url.Action( "Legal" )">Legal Terms</a>.
                             </span>
                         </div>

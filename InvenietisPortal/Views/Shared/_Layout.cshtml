@@ -27,12 +27,12 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <a href="@Url.Action( "Index" )">
-                                <img alt="Invenietis" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
+                                <img alt="Signature" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
                                 <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"": "")><a href="@Url.Action( "Index" )">Accueil</a></li>
-                                <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                                @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                                 <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"": "")><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                             </ul>
                         </div>
@@ -52,13 +52,14 @@
                         <strong>Nous connaitre</strong>
                         <ul>
                             <li><a href="@Url.Action( "Index" )">Accueil</a></li>
-                            <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                            @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                             <li><a href="@Url.Action( "Contact" )">Contactez-nous</a></li>
                         </ul>
                         <strong>Nos produits</strong>
                         <ul>
-                            <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
-                            <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
+                            <li><a href="@Url.Action( "CKMultiPlan" )">CK-MultiPlan</a></li>
+                            @*<li><a href="https://get-package.com" target="_blank">Get-Package</a></li>*@
+                            @*<li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>*@
                         </ul>
                         <strong>Langues</strong>
                         <ul>
@@ -74,18 +75,17 @@
                             <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
                         <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_black-tw-mini.png")" />
-                        <img src="@Url.Content("~/Content/images/syntec.png")" />
                     </div>
                     <div class="span3">
                         <div class="pull-right address">
                             <address>
-                                <strong>Invenietis</strong>
+                                <strong>Signature Code</strong>
                                 <a class="minimap" href="@Url.Action( "Contact" )"></a>
 
                                 10, rue Mercoeur<br>
                                 75011 - Paris<br>
                                 France<br /><br />
-                                Email: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
+                                Email: <a href="mailto:contact@signature-code.com">contact@signature-code.com</a><br />
                                 <abbr title="Téléphone">Tel:</abbr> (+33) 1 84 16 19 99
                             </address>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="legal">
                             <img src="@Url.Content("~/Content/images/logo.png")" />
                             <span>
-                                Copyright © @DateTime.Now.Year Invenietis. Tous Droits Réservés.
+                                Copyright © @DateTime.Now.Year Signature SAS. Tous Droits Réservés.
                                 <a href="@Url.Action( "Legal" )"> Mentions légales</a>
                             </span>
                         </div>
