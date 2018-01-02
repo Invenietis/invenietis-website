@@ -12,3 +12,5 @@ packages/
 *.pubxml.user
 Invenietis.sln.ide
 Private
+
+/.vs/
