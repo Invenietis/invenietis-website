@@ -27,14 +27,14 @@
                     <div class="row-fluid">
                         <div class="span12">
                             <a href="@Url.Action( "Index" )">
-                                <img alt="Invenietis" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
+                                <img alt="Signature" class="header-logo pull-left" src="@Url.Content("~/Content/logo-small.png")" />
                             </a>
                             <a class="expand-menu" href="javascript:void(0);"><img src="@Url.Content("~/Content/images/menu.png")" alt="menu" /></a>
                             <ul class="nav nav-pills pull-right header-links">
-                                <li @Html.Raw( ViewBag.Page == "Index" ? "class=\"active\"" : "" )><a href="@Url.Action( "Index" )">Home</a></li>
-                                <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
-                                <li @Html.Raw( ViewBag.Page == "References" ? "class=\"active\"" : "" )><a href="@Url.Action( "References" )">References</a></li>
-                                <li @Html.Raw( ViewBag.Page == "Contact" ? "class=\"active\"" : "" )><a href="@Url.Action( "Contact" )">Contact us</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Index" ? "class=\"active\"" : "")><a href="@Url.Action( "Index" )">Home</a></li>
+                                @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
+                                <li @Html.Raw(ViewBag.Page == "References" ? "class=\"active\"" : "")><a href="@Url.Action( "References" )">References</a></li>
+                                <li @Html.Raw(ViewBag.Page == "Contact" ? "class=\"active\"" : "")><a href="@Url.Action( "Contact" )">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -53,13 +53,13 @@
                         <strong>More about us</strong>
                         <ul>
                             <li><a href="@Url.Action( "Index" )">Home</a></li>
-                            <li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>
+                            @*<li><a target="_blank" href="http://blog.invenietis.com">Blog</a></li>*@
                             <li><a href="@Url.Action( "Contact" )">Contact us</a></li>
                         </ul>
                         <strong>Our products</strong>
                         <ul>
-                            <li><a href="https://get-package.com" target="_blank">Get-Package</a></li>
-                            <li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>
+                            @*<li><a href="https://get-package.com" target="_blank">Get-Package</a></li>*@
+                            @*<li><a href="http://civikey.fr" target="_blank">CiviKey</a></li>*@
                             <li><a href="@Url.Action( "CKMultiPlan" )">CK-MultiPlan</a></li>
                         </ul>
                         <strong>Languages</strong>
@@ -76,20 +76,20 @@
                             <a class="facebook" href="https://www.facebook.com/Invenietis" target="_blank"></a>
                         </div>
                         <img class="mslogo" src="@Url.Content("~/Content/images/microsoft_tw_en.png")" />
-                        <img src="@Url.Content("~/Content/images/syntec.png")" />
+                        @*<img src="@Url.Content("~/Content/images/syntec.png")" />*@
 
                     </div>
                     <div class="span3">
                         <div class="pull-right address">
                             <address>
-                                <strong>Invenietis</strong>
+                                <strong>Signature Code</strong>
                                 <a class="minimap" href="@Url.Action( "Contact" )"></a>
 
                                 10, rue Mercoeur<br>
                                 75011 - Paris<br>
                                 France<br /><br />
-                                Mail: <a href="mailto:contact@invenietis.com">contact@invenietis.com</a><br />
-                                <abbr title="Phone number">P:</abbr> (+33) 1 84 16 19 99
+                                E-mail: <a href="" class="contact-email-s">...</a><br />
+                                <abbr title="Phone number">Phone:</abbr> (+33) 01 84 16 19 99
                             </address>
                         </div>
                     </div>
@@ -97,9 +97,11 @@
                 <div class="row-fluid">
                     <div class="span12 center">
                         <div class="legal">
-                            <img src="@Url.Content("~/Content/images/logo.png")" alt="Invenietis logo" />
+                            <p>
+                                <img src="@Url.Content("~/Content/images/logo.png")" alt="Signature logo" />
+                            </p>
                             <span>
-                                Copyright © @DateTime.Now.Year Invenietis. All rights reserved.
+                                Copyright © @DateTime.Now.Year Signature SAS. All rights reserved.
                                 <a href="@Url.Action( "Legal" )">Legal Terms</a>.
                             </span>
                         </div>
@@ -108,16 +110,22 @@
             </div>
         </footer>
     </div>
-    @RenderSection( "js", required: false )
+    @RenderSection("js", required: false)
+    <script type="text/javascript">
+        !function () { function e(e) { this.message = e } var t = "undefined" != typeof exports ? exports : "undefined" != typeof self ? self : $.global, r = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="; e.prototype = new Error, e.prototype.name = "InvalidCharacterError", t.btoa || (t.btoa = function (t) { for (var o, n, a = String(t), i = 0, f = r, c = ""; a.charAt(0 | i) || (f = "=", i % 1); c += f.charAt(63 & o >> 8 - i % 1 * 8)) { if (n = a.charCodeAt(i += .75), n > 255) throw new e("'btoa' failed: The string to be encoded contains characters outside of the Latin1 range."); o = o << 8 | n } return c }), t.atob || (t.atob = function (t) { var o = String(t).replace(/[=]+$/, ""); if (o.length % 4 == 1) throw new e("'atob' failed: The string to be decoded is not correctly encoded."); for (var n, a, i = 0, f = 0, c = ""; a = o.charAt(f++); ~a && (n = i % 4 ? 64 * n + a : a, i++ % 4) ? c += String.fromCharCode(255 & n >> (-2 * i & 6)) : 0)a = r.indexOf(a); return c }) }();
+    </script>
     <script type="text/javascript">
         $(function () {
+            var c = 'Y29udGFjdEBz#WduYXR1cmUtY29k^S5jb20=';
+            c = atob(c.replace('#', 'a').replace('^', 'Z'));
+
+            $('a.contact-email-s').attr("href", "mailto:" + c);
+            $('.contact-email-s').text(c);
+
             $('.expand-menu').click(function () {
                 $('.header-links').toggleClass('visible');
             });
         });
-    </script>
-    <script type="text/javascript">
-        _gaq.push(['_trackPageview']);
     </script>
 </body>
 </html>
